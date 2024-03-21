@@ -7,6 +7,7 @@ module.exports = {
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
     "./app/components/**/*.{erb,haml,html,slim,rb}",
+    "./config/initializers/simple_form.rb",
   ],
   darkMode: "class",
   theme: {
@@ -19,6 +20,7 @@ module.exports = {
         text: "var(--color-text)",
         surface: "var(--color-surface)",
         primary: "var(--color-primary)",
+        light: "var(--color-light)",
       },
       borderColor: {
         DEFAULT: "var(--color-border)",

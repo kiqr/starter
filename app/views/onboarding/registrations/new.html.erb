@@ -1,0 +1,24 @@
+<% title "Create a new account" %>
+
+<%= fullscreen do %>
+  <%= render(Fullscreen::Form::Component.new(
+    title: "Create your <strong class=\"text-primary-600\">Irelia</strong> account".html_safe,
+    description: "Enter your email address and a secure password."
+  )) do %>
+  <main class="flex flex-col gap-4 w-full max-w-2xl">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.input :email, placeholder: "Enter a valid email address", required: true, autofocus: true, input_html: { autocomplete: "email" }%>
+
+      <div class="flex flex-col lg:flex-row justify-between items-start gap-4">
+        <%= f.input :password, placeholder: "Create a secure password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation, placeholder: "Confirm your password", required: true, input_html: { autocomplete: "new-password" } %>
+      </div>
+
+      <div class="mt-4 flex justify-between items-center">
+        <%= f.button :submit, "Create your account" %>
+        <p>Already have an account? <%= link_to "Sign in!", new_user_session_path, class: "font-bold transition text-primary" %>
+      </div>
+    <% end %>
+  </main>
+  <% end %>
+<% end %>
