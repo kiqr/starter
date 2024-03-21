@@ -11,6 +11,8 @@ module RailsApp
   class Application < Rails::Application
     config.autoload_paths << Rails.root.join("app", "components")
     config.view_component.preview_paths << Rails.root.join("app", "components")
+    config.action_mailer.default_url_options = Kiqr.default_url_options
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
