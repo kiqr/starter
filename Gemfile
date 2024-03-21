@@ -51,6 +51,7 @@ gem "meta-tags", "~> 2.20"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "brakeman", "~> 6.1"
   gem "debug", platforms: %i[mri windows]
   gem "standard"
 end
@@ -70,4 +71,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "simplecov", require: false
 end
