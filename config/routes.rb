@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", :as => :rails_health_check
 
-  devise_for :users, controllers: {
-    registrations: "onboarding/registrations"
-  }, path_names: {sign_in: "login", sign_up: "create-account"}
+  devise_for :users, path_names: {sign_in: "login", sign_up: "create-account"}
 
   get "dashboard" => "dashboard#show"
 

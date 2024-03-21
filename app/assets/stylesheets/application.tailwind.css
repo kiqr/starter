@@ -18,10 +18,9 @@
     --color-background: theme("colors.slate.800");
     --color-surface: theme("colors.slate.900");
     --color-border: theme("colors.slate.700");
-    --color-primary: theme("colors.cyan.700");
+    --color-primary: theme("colors.cyan.600");
     --color-light: theme("colors.slate.500");
   }
-
   body {
     @apply bg-[var(--color-background)] font-sans text-[var(--color-text)] antialiased;
   }

@@ -2,7 +2,7 @@
 
 <%= fullscreen do %>
   <%= render(Fullscreen::Form::Component.new(
-    title: "Create your <strong class=\"text-primary-600\">Irelia</strong> account".html_safe,
+    title: "Create your <strong class=\"text-primary\">#{Kiqr::Config.app_name}</strong> account".html_safe,
     description: "Enter your email address and a secure password."
   )) do %>
   <main class="flex flex-col gap-4 w-full max-w-2xl">

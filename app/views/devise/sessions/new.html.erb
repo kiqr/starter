@@ -1,0 +1,21 @@
+<% title "Sign in to your account" %>
+
+<%= fullscreen do %>
+  <%= render(Fullscreen::Form::Component.new(
+    title: "Sign in to your <strong class=\"text-primary\">#{Kiqr::Config.app_name}</strong> account".html_safe,
+    description: "Enter with your email address and password or select any of the other available options below."
+  )) do %>
+    <main class="flex flex-col gap-4 w-full max-w-xl">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.input :email, placeholder: "Enter your email", required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+        <%= f.input :password, placeholder: "Enter your password", required: true, input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean, wrapper: :inline_checkbox if devise_mapping.rememberable? %>
+
+        <div class="flex justify-between items-center">
+          <%= f.button :submit, "Sign in" %>
+          <p class="dark:text-neutral-200">Don't have an account? <%= link_to "Sign up!", new_user_registration_path, class: "font-bold text-primary-600 transition" %></p>
+        </div>
+      <% end %>
+    </main>
+  <% end %>
+<% end %>
