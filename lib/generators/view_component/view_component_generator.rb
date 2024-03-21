@@ -51,5 +51,4 @@ class ViewComponentGenerator < Rails::Generators::NamedBase
 
     attributes.map { |attr| "option :#{attr.name}" }.join("\n  ")
   end
-
 end
