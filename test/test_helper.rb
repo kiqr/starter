@@ -8,6 +8,10 @@ end
 require_relative "../config/environment"
 require "rails/test_help"
 
+# Load migrations
+ActiveRecord::Schema.verbose = false
+load "#{Rails.root}/db/schema.rb"
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
