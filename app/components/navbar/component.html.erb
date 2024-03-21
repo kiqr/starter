@@ -1,0 +1,18 @@
+<section class="sticky left-0 right-0 top-0 z-50 h-[var(--navbar-height)] gap-x-8 items-center border-b bg-surface">
+  <div class="container flex items-center gap-x-16 h-full text-sm">
+    <%= render "partials/navbars/logo" %>
+
+    <nav class="flex gap-x-8">
+      <%= content %>
+    </nav>
+
+
+    <nav class="ml-auto flex gap-x-8 items-center">
+      <%= right_section %>
+      <button data-controller="dark-mode-switcher" data-action="click->dark-mode-switcher#toggle">
+        <i class="fa fa-lightbulb hidden dark:inline"></i>
+        <i class="fa fa-moon inline dark:hidden"></i>
+      </button>
+    </nav>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+<%= render(Navbar::Component.new) do %>
+  <section>
+    <%= link_to "Dashboard", dashboard_path %>
+  </section>
+  <section class="ml-auto">
+    <%= link_to "Sign out", destroy_user_session_path %>
+  </section>
+<% end %>

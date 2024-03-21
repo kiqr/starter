@@ -2,12 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  :root {
+    --navbar-height: 70px;
+    --color-text: theme("colors.slate.600");
+    --color-background: theme("colors.neutral.50");
+    --color-surface: theme("colors.white");
+    --color-border: theme("colors.slate.200");
+    --color-primary: theme("colors.cyan.600");
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .dark {
+    --color-text: theme("colors.neutral.400");
+    --color-background: theme("colors.slate.800");
+    --color-surface: theme("colors.slate.900");
+    --color-border: theme("colors.slate.700");
+    --color-primary: theme("colors.cyan.700");
+  }
+
+  body {
+    @apply bg-[var(--color-background)] font-sans text-[var(--color-text)] antialiased;
   }
 }
-
-*/

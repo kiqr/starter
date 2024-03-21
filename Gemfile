@@ -48,7 +48,10 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.9", ">= 4.9.3"
+gem "dry-initializer", "~> 3.1"
 gem "meta-tags", "~> 2.20"
+gem "view_component", "~> 3.11"
+gem "view_component-contrib", "~> 0.2.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

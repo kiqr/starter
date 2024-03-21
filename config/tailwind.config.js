@@ -1,23 +1,48 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: [
-    './public/*.html',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
+    "./public/*.html",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/views/**/*.{erb,haml,html,slim}",
+    "./app/components/**/*.{erb,haml,html,slim,rb}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ["Poppins"],
+      },
+      colors: {
+        background: "var(--color-background)",
+        text: "var(--color-text)",
+        surface: "var(--color-surface)",
+        primary: "var(--color-primary)",
+      },
+      borderColor: {
+        DEFAULT: "var(--color-border)",
+      },
+      container: {
+        center: true,
+        screens: {
+          DEFAULT: "1200px",
+        },
+        padding: {
+          DEFAULT: "1.5em",
+        },
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
-  ]
-}
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
+    plugin(function ({ addBase }) {
+      addBase({
+        html: { fontSize: "13.5px" },
+      });
+    }),
+  ],
+};

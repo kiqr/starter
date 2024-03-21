@@ -111,6 +111,7 @@ GEM
       warden (~> 1.2.3)
     docile (1.4.0)
     drb (2.2.1)
+    dry-initializer (3.1.1)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -142,6 +143,7 @@ GEM
     matrix (0.4.2)
     meta-tags (2.20.0)
       actionpack (>= 6.0.0, < 7.2)
+    method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
@@ -243,6 +245,7 @@ GEM
     rubocop-performance (1.20.2)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.30.0, < 2.0)
+    ruby-next-core (1.0.2)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.18.1)
@@ -305,6 +308,13 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    view_component (3.11.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
+    view_component-contrib (0.2.2)
+      ruby-next-core (>= 0.15.0)
+      view_component
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -335,6 +345,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9, >= 4.9.3)
+  dry-initializer (~> 3.1)
   importmap-rails
   jbuilder
   meta-tags (~> 2.20)
@@ -349,6 +360,8 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
+  view_component (~> 3.11)
+  view_component-contrib (~> 0.2.2)
   web-console
 
 RUBY VERSION

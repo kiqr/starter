@@ -1,0 +1,12 @@
+<%= navbar do |component| %>
+  <%= link_to "Home", root_path, class: "font-bold text-primary" %>
+  <%= link_to "Features", "#", class: "hover:text-primary" %>
+  <%= link_to "Pricing", "#", class: "hover:text-primary" %>
+  <%= link_to "About us", "#", class: "hover:text-primary" %>
+  <%= link_to "Contact", "#", class: "hover:text-primary" %>
+
+  <% component.with_right_section do %>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Create account", new_user_registration_path %>
+  <% end %>
+<% end %>
