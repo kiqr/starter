@@ -5,4 +5,10 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     get dashboard_path
     assert_redirected_to new_user_session_path
   end
+
+  test "should allow authenticated users to visit" do
+    sign_in users(:one)
+    get dashboard_path
+    assert_response :success
+  end
 end
