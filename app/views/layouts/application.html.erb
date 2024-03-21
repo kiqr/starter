@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= display_meta_tags site: "KIQR", reverse: true, separator: "—" %>
+    <%= display_meta_tags site: Kiqr::Config.app_name, reverse: true, separator: "—" %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
