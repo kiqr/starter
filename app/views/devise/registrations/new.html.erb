@@ -1,10 +1,10 @@
 <% title "Create a new account" %>
 
-<%= fullscreen do %>
-  <%= render(Fullscreen::Form::Component.new(
+<%= fullscreen do |screen| %>
+  <%= screen.with_form(
     title: "Create your <strong class=\"text-primary\">#{Kiqr::Config.app_name}</strong> account".html_safe,
     description: "Enter your email address and a secure password."
-  )) do %>
+  ) do %>
   <main class="flex flex-col gap-4 w-full max-w-2xl">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.input :email, placeholder: "Enter a valid email address", required: true, autofocus: true, input_html: { autocomplete: "email" }%>

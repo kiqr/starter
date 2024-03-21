@@ -2,8 +2,8 @@
   <header class="flex flex-col items-center">
     <%= image_tag image, class: 'w-80 h-80' if image.present? %>
     <div class="flex flex-col gap-y-2 text-center max-w-3xl">
-      <% if title.present? %><h1 class="text-2xl text-primary-700"><%= title %></h1><% end %>
-      <% if description.present? %><p class="text-neutral-400 text-lg"><%= description %></p><% end %>
+      <% if title.present? %><h1 class="text-2xl text-primary"><%= title %></h1><% end %>
+      <% if description.present? %><p class="text-lg"><%= description %></p><% end %>
     </div>
   </header>
 

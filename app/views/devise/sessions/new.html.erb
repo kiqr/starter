@@ -1,10 +1,10 @@
 <% title "Sign in to your account" %>
 
-<%= fullscreen do %>
-  <%= render(Fullscreen::Form::Component.new(
+<%= fullscreen do |screen| %>
+  <%= screen.with_form(
     title: "Sign in to your <strong class=\"text-primary\">#{Kiqr::Config.app_name}</strong> account".html_safe,
     description: "Enter with your email address and password or select any of the other available options below."
-  )) do %>
+  ) do %>
     <main class="flex flex-col gap-4 w-full max-w-xl">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.input :email, placeholder: "Enter your email", required: true, autofocus: true, input_html: { autocomplete: "email" } %>
@@ -13,7 +13,7 @@
 
         <div class="flex justify-between items-center">
           <%= f.button :submit, "Sign in" %>
-          <p class="dark:text-neutral-200">Don't have an account? <%= link_to "Sign up!", new_user_registration_path, class: "font-bold text-primary-600 transition" %></p>
+          <p class="dark:text-neutral-200">Don't have an account? <%= link_to "Sign up!", new_user_registration_path, class: "font-bold text-primary transition" %></p>
         </div>
       <% end %>
     </main>
