@@ -58,7 +58,10 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "brakeman", "~> 6.1"
   gem "debug", platforms: %i[mri windows]
-  gem "standard"
+
+  gem "standard", require: false
+  # gem "erb_lint", require: false
+  gem "letter_opener_web", "~> 2.0"
 end
 
 group :development do
