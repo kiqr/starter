@@ -21,7 +21,7 @@
   </head>
   <body class="">
     <%= render "partials/navbar" %>
-
+    <%= render(FlashMessages::Component.new(flash:)) %>
     <%= yield %>
   </body>
 </html>
