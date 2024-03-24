@@ -7,7 +7,7 @@
   ) do %>
   <main class="flex flex-col gap-4 w-full max-w-2xl">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.input :email, placeholder: "Enter a valid email address", required: true, autofocus: true, input_html: { autocomplete: "email" }%>
+      <%= f.input :email, placeholder: "Enter a valid email address", required: true, autofocus: true, input_html: { autocomplete: "email" } %>
 
       <div class="flex flex-col lg:flex-row justify-between items-start gap-4">
         <%= f.input :password, placeholder: "Create a secure password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>

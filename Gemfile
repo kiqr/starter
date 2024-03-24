@@ -60,7 +60,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows]
 
   gem "standard", require: false
-  # gem "erb_lint", require: false
+  gem "erb_lint", require: false
   gem "letter_opener_web", "~> 2.0"
 end
 

@@ -80,6 +80,13 @@ GEM
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    better_html (2.1.1)
+      actionview (>= 6.0)
+      activesupport (>= 6.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      parser (>= 2.4)
+      smart_properties
     bigdecimal (3.1.7)
     bindex (0.8.1)
     bootsnap (1.18.3)
@@ -112,6 +119,13 @@ GEM
     docile (1.4.0)
     drb (2.2.1)
     dry-initializer (3.1.1)
+    erb_lint (0.5.0)
+      activesupport
+      better_html (>= 2.0.1)
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -271,6 +285,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    smart_properties (1.17.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -358,6 +373,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9, >= 4.9.3)
   dry-initializer (~> 3.1)
+  erb_lint
   importmap-rails
   jbuilder
   letter_opener_web (~> 2.0)

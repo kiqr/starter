@@ -39,6 +39,8 @@ jobs:
 
       - name: Standard
         run: bundle exec standardrb
+      - name: ERB Lint
+        run: bundle exec erblint --lint-all
 
   test:
     timeout-minutes: 10
