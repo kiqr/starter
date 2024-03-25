@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", :as => :rails_health_check
 
-  draw :development if Rails.env.development?
+  # => KIQR core routes
+  # These routes are required for the KIQR core to function properly.
+  # Do not remove or modify these routes unless you know what you're doing.
+  draw :development
   draw :authentication
 
-  # Define the routes for the application.
+  # => Application routes
   # Routes inside this block will be prefixed with /team/<team_id> if
-  # the user is signed in to a team account. Otherwise, they won't be prefixed at all.'
+  # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
   scope "(/team/:account_id)", account_id: %r{[^/]+} do
     get "dashboard" => "dashboard#show"
   end
