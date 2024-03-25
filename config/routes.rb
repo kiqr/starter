@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   draw :development if Rails.env.development?
   draw :authentication
 
-  # Define a route for logged in users to view their dashboard
-  get "dashboard" => "dashboard#show"
+  # Define the routes for the application.
+  # Routes inside this block will be prefixed with /team/<team_id> if
+  # the user is signed in to a team account. Otherwise, they won't be prefixed at all.'
+  scope "(/team/:account_id)", account_id: %r{[^/]+} do
+    get "dashboard" => "dashboard#show"
+  end
 
   # Defines the root path route ("/")
   root "public#landing_page"
