@@ -1,24 +1,37 @@
-# README
+KIQR
+----
+Turbocharge your SaaS journey with our ready-to-roll saas starter kit.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dive straight into the SaaS game with KIQR—a powerhouse packed with everything you need to launch your project. Built on Rails 7.1.2.4 and styled with Tailwind CSS, it's the kickstart your idea needs, minus the setup hassle.
 
-Things you may want to cover:
+**Key highlights:**
 
-* Ruby version
+- ⭐ Secure user login/out with Devise
+- ⭐ Flexible team and personal account setups, streamlining the onboarding process
 
-* System dependencies
+## Getting started
 
-* Configuration
+To get started with **KIQR**, follow these simple steps:
 
-* Database creation
+#### 1. Clone the repository
 
-* Database initialization
+```console
+git clone git@github.com:kiqr/kiqr.git my-app
+```
 
-* How to run the test suite
+#### 2. Run the setup script
 
-* Services (job queues, cache servers, search engines, etc.)
+Navigate into the new directory (```cd my-app```) and run:
 
-* Deployment instructions
+```console
+bin/setup
+```
 
-* ...
+#### 3. Start the development environment
+```console
+bin/dev
+```
+
+License
+-------
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
