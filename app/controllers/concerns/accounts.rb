@@ -7,12 +7,12 @@ module Accounts
   end
 
   def current_account
-    @current_account ||= current_user&.personal_account
+    @current_account ||= fetch_account_from_params || current_user&.personal_account
   end
 
   def fetch_account_from_params
-    nil if params[:account_id].blank?
-    # current_user.accounts.find_puid(params[:account_id])
+    return nil unless params[:account_id].present?
+    current_user.accounts.find_puid!(params[:account_id])
   end
 
   private

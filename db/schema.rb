@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_25_084418) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_25_142603) do
+  create_table "account_users", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "account_id", null: false
+    t.string "role", default: "owner", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_account_users_on_account_id"
+    t.index ["user_id"], name: "index_account_users_on_user_id"
+  end
+
   create_table "accounts", force: :cascade do |t|
     t.string "public_uid"
     t.string "name", null: false
@@ -48,5 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_25_084418) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "account_users", "accounts"
+  add_foreign_key "account_users", "users"
   add_foreign_key "users", "accounts", column: "personal_account_id"
 end
