@@ -62,6 +62,7 @@ group :development, :test do
   gem "standard", require: false
   gem "erb_lint", require: false
   gem "letter_opener_web", "~> 2.0"
+  gem "factory_bot_rails", "~> 6.4.3"
 end
 
 group :development do

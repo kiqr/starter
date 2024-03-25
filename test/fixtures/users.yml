@@ -1,5 +1,0 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  email: "john.doe@example.com"
-  confirmed_at: <%= Time.now %>

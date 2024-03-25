@@ -1,5 +1,5 @@
 <% unless flash.empty? %>
-  <div class="fixed top-[var(--navbar-height)] font-bold w-full text-sm flex justify-center items-center p-4 border-b bg-surface">
+  <div class="sticky font-bold w-full text-sm flex justify-center items-center p-4 border-b bg-surface">
     <% flash.each do |type, message| %>
       <% if type == "notice" %>
         <span class="text-primary"><i class="fa fa-info-circle mr-3 text-sm"></i> <%= message %></span>
