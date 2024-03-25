@@ -4,3 +4,20 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+Rake::Task["default"].clear
+
+namespace :lint do
+  task :standard do
+    sh "bundle exec standardrb"
+  end
+
+  task :erb do
+    sh "bundle exec erblint --lint-all"
+  end
+end
+
+task :default do
+  Rake::Task["test"].invoke
+  Rake::Task["lint:standard"].invoke
+  Rake::Task["lint:erb"].invoke
+end
