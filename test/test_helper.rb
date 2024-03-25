@@ -10,7 +10,6 @@ require "rails/test_help"
 
 # Load migrations
 ActiveRecord::Schema.verbose = false
-load "#{Rails.root}/db/schema.rb"
 
 module ActiveSupport
   class TestCase

@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 gem "devise", "~> 4.9", ">= 4.9.3"
 gem "dry-initializer", "~> 3.1"
 gem "meta-tags", "~> 2.20"
+gem "public_uid", "~> 2.2"
 gem "simple_form", "~> 5.3.0"
 gem "view_component", "~> 3.11"
 gem "view_component-contrib", "~> 0.2.2"

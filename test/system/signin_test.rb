@@ -6,7 +6,7 @@ class SigninTest < ApplicationSystemTestCase
     @unconfirmed_user = create(:user, :unconfirmed)
   end
 
-  test "signs in with a verified account" do
+  test "signs in with a verified user" do
     visit new_user_session_path
     fill_in "user[email]", with: @user.email
     fill_in "user[password]", with: @user.password

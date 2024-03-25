@@ -25,4 +25,8 @@
   body {
     @apply bg-[var(--color-background)] font-sans text-[var(--color-text)] antialiased;
   }
+
+  .invalid .input-box {
+    @apply border border-rose-500;
+  }
 }
