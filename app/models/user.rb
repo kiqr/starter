@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates_associated :personal_account
 
   def onboarded?
-    personal_account.present?
+    personal_account.present? && personal_account.persisted?
   end
 end

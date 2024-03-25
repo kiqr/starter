@@ -3,7 +3,7 @@ module Accounts
 
   included do
     helper_method :current_account, :personal_account, :onboarded?
-    before_action :redirect_to_onboarding
+    before_action :redirect_to_onboarding, unless: :devise_controller?
   end
 
   def current_account
