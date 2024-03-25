@@ -1,6 +1,5 @@
-  <section>
-    <%= link_to "Dashboard", dashboard_path %>
-  </section>
-  <section class="ml-auto">
-    <%= link_to "Sign out", destroy_user_session_path %>
-  </section>
+<%= link_to "Dashboard", dashboard_path %>
+
+<% navbar.with_right_section do %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% end %>
