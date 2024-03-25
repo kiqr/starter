@@ -1,5 +1,6 @@
 <%= link_to "Dashboard", dashboard_path %>
 
 <% navbar.with_right_section do %>
+  <%= render(Navbar::AccountSelector::Component.new(current_user:, current_account:)) if onboarded? %>
   <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
 <% end %>

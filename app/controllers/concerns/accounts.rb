@@ -2,7 +2,7 @@ module Accounts
   extend ActiveSupport::Concern
 
   included do
-    helper_method :current_account
+    helper_method :current_account, :personal_account, :onboarded?
     before_action :redirect_to_onboarding
   end
 
@@ -13,6 +13,14 @@ module Accounts
   def fetch_account_from_params
     return nil unless params[:account_id].present?
     current_user.accounts.find_puid!(params[:account_id])
+  end
+
+  def personal_account
+    current_user&.personal_account
+  end
+
+  def onboarded?
+    current_user.onboarded?
   end
 
   private
