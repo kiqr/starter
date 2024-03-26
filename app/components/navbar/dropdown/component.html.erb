@@ -1,7 +1,8 @@
 <div data-controller="dropdown" class="dropdown relative">
-  <button data-action="dropdown#toggle click@window->dropdown#hide" class="flex items-center">
+  <button data-action="dropdown#toggle click@window->dropdown#hide" class="flex items-center gap-x-2">
+    <% if icon %><i class="<%= icon %>"></i><% end %>
     <%= custom_content || label %>
-    <% if chevron %><i class="fa fa-caret-down ml-2"></i><% end %>
+    <% if chevron %><i class="fa fa-caret-down"></i><% end %>
   </button>
   <div
     class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-surface shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"

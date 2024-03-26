@@ -10,4 +10,8 @@ class Navbar::Component < ApplicationViewComponent
   def account_selector(current_user:, current_account:)
     render(Navbar::AccountSelector::Component.new(current_user:, current_account:))
   end
+
+  def separator
+    render(Navbar::Separator::Component.new)
+  end
 end

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Navbar::Dropdown::Component < ApplicationViewComponent
-  option :label, default: -> { "Dropdown" }, required: false
-  option :chevron, default: -> { true }, required: false
+  option :label, optional: true
+  option :chevron, default: -> { true }, optional: true
+  option :icon, optional: true
+
   renders_one :custom_content
 
   def item(**)

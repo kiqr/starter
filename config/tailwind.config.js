@@ -17,6 +17,7 @@ module.exports = {
       },
       colors: {
         background: "var(--color-background)",
+        border: "var(--color-border)",
         text: "var(--color-text)",
         surface: "var(--color-surface)",
         primary: "var(--color-primary)",

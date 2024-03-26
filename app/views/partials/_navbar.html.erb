@@ -1,6 +1,5 @@
 <%= navbar do |navbar| %>
   <%= render "partials/navbars/logo" %>
-  <nav class="flex gap-x-8">
-    <%= user_signed_in? ? render("partials/navbars/protected", navbar:) : render("partials/navbars/public", navbar:) %>
-  </nav>
+  <%= navbar.separator %>
+  <%= user_signed_in? ? render("partials/navbars/protected", navbar:) : render("partials/navbars/public", navbar:) %>
 <% end %>
