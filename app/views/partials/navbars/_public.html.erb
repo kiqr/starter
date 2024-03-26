@@ -7,4 +7,5 @@
   <% navbar.with_right_section do %>
     <%= link_to "Sign in", new_user_session_path, class: "hover:text-primary" %>
     <%= link_to "Create account", new_user_registration_path, class: "hover:text-primary" %>
+    <%= navbar.dark_mode_switch %>
   <% end %>

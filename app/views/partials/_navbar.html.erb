@@ -1,14 +1,6 @@
 <%= navbar do |navbar| %>
   <%= render "partials/navbars/logo" %>
-
   <nav class="flex gap-x-8">
     <%= user_signed_in? ? render("partials/navbars/protected", navbar:) : render("partials/navbars/public", navbar:) %>
   </nav>
-
-  <% navbar.with_right_section do %>
-    <button data-controller="dark-mode-switcher" data-action="click->dark-mode-switcher#toggle">
-      <i class="fa fa-lightbulb hidden dark:inline"></i>
-      <i class="fa fa-moon inline dark:hidden"></i>
-    </button>
-  <% end %>
 <% end %>

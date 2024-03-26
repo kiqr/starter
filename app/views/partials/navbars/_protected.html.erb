@@ -1,6 +1,18 @@
 <%= link_to "Dashboard", dashboard_path %>
 
 <% navbar.with_right_section do %>
-  <%= render(Navbar::AccountSelector::Component.new(current_user:, current_account:)) if onboarded? %>
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <%= navbar.account_selector(current_user:, current_account:) if onboarded? %>
+
+  <%= render(Navbar::Dropdown::Component.new(chevron: false)) do |dropdown| %>
+    <% dropdown.with_custom_content do %>
+      <i class="fa fa-gear"></i>
+    <% end %>
+    <%= dropdown.item(label: "Edit profile", icon: "fa fa-user", path: "#") %>
+    <%= dropdown.item(label: "Change password", icon: "fa fa-key", path: edit_user_registration_path) %>
+  <% end %>
+
+  <%= navbar.dark_mode_switch %>
+  <%= button_to destroy_user_session_path, method: :delete, class: "button" do %>
+    <i class="fa fa-sign-out text-rose-400"></i>
+  <% end %>
 <% end %>
