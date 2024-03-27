@@ -23,7 +23,7 @@ class OnboardingTest < ApplicationSystemTestCase
     click_on "commit"
 
     # Should be on the onboarding_path after first sign in
-    assert_current_path accounts_onboarding_path
+    assert_current_path onboarding_path
 
     # Fill the personal account setup form
     fill_in "account[name]", with: "John Doe"

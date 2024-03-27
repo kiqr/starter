@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # Redirect to onboarding if user is not onboarded
   def ensure_onboarded
-    redirect_to accounts_onboarding_path if user_signed_in? && !current_user.onboarded?
+    redirect_to onboarding_path if user_signed_in? && !current_user.onboarded?
   end
 
   # Redirect to dashboard after sign in
