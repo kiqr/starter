@@ -27,6 +27,6 @@ module Accounts
 
   # Redirect to onboarding if user is not onboarded
   def redirect_to_onboarding
-    redirect_to onboarding_path if user_signed_in? && !current_user.onboarded?
+    redirect_to accounts_onboarding_path if user_signed_in? && !current_user.onboarded?
   end
 end

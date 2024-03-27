@@ -6,7 +6,7 @@
     description: "Finish the registration by setting up your user profile."
   ) do %>
     <main class="flex flex-col gap-4 w-full max-w-2xl">
-      <%= simple_form_for(@account, url: onboarding_path) do |f| %>
+      <%= simple_form_for(@account, url: accounts_onboarding_path) do |f| %>
         <%= f.input :name, placeholder: "Enter your full name", required: true, autofocus: true %>
 
         <div class="mt-4 flex justify-between items-center">

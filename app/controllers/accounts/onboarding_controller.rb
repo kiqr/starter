@@ -1,4 +1,4 @@
-class OnboardingController < ApplicationController
+class Accounts::OnboardingController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :redirect_to_onboarding
   before_action :prevent_duplicate_personal_accounts
