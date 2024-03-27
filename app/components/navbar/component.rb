@@ -7,8 +7,8 @@ class Navbar::Component < ApplicationViewComponent
     render(Navbar::DarkModeSwitch::Component.new)
   end
 
-  def account_selector(current_user:, current_account:)
-    render(Navbar::AccountSelector::Component.new(current_user:, current_account:))
+  def account_selector
+    render(Navbar::AccountSelector::Component.new)
   end
 
   def separator
