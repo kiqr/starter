@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
   include SetCurrentAttributes
+  include CurrentHelper
 
   before_action :authenticate_user!
   before_action :ensure_onboarded, unless: :devise_controller?
 
   private
+
+  def default_url_options
+    {account_id: params[:account_id]}
+  end
 
   # Redirect to onboarding if user is not onboarded
   def ensure_onboarded
