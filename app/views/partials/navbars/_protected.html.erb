@@ -6,7 +6,7 @@
   <%= navbar.account_selector if onboarded? %>
 
   <%= render(Navbar::Dropdown::Component.new(icon: "fa fa-gear", chevron: false)) do |dropdown| %>
-    <%= dropdown.item(label: "Edit profile", icon: "fa fa-user", path: "#") %>
+    <%= dropdown.item(label: "Edit profile", icon: "fa fa-user", path: edit_account_path) %>
     <%= dropdown.item(label: "Change password", icon: "fa fa-key", path: edit_user_registration_path) %>
   <% end %>
 

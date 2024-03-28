@@ -6,3 +6,7 @@ scope module: :users, path: :users do
   get "onboarding" => "onboarding#new"
   post "onboarding" => "onboarding#create"
 end
+
+scope "(/team/:account_id)", account_id: %r{[^/]+} do
+  resource :account, only: [:edit, :update], path: "profile"
+end

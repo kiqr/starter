@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Strong parameters for account.
+  # Used for account creation and update.
+  def account_params
+    params.require(:account).permit(:name)
+  end
+
+  # Automatically include account_id in all URL options if it is already present in the params.
+  # This is used to ensure that all routes are scoped to the current team. Personal account
+  # routes are not affected.
   def default_url_options
     {account_id: params[:account_id]}
   end

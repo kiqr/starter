@@ -33,10 +33,6 @@ class Users::OnboardingController < ApplicationController
 
   private
 
-  def account_params
-    params.require(:account).permit(:name)
-  end
-
   # This is the path to redirect to after the onboarding process
   # is completed. By default, it redirects to the dashboard.
   def after_onboarding_path
