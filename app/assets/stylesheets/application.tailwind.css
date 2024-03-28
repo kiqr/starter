@@ -8,6 +8,7 @@
     --color-text: theme("colors.slate.600");
     --color-background: theme("colors.neutral.50");
     --color-surface: theme("colors.white");
+    --color-surface-hover: theme("colors.slate.50");
     --color-border: theme("colors.slate.200");
     --color-primary: theme("colors.cyan.600");
     --color-light: theme("colors.slate.400");
@@ -17,6 +18,7 @@
     --color-text: theme("colors.slate.300");
     --color-background: theme("colors.slate.800");
     --color-surface: theme("colors.slate.900");
+    --color-surface-hover: theme("colors.neutral.900");
     --color-border: theme("colors.slate.700");
     --color-primary: theme("colors.cyan.600");
     --color-light: theme("colors.slate.500");

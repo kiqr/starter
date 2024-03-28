@@ -1,0 +1,23 @@
+<div class="flex items-center justify-between bg-surface-hover py-3 px-4 text-sm font-bold border-y">
+  Account settings
+  <i class="fa fa-arrow-turn-down w-3 h-3"></i>
+</div>
+
+<%= render(PageLayouts::Settings::NavigationItem::Component.new(
+  label: "Profile settings",
+  description: "Edit your account profile.",
+  icon: "fa fa-user",
+  path: edit_account_path
+)) %>
+
+<div class="flex items-center justify-between bg-surface-hover py-3 px-4 text-sm font-bold border-y">
+  User settings
+  <i class="fa fa-arrow-turn-down w-3 h-3"></i>
+</div>
+
+<%= render(PageLayouts::Settings::NavigationItem::Component.new(
+  label: "Login credentials",
+  description: "Change user email or password.",
+  icon: "fa fa-lock",
+  path: edit_user_registration_path
+)) %>

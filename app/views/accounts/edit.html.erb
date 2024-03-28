@@ -1,5 +1,4 @@
 <% title "Edit your account profile" %>
-
-<div class="py-48 container">
+<%= render(PageLayouts::Settings::Component.new) do %>
   <%= render "form" %>
-</div>
+<% end %>

@@ -22,6 +22,7 @@ module.exports = {
         surface: "var(--color-surface)",
         primary: "var(--color-primary)",
         light: "var(--color-light)",
+        "surface-hover": "var(--color-surface-hover)",
       },
       borderColor: {
         DEFAULT: "var(--color-border)",
@@ -42,7 +43,7 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
-    plugin(function ({ addBase }) {
+    plugin(function({ addBase }) {
       addBase({
         html: { fontSize: "13.5px" },
       });
