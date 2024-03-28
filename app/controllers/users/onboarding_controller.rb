@@ -1,4 +1,11 @@
-class Accounts::OnboardingController < ApplicationController
+# The onboarding process is the process of creating a personal
+# account for the user. This is the first step in the process
+# of creating a personal user account. The user must have a personal
+# account before they can create any other type of account.
+#
+# A user is considered to have completed the
+# onboarding process if they have a personal account.
+class Users::OnboardingController < ApplicationController
   skip_before_action :ensure_onboarded
 
   before_action do

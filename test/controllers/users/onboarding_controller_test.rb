@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Accounts::OnboardingControllerTest < ActionDispatch::IntegrationTest
+class Users::OnboardingControllerTest < ActionDispatch::IntegrationTest
   test "redirects to dashboard_path if user is already onboarded" do
     sign_in create(:user)
     get onboarding_path
