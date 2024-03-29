@@ -1,14 +1,10 @@
-<%= link_to t(".dashboard"), dashboard_path, class: "font-bold text-primary" %>
+<%= navbar.item(icon: "fa fa-dashboard", label: t(".dashboard"), path: dashboard_path) %>
 
-<% navbar.with_right_section do %>
+<nav class="ml-auto flex gap-x-8 items-center">
   <%= navbar.account_selector if onboarded? %>
-
-  <%= link_to edit_account_path do %>
-    <i class="fa fa-gear"></i>
-  <% end %>
-
+  <%= navbar.item(icon: "fa fa-gear", path: edit_account_path) %>
   <%= navbar.dark_mode_switch %>
   <%= button_to destroy_user_session_path, method: :delete, class: "button" do %>
     <i class="fa fa-sign-out text-rose-400"></i>
   <% end %>
-<% end %>
+</nav>

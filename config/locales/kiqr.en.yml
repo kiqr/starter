@@ -42,6 +42,10 @@ en:
     navigations:
       protected:
         dashboard: "Dashboard"
+      public:
+        home: "Home"
+        sign_in: "Sign in"
+        register: "Create account"
       settings:
         account_settings: "Account settings"
         user_settings: "Login & security"
