@@ -1,5 +1,5 @@
-<%= simple_form_for(@account, url: account_path, method: :patch) do |f| %>
-  <%= f.input :name, placeholder: @account.personal? ? "Your full name" : "Team / organization name", required: true, autofocus: true %>
+<%= simple_form_for(account, url: account_path, method: :patch) do |f| %>
+  <%= f.input :name, placeholder: account.personal? ? "Your full name" : "Team / organization name", required: true, autofocus: true %>
   <div class="mt-4 flex justify-between items-center">
     <%= f.button :submit, "Save changes" %>
   </div>

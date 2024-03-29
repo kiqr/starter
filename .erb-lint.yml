@@ -7,8 +7,8 @@ linters:
     enabled: true
   FinalNewline:
     enabled: true
-  # PartialInstanceVariable:
-  #   enabled: true
+  PartialInstanceVariable:
+    enabled: true
   # DeprecatedClasses:
   #   enabled: true
   # HardCodedString:
