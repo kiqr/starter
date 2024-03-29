@@ -5,8 +5,8 @@ exclude:
 linters:
   ErbSafety:
     enabled: true
-  # FinalNewline:
-  #   enabled: true
+  FinalNewline:
+    enabled: true
   # PartialInstanceVariable:
   #   enabled: true
   # DeprecatedClasses:
