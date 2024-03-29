@@ -33,6 +33,8 @@ en:
   accounts:
     edit:
       title: "Edit your account profile"
+    update:
+      success: "Your account profile has been updated successfully."
     form:
       name:
         personal: "Your full name"
