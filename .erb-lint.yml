@@ -9,7 +9,10 @@ linters:
     enabled: true
   PartialInstanceVariable:
     enabled: true
-  # DeprecatedClasses:
-  #   enabled: true
-  # HardCodedString:
-  #   enabled: true
+  DeprecatedClasses:
+    enabled: true
+  HardCodedString:
+    enabled: true
+    exclude:
+      - "app/views/dashboard/show.html.erb"
+      - "app/views/public/landing_page.html.erb"

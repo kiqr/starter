@@ -1,0 +1,13 @@
+en:
+  partials:
+    navigations:
+      settings:
+        account_settings: "Account settings"
+        user_settings: "Login & security"
+        items:
+          account:
+            label: "Profile settings"
+            description: "Edit your account profile"
+          user:
+            label: "Login credentials"
+            description: "Change user email or password."
