@@ -1,13 +1,10 @@
-<%= link_to "Dashboard", dashboard_path, class: "font-bold text-primary" %>
-<%= link_to "Domains", dashboard_path %>
-<%= link_to "Reports", dashboard_path %>
+<%= link_to t(".dashboard"), dashboard_path, class: "font-bold text-primary" %>
 
 <% navbar.with_right_section do %>
   <%= navbar.account_selector if onboarded? %>
 
-  <%= render(Navbar::Dropdown::Component.new(icon: "fa fa-gear", chevron: false)) do |dropdown| %>
-    <%= dropdown.item(label: "Edit profile", icon: "fa fa-user", path: edit_account_path) %>
-    <%= dropdown.item(label: "Change password", icon: "fa fa-key", path: edit_user_registration_path) %>
+  <%= link_to edit_account_path do %>
+    <i class="fa fa-gear"></i>
   <% end %>
 
   <%= navbar.dark_mode_switch %>

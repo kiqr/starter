@@ -1,6 +1,47 @@
 en:
+  devise:
+    sessions:
+      new:
+        heading:
+          title: "Sign in to your %{app_name} account"
+          description: "Enter with your email address and password or select any of the other available options below."
+        form:
+          email:
+            placeholder: "Enter your email"
+          password:
+            placeholder: "Enter your password"
+          remember_me:
+            label: "Remember me"
+          submit_button: "Sign in"
+        no_account: "Don't have an account?"
+        sign_up: "Sign up!"
+    registrations:
+      new:
+        heading:
+          title: "Create a new %{app_name} account"
+          description: "Enter your email address and password to create a new account."
+        form:
+          email:
+            placeholder: "Enter a valid email address"
+          password:
+            placeholder: "Create a secure password"
+          password_confirmation:
+            placeholder: "Confirm your password"
+          submit_button: "Create your account"
+        already_have_account: Already have an account?
+        sign_in: Sign in!
+  accounts:
+    edit:
+      title: "Edit your account profile"
+    form:
+      name:
+        personal: "Your full name"
+        team: "Team / organization name"
+      submit_button: "Save changes"
   partials:
     navigations:
+      protected:
+        dashboard: "Dashboard"
       settings:
         account_settings: "Account settings"
         user_settings: "Login & security"
