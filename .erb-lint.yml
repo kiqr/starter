@@ -2,3 +2,14 @@
 EnableDefaultLinters: true
 exclude:
   - "vendor/bundle/**/*"
+linters:
+  ErbSafety:
+    enabled: true
+  # FinalNewline:
+  #   enabled: true
+  # PartialInstanceVariable:
+  #   enabled: true
+  # DeprecatedClasses:
+  #   enabled: true
+  # HardCodedString:
+  #   enabled: true
