@@ -6,6 +6,7 @@ class EditAccountsTest < ApplicationSystemTestCase
 
     sign_in(user)
     visit edit_account_path
+    sleep 1
 
     # Fill the personal account setup form
     fill_in "account[name]", with: "New name"

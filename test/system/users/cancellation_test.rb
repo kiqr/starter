@@ -12,7 +12,16 @@ class EditAccountsTest < ApplicationSystemTestCase
   end
 
   test "can't delete a user if they're an owner of a team" do
-    skip("https://github.com/kiqr/kiqr/issues/1")
+    user = create(:user)
+    team_account = create(:account, name: "Team account")
+    team_account.account_users << AccountUser.create(user: user, role: "owner")
+
+    sign_in(user)
+    visit delete_user_registration_path
+    accept_confirm { click_on "commit" }
+
+    assert_text I18n.t("users.registrations.destroy.owner_of_team")
+    assert User.find_by_id(user.id)
   end
 
   test "can't delete a user if theres an active subscription on their personal account" do

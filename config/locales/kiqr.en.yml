@@ -76,6 +76,8 @@ en:
             placeholder: "Enter your current password"
             hint: "we need your current password to confirm your changes"
           submit_button: "Save changes"
+      destroy:
+        owner_of_team: "Can't delete account when owner team."
     cancellations:
       show:
         title: "Delete account"
