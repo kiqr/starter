@@ -17,8 +17,8 @@ namespace :lint do
 end
 
 task :default do
-  Rake::Task["lint:standard"].invoke
-  Rake::Task["lint:erb"].invoke
   Rake::Task["test"].invoke
   Rake::Task["test:system"].invoke
+  Rake::Task["lint:standard"].invoke
+  Rake::Task["lint:erb"].invoke
 end

@@ -6,7 +6,7 @@
 <%= render(PageLayouts::Settings::NavigationItem::Component.new(
   label: t('.items.account.label'),
   description: t('.items.account.description'),
-  icon: "fa fa-user",
+  icon: Current.account.personal? ? "fa fa-user" : "fa fa-users",
   path: edit_account_path
 )) %>
 
@@ -20,4 +20,11 @@
   description: t('.items.user.description'),
   icon: "fa fa-lock",
   path: edit_user_registration_path
+)) %>
+
+<%= render(PageLayouts::Settings::NavigationItem::Component.new(
+  label: t('.items.delete_user.label'),
+  description: t('.items.delete_user.description'),
+  icon: "fa fa-person-circle-minus",
+  path: delete_user_registration_path
 )) %>

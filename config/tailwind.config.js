@@ -36,6 +36,13 @@ module.exports = {
           DEFAULT: "1.5em",
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+          }
+        }
+      }
     },
   },
   plugins: [

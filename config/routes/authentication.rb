@@ -8,6 +8,7 @@ devise_for :users, path_names: {sign_in: "login", sign_up: "create-account"}, co
 scope module: :users, path: :users do
   get "onboarding" => "onboarding#new"
   post "onboarding" => "onboarding#create"
+  get "delete" => "cancellations#show", :as => :delete_user_registration
 end
 
 scope "(/team/:account_id)", account_id: %r{[^/]+} do

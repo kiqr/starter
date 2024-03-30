@@ -1,0 +1,16 @@
+<% title t(".title") %>
+
+<%= render(PageLayouts::Settings::Component.new(
+  title: t(".title"),
+  description: t(".description")
+)) do %>
+  <div class="box">
+    <header class="border-b pb-4 mb-4">
+      <h3 class="font-bold text-primary uppercase"><%= t(".box_title") %></h3>
+    </header>
+    <article class="prose">
+      <p><%= t(".content") %></p>
+      <%= button_to t(".submit"), user_registration_path, name: "commit", class:"kiqr-button", data: { confirm: t(".confirmation_message"), turbo_confirm: t(".confirmation_message") }, method: :delete %>
+    </article>
+  </div>
+<% end %>
