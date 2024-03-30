@@ -32,7 +32,8 @@ en:
         sign_in: Sign in!
   accounts:
     edit:
-      title: "Edit your account profile"
+      title: "Profile settings"
+      description: "Edit your account profile"
     update:
       success: "Your account profile has been updated successfully."
     form:
