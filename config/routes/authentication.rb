@@ -1,5 +1,8 @@
 # Devise routes for user authentication
-devise_for :users, path_names: {sign_in: "login", sign_up: "create-account"}
+devise_for :users, path_names: {sign_in: "login", sign_up: "create-account"}, controllers: {
+  registrations: "users/registrations",
+  sessions: "users/sessions"
+}
 
 # User personal accounts.
 scope module: :users, path: :users do

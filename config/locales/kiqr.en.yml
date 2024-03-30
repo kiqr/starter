@@ -1,5 +1,34 @@
 en:
-  devise:
+  partials:
+    navigations:
+      protected:
+        dashboard: "Dashboard"
+      public:
+        home: "Home"
+        sign_in: "Sign in"
+        register: "Create account"
+      settings:
+        account_settings: "Account settings"
+        user_settings: "Login & security"
+        items:
+          account:
+            label: "Profile settings"
+            description: "Edit your account profile"
+          user:
+            label: "Login credentials"
+            description: "Change user email or password."
+  accounts:
+    edit:
+      title: "Profile settings"
+      description: "Edit your account profile"
+    update:
+      success: "Your account profile has been updated successfully."
+    form:
+      name:
+        personal: "Your full name"
+        team: "Team / organization name"
+      submit_button: "Save changes"
+  users:
     sessions:
       new:
         heading:
@@ -30,32 +59,3 @@ en:
           submit_button: "Create your account"
         already_have_account: Already have an account?
         sign_in: Sign in!
-  accounts:
-    edit:
-      title: "Profile settings"
-      description: "Edit your account profile"
-    update:
-      success: "Your account profile has been updated successfully."
-    form:
-      name:
-        personal: "Your full name"
-        team: "Team / organization name"
-      submit_button: "Save changes"
-  partials:
-    navigations:
-      protected:
-        dashboard: "Dashboard"
-      public:
-        home: "Home"
-        sign_in: "Sign in"
-        register: "Create account"
-      settings:
-        account_settings: "Account settings"
-        user_settings: "Login & security"
-        items:
-          account:
-            label: "Profile settings"
-            description: "Edit your account profile"
-          user:
-            label: "Login credentials"
-            description: "Change user email or password."
