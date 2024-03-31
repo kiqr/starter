@@ -8,9 +8,19 @@
     <header class="border-b pb-4 mb-4">
       <h3 class="font-bold text-primary uppercase"><%= t(".box_title") %></h3>
     </header>
-    <article class="prose">
+    <article class="prose dark:prose-invert">
       <p><%= t(".content") %></p>
-      <%= button_to t(".submit"), user_registration_path, name: "commit", class:"kiqr-button", data: { confirm: t(".confirmation_message"), turbo_confirm: t(".confirmation_message") }, method: :delete %>
+      <% if @conflicting_account_users.any? %>
+        <p><%= t(".remove_team_accounts_first") %></p>
+        <strong><%= t(".owned_team_accounts") %></strong>
+        <ul>
+          <% @conflicting_account_users.each do |account_user| %>
+            <li><%= account_user.account.name %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= button_to t(".submit"), user_registration_path, name: "commit", class:"kiqr-button", data: { confirm: t(".confirmation_message"), turbo_confirm: t(".confirmation_message") }, method: :delete %>
+      <% end %>
     </article>
   </div>
 <% end %>

@@ -35,7 +35,7 @@
 
 @layer components {
   .box {
-    @apply bg-surface w-full rounded-lg p-8 shadow;
+    @apply bg-surface text-text w-full rounded-lg p-8 shadow;
   }
 
   .kiqr-button {
