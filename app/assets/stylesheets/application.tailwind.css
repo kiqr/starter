@@ -5,23 +5,27 @@
 @layer base {
   :root {
     --navbar-height: 70px;
+    --color-primary: theme("colors.cyan.700");
     --color-text: theme("colors.slate.600");
     --color-background: theme("colors.neutral.50");
     --color-surface: theme("colors.white");
     --color-surface-hover: theme("colors.slate.50");
     --color-border: theme("colors.slate.200");
-    --color-primary: theme("colors.cyan.600");
     --color-light: theme("colors.slate.400");
+    --color-button: theme("colors.cyan.700");
+    --color-button-text: theme("colors.white");
   }
 
   .dark {
-    --color-text: theme("colors.slate.300");
-    --color-background: theme("colors.slate.800");
-    --color-surface: theme("colors.slate.900");
-    --color-surface-hover: theme("colors.neutral.900");
-    --color-border: theme("colors.slate.700");
-    --color-primary: theme("colors.cyan.600");
-    --color-light: theme("colors.slate.500");
+    --color-primary: theme("colors.white");
+    --color-text: theme("colors.zinc.300");
+    --color-background: theme("colors.stone.900");
+    --color-surface: theme("colors.zinc.800");
+    --color-surface-hover: theme("colors.stone.800");
+    --color-border: theme("colors.zinc.700");
+    --color-light: theme("colors.zinc.500");
+    --color-button: theme("colors.zinc.700");
+    --color-button-text: theme("colors.white");
   }
 
   body {

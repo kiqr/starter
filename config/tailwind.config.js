@@ -22,6 +22,8 @@ module.exports = {
         surface: "var(--color-surface)",
         primary: "var(--color-primary)",
         light: "var(--color-light)",
+        button: "var(--color-button)",
+        "button-text": "var(--color-button-text)",
         "surface-hover": "var(--color-surface-hover)",
       },
       borderColor: {
