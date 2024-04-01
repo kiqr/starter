@@ -9,5 +9,10 @@ FactoryBot.define do
     trait :unconfirmed do
       confirmed_at { nil }
     end
+
+    trait :otp_enabled do
+      otp_required_for_login { true }
+      otp_secret { User.generate_otp_secret }
+    end
   end
 end

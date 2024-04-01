@@ -12,6 +12,20 @@ class SigninTest < ApplicationSystemTestCase
     assert_current_path dashboard_path
   end
 
+  test "signs in with otp code" do
+    user = create(:user, :otp_enabled)
+
+    visit new_user_session_path
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: user.password
+    click_on "commit"
+
+    fill_in "user[otp_attempt]", with: user.current_otp
+    click_on "commit"
+
+    assert_current_path dashboard_path
+  end
+
   test "displays unconfirmed email message" do
     unconfirmed_user = create(:user, :unconfirmed)
 

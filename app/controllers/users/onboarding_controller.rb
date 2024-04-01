@@ -21,7 +21,7 @@ class Users::OnboardingController < ApplicationController
   end
 
   def create
-    @account = current_user.build_personal_account(account_params)
+    @account = current_user.build_personal_account(account_permitted_parameters)
     @account.personal = true
 
     if current_user.save

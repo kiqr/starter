@@ -1,0 +1,18 @@
+<% title "Two factor authentication" %>
+
+<%= fullscreen do |screen| %>
+  <%= screen.with_form(
+    title: t(".heading.title", app_name: Kiqr::Config.app_name),
+    description: t(".heading.description")
+  ) do %>
+    <main class="flex flex-col gap-4 w-full max-w-xl">
+      <%= simple_form_for(resource, as: resource_name, url: new_user_session_path, method: :post) do |f| %>
+        <%= f.input :otp_attempt, label: t(".form.otp.label"), placeholder: t(".form.otp.placeholder") %>
+
+        <div class="flex justify-between items-center">
+          <%= f.button :submit, t(".form.submit_button") %>
+        </div>
+      <% end %>
+    </main>
+  <% end %>
+<% end %>

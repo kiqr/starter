@@ -47,6 +47,15 @@ en:
           submit_button: "Sign in"
         no_account: "Don't have an account?"
         sign_up: "Sign up!"
+      otp:
+        heading:
+          title: "Two-factor authentication"
+          description: "Enter the code from your authenticator app."
+        form:
+          otp:
+            label: "One-time password"
+            placeholder: "Enter the code"
+          submit_button: "Verify"
     registrations:
       new:
         heading:
