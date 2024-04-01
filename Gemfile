@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.9", ">= 4.9.3"
+gem "devise-two-factor", "~> 5.0.0"
 gem "dry-initializer", "~> 3.1"
 gem "meta-tags", "~> 2.20"
 gem "public_uid", "~> 2.2"
