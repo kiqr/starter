@@ -40,3 +40,5 @@
 coverage
 node_modules
 .DS_Store
+
+/config/credentials/development.key

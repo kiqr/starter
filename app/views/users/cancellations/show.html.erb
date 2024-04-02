@@ -19,7 +19,7 @@
           <% end %>
         </ul>
       <% else %>
-        <%= button_to t(".submit"), user_registration_path, name: "commit", class:"kiqr-button", data: { confirm: t(".confirmation_message"), turbo_confirm: t(".confirmation_message") }, method: :delete %>
+        <%= button_to t(".submit"), user_registration_path, name: "commit", class:"button danger", data: { confirm: t(".confirmation_message"), turbo_confirm: t(".confirmation_message") }, method: :delete %>
       <% end %>
     </article>
   </div>

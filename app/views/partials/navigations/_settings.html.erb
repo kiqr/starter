@@ -16,6 +16,14 @@
 </div>
 
 <%= render(PageLayouts::Settings::NavigationItem::Component.new(
+  label: t('.items.two_factor.label'),
+  description: t('.items.two_factor.description'),
+  icon: "fa fa-shield-halved",
+  path: edit_two_factor_path,
+  active: current_base_path?(edit_two_factor_path)
+)) %>
+
+<%= render(PageLayouts::Settings::NavigationItem::Component.new(
   label: t('.items.user.label'),
   description: t('.items.user.description'),
   icon: "fa fa-lock",

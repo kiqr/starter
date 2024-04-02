@@ -16,4 +16,19 @@ class User < ApplicationRecord
   def onboarded?
     personal_account.present? && personal_account.persisted?
   end
+
+  def otp_uri
+    issuer = Kiqr::Config.app_name
+    label = "#{issuer}:#{email}"
+    otp_provisioning_uri(label, issuer: issuer)
+  end
+
+  def reset_otp_secret!
+    update!(
+      otp_secret: User.generate_otp_secret,
+      otp_required_for_login: false,
+      consumed_timestep: nil,
+      otp_backup_codes: nil
+    )
+  end
 end

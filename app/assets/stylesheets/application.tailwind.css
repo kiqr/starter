@@ -42,7 +42,11 @@
     @apply bg-surface text-text w-full rounded-lg p-8 shadow;
   }
 
-  .kiqr-button {
-    @apply border-border rounded bg-rose-500 px-4 py-2 text-white;
+  .button {
+    @apply border-border bg-button inline-block cursor-pointer rounded px-5 py-2 font-bold text-white no-underline;
+  }
+
+  .button.danger {
+    @apply bg-rose-500;
   }
 }

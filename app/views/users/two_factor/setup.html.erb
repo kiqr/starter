@@ -1,0 +1,30 @@
+<% title t(".title") %>
+
+<%= render(PageLayouts::Settings::Component.new(
+  title: t(".title"),
+  description: t(".description")
+)) do %>
+  <div class="box">
+    <header class="border-b pb-4 mb-4">
+      <h3 class="font-bold text-primary uppercase"><%= t(".title") %></h3>
+    </header>
+
+    <article class="prose dark:prose-invert">
+      <p><%= t(".instructions") %></p>
+      <ol>
+        <% t(".steps").each do |step| %>
+          <li><%= step %></li>
+        <% end %>
+      </ol>
+
+      <div class="flex flex-col md:flex-row gap-6">
+        <div id="qr-code-wrapper" class="flex justify-center items-center py-8">
+          <%= @qr_code_image %>
+        </div>
+        <div>
+          <%= render "form", user: @user %>
+        </div>
+      </div>
+    </article>
+  </div>
+<% end %>

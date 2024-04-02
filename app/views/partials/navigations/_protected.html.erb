@@ -4,7 +4,7 @@
   <%= navbar.account_selector if onboarded? %>
   <%= navbar.item(icon: "fa fa-gear", path: edit_account_path) %>
   <%= navbar.dark_mode_switch %>
-  <%= button_to destroy_user_session_path, method: :delete, class: "button" do %>
+  <%= button_to destroy_user_session_path, method: :delete do %>
     <i class="fa fa-sign-out text-rose-400"></i>
   <% end %>
 </nav>

@@ -34,7 +34,6 @@ class Users::SessionsController < Devise::SessionsController
   def validate_otp_code
     self.resource = User.find(session[:otp_user_id])
     if resource.validate_and_consume_otp!(sign_in_params[:otp_attempt])
-
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)
       redirect_to after_sign_in_path_for(resource)

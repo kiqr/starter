@@ -1,0 +1,19 @@
+<% title t(".title") %>
+
+<%= render(PageLayouts::Settings::Component.new(
+  title: t(".title"),
+  description: t(".description")
+)) do %>
+  <div class="box">
+    <header class="border-b pb-4 mb-4">
+      <h3 class="font-bold text-primary uppercase">
+        <%= t(".title") %>
+      </h3>
+    </header>
+    <article class="prose dark:prose-invert">
+      <p><%= t(".content") %></p>
+      <%= link_to t(".enable.button"), new_two_factor_path, class:"button" unless enabled? %>
+      <%= link_to t(".disable.button"), "#", class:"button danger" if enabled? %>
+    </article>
+  </div>
+<% end %>

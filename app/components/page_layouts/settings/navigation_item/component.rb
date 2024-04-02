@@ -5,4 +5,9 @@ class PageLayouts::Settings::NavigationItem::Component < ApplicationViewComponen
   option :description
   option :icon
   option :path
+  option :active, optional: true, default: false
+
+  def is_active?
+    current_page?(path) || active
+  end
 end

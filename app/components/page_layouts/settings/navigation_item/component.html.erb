@@ -1,9 +1,9 @@
-<a href="<%= path %>" class="flex py-4 hover:bg-surface-hover <%= current_page?(path) ? "bg-surface-hover" : nil %>">
+<a href="<%= path %>" class="flex py-4 hover:bg-surface-hover <%= is_active? ? "bg-surface-hover" : nil %>">
   <div class="w-20 flex justify-center items-center">
     <i class="<%= icon %>"></i>
   </div>
   <div class="w-full flex flex-col">
-    <strong class="<%= current_page?(path) ? "text-primary" : nil %>"><%= label %></strong>
+    <strong class="<%= is_active? ? "text-primary" : nil %>"><%= label %></strong>
     <span class="text-sm"><%= description %></span>
   </div>
 </a>
