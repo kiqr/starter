@@ -17,7 +17,7 @@ class Users::OnboardingController < ApplicationController
   end
 
   def new
-    @account = current_user.build_personal_account
+    @account = current_user.build_personal_account(personal: true)
   end
 
   def create
@@ -38,4 +38,14 @@ class Users::OnboardingController < ApplicationController
   def after_onboarding_path
     dashboard_path
   end
+
+  def form_submit_path
+    onboarding_path
+  end
+  helper_method :form_submit_path
+
+  def form_method
+    :post
+  end
+  helper_method :form_method
 end

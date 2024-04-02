@@ -13,7 +13,8 @@ class OnboardingTest < ApplicationSystemTestCase
     assert_text I18n.t("devise.registrations.signed_up_but_unconfirmed")
 
     # This is a hack to confirm the email for the user
-    User.find_by(email: "firstname.lastname@example.com").update(confirmed_at: Time.now)
+    user = User.find_by(email: "firstname.lastname@example.com")
+    user.update(confirmed_at: Time.now)
 
     # Login in with the newly created user
     visit new_user_session_path
@@ -26,12 +27,12 @@ class OnboardingTest < ApplicationSystemTestCase
     assert_current_path onboarding_path
 
     # Fill the personal account setup form
-    fill_in "account[name]", with: "John Doe"
-    # fill_in "account[my_custom_field]", with: "My custom value"
+    fill_in_account_fields
 
     click_on "commit"
 
     # Should be redirected to dashboard after successfully signing up.
     assert_current_path dashboard_path
+    assert_equal "New name", user.reload.personal_account.name
   end
 end
