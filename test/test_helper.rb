@@ -11,6 +11,10 @@ require "rails/test_help"
 # Load migrations
 ActiveRecord::Schema.verbose = false
 
+def fill_in_account_fields
+  fill_in "account[name]", with: "New name"
+end
+
 module ActiveSupport
   class TestCase
     include Devise::Test::IntegrationHelpers

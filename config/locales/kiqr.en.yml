@@ -24,16 +24,24 @@ en:
             label: "Delete user account"
             description: "Remove all user related data"
   accounts:
+    new:
+      heading:
+        title: "Create a new team account"
+        description: "Complete the form below to create a new team account"
     edit:
       title: "Profile settings"
       description: "Edit your account profile."
     update:
       success: "Your account profile has been updated successfully."
+    create:
+      success: "Your account has been created successfully."
     form:
       name:
         personal: "Your full name"
         team: "Team / organization name"
-      submit_button: "Save changes"
+      button:
+        save: "Save changes"
+        create: "Create new account"
   users:
     sessions:
       new:
