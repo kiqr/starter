@@ -52,7 +52,7 @@ class TwoFactorTest < ApplicationSystemTestCase
     assert_not_equal first_image, second_image
   end
 
-  test "Shows instructions on how to disable two factor authentication" do
+  test "shows instructions on how to disable two factor authentication" do
     user = create(:user, :otp_enabled)
     sign_in user
     visit edit_two_factor_path

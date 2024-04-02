@@ -19,8 +19,7 @@ class User < ApplicationRecord
 
   def otp_uri
     issuer = Kiqr::Config.app_name
-    label = "#{issuer}:#{email}"
-    otp_provisioning_uri(label, issuer: issuer)
+    otp_provisioning_uri(email, issuer: issuer)
   end
 
   def reset_otp_secret!

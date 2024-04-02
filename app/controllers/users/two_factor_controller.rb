@@ -32,6 +32,22 @@ class Users::TwoFactorController < ApplicationController
     end
   end
 
+  def disable
+    redirect_to edit_two_factor_path unless enabled?
+  end
+
+  def destroy
+    return redirect_to edit_two_factor_path unless enabled?
+
+    if @user.validate_and_consume_otp!(params.dig(:user, :otp_attempt))
+      @user.update(otp_required_for_login: false, otp_backup_codes: [])
+      redirect_to edit_two_factor_path, notice: I18n.t("users.two_factor.disable.disabled")
+    else
+      @user.errors.add(:otp_attempt, :invalid)
+      render :disable, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # Don't refresh the OTP secret if it's already enabled. This may lock the user
