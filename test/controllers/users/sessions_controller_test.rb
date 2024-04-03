@@ -14,4 +14,17 @@ class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to dashboard_path
   end
+
+  test "renders form again if invalid email" do
+    post user_session_path, params: {user: {email: "unknown.email", password: "randompassword"}}
+    assert_response :unprocessable_entity
+    assert_template "users/sessions/new"
+  end
+
+  test "renders form again if invalid password" do
+    user = create(:user)
+    post user_session_path, params: {user: {email: user.email, password: "randompassword"}}
+    assert_response :unprocessable_entity
+    assert_template "users/sessions/new"
+  end
 end

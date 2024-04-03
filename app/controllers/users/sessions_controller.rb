@@ -25,7 +25,7 @@ class Users::SessionsController < Devise::SessionsController
     session.delete(:otp_user_id)
 
     self.resource = User.find_by(email: sign_in_params[:email])
-    if resource.valid_password?(sign_in_params[:password]) && resource.otp_required_for_login?
+    if resource&.otp_required_for_login? && resource&.valid_password?(sign_in_params[:password])
       session[:otp_user_id] = resource.id
       render :otp, status: :unprocessable_entity
     end
