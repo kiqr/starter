@@ -1,13 +1,10 @@
 KIQR
 ----
-Turbocharge your SaaS journey with our ready-to-roll saas starter kit.
+Turbocharge your SaaS journey with KIQR, your go-to Rails 7.1-based saas starter kit. It's designed to let you dive right into the SaaS domain with minimal setup and maximum efficiency. Outfitted with Tailwind CSS, it brings a modern, responsive design to the table, including a dark mode that's easy on the eyes.
 
-Dive straight into the SaaS game with KIQR—a powerhouse packed with everything you need to launch your project. Built on Rails 7.1.2.4 and styled with Tailwind CSS, it's the kickstart your idea needs, minus the setup hassle.
+## Official documentation
 
-**Key highlights:**
-
-- ⭐ Secure user login/out with Devise
-- ⭐ Flexible team and personal account setups, streamlining the onboarding process
+Documentation for **KIQR** can be found on the [KIQR website](https://kiqr.dev).
 
 ## Getting started
 
@@ -32,6 +29,5 @@ bin/setup
 bin/dev
 ```
 
-License
--------
+## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
