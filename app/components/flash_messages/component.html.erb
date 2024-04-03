@@ -2,7 +2,7 @@
   <div class="sticky font-bold w-full text-sm flex justify-center items-center p-4 border-b bg-surface">
     <% flash.each do |type, message| %>
       <% if type == "notice" %>
-        <span class="text-primary"><i class="fa fa-info-circle mr-3 text-sm"></i> <%= message %></span>
+        <span class="text-emerald-500"><i class="fa fa-circle-check text-sm mr-3"></i> <%= message %></span>
       <% elsif type == "alert" %>
         <span class="text-rose-500"><i class="fa fa-circle-exclamation text-sm mr-3"></i> <%= message %></span>
       <% end %>
