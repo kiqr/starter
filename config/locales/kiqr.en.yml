@@ -35,6 +35,12 @@ en:
       success: "Your account profile has been updated successfully."
     create:
       success: "Your account has been created successfully."
+    select:
+      or: "or"
+      continue_as: "Continue as %{name}"
+      heading:
+        title: "Select account"
+        description: "Select a team account to manage."
     form:
       name:
         personal: "Your full name"

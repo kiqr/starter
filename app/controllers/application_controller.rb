@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   # Override the method to change the sign-in redirect path
   def after_sign_in_path_for(resource)
-    dashboard_path
+    current_user.accounts.any? ? select_account_path : dashboard_path
   end
 
   # Override the method to change the sign-out redirect path

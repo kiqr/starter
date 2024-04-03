@@ -1,0 +1,23 @@
+<% title t(".title") %>
+
+<%= fullscreen do |screen| %>
+  <%= screen.with_form(
+    title: t(".heading.title", app_name: Kiqr::Config.app_name),
+    description: t(".heading.description")
+  ) do %>
+    <main class="flex flex-col gap-4 max-w-xl">
+      <div class="flex flex-col gap-2">
+        <% current_user.accounts.each do |account| %>
+          <%= link_to account.name, dashboard_path(account_id: account), class: "button" %>
+        <% end %>
+      </div>
+      <span class="text-light"><%= t(".or") %></span>
+      <div>
+        <%= link_to dashboard_path(account_id: nil) do %>
+          <%= t(".continue_as", name: personal_account.name) %>
+          <i class="fa fa-arrow-right-long ml-1"></i>
+        <% end %>
+      </div>
+    </main>
+  <% end %>
+<% end %>

@@ -19,6 +19,8 @@ scope module: :users, path: :users do
   get "delete" => "cancellations#show", :as => :delete_user_registration
 end
 
+get "select-account", to: "accounts#select", as: :select_account
+
 resources :accounts, only: [:new, :create]
 
 scope "(/team/:account_id)", account_id: %r{[^/]+} do
