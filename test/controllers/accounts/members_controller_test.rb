@@ -14,8 +14,8 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
     some_user = create(:user)
 
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user: user, role: "owner")
-    account.account_users << AccountUser.create(user: some_user, role: "admin")
+    account.account_users << AccountUser.create(user: user, owner: true)
+    account.account_users << AccountUser.create(user: some_user)
 
     sign_in user
     get edit_member_path(account_id: account, id: some_user.account_users.first)
@@ -26,7 +26,7 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
   test "can show members as team account" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, role: "owner")
+    account.account_users << AccountUser.create(user:, owner: true)
 
     sign_in user
     get members_path(account_id: account)
@@ -39,8 +39,8 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
     some_user = create(:user)
 
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user: user, role: "owner")
-    account.account_users << AccountUser.create(user: some_user, role: "admin")
+    account.account_users << AccountUser.create(user: user, owner: true)
+    account.account_users << AccountUser.create(user: some_user)
 
     assert_includes account.reload.users, some_user
 

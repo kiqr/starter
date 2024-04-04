@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_permitted_parameters)
-    @account.account_users.new(user: current_user, role: "owner")
+    @account.account_users.new(user: current_user, owner: true)
 
     if @account.save
       redirect_to dashboard_path(account_id: @account), notice: I18n.t("accounts.create.success")

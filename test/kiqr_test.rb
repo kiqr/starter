@@ -1,3 +1,5 @@
+require "test_helper"
+
 class KiqrTest < ActiveSupport::TestCase
   test "should set default_url_options to localhost:3000 in test environment" do
     assert_equal Kiqr.default_url_options, {host: "localhost", port: 3000, protocol: "http"}

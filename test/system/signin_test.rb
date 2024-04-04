@@ -15,7 +15,7 @@ class SigninTest < ApplicationSystemTestCase
   test "select account after sign in if user has teams" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, role: "owner")
+    account.account_users << AccountUser.create(user:, owner: true)
 
     visit new_user_session_path
     fill_in "user[email]", with: user.email

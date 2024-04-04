@@ -21,7 +21,7 @@ class EditAccountsTest < ApplicationSystemTestCase
   test "can edit team account" do
     user = create(:user)
     team_account = create(:account, name: "Team account")
-    team_account.account_users << AccountUser.create(user: user, role: "owner")
+    team_account.account_users << AccountUser.create(user: user, owner: true)
 
     sign_in(user)
     visit edit_account_path(account_id: team_account)
@@ -51,7 +51,7 @@ class EditAccountsTest < ApplicationSystemTestCase
 
     account = user.reload.accounts.last
     assert_equal "New name", account.name
-    assert_equal "owner", account.account_users.find_by(user: user).role
+    assert account.account_users.find_by(user: user).owner?
     assert_current_path dashboard_path(account_id: account)
   end
 end

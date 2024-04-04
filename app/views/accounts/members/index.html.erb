@@ -14,7 +14,6 @@
           <tr>
             <th><%= t(".table.name") %></th>
             <th><%= t(".table.email") %></th>
-            <th><%= t(".table.role") %></th>
             <th class="text-right"><%= t(".table.actions") %></th>
           </tr>
         </thead>
@@ -23,7 +22,6 @@
             <tr>
               <td><%= member.user.name %></td>
               <td><%= member.user.email %></td>
-              <td><%= member.role %></td>
               <td class="text-right">
                 <%= link_to t(".table.edit"), edit_member_path(id: member), class: "button xs" %>
               </td>

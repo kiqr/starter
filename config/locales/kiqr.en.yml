@@ -59,7 +59,6 @@ en:
         table:
           name: "Name"
           email: "Email"
-          role: "Role"
           actions: "Actions"
           edit: "Edit"
       edit:
@@ -74,10 +73,6 @@ en:
       form:
         submit: "Save changes"
   account_users:
-    roles:
-      owner: "Owner"
-      admin: "Admin"
-      readonly: "Read-Only"
     destroy:
       success: "Member has successfully been removed from the team."
       failure: "Member could not be removed. Please contact support if this issue persists."

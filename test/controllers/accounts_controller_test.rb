@@ -47,7 +47,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "can update team accounts" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, role: "owner")
+    account.account_users << AccountUser.create(user:, owner: true)
 
     sign_in user
     patch account_path(account_id: account), params: {account: {name: "New company name"}}

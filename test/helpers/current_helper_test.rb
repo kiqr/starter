@@ -7,7 +7,7 @@ class CurrentHelperTest < ActionView::TestCase
     @current_user = create(:user)
     @team_account = create(:account, name: "Company 1")
     @alien_account = create(:account, name: "Someone else's account")
-    @current_user.account_users << AccountUser.new(account: @team_account, role: "owner")
+    @current_user.account_users << AccountUser.new(account: @team_account, owner: true)
 
     Current.user = @current_user
   end
