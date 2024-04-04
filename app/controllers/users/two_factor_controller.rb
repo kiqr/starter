@@ -28,7 +28,7 @@ class Users::TwoFactorController < ApplicationController
       redirect_to edit_two_factor_path, notice: I18n.t("users.two_factor.setup.success")
     else
       @user.errors.add(:otp_attempt, I18n.t("users.two_factor.setup.invalid_code"))
-      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "users/two_factor/form", locals: {user: @user})
+      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "users/two_factor/form", locals: {user: @user}), status: :unprocessable_entity
     end
   end
 

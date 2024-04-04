@@ -19,6 +19,12 @@ class Users::TwoFactorControllerTest < ActionDispatch::IntegrationTest
     assert_not_equal user.otp_secret, user.reload.otp_secret
   end
 
+  test "can view setup page" do
+    sign_in create(:user)
+    get setup_two_factor_path
+    assert_response :success
+  end
+
   test "redirects to show page if two factor is alredy disabled" do
     user = create(:user)
     sign_in user
@@ -26,6 +32,20 @@ class Users::TwoFactorControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_two_factor_path
 
     delete destroy_two_factor_path
+    assert_redirected_to edit_two_factor_path
+  end
+
+  test "does not activate 2fa with invalid verification code" do
+    user = create(:user, otp_secret: User.generate_otp_secret)
+    sign_in user
+    post verify_two_factor_path, params: {user: {otp_attempt: "123456"}}
+    assert_response :unprocessable_entity
+  end
+
+  test "activates 2fa with valid verification code" do
+    user = create(:user, otp_secret: User.generate_otp_secret)
+    sign_in user
+    post verify_two_factor_path, params: {user: {otp_attempt: user.current_otp}}
     assert_redirected_to edit_two_factor_path
   end
 

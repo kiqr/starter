@@ -2,6 +2,11 @@ ENV["RAILS_ENV"] ||= "test"
 
 require "simplecov"
 SimpleCov.start "rails" do
+  add_filter %r{^/app/channels/}
+  add_filter %r{^/app/components/}
+  add_filter %r{^/app/jobs/}
+  add_filter %r{^/app/mailers/}
+  add_filter %r{^/lib/generators/view_component/}
   add_filter %r{^/test/}
 end
 

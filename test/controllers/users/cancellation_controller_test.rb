@@ -1,6 +1,12 @@
 require "test_helper"
 
 class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
+  test "can view cancellation page" do
+    sign_in create(:user)
+    get delete_user_registration_path
+    assert_response :success
+  end
+
   test "can delete a user without teams" do
     user = create(:user)
     sign_in user

@@ -12,4 +12,17 @@ class Users::OnboardingControllerTest < ActionDispatch::IntegrationTest
     get onboarding_path
     assert_response :success
   end
+
+  test "can onboard user" do
+    sign_in create(:user, personal_account: nil)
+    post onboarding_path, params: {account: {name: "Personal Account"}}
+    assert_redirected_to dashboard_path
+  end
+
+  test "validates user onboarding" do
+    sign_in create(:user, personal_account: nil)
+    post onboarding_path, params: {account: {name: "no"}}
+    assert_response :unprocessable_entity
+    assert_template :new
+  end
 end

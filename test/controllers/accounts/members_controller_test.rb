@@ -9,6 +9,20 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_account_path(account_id: nil)
   end
 
+  test "can show edit member page" do
+    user = create(:user)
+    some_user = create(:user)
+
+    account = create(:account, name: "Team account")
+    account.account_users << AccountUser.create(user: user, role: "owner")
+    account.account_users << AccountUser.create(user: some_user, role: "admin")
+
+    sign_in user
+    get edit_member_path(account_id: account, id: some_user.account_users.first)
+
+    assert_response :success
+  end
+
   test "can show members as team account" do
     user = create(:user)
     account = create(:account, name: "Team account")
