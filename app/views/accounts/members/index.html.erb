@@ -1,0 +1,39 @@
+<% title t(".title") %>
+<%= render(PageLayouts::Settings::Component.new(
+  title: t(".title"),
+  description: t(".description")
+)) do %>
+  <div class="box">
+    <header class="border-b pb-4 mb-4">
+      <h3 class="font-bold text-primary uppercase"><%= t(".box_title", team_name: @account.name) %></h3>
+    </header>
+
+    <div class="prose">
+      <table class="kiqr-table">
+        <thead>
+          <tr>
+            <th><%= t(".table.name") %></th>
+            <th><%= t(".table.email") %></th>
+            <th><%= t(".table.role") %></th>
+            <th class="text-right"><%= t(".table.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @members.each do |member| %>
+            <tr>
+              <td><%= member.user.name %></td>
+              <td><%= member.user.email %></td>
+              <td><%= member.role %></td>
+              <td class="text-right">
+                <%= link_to t(".table.edit"), edit_member_path(id: member), class: "button xs" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="mt-6 flex justify-between items-center">
+    <%= link_to "Invite a new member", "#", class: "button" %>
+  </div>
+<% end %>

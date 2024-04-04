@@ -3,8 +3,10 @@ module SetCurrentAttributes
 
   included do
     before_action do
-      Current.user = current_user
-      Current.account = (fetch_account_from_params || current_user&.personal_account) if user_signed_in?
+      if user_signed_in?
+        Current.user = current_user
+        Current.account = (fetch_account_from_params || current_user&.personal_account)
+      end
     end
   end
 

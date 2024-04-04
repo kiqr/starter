@@ -46,7 +46,33 @@
     @apply border-border bg-button inline-block cursor-pointer rounded px-5 py-2 font-bold text-white no-underline;
   }
 
+  .button.xs {
+    @apply px-3 py-1 text-sm;
+  }
+
   .button.danger {
     @apply bg-rose-500;
+  }
+
+  .kiqr-table {
+    width: calc(100% + 4rem);
+    @apply -mx-8;
+  }
+
+  .kiqr-table thead {
+    @apply border-border;
+  }
+
+  .kiqr-table thead th {
+    @apply text-text;
+  }
+
+  .kiqr-table tbody tr {
+    @apply text-text px-5 border-border odd:bg-gray-100 even:bg-gray-50 dark:odd:bg-stone-900 dark:even:bg-stone-800;
+  }
+
+  .kiqr-table th,
+  .kiqr-table td {
+    @apply p-2 px-4 first:pl-8 last:pr-8;
   }
 }

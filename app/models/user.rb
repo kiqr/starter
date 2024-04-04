@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :account_users, dependent: :destroy
   has_many :accounts, through: :account_users
 
+  # Get the user's full name from their personal account.
+  delegate :name, to: :personal_account
+
   def onboarded?
     personal_account.present? && personal_account.persisted?
   end

@@ -1,7 +1,7 @@
 require "test_helper"
 
 class AccountUserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should have the owner role" do
+    assert_includes AccountUser::ROLES, "owner"
+  end
 end

@@ -12,8 +12,11 @@ en:
         user_settings: "Your personal settings"
         items:
           account:
-            label: "Profile settings"
+            label: "Profile"
             description: "Edit your account profile"
+          members:
+            label: "Team members"
+            description: "Manage team members"
           user:
             label: "Login credentials"
             description: "Change user email or password"
@@ -48,6 +51,36 @@ en:
       button:
         save: "Save changes"
         create: "Create new account"
+    members:
+      index:
+        title: "Team members"
+        description: "Manage team members."
+        box_title: "Members of %{team_name}"
+        table:
+          name: "Name"
+          email: "Email"
+          role: "Role"
+          actions: "Actions"
+          edit: "Edit"
+      edit:
+        title: "Edit team member"
+        description: "Change settings for a team member."
+        box_title: "Edit team member: %{name}"
+        confirmation_message: "Are you sure you want to REMOVE %{name} from the team?"
+        delete:
+          box_title: "Remove team member"
+          description: "Remove %{name} from the team. They will no longer have access to the team account, but you can always invite them back later."
+          button: "Remove team member"
+      form:
+        submit: "Save changes"
+  account_users:
+    roles:
+      owner: "Owner"
+      admin: "Admin"
+      readonly: "Read-Only"
+    destroy:
+      success: "Member has successfully been removed from the team."
+      failure: "Member could not be removed. Please contact support if this issue persists."
   users:
     sessions:
       new:

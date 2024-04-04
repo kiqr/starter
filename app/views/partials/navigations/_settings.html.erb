@@ -6,9 +6,19 @@
 <%= render(PageLayouts::Settings::NavigationItem::Component.new(
   label: t('.items.account.label'),
   description: t('.items.account.description'),
-  icon: Current.account.personal? ? "fa fa-user" : "fa fa-users",
+  icon: "fa fa-id-card-clip",
   path: edit_account_path
 )) %>
+
+<% unless current_account.personal? %>
+  <%= render(PageLayouts::Settings::NavigationItem::Component.new(
+    label: t('.items.members.label'),
+    description: t('.items.members.description'),
+    icon: "fa fa-users",
+    path: members_path,
+    active: current_base_path?(members_path)
+  )) %>
+<% end %>
 
 <div class="flex items-center justify-between bg-surface-hover py-3 px-4 text-sm font-bold border-y">
   <%= t(".user_settings") %>

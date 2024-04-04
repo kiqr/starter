@@ -4,7 +4,7 @@ FactoryBot.define do
     password { "th1s1sp4ssw0rd" }
     password_confirmation { "th1s1sp4ssw0rd" }
     confirmed_at { Time.zone.now }
-    personal_account { build(:account) }
+    personal_account { build(:account, personal: true) }
 
     trait :unconfirmed do
       confirmed_at { nil }
