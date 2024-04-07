@@ -5,6 +5,8 @@ KIQR
 
 Turbocharge your SaaS journey with KIQR, your go-to Rails 7.1-based saas starter kit. It's designed to let you dive right into the SaaS domain with minimal setup and maximum efficiency. Outfitted with Tailwind CSS, it brings a modern, responsive design to the table, including a dark mode that's easy on the eyes.
 
+<img src="https://kiqr.dev/screenshots/edit-profile.png">
+
 ## Key features
 
  ⭐ User registration with email confirmations <br>
