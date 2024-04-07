@@ -16,7 +16,7 @@
     description: t('.items.members.description'),
     icon: "fa fa-users",
     path: members_path,
-    active: current_base_path?(members_path)
+    active: current_base_path?(members_path) || current_base_path?(invitations_path)
   )) %>
 <% end %>
 

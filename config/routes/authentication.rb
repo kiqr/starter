@@ -26,4 +26,5 @@ resources :accounts, only: [:new, :create]
 scope "(/team/:account_id)", account_id: %r{[^/]+} do
   resource :account, only: [:edit, :update], path: "profile"
   resources :members, controller: "accounts/members", only: [:index, :edit, :update, :destroy]
+  resources :invitations, controller: "accounts/invitations", only: [:index, :new, :create, :destroy]
 end

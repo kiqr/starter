@@ -3,13 +3,14 @@
   title: t(".title"),
   description: t(".description")
 )) do %>
+
   <div class="box">
     <header class="border-b pb-4 mb-4">
       <h3 class="font-bold text-primary uppercase"><%= t(".box_title", team_name: @account.name) %></h3>
     </header>
 
-    <div class="prose">
-      <table class="kiqr-table">
+    <div class="prose dark:prose-invert">
+      <table>
         <thead>
           <tr>
             <th><%= t(".table.name") %></th>
@@ -31,7 +32,8 @@
       </table>
     </div>
   </div>
-  <div class="mt-6 flex justify-between items-center">
-    <%= link_to "Invite a new member", "#", class: "button" %>
+  <div class="mt-6 flex justify-start gap-x-6 items-center">
+    <%= link_to t(".buttons.invite"), new_invitation_path, class: "button" %>
+    <%= link_to t(".buttons.view_pending"), invitations_path, class: "text-primary" %>
   </div>
 <% end %>

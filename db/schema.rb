@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_04_205037) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_07_174725) do
+  create_table "account_invitations", force: :cascade do |t|
+    t.string "public_uid"
+    t.integer "account_id", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "email"], name: "index_account_invitations_on_account_id_and_email", unique: true
+    t.index ["account_id"], name: "index_account_invitations_on_account_id"
+    t.index ["email"], name: "index_account_invitations_on_email"
+    t.index ["public_uid"], name: "index_account_invitations_on_public_uid", unique: true
+  end
+
   create_table "account_users", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "account_id", null: false
@@ -29,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_04_205037) do
     t.boolean "personal", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_invitations_count", default: 0
     t.index ["public_uid"], name: "index_accounts_on_public_uid", unique: true
   end
 
@@ -64,6 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_04_205037) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "account_invitations", "accounts"
   add_foreign_key "account_users", "accounts"
   add_foreign_key "account_users", "users"
   add_foreign_key "users", "accounts", column: "personal_account_id"

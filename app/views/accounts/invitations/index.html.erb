@@ -1,0 +1,44 @@
+<% title t(".title") %>
+<%= render(PageLayouts::Settings::Component.new(
+  title: t(".title"),
+  description: t(".description")
+)) do %>
+  <div class="box">
+    <header class="border-b pb-4 mb-4">
+      <h3 class="font-bold text-primary uppercase"><%= t(".box_title", team_name: @account.name) %></h3>
+    </header>
+
+    <% if @invitations.any? %>
+      <div class="prose dark:prose-invert">
+        <table>
+          <thead>
+            <tr>
+              <th><%= t(".table.email") %></th>
+              <th><%= t(".table.sent_at") %></th>
+              <th class="text-right"><%= t(".table.actions") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @invitations.each do |invitation| %>
+              <tr>
+                <td><%= invitation.email %></td>
+                <td><%= invitation.created_at %></td>
+                <td class="text-right">
+                  <%= button_to t(".table.remove"), invitation_path(id: invitation), class: "button xs danger", method: :delete, data: { confirm: t(".confirm_delete", email: invitation.email), turbo_confirm: t(".confirm_delete", email: invitation.email) } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p><%= t(".no_invitations") %></p>
+    <% end %>
+  </div>
+  <div class="mt-6 flex justify-start gap-x-6 items-center">
+    <%= link_to members_path, class: "button alt" do %>
+      <i class="fa fa-arrow-left"></i> <%= t(".buttons.back") %>
+    <% end %>
+    <%= link_to t(".buttons.invite"), new_invitation_path, class: "button" %>
+  </div>
+<% end %>
