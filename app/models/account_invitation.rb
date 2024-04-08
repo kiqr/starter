@@ -6,8 +6,13 @@ class AccountInvitation < ApplicationRecord
   # Learn more: https://github.com/equivalent/public_uid
   include PublicUid::ModelConcern
 
+  # Generate a more secure public_uid for invitations using SecureRandom.hex(32)
+  generate_public_uid generator: PublicUid::Generators::HexStringSecureRandom.new(32)
+
   belongs_to :account, inverse_of: :account_invitations, counter_cache: true
 
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :email, uniqueness: {scope: :account_id, message: I18n.t("accounts.invitations.new.form.errors.email.taken")}
+
+  scope :pending, -> { where(accepted_at: nil) }
 end

@@ -1,6 +1,6 @@
 class Accounts::InvitationsController < ApplicationController
   def index
-    @invitations = current_account.account_invitations
+    @invitations = current_account.account_invitations.pending
     @account = current_account
   end
 

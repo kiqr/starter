@@ -19,6 +19,10 @@ scope module: :users, path: :users do
   get "delete" => "cancellations#show", :as => :delete_user_registration
 end
 
+scope module: :users, path: nil do
+  resources :invitations, only: %i[show update destroy], as: :user_invitation
+end
+
 get "select-account", to: "accounts#select", as: :select_account
 
 resources :accounts, only: [:new, :create]

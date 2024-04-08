@@ -25,11 +25,6 @@ class ApplicationController < ActionController::Base
     redirect_to onboarding_path if user_signed_in? && !current_user.onboarded?
   end
 
-  # Override the method to change the sign-in redirect path
-  def after_sign_in_path_for(resource)
-    current_user.accounts.any? ? select_account_path : dashboard_path
-  end
-
   # Override the method to change the sign-out redirect path
   def after_sign_out_path_for(resource_or_scope)
     # Generate the root path without default URL options

@@ -14,7 +14,7 @@
           <thead>
             <tr>
               <th><%= t(".table.email") %></th>
-              <th><%= t(".table.sent_at") %></th>
+              <th><%= t(".table.url") %></th>
               <th class="text-right"><%= t(".table.actions") %></th>
             </tr>
           </thead>
@@ -22,7 +22,7 @@
             <% @invitations.each do |invitation| %>
               <tr>
                 <td><%= invitation.email %></td>
-                <td><%= invitation.created_at %></td>
+                <td><%= user_invitation_url(invitation, account_id: nil) %></td>
                 <td class="text-right">
                   <%= button_to t(".table.remove"), invitation_path(id: invitation), class: "button xs danger", method: :delete, data: { confirm: t(".confirm_delete", email: invitation.email), turbo_confirm: t(".confirm_delete", email: invitation.email) } %>
                 </td>

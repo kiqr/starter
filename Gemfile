@@ -67,6 +67,7 @@ group :development, :test do
   gem "letter_opener_web", "~> 2.0"
   gem "factory_bot_rails", "~> 6.4.3"
   gem "rails-controller-testing"
+  gem "faker"
 end
 
 group :development do

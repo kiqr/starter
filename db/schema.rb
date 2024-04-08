@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_07_174725) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_08_105555) do
   create_table "account_invitations", force: :cascade do |t|
     t.string "public_uid"
     t.integer "account_id", null: false
     t.string "email", null: false
+    t.datetime "accepted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id", "email"], name: "index_account_invitations_on_account_id_and_email", unique: true
@@ -30,6 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_174725) do
     t.datetime "updated_at", null: false
     t.string "public_uid"
     t.boolean "owner", default: false, null: false
+    t.index ["account_id", "user_id"], name: "index_account_users_on_account_id_and_user_id", unique: true
     t.index ["account_id"], name: "index_account_users_on_account_id"
     t.index ["public_uid"], name: "index_account_users_on_public_uid", unique: true
     t.index ["user_id"], name: "index_account_users_on_user_id"

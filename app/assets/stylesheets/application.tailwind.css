@@ -43,7 +43,7 @@
   }
 
   .button {
-    @apply border-border bg-button inline-flex items-center gap-x-2 cursor-pointer rounded px-5 py-2 font-bold text-white no-underline;
+    @apply border-border bg-button inline-flex justify-center items-center gap-x-2 cursor-pointer rounded px-5 py-2 font-bold text-white no-underline;
   }
 
   .button.xs {

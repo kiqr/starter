@@ -4,6 +4,7 @@ class CreateAccountInvitations < ActiveRecord::Migration[7.1]
       t.string :public_uid, index: {unique: true}
       t.references :account, null: false, foreign_key: true
       t.string :email, null: false
+      t.datetime :accepted_at
       t.timestamps
     end
 

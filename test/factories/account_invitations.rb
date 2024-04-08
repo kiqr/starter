@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :account_invitation do
-    account { nil }
+    account { create(:account) }
+    email { Faker::Internet.email }
   end
 end
