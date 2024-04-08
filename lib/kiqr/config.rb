@@ -12,5 +12,14 @@ module Kiqr
     # note that it will be overwritten if you use your own mailer class
     # with default "from" parameter.
     config_accessor :default_from_email, default: "please-change-me-at-config-initializers@example.com"
+
+    # ==> Locales
+    # Configure the available locales in the application.
+    # This is used to validate the locale of the user.
+    config_accessor :available_locales, default: [:en]
+
+    # Default locale
+    # This is used to set the default locale for the application.
+    config_accessor :default_locale, default: :en
   end
 end

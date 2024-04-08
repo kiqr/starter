@@ -1,0 +1,7 @@
+<%= simple_form_for(user, url: user_preferences_path, method: :patch) do |f| %>
+  <%= f.input :locale, placeholder: t(".locale.placeholder"), required: true, autofocus: true, prompt: t(".locale.prompt"), as: :select, collection: options_for_locale %>
+  <%= f.input :time_zone, placeholder: t(".timezone.placeholder"), required: true, autofocus: true %>
+  <div class="mt-4 flex justify-between items-center">
+    <%= f.button :submit, t(".submit_button") %>
+  </div>
+<% end %>

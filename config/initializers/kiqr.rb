@@ -9,4 +9,13 @@ Kiqr::Config.configure do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.default_from_email = "please-change-me-at-config-initializers@example.com"
+
+  # ==> Locales
+  # Configure the available locales in the application.
+  # This is used to validate the locale of the user.
+  config.available_locales = [:en, :sv]
+
+  # Default locale
+  # This is used to set the default locale for the application.
+  config.default_locale = :en
 end

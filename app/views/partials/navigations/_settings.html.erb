@@ -26,6 +26,14 @@
 </div>
 
 <%= render(PageLayouts::Settings::NavigationItem::Component.new(
+  label: t('.items.preferences.label'),
+  description: t('.items.preferences.description'),
+  icon: "fa fa-sliders",
+  path: edit_user_preferences_path,
+  active: current_base_path?(edit_user_preferences_path)
+)) %>
+
+<%= render(PageLayouts::Settings::NavigationItem::Component.new(
   label: t('.items.two_factor.label'),
   description: t('.items.two_factor.description'),
   icon: "fa fa-shield-halved",

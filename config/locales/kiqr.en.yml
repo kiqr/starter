@@ -20,12 +20,18 @@ en:
           user:
             label: "Login credentials"
             description: "Change user email or password"
+          preferences:
+            label: "Preferences"
+            description: "Change your personal settings"
           two_factor:
             label: "Two-factor authentication"
             description: "One-time passwords"
           delete_user:
             label: "Delete user account"
             description: "Remove all user related data"
+  languages:
+    en: "English"
+    sv: "Swedish"
   accounts:
     new:
       heading:
@@ -222,6 +228,21 @@ en:
         label: "One-time password"
         placeholder: "Enter the 6-digit code"
         verify_button: "Verify configuration"
+    preferences:
+      edit:
+        title: "User preferences"
+        description: "Update your user preferences."
+      form:
+        email:
+          label: "Email address"
+          placeholder: "Enter a valid email address"
+        locale:
+          label: "Language"
+          prompt: "Select a language"
+          placeholder: "Select your preferred language"
+        submit_button: "Save changes"
+      update:
+        updated: "User preferences have been updated."
   account_mailer:
     invitation_email:
       welcome: "Welcome to %{app_name}"

@@ -17,6 +17,8 @@ scope module: :users, path: :users do
   delete "two-factor/destroy" => "two_factor#destroy", :as => :destroy_two_factor
 
   get "delete" => "cancellations#show", :as => :delete_user_registration
+
+  resource :preferences, only: %i[edit update], as: :user_preferences
 end
 
 scope module: :users, path: nil do

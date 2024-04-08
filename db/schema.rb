@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_08_105555) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_08_210931) do
   create_table "account_invitations", force: :cascade do |t|
     t.string "public_uid"
     t.integer "account_id", null: false
@@ -72,6 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_08_105555) do
     t.integer "consumed_timestep"
     t.boolean "otp_required_for_login", default: false
     t.text "otp_backup_codes"
+    t.string "locale", default: "en"
+    t.string "time_zone", default: "UTC"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["personal_account_id"], name: "index_users_on_personal_account_id"
