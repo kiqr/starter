@@ -233,9 +233,9 @@ en:
         title: "User preferences"
         description: "Update your user preferences."
       form:
-        email:
-          label: "Email address"
-          placeholder: "Enter a valid email address"
+        time_zone:
+          label: "Time zone"
+          placeholder: "Select a time zone"
         locale:
           label: "Language"
           prompt: "Select a language"
