@@ -21,7 +21,7 @@
         <p><%= t(".guest_instructions", team_name: @team.name) %></p>
         <div class="flex justify-center items-center gap-x-4">
           <%= link_to "Sign in", new_user_session_path, class: "button" %>
-          or
+          <%= t(".or") %>
           <%= link_to "Create account", new_user_session_path, class: "button alt" %>
         </div>
       <% end %>

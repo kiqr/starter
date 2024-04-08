@@ -11,7 +11,7 @@ class Accounts::InvitationsController < ApplicationController
   def create
     @invitation = current_account.account_invitations.new(invitation_params)
     if @invitation.save
-      # AccountMailer.invitation_email(@invitation).deliver_later
+      AccountMailer.invitation_email(@invitation).deliver_later
       redirect_to invitations_path(account_id: current_account), notice: t(".invitation_sent", email: @invitation.email)
     else
       render :new, status: :unprocessable_entity

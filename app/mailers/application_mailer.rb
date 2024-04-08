@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: Kiqr::Config.default_from_email
   layout "mailer"
 end

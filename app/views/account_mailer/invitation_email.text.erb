@@ -1,0 +1,8 @@
+<%= t(".welcome", app_name: Kiqr::Config.app_name) %>
+=======================================
+
+<%= t(".instructions", team_name: @account.name, app_name: Kiqr::Config.app_name) %>
+
+<%= user_invitation_url(@invitation) %>
+
+<%= t(".thanks") %>
