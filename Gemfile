@@ -56,6 +56,7 @@ gem "rqrcode", "~> 2.0"
 gem "simple_form", "~> 5.3.0"
 gem "view_component", "~> 3.11"
 gem "view_component-contrib", "~> 0.2.2"
+gem "kiqr", path: "gems/kiqr"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
