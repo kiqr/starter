@@ -12,6 +12,7 @@ module Kiqr
   module Services
     module Accounts
       autoload :Create, "kiqr/services/accounts/create"
+      autoload :Update, "kiqr/services/accounts/update"
     end
   end
 

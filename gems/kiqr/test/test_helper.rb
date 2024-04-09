@@ -2,9 +2,12 @@
 ENV["RAILS_ENV"] = "test"
 
 require "simplecov"
-SimpleCov.start "rails" do
+SimpleCov.start do
   add_filter %r{^/test/}
   add_filter "lib/kiqr/version.rb"
+
+  add_group "Models", "app/models"
+  add_group "Services", "lib/kiqr/services"
 end
 
 require_relative "../test/dummy/config/environment"

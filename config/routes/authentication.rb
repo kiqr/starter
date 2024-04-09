@@ -19,12 +19,7 @@ scope module: :users, path: nil do
   resources :invitations, only: %i[show update destroy], as: :user_invitation
 end
 
-get "select-account", to: "accounts#select", as: :select_account
-
-resources :accounts, only: [:new, :create]
-
 scope "(/team/:account_id)", account_id: %r{[^/]+} do
-  resource :account, only: [:edit, :update], path: "profile"
   resources :members, controller: "accounts/members", only: [:index, :edit, :update, :destroy]
   resources :invitations, controller: "accounts/invitations", only: [:index, :new, :create, :destroy]
 end
