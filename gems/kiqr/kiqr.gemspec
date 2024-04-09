@@ -18,4 +18,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 7.1.3.2"
+  spec.add_dependency "devise", "~> 4.9", ">= 4.9.3"
+  spec.add_dependency "devise-two-factor", "~> 5.0.0"
+  spec.add_dependency "public_uid", "~> 2.2"
 end
