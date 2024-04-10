@@ -33,30 +33,6 @@ en:
     en: "English"
     sv: "Swedish"
   accounts:
-    new:
-      heading:
-        title: "Create a new team account"
-        description: "Complete the form below to create a new team account"
-    edit:
-      title: "Profile settings"
-      description: "Edit your account profile."
-    update:
-      success: "Your account profile has been updated successfully."
-    create:
-      success: "Your account has been created successfully."
-    select:
-      or: "or"
-      continue_as: "Continue as %{name}"
-      heading:
-        title: "Select account"
-        description: "Select a team account to manage."
-    form:
-      name:
-        personal: "Your full name"
-        team: "Team / organization name"
-      button:
-        save: "Save changes"
-        create: "Create new account"
     members:
       index:
         title: "Team members"

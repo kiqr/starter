@@ -1,6 +1,8 @@
 module Kiqr
   module Services
     module Accounts
+      # Update account service
+      # User can update their personal account or if they are part of the team.
       class Update < Kiqr::ApplicationService
         def call(account:, user:)
           @account, @user = account, user

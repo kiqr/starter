@@ -1,0 +1,24 @@
+en:
+  kiqr:
+    flash_messages:
+      account_created: "Your account has been created successfully."
+      account_updated: "Your account has been updated successfully."
+    accounts:
+      new:
+        title: "Create a new team account"
+        description: "Complete the form below to create a new team account"
+      edit:
+        title: "Profile settings"
+        description: "Edit your account profile."
+      select:
+        title: "Select account"
+        description: "Select a team account to manage."
+        continue_as: "Continue as %{name}"
+        or: "or"
+      form:
+        name:
+          personal: "Your full name"
+          team: "Team / organization name"
+        button:
+          save: "Save changes"
+          create: "Create new account"

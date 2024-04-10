@@ -1,5 +1,5 @@
 module Kiqr
-  class AccountsController < ApplicationController
+  class AccountsController < KiqrController
     before_action :setup_account, only: %i[edit update]
 
     def new
@@ -11,7 +11,7 @@ module Kiqr
 
       if @account.valid?
         Kiqr::Services::Accounts::Create.call!(account: @account, user: current_user)
-        flash[:notice] = I18n.t("accounts.create.success")
+        kiqr_flash_message(:notice, :account_created)
         redirect_to dashboard_path(account_id: @account)
       else
         render :new, status: :unprocessable_entity
@@ -23,7 +23,7 @@ module Kiqr
 
       if @account.valid?
         Kiqr::Services::Accounts::Update.call!(account: @account, user: current_user)
-        flash[:notice] = I18n.t("accounts.update.success")
+        kiqr_flash_message(:notice, :account_updated)
         redirect_to edit_account_path
       else
         render :edit, status: :unprocessable_entity

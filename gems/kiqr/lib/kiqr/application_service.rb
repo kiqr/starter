@@ -1,4 +1,8 @@
 module Kiqr
+  # ApplicationService is a base class for all services in the application.
+  # It provides a common interface for all services and a way to handle errors.
+  # It also provides a way to propagate errors to the caller or to handle them
+  # internally.
   class ApplicationService
     Response = Struct.new(:success?, :payload, :error) do
       def failure?

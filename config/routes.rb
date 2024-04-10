@@ -7,14 +7,15 @@ Rails.application.routes.draw do
 
   # => KIQR core routes
   # These routes are required for the KIQR core to function properly.
-  # Do not remove or modify these routes unless you know what you're doing.
+  # Do not remove this unless you know what you're doing.
+  kiqr_routes
   draw :development
   draw :authentication
 
-  # => Application routes
+  # => Teamable scope
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
-  scope "(/team/:account_id)", account_id: %r{[^/]+} do
+  teamable_scope do
     get "dashboard" => "dashboard#show"
   end
 

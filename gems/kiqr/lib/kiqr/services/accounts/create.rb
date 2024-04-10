@@ -1,6 +1,10 @@
 module Kiqr
   module Services
     module Accounts
+      # Create account service
+      # User can create a personal account or a team account.
+      # User can have only one personal account.
+      # User can be part of multiple team accounts.
       class Create < Kiqr::ApplicationService
         def call(account:, user:, personal: false)
           @account, @user = account, user

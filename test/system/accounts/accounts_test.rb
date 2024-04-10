@@ -12,7 +12,7 @@ class EditAccountsTest < ApplicationSystemTestCase
     fill_in_account_fields
 
     click_on "commit"
-    assert_text I18n.t("accounts.update.success")
+    assert_text I18n.t("kiqr.flash_messages.account_updated")
 
     user.personal_account.reload
     assert_equal "New name", user.personal_account.name
@@ -30,7 +30,7 @@ class EditAccountsTest < ApplicationSystemTestCase
     fill_in_account_fields
 
     click_on "commit"
-    assert_text I18n.t("accounts.update.success")
+    assert_text I18n.t("kiqr.flash_messages.account_updated")
 
     team_account.reload
     assert_equal "New name", team_account.name
@@ -47,7 +47,7 @@ class EditAccountsTest < ApplicationSystemTestCase
     fill_in_account_fields
 
     click_on "commit"
-    assert_text I18n.t("accounts.create.success")
+    assert_text I18n.t("kiqr.flash_messages.account_created")
 
     account = user.reload.accounts.last
     assert_equal "New name", account.name
