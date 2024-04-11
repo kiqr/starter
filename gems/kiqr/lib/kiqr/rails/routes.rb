@@ -7,6 +7,10 @@ module ActionDispatch
 
         account_routes(options)
         devise_routes(options)
+
+        teamable_scope do
+          resources :account_invitations, controller: "kiqr/accounts/invitations", only: [:index, :new, :create, :destroy]
+        end
       end
 
       private

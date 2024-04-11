@@ -11,7 +11,7 @@
     <div class="prose dark:prose-invert">
       <p><%= t(".instructions") %></p>
 
-      <%= simple_form_for(@invitation, url: invitations_path) do |f| %>
+      <%= simple_form_for(@invitation, url: account_invitations_path) do |f| %>
         <%= f.input :email, placeholder: t(".form.email.placeholder"), required: true, autofocus: true %>
         <div class="mt-4 flex justify-between items-center">
           <%= f.button :submit, t(".form.submit") %>
