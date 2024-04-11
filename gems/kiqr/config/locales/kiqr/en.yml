@@ -4,6 +4,9 @@ en:
       account_created: "Your account has been created successfully."
       account_updated: "Your account has been updated successfully."
       invitation_sent: "An invitation email has been sent to %{email}."
+      invitation_destroyed: "The invitation has been destroyed."
+      invitation_accepted: "You have accepted the invitation to join %{team}."
+      invitation_rejected: "You have rejected the invitation to join %{team}."
     accounts:
       new:
         title: "Create a new team account"
@@ -23,3 +26,32 @@ en:
         button:
           save: "Save changes"
           create: "Create new account"
+      invitations:
+        errors:
+          email_taken: "has already been invited."
+        new:
+          title: "Invite a user"
+          description: "Invite a user to your team"
+          box_title: "Invite a user to your team"
+          instructions: "Enter the email address of the user you want to invite to your team. Anyone with the link can join your team, so be careful who you share it with."
+          back_to_members: "Back to team members"
+          form:
+            email:
+              placeholder: "Enter the email address"
+            submit: "Send invitation"
+        index:
+          title: "Pending invitations"
+          description: "Manage invitations to your team"
+          box_title: "Pending invitations to %{team_name}"
+          no_invitations: "No invitations have been sent yet."
+          confirm_delete: "Are you sure you want to cancel the invitation to %{email}?"
+          table:
+            email: "Email"
+            sent_at: "Sent at"
+          buttons:
+            invite: "Invite a new user"
+            back: "Back to team members"
+        create:
+          invitation_sent: "Invitation has been sent to %{email}."
+        destroy:
+          deleted: "Invitation has been successfully deleted."

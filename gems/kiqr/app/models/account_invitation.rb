@@ -12,7 +12,7 @@ class AccountInvitation < ApplicationRecord
   belongs_to :account, inverse_of: :account_invitations, counter_cache: true
 
   validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP}
-  validates :email, uniqueness: {scope: :account_id, message: I18n.t("accounts.invitations.new.form.errors.email.taken")}
+  validates :email, uniqueness: {scope: :account_id, message: I18n.t("kiqr.accounts.invitations.errors.email_taken")}
 
   scope :pending, -> { where(accepted_at: nil) }
 end

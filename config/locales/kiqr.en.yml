@@ -58,36 +58,6 @@ en:
           button: "Remove team member"
       form:
         submit: "Save changes"
-    invitations:
-      new:
-        title: "Invite a user"
-        description: "Invite a user to your team"
-        box_title: "Invite a user to your team"
-        instructions: "Enter the email address of the user you want to invite to your team. Anyone with the link can join your team, so be careful who you share it with."
-        back_to_members: "Back to team members"
-        form:
-          email:
-            placeholder: "Enter the email address"
-          submit: "Send invitation"
-          errors:
-            email:
-              taken: "has already been invited."
-      index:
-        title: "Pending invitations"
-        description: "Manage invitations to your team"
-        box_title: "Pending invitations to %{team_name}"
-        no_invitations: "No invitations have been sent yet."
-        confirm_delete: "Are you sure you want to cancel the invitation to %{email}?"
-        table:
-          email: "Email"
-          sent_at: "Sent at"
-        buttons:
-          invite: "Invite a new user"
-          back: "Back to team members"
-      create:
-        invitation_sent: "Invitation has been sent to %{email}."
-      destroy:
-        deleted: "Invitation has been successfully deleted."
   account_users:
     destroy:
       success: "Member has successfully been removed from the team."

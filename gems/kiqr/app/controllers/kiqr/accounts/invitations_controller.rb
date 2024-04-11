@@ -25,7 +25,8 @@ module Kiqr
       def destroy
         @invitation = current_account.account_invitations.find_puid!(params[:id])
         Kiqr::Services::Invitations::Destroy.call!(invitation: @invitation, user: current_user)
-        redirect_to account_invitations_path, notice: t(".deleted")
+        kiqr_flash_message(:notice, :invitation_destroyed)
+        redirect_to account_invitations_path
       end
 
       private
