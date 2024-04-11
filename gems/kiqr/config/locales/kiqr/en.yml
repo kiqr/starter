@@ -3,6 +3,7 @@ en:
     flash_messages:
       account_created: "Your account has been created successfully."
       account_updated: "Your account has been updated successfully."
+      invitation_sent: "An invitation email has been sent to %{email}."
     accounts:
       new:
         title: "Create a new team account"

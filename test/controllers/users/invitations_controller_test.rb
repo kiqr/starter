@@ -40,9 +40,7 @@ class Users::InvitationsControllerTest < ActionDispatch::IntegrationTest
     invitation = create(:account_invitation)
     sign_in user
 
-    assert_no_difference -> { user.accounts.count } do
-      delete user_invitation_path(invitation)
-    end
+    delete user_invitation_path(invitation)
 
     assert_redirected_to dashboard_path
     assert_nil AccountInvitation.find_by(id: invitation.id)

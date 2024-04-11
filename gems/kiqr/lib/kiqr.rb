@@ -14,6 +14,11 @@ module Kiqr
       autoload :Create, "kiqr/services/accounts/create"
       autoload :Update, "kiqr/services/accounts/update"
     end
+
+    module Invitations
+      autoload :Create, "kiqr/services/invitations/create"
+      autoload :Destroy, "kiqr/services/invitations/destroy"
+    end
   end
 
   def self.config

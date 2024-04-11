@@ -11,8 +11,8 @@ module Kiqr
         test "creates team account" do
           user = create(:user)
           account = build(:account)
-
           @service.call(account:, user:, personal: false)
+
           refute_empty account.account_users, "Expected account_users not to be empty"
           assert account.account_users.find_by(user: user).owner, "Expected account_users to have owner set to true"
           refute account.personal, "Expected account.personal to be false"
@@ -22,8 +22,8 @@ module Kiqr
         test "creates personal account" do
           user = create(:user, personal_account: nil)
           account = build(:account)
-
           @service.call(account:, user:, personal: true)
+
           assert_empty account.account_users, "Expected account_users to be empty"
           assert account.personal, "Expected account.personal to be true"
           assert_equal account, user.personal_account, "Expected user to have personal account"
