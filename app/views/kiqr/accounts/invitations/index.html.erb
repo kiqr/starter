@@ -22,7 +22,7 @@
             <% @invitations.each do |invitation| %>
               <tr>
                 <td><%= invitation.email %></td>
-                <td><%= user_invitation_url(invitation, account_id: nil) %></td>
+                <td><%= invitation_url(invitation, account_id: nil) %></td>
                 <td class="text-right">
                   <%= button_to t(".table.remove"), account_invitation_path(id: invitation), class: "button xs danger", method: :delete, data: { confirm: t(".confirm_delete", email: invitation.email), turbo_confirm: t(".confirm_delete", email: invitation.email) } %>
                 </td>

@@ -16,9 +16,16 @@ module Kiqr
     end
 
     module Invitations
+      autoload :Accept, "kiqr/services/invitations/accept"
       autoload :Create, "kiqr/services/invitations/create"
       autoload :Destroy, "kiqr/services/invitations/destroy"
+      autoload :Reject, "kiqr/services/invitations/reject"
     end
+  end
+
+  module Errors
+    # Raised when an invitation has expired
+    class InvitationExpired < StandardError; end
   end
 
   def self.config

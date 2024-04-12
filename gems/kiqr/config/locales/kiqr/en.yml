@@ -5,8 +5,9 @@ en:
       account_updated: "Your account has been updated successfully."
       invitation_sent: "An invitation email has been sent to %{email}."
       invitation_destroyed: "The invitation has been destroyed."
-      invitation_accepted: "You have accepted the invitation to join %{team}."
-      invitation_rejected: "You have rejected the invitation to join %{team}."
+      invitation_accepted: "You have accepted the invitation to join %{account}."
+      invitation_rejected: "You have rejected the invitation to join %{account}."
+      invitation_expired: "The invitation has expired."
     accounts:
       new:
         title: "Create a new team account"
@@ -51,7 +52,12 @@ en:
           buttons:
             invite: "Invite a new user"
             back: "Back to team members"
-        create:
-          invitation_sent: "Invitation has been sent to %{email}."
-        destroy:
-          deleted: "Invitation has been successfully deleted."
+    invitations:
+      show:
+        title: "Accept invitation"
+        description: "You've been invited to join team %{team_name}."
+        guest_instructions: "You've been invited to join team %{team_name}. To accept the invitation, please create a new account or sign in with an existing one."
+        instructions: "You've been invited to join team %{team_name}. Choose whether you want to accept or decline the invitation."
+        sign_up: "Create a new account"
+        sign_in: "Sign in"
+        or: "or"

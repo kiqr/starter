@@ -15,10 +15,6 @@ scope module: :users, path: :users do
   resource :preferences, only: %i[edit update], as: :user_preferences
 end
 
-scope module: :users, path: nil do
-  resources :invitations, only: %i[show update destroy], as: :user_invitation
-end
-
 scope "(/team/:account_id)", account_id: %r{[^/]+} do
   resources :members, controller: "accounts/members", only: [:index, :edit, :update, :destroy]
 end

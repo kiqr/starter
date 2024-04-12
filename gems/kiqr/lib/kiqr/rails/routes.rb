@@ -8,6 +8,11 @@ module ActionDispatch
         account_routes(options)
         devise_routes(options)
 
+        resources :invitations, controller: "kiqr/invitations", only: %i[show destroy] do
+          post :accept, on: :member
+          post :reject, on: :member
+        end
+
         teamable_scope do
           resources :account_invitations, controller: "kiqr/accounts/invitations", only: [:index, :new, :create, :destroy]
         end

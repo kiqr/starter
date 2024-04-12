@@ -10,12 +10,8 @@
       <% if user_signed_in? && onboarded? %>
         <p><%= t(".instructions", team_name: @team.name) %></p>
         <div class="flex justify-center gap-x-4">
-          <%= button_to t(".buttons.accept"), "#", class: "button", method: :patch, params: {
-            user_invitation: { status: "accepted" }
-          } %>
-          <%= button_to t(".buttons.decline"), "#", class: "button danger", method: :patch, params: {
-            user_invitation: { status: "declined" }
-          } %>
+          <%= button_to t(".buttons.accept"), accept_invitation_path(@invitation), class: "button", method: :post %>
+          <%= button_to t(".buttons.decline"), reject_invitation_path(@invitation), class: "button danger", method: :post %>
         </div>
       <% else %>
         <p><%= t(".guest_instructions", team_name: @team.name) %></p>
