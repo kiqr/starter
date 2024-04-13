@@ -87,46 +87,6 @@ en:
             label: "One-time password"
             placeholder: "Enter the code"
           submit_button: "Verify"
-    registrations:
-      new:
-        heading:
-          title: "Create a new %{app_name} account"
-          description: "Enter your email address and password to create a new account."
-        form:
-          email:
-            placeholder: "Enter a valid email address"
-          password:
-            placeholder: "Create a secure password"
-          password_confirmation:
-            placeholder: "Confirm your password"
-          submit_button: "Create your account"
-        already_have_account: Already have an account?
-        sign_in: Sign in!
-      edit:
-        title: "Login credentials"
-        description: "Change user email or password."
-        form:
-          email:
-            placeholder: "Enter a valid email address"
-          password:
-            placeholder: "Create a secure password"
-          password_confirmation:
-            placeholder: "Confirm your password"
-          current_password:
-            placeholder: "Enter your current password"
-            hint: "we need your current password to confirm your changes"
-          submit_button: "Save changes"
-      destroy:
-        owner_of_team: "Can't delete account when owner of a team."
-      cancel:
-        title: "Delete account"
-        description: "Delete your user account and all of your data."
-        box_title: "Delete your user account"
-        content: "Need to cancel your account? No worries. We're sad to see you go but understand that sometimes things change. If you have any feedback or if there's anything we can do to improve your experience, please let us know. Your input is invaluable to us. Remember, you're always welcome back!"
-        remove_team_accounts_first: "Before you can cancel your account, there's one important step you need to take. If you're currently the owner of any team accounts, you'll need to either transfer ownership to another team member or dissolve the team accounts first. This ensures all your team's data and operations remain uninterrupted and secure. If you need help with transferring ownership or have any questions, our support team is here to assist. Thank you for your understanding and cooperation!"
-        owned_team_accounts: "Team accounts you are the owner of:"
-        submit: "Delete my account"
-        confirmation_message: "Are you sure? This will DELETE all of your data."
     two_factor:
       show:
         title: "Two-factor authentication"

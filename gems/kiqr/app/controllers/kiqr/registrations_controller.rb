@@ -1,4 +1,4 @@
-class Users::RegistrationsController < Devise::RegistrationsController
+class Kiqr::RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:cancel]
   before_action :authenticate_user!, only: [:cancel]
 

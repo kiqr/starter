@@ -20,8 +20,8 @@ module ActionDispatch
         options[:controllers][:accounts] ||= "kiqr/accounts"
         options[:controllers][:invitations] ||= "kiqr/invitations"
         options[:controllers][:onboarding] ||= "kiqr/onboarding"
+        options[:controllers][:registrations] ||= "kiqr/registrations"
         options[:controllers][:sessions] ||= "users/sessions"
-        options[:controllers][:registrations] ||= "users/registrations"
         options
       end
 
