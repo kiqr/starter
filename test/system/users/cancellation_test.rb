@@ -4,7 +4,7 @@ class EditAccountsTest < ApplicationSystemTestCase
   test "can delete a fresh user" do
     user = create(:user)
     sign_in(user)
-    visit delete_user_registration_path
+    visit cancel_user_registration_path
     accept_confirm { click_on "commit" }
 
     assert_text I18n.t("devise.registrations.destroyed")
@@ -17,7 +17,7 @@ class EditAccountsTest < ApplicationSystemTestCase
     team_account.account_users << AccountUser.create(user: user, owner: true)
 
     sign_in(user)
-    visit delete_user_registration_path
+    visit cancel_user_registration_path
 
     assert_no_selector("button[name='commit']")
   end

@@ -118,8 +118,7 @@ en:
           submit_button: "Save changes"
       destroy:
         owner_of_team: "Can't delete account when owner of a team."
-    cancellations:
-      show:
+      cancel:
         title: "Delete account"
         description: "Delete your user account and all of your data."
         box_title: "Delete your user account"

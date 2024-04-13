@@ -41,6 +41,10 @@ module ActionDispatch
           registrations: options[:controllers][:registrations],
           sessions: options[:controllers][:sessions]
         }
+
+        devise_scope :user do
+          get "users/cancel-account", controller: options[:controllers][:registrations], action: :cancel, as: :delete_user_registration
+        end
       end
 
       # => Teamable routes

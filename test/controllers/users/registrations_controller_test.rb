@@ -3,7 +3,7 @@ require "test_helper"
 class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
   test "can view cancellation page" do
     sign_in create(:user)
-    get delete_user_registration_path
+    get cancel_user_registration_path
     assert_response :success
   end
 
@@ -24,7 +24,7 @@ class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
     sign_in user
     delete user_registration_path
 
-    assert_redirected_to delete_user_registration_path
+    assert_redirected_to cancel_user_registration_path
     assert User.find_by(id: user.id)
   end
 end
