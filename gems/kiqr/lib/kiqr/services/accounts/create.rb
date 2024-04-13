@@ -17,7 +17,7 @@ module Kiqr
         private
 
         def create_personal_account
-          raise StandardError, "User already has a personal account" if user.personal_account.present?
+          raise StandardError, "User already has a personal account" if user.personal_account&.persisted?
 
           user.transaction do
             account.personal = true

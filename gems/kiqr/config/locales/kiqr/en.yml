@@ -61,3 +61,7 @@ en:
         sign_up: "Create a new account"
         sign_in: "Sign in"
         or: "or"
+    onboarding:
+      new:
+        title: "Setup your personal account"
+        description: "Finish the registration by setting up your user profile."

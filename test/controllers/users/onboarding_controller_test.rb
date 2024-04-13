@@ -14,9 +14,11 @@ class Users::OnboardingControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "can onboard user" do
-    sign_in create(:user, personal_account: nil)
+    user = create(:user, personal_account: nil)
+    sign_in user
     post onboarding_path, params: {account: {name: "Personal Account"}}
     assert_redirected_to dashboard_path
+    assert user.reload.personal_account.personal?
   end
 
   test "validates user onboarding" do

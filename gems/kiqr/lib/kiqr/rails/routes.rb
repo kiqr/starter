@@ -7,15 +7,8 @@ module ActionDispatch
 
         account_routes(options)
         devise_routes(options)
-
-        resources :invitations, controller: "kiqr/invitations", only: %i[show destroy] do
-          post :accept, on: :member
-          post :reject, on: :member
-        end
-
-        teamable_scope do
-          resources :account_invitations, controller: "kiqr/accounts/invitations", only: [:index, :new, :create, :destroy]
-        end
+        invitation_routes(options)
+        onboarding_routes(options)
       end
 
       private
@@ -25,6 +18,8 @@ module ActionDispatch
       def default_controllers(options)
         options[:controllers] ||= {}
         options[:controllers][:accounts] ||= "kiqr/accounts"
+        options[:controllers][:invitations] ||= "kiqr/invitations"
+        options[:controllers][:onboarding] ||= "kiqr/onboarding"
         options[:controllers][:sessions] ||= "users/sessions"
         options[:controllers][:registrations] ||= "users/registrations"
         options
@@ -54,6 +49,30 @@ module ActionDispatch
       def teamable_scope(&)
         scope "(/team/:account_id)", account_id: %r{[^/]+} do
           yield
+        end
+      end
+
+      # => Invitation routes
+      # Routes for team admins to create or decline and users to accept or decline team invitations.
+      def invitation_routes(options)
+        # Invitee
+        resources :invitations, controller: options[:controllers][:invitations], only: %i[show] do
+          post :accept, on: :member
+          post :reject, on: :member
+        end
+
+        # Inviter
+        teamable_scope do
+          resources :account_invitations, controller: "kiqr/accounts/invitations", only: [:index, :new, :create, :destroy]
+        end
+      end
+
+      # => Onboarding routes
+      # Routes for onboarding steps.
+      def onboarding_routes(options)
+        scope path: :users do
+          get "onboarding", controller: options[:controllers][:onboarding], action: :new
+          post "onboarding", controller: options[:controllers][:onboarding], action: :create
         end
       end
     end
