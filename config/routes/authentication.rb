@@ -9,7 +9,3 @@ scope module: :users, path: :users do
 
   resource :preferences, only: %i[edit update], as: :user_preferences
 end
-
-scope "(/team/:account_id)", account_id: %r{[^/]+} do
-  resources :account_users, controller: "kiqr/account_users", only: [:index, :edit, :update, :destroy]
-end

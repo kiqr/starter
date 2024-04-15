@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   # These routes are required for the KIQR core to function properly.
   # Do not remove this unless you know what you're doing.
   kiqr_routes
-  draw :development
   draw :authentication
 
   # => Teamable scope

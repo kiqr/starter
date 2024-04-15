@@ -9,6 +9,7 @@ module ActionDispatch
         devise_routes(options)
         invitation_routes(options)
         onboarding_routes(options)
+        development_routes(options) if Rails.env.development?
       end
 
       private
@@ -18,11 +19,18 @@ module ActionDispatch
       def default_controllers(options)
         options[:controllers] ||= {}
         options[:controllers][:accounts] ||= "kiqr/accounts"
+        options[:controllers][:account_users] ||= "kiqr/account_users"
         options[:controllers][:invitations] ||= "kiqr/invitations"
         options[:controllers][:onboarding] ||= "kiqr/onboarding"
         options[:controllers][:registrations] ||= "kiqr/registrations"
         options[:controllers][:sessions] ||= "users/sessions"
         options
+      end
+
+      # => Development routes
+      # Routes only available in development environment.
+      def development_routes(options)
+        mount LetterOpenerWeb::Engine, at: "/letter_opener"
       end
 
       # => Account routes
@@ -32,6 +40,7 @@ module ActionDispatch
 
         scope "(/team/:account_id)", account_id: %r{[^/]+} do
           resource :account, only: [:edit, :update], path: "profile", controller: options[:controllers][:accounts]
+          resources :account_users, controller: options[:controllers][:account_users], only: [:index, :edit, :update, :destroy]
         end
       end
 
