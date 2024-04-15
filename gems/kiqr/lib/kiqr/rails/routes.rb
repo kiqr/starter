@@ -40,7 +40,7 @@ module ActionDispatch
 
         scope "(/team/:account_id)", account_id: %r{[^/]+} do
           resource :account, only: [:edit, :update], path: "profile", controller: options[:controllers][:accounts]
-          resources :account_users, controller: options[:controllers][:account_users], only: [:index, :edit, :update, :destroy]
+          resources :account_users, controller: options[:controllers][:account_users], only: [:index, :edit, :update, :destroy], path: "members"
         end
       end
 
