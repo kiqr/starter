@@ -32,36 +32,6 @@ en:
   languages:
     en: "English"
     sv: "Swedish"
-  accounts:
-    members:
-      index:
-        title: "Team members"
-        description: "Manage team members."
-        box_title: "Members of %{team_name}"
-        table:
-          name: "Name"
-          email: "Email"
-          actions: "Actions"
-          edit: "Edit"
-        buttons:
-          invite: "Invite a user"
-          view_pending: "View pending invitations"
-      edit:
-        title: "Edit team member"
-        description: "Change settings for a team member."
-        box_title: "Edit team member: %{name}"
-        confirmation_message: "Are you sure you want to REMOVE %{name} from the team?"
-        back_to_members: "Back to team members"
-        delete:
-          box_title: "Remove team member"
-          description: "Remove %{name} from the team. They will no longer have access to the team account, but you can always invite them back later."
-          button: "Remove team member"
-      form:
-        submit: "Save changes"
-  account_users:
-    destroy:
-      success: "Member has successfully been removed from the team."
-      failure: "Member could not be removed. Please contact support if this issue persists."
   users:
     sessions:
       new:

@@ -1,10 +1,10 @@
 require "test_helper"
 
-class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
+class AccountUsersControllerTest < ActionDispatch::IntegrationTest
   test "can't show members as personal account" do
     user = create(:user)
     sign_in user
-    get members_path
+    get account_users_path
 
     assert_redirected_to edit_account_path(account_id: nil)
   end
@@ -18,7 +18,7 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
     account.account_users << AccountUser.create(user: some_user)
 
     sign_in user
-    get edit_member_path(account_id: account, id: some_user.account_users.first)
+    get edit_account_user_path(account_id: account, id: some_user.account_users.first)
 
     assert_response :success
   end
@@ -29,7 +29,7 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
     account.account_users << AccountUser.create(user:, owner: true)
 
     sign_in user
-    get members_path(account_id: account)
+    get account_users_path(account_id: account)
 
     assert_response :success
   end
@@ -45,9 +45,9 @@ class Accounts::MembersControllerTest < ActionDispatch::IntegrationTest
     assert_includes account.reload.users, some_user
 
     sign_in user
-    delete member_path(account_id: account, id: some_user.account_users.first)
+    delete account_user_path(account_id: account, id: some_user.account_users.first)
 
-    assert_redirected_to members_path(account_id: account)
+    assert_redirected_to account_users_path(account_id: account)
     assert_not_includes account.reload.users, some_user
   end
 

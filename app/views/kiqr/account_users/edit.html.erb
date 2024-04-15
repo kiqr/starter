@@ -9,11 +9,11 @@
     </header>
     <div class="prose dark:prose-invert">
       <p><%= t(".delete.description", name: @account_user.name) %></p>
-      <%= button_to t(".delete.button"), member_path(@account_user), class: "button danger", method: :delete, data: { confirm: t(".confirmation_message", name: @account_user.name), turbo_confirm: t(".confirmation_message", name: @account_user.name) } %>
+      <%= button_to t(".delete.button"), account_user_path(@account_user), class: "button danger", method: :delete, data: { confirm: t(".confirmation_message", name: @account_user.name), turbo_confirm: t(".confirmation_message", name: @account_user.name) } %>
     </div>
   </div>
   <div class="mt-6 flex justify-start gap-x-6 items-center">
-    <%= link_to members_path, class: "button alt" do %>
+    <%= link_to account_users_path, class: "button alt" do %>
       <i class="fa fa-arrow-left"></i> <%= t(".back_to_members") %>
     <% end %>
   </div>

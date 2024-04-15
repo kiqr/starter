@@ -8,6 +8,7 @@ en:
       invitation_accepted: "You have accepted the invitation to join %{account}."
       invitation_rejected: "You have rejected the invitation to join %{account}."
       invitation_expired: "The invitation has expired."
+      account_user_destroyed: "Member has successfully been removed from the team."
     accounts:
       new:
         title: "Create a new team account"
@@ -52,6 +53,31 @@ en:
           buttons:
             invite: "Invite a new user"
             back: "Back to team members"
+    account_users:
+      index:
+        title: "Team members"
+        description: "Manage team members."
+        box_title: "Members of %{team_name}"
+        table:
+          name: "Name"
+          email: "Email"
+          actions: "Actions"
+          edit: "Edit"
+        buttons:
+          invite: "Invite a user"
+          view_pending: "View pending invitations"
+      edit:
+        title: "Edit team member"
+        description: "Change settings for a team member."
+        box_title: "Edit team member: %{name}"
+        confirmation_message: "Are you sure you want to REMOVE %{name} from the team?"
+        back_to_members: "Back to team members"
+        delete:
+          box_title: "Remove team member"
+          description: "Remove %{name} from the team. They will no longer have access to the team account, but you can always invite them back later."
+          button: "Remove team member"
+        form:
+          submit: "Save changes"
     invitations:
       show:
         title: "Accept invitation"

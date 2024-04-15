@@ -11,5 +11,5 @@ scope module: :users, path: :users do
 end
 
 scope "(/team/:account_id)", account_id: %r{[^/]+} do
-  resources :members, controller: "accounts/members", only: [:index, :edit, :update, :destroy]
+  resources :account_users, controller: "kiqr/account_users", only: [:index, :edit, :update, :destroy]
 end

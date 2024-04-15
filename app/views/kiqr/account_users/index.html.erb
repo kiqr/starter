@@ -24,7 +24,7 @@
               <td><%= member.user.name %></td>
               <td><%= member.user.email %></td>
               <td class="text-right">
-                <%= link_to t(".table.edit"), edit_member_path(id: member), class: "button xs" %>
+                <%= link_to t(".table.edit"), edit_account_user_path(id: member), class: "button xs" %>
               </td>
             </tr>
           <% end %>

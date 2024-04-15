@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Accounts::InvitationsControllerTest < ActionDispatch::IntegrationTest
+class InvitationsControllerTest < ActionDispatch::IntegrationTest
   test "can invite a user" do
     user = create(:user)
     account = create(:account, name: "Team account")
