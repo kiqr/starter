@@ -4,11 +4,11 @@ class TwoFactorTest < ApplicationSystemTestCase
   def prepare_otp_setup(user)
     sign_in user
     visit edit_two_factor_path
-    assert_selector "a.button", text: I18n.t("users.two_factor.show.enable.button")
+    assert_selector "a.button", text: I18n.t("kiqr.two_factor.show.enable.button")
 
     pre_otp_secret = user.otp_secret
 
-    click_link I18n.t("users.two_factor.show.enable.button")
+    click_link I18n.t("kiqr.two_factor.show.enable.button")
     assert_current_path setup_two_factor_path
     assert_not user.otp_required_for_login?
 
@@ -26,7 +26,7 @@ class TwoFactorTest < ApplicationSystemTestCase
 
     assert_current_path edit_two_factor_path
     assert user.reload.otp_required_for_login?
-    assert_text I18n.t("users.two_factor.setup.success")
+    assert_text I18n.t("kiqr.two_factor.setup.success")
   end
 
   test "Show error message if otp code is wrong" do
@@ -39,7 +39,7 @@ class TwoFactorTest < ApplicationSystemTestCase
 
     assert_current_path setup_two_factor_path
     assert_not user.reload.otp_required_for_login?
-    assert_text I18n.t("users.two_factor.setup.invalid_code")
+    assert_text I18n.t("kiqr.two_factor.setup.invalid_code")
   end
 
   test "refreshes qr code image on new setup" do
@@ -56,6 +56,6 @@ class TwoFactorTest < ApplicationSystemTestCase
     user = create(:user, :otp_enabled)
     sign_in user
     visit edit_two_factor_path
-    assert_selector "a.button", text: I18n.t("users.two_factor.show.disable.button")
+    assert_selector "a.button", text: I18n.t("kiqr.two_factor.show.disable.button")
   end
 end

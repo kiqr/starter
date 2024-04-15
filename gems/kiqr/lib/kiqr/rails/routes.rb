@@ -10,6 +10,15 @@ module ActionDispatch
         invitation_routes(options)
         onboarding_routes(options)
         development_routes(options) if Rails.env.development?
+
+        scope path: :users do
+          get "two-factor", controller: options[:controllers][:two_factor], action: "show", as: :edit_two_factor
+          get "two-factor/new", controller: options[:controllers][:two_factor], action: "new", as: :new_two_factor
+          get "two-factor/setup", controller: options[:controllers][:two_factor], action: "setup", as: :setup_two_factor
+          get "two-factor/disable", controller: options[:controllers][:two_factor], action: "disable", as: :disable_two_factor
+          post "two-factor/verify", controller: options[:controllers][:two_factor], action: "verify", as: :verify_two_factor
+          delete "two-factor/destroy", controller: options[:controllers][:two_factor], action: "destroy", as: :destroy_two_factor
+        end
       end
 
       private
@@ -24,6 +33,7 @@ module ActionDispatch
         options[:controllers][:onboarding] ||= "kiqr/onboarding"
         options[:controllers][:registrations] ||= "kiqr/registrations"
         options[:controllers][:sessions] ||= "kiqr/sessions"
+        options[:controllers][:two_factor] ||= "kiqr/two_factor"
         options
       end
 

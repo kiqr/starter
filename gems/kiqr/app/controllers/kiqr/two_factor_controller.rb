@@ -1,4 +1,4 @@
-class Users::TwoFactorController < ApplicationController
+class Kiqr::TwoFactorController < ApplicationController
   before_action :setup_user
   before_action :ensure_not_enabled, only: %i[new setup verify]
 
@@ -25,10 +25,10 @@ class Users::TwoFactorController < ApplicationController
   def verify
     if @user.validate_and_consume_otp!(params[:user][:otp_attempt])
       @user.update(otp_required_for_login: true)
-      redirect_to edit_two_factor_path, notice: I18n.t("users.two_factor.setup.success")
+      redirect_to edit_two_factor_path, notice: I18n.t("kiqr.two_factor.setup.success")
     else
-      @user.errors.add(:otp_attempt, I18n.t("users.two_factor.setup.invalid_code"))
-      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "users/two_factor/form", locals: {user: @user}), status: :unprocessable_entity
+      @user.errors.add(:otp_attempt, I18n.t("kiqr.two_factor.setup.invalid_code"))
+      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "kiqr/two_factor/form", locals: {user: @user}), status: :unprocessable_entity
     end
   end
 
@@ -41,7 +41,7 @@ class Users::TwoFactorController < ApplicationController
 
     if @user.validate_and_consume_otp!(params.dig(:user, :otp_attempt))
       @user.update(otp_required_for_login: false, otp_backup_codes: [])
-      redirect_to edit_two_factor_path, notice: I18n.t("users.two_factor.disable.disabled")
+      redirect_to edit_two_factor_path, notice: I18n.t("kiqr.two_factor.disable.disabled")
     else
       @user.errors.add(:otp_attempt, :invalid)
       render :disable, status: :unprocessable_entity
