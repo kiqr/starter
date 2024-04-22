@@ -32,22 +32,6 @@ en:
   languages:
     en: "English"
     sv: "Swedish"
-  users:
-    preferences:
-      edit:
-        title: "User preferences"
-        description: "Update your user preferences."
-      form:
-        time_zone:
-          label: "Time zone"
-          placeholder: "Select a time zone"
-        locale:
-          label: "Language"
-          prompt: "Select a language"
-          placeholder: "Select your preferred language"
-        submit_button: "Save changes"
-      update:
-        updated: "User preferences have been updated."
   account_mailer:
     invitation_email:
       welcome: "Welcome to %{app_name}"

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AccountsControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::AccountsControllerTest < ActionDispatch::IntegrationTest
   test "can render new account page" do
     sign_in create(:user)
     get new_account_path

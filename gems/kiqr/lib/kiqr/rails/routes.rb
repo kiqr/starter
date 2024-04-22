@@ -18,6 +18,7 @@ module ActionDispatch
           get "two-factor/disable", controller: options[:controllers][:two_factor], action: "disable", as: :disable_two_factor
           post "two-factor/verify", controller: options[:controllers][:two_factor], action: "verify", as: :verify_two_factor
           delete "two-factor/destroy", controller: options[:controllers][:two_factor], action: "destroy", as: :destroy_two_factor
+          resource :preferences, controller: options[:controllers][:preferences], only: %i[edit update], as: :user_preferences
         end
       end
 
@@ -34,6 +35,7 @@ module ActionDispatch
         options[:controllers][:registrations] ||= "kiqr/registrations"
         options[:controllers][:sessions] ||= "kiqr/sessions"
         options[:controllers][:two_factor] ||= "kiqr/two_factor"
+        options[:controllers][:preferences] ||= "kiqr/preferences"
         options
       end
 

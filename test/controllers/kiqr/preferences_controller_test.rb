@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::PreferencesControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::PreferencesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit page" do
     user = create(:user)
     sign_in(user)

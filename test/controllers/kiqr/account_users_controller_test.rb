@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AccountUsersControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::AccountUsersControllerTest < ActionDispatch::IntegrationTest
   test "can't show members as personal account" do
     user = create(:user)
     sign_in user

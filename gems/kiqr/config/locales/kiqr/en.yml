@@ -91,6 +91,21 @@ en:
       new:
         title: "Setup your personal account"
         description: "Finish the registration by setting up your user profile."
+    preferences:
+      edit:
+        title: "User preferences"
+        description: "Update your user preferences."
+      form:
+        time_zone:
+          label: "Time zone"
+          placeholder: "Select a time zone"
+        locale:
+          label: "Language"
+          prompt: "Select a language"
+          placeholder: "Select your preferred language"
+        submit_button: "Save changes"
+      update:
+        updated: "User preferences have been updated."
     registrations:
       new:
         heading:

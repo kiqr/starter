@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::SessionsControllerTest < ActionDispatch::IntegrationTest
   test "can sign in if two factor is disabled" do
     user = create(:user)
     post user_session_path, params: {user: {email: user.email, password: user.password}}

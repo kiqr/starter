@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::InvitationsControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::InvitationsControllerTest < ActionDispatch::IntegrationTest
   test "can view page without beeing signed in" do
     invitation = create(:account_invitation)
     get invitation_path(invitation)

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::RegistrationControllerTest < ActionDispatch::IntegrationTest
   test "can view cancellation page" do
     sign_in create(:user)
     get cancel_user_registration_path
