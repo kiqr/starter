@@ -5,6 +5,9 @@ require "devise"
 require "devise-two-factor"
 require "public_uid"
 
+require "omniauth"
+require "omniauth/rails_csrf_protection"
+
 module Kiqr
   autoload :ApplicationService, "kiqr/application_service"
   autoload :Config, "kiqr/config"
