@@ -6,6 +6,7 @@
     description: t(".heading.description")
   ) do %>
   <main class="flex flex-col gap-4 w-full max-w-2xl">
+    <%= render "partials/social_accounts_login" %>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.input :email, placeholder: t(".form.email.placeholder"), required: true, autofocus: true, input_html: { autocomplete: "email" } %>
 

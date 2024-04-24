@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :account_users, dependent: :destroy
   has_many :accounts, through: :account_users
 
+  validates :email, presence: true, uniqueness: true
+
   # Validate time zone format.
   validates :time_zone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}
 

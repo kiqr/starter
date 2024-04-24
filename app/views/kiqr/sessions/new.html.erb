@@ -6,6 +6,7 @@
     description: t(".heading.description")
   ) do %>
     <main class="flex flex-col gap-4 w-full max-w-xl">
+      <%= render "partials/social_accounts_login" %>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.input :email, placeholder: t(".form.email.placeholder"), required: true, autofocus: true, input_html: { autocomplete: "email" } %>
         <%= f.input :password, placeholder: t(".form.password.placeholder"), required: true, input_html: { autocomplete: "current-password" } %>
@@ -16,7 +17,8 @@
           <%= f.button :submit, t(".form.submit_button") %>
           <p class="dark:text-neutral-200">
            <%= t(".no_account") %>
-           <%= link_to t(".sign_up"), new_user_registration_path, class: "font-bold text-primary transition" %></p>
+           <%= link_to t(".sign_up"), new_user_registration_path, class: "font-bold text-primary transition" %>
+          </p>
         </div>
       <% end %>
     </main>

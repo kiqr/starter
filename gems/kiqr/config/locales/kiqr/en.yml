@@ -9,6 +9,7 @@ en:
       invitation_rejected: "You have rejected the invitation to join %{account}."
       invitation_expired: "The invitation has expired."
       account_user_destroyed: "Member has successfully been removed from the team."
+      omniauth_email_taken: "An account with this email already exists. Please sign in to that account first and then link your %{provider} account."
     accounts:
       new:
         title: "Create a new team account"

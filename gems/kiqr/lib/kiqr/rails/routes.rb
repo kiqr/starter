@@ -9,6 +9,7 @@ module ActionDispatch
         devise_routes(options)
         invitation_routes(options)
         onboarding_routes(options)
+        omniauth_routes(options)
         development_routes(options) if Rails.env.development?
 
         scope path: :users do
@@ -36,6 +37,7 @@ module ActionDispatch
         options[:controllers][:sessions] ||= "kiqr/sessions"
         options[:controllers][:two_factor] ||= "kiqr/two_factor"
         options[:controllers][:preferences] ||= "kiqr/preferences"
+        options[:controllers][:omniauth] ||= "kiqr/omniauth"
         options
       end
 
@@ -43,6 +45,12 @@ module ActionDispatch
       # Routes only available in development environment.
       def development_routes(options)
         mount LetterOpenerWeb::Engine, at: "/letter_opener"
+      end
+
+      # => OmniAuth routes
+      # These routes are required for the OmniAuth to function properly.
+      def omniauth_routes(options)
+        match "auth/:provider/callback", controller: options[:controllers][:omniauth], action: :callback, via: %i[get post]
       end
 
       # => Account routes

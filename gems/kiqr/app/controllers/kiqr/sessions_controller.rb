@@ -42,17 +42,4 @@ class Kiqr::SessionsController < Devise::SessionsController
       render :otp, status: :unprocessable_entity
     end
   end
-
-  protected
-
-  # Override the method to change the sign-in redirect path
-  def after_sign_in_path_for(resource)
-    if session[:after_sign_in_path].present?
-      session.delete(:after_sign_in_path)
-    elsif current_user.accounts.any?
-      select_account_path
-    else
-      dashboard_path
-    end
-  end
 end

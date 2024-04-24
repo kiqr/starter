@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_08_210931) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_24_103325) do
   create_table "account_invitations", force: :cascade do |t|
     t.string "public_uid"
     t.integer "account_id", null: false
@@ -45,6 +45,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_08_210931) do
     t.datetime "updated_at", null: false
     t.integer "account_invitations_count", default: 0
     t.index ["public_uid"], name: "index_accounts_on_public_uid", unique: true
+  end
+
+  create_table "omniauth_identities", force: :cascade do |t|
+    t.string "public_uid"
+    t.integer "user_id", null: false
+    t.string "provider", null: false
+    t.string "provider_uid", null: false
+    t.text "credentials"
+    t.text "info"
+    t.text "extra"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["public_uid"], name: "index_omniauth_identities_on_public_uid", unique: true
+    t.index ["user_id"], name: "index_omniauth_identities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,5 +99,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_08_210931) do
   add_foreign_key "account_invitations", "accounts"
   add_foreign_key "account_users", "accounts"
   add_foreign_key "account_users", "users"
+  add_foreign_key "omniauth_identities", "users"
   add_foreign_key "users", "accounts", column: "personal_account_id"
 end
