@@ -1,5 +1,8 @@
 en:
   partials:
+    social_accounts_login:
+      buttons:
+        developer: "Sign in as Developer"
     navigations:
       protected:
         dashboard: "Dashboard"

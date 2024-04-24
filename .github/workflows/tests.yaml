@@ -56,6 +56,7 @@ jobs:
       - name: Tests
         env:
           RAILS_ENV: test
+          CI: true
         run: |
           bin/yarn
           bin/rails test:prepare
