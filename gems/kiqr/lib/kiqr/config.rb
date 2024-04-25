@@ -13,6 +13,11 @@ module Kiqr
     # with default "from" parameter.
     config_accessor :default_from_email, default: "please-change-me-at-config-initializers@example.com"
 
+    # ==> Account attributes
+    # Strong parameters for account. Used for account creation and update.
+    # Affects both personal and team accounts.
+    config_accessor :account_attributes, default: [:name]
+
     # ==> Locales
     # Configure the available locales in the application.
     # This is used to validate the locale of the user.

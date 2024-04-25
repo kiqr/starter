@@ -16,4 +16,8 @@ class Account < ApplicationRecord
   def has_member?(user)
     users.include? user
   end
+
+  def team?
+    !personal
+  end
 end

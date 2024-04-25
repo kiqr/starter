@@ -1,4 +1,9 @@
-<%= simple_form_for(user, url: user_preferences_path, method: :patch) do |f| %>
+<%= simple_form_for(user, url: settings_path, method: :patch) do |f| %>
+
+  <%= f.simple_fields_for :personal_account, user.personal_account do |pa| %>
+    <%= pa.input :name %>
+  <% end %>
+
   <%= f.input :locale, label: t(".locale.label"), placeholder: t(".locale.placeholder"), required: true, autofocus: true, prompt: t(".locale.prompt"), as: :select, collection: options_for_locale %>
   <%= f.input :time_zone, label: t(".time_zone.label"), placeholder: t(".time_zone.placeholder"), required: true, autofocus: true %>
   <div class="mt-4 flex justify-between items-center">

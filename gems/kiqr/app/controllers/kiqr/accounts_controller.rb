@@ -1,13 +1,13 @@
 module Kiqr
   class AccountsController < KiqrController
-    before_action :setup_account, only: %i[edit update]
+    before_action :ensure_team_and_setup_account, only: %i[edit update]
 
     def new
       @account = Account.new
     end
 
     def create
-      @account = Account.new(account_permitted_parameters)
+      @account = Account.new(account_params)
 
       if @account.valid?
         Kiqr::Services::Accounts::Create.call!(account: @account, user: current_user)
@@ -19,7 +19,7 @@ module Kiqr
     end
 
     def update
-      @account.assign_attributes(account_permitted_parameters)
+      @account.assign_attributes(account_params)
 
       if @account.valid?
         Kiqr::Services::Accounts::Update.call!(account: @account, user: current_user)
@@ -32,8 +32,13 @@ module Kiqr
 
     private
 
-    def setup_account
+    def account_params
+      params.require(:account).permit(Kiqr.config.account_attributes)
+    end
+
+    def ensure_team_and_setup_account
       @account = Account.find(current_account.id)
+      redirect_to edit_settings_path if @account.personal?
     end
 
     def form_submit_path

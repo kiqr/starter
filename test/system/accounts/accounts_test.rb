@@ -1,23 +1,6 @@
 require "application_system_test_case"
 
 class EditAccountsTest < ApplicationSystemTestCase
-  test "can edit personal account" do
-    user = create(:user)
-
-    sign_in(user)
-    visit edit_account_path
-    assert_selector("input[name='account[name]']")
-
-    # Fill the personal account form
-    fill_in_account_fields
-
-    click_on "commit"
-    assert_text I18n.t("kiqr.flash_messages.account_updated")
-
-    user.personal_account.reload
-    assert_equal "New name", user.personal_account.name
-  end
-
   test "can edit team account" do
     user = create(:user)
     team_account = create(:account, name: "Team account")

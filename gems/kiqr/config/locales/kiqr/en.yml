@@ -10,6 +10,7 @@ en:
       invitation_expired: "The invitation has expired."
       account_user_destroyed: "Member has successfully been removed from the team."
       omniauth_email_taken: "An account with this email already exists. Please sign in to that account first and then link your %{provider} account."
+      settings_updated: "Your settings have been updated successfully."
     accounts:
       new:
         title: "Create a new team account"
@@ -92,10 +93,10 @@ en:
       new:
         title: "Setup your personal account"
         description: "Finish the registration by setting up your user profile."
-    preferences:
+    settings:
       edit:
-        title: "User preferences"
-        description: "Update your user preferences."
+        title: "Settings"
+        description: "Personal profile & settings"
       form:
         time_zone:
           label: "Time zone"
@@ -105,8 +106,6 @@ en:
           prompt: "Select a language"
           placeholder: "Select your preferred language"
         submit_button: "Save changes"
-      update:
-        updated: "User preferences have been updated."
     registrations:
       new:
         heading:

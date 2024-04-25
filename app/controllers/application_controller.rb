@@ -6,12 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :ensure_onboarded, unless: :devise_controller?
   before_action :setup_locale
 
-  # Strong parameters for account.
-  # Used for account creation and update.
-  def account_permitted_parameters
-    params.require(:account).permit(:name)
-  end
-
   private
 
   # Automatically include account_id in all URL options if it is already present in the params.

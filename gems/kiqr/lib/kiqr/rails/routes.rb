@@ -19,7 +19,7 @@ module ActionDispatch
           get "two-factor/disable", controller: options[:controllers][:two_factor], action: "disable", as: :disable_two_factor
           post "two-factor/verify", controller: options[:controllers][:two_factor], action: "verify", as: :verify_two_factor
           delete "two-factor/destroy", controller: options[:controllers][:two_factor], action: "destroy", as: :destroy_two_factor
-          resource :preferences, controller: options[:controllers][:preferences], only: %i[edit update], as: :user_preferences
+          resource :settings, controller: options[:controllers][:settings], only: %i[edit update], as: :settings
         end
       end
 
@@ -36,7 +36,7 @@ module ActionDispatch
         options[:controllers][:registrations] ||= "kiqr/registrations"
         options[:controllers][:sessions] ||= "kiqr/sessions"
         options[:controllers][:two_factor] ||= "kiqr/two_factor"
-        options[:controllers][:preferences] ||= "kiqr/preferences"
+        options[:controllers][:settings] ||= "kiqr/settings"
         options[:controllers][:omniauth] ||= "kiqr/omniauth"
         options
       end
@@ -59,7 +59,7 @@ module ActionDispatch
         get "select-account", controller: options[:controllers][:accounts], action: :select, as: :select_account
 
         scope "(/team/:account_id)", account_id: %r{[^/]+} do
-          resource :account, only: [:edit, :update], path: "profile", controller: options[:controllers][:accounts]
+          resource :account, only: [:edit, :update], controller: options[:controllers][:accounts]
           resources :account_users, controller: options[:controllers][:account_users], only: [:index, :edit, :update, :destroy], path: "members"
         end
       end

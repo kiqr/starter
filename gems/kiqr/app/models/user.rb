@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # User belongs to a personal account.
   belongs_to :personal_account, class_name: "Account", optional: true, dependent: :destroy
   validates_associated :personal_account
+  accepts_nested_attributes_for :personal_account
 
   # User can have many team accounts.
   has_many :account_users, dependent: :destroy

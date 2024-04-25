@@ -22,7 +22,7 @@ module Kiqr
     end
 
     def create
-      @account = Account.new(account_permitted_parameters)
+      @account = Account.new(account_params)
 
       if @account.valid?
         Kiqr::Services::Accounts::Create.call!(account: @account, user: current_user, personal: true)
@@ -34,6 +34,10 @@ module Kiqr
     end
 
     private
+
+    def account_params
+      params.require(:account).permit(Kiqr.config.account_attributes)
+    end
 
     # This is the path to redirect to after the onboarding process
     # is completed. By default, it redirects to the dashboard.

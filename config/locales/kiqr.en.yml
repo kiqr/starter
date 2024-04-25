@@ -11,21 +11,21 @@ en:
         sign_in: "Sign in"
         register: "Create account"
       settings:
-        account_settings: "Account settings"
-        user_settings: "Your personal settings"
+        account_settings: "Team settings"
+        user_settings: "User account"
         items:
           account:
             label: "Profile"
-            description: "Edit your account profile"
+            description: "Edit your team's profile"
           members:
-            label: "Team members"
+            label: "Members"
             description: "Manage team members"
           user:
             label: "Login credentials"
             description: "Change user email or password"
-          preferences:
-            label: "Preferences"
-            description: "Change your personal settings"
+          user_profile:
+            label: "Settings"
+            description: "Personal profile & settings"
           two_factor:
             label: "Two-factor authentication"
             description: "One-time passwords"
