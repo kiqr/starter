@@ -10,7 +10,7 @@ module Kiqr
       @account = Account.new(account_params)
 
       if @account.valid?
-        Kiqr::Services::Accounts::Create.call!(account: @account, user: current_user)
+        Kiqr::Services::Teams::Create.call!(account: @account, user: current_user)
         kiqr_flash_message(:notice, :account_created)
         redirect_to dashboard_path(account_id: @account)
       else
@@ -22,7 +22,7 @@ module Kiqr
       @account.assign_attributes(account_params)
 
       if @account.valid?
-        Kiqr::Services::Accounts::Update.call!(account: @account, user: current_user)
+        Kiqr::Services::Teams::Update.call!(account: @account, user: current_user)
         kiqr_flash_message(:notice, :account_updated)
         redirect_to edit_account_path
       else

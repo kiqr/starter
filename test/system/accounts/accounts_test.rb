@@ -10,13 +10,13 @@ class EditAccountsTest < ApplicationSystemTestCase
     visit edit_account_path(account_id: team_account)
 
     # Fill the team account form
-    fill_in_account_fields
+    fill_in "account[name]", with: "Foozoo free thinkers"
 
     click_on "commit"
     assert_text I18n.t("kiqr.flash_messages.account_updated")
 
     team_account.reload
-    assert_equal "New name", team_account.name
+    assert_equal "Foozoo free thinkers", team_account.name
   end
 
   test "can create team account" do
@@ -26,14 +26,14 @@ class EditAccountsTest < ApplicationSystemTestCase
     visit new_account_path
     assert_selector("input[name='account[name]']")
 
-    # Fill the personal account setup form
-    fill_in_account_fields
+    # Fill the team account form
+    fill_in "account[name]", with: "Foobar code warriors"
 
     click_on "commit"
     assert_text I18n.t("kiqr.flash_messages.account_created")
 
     account = user.reload.accounts.last
-    assert_equal "New name", account.name
+    assert_equal "Foobar code warriors", account.name
     assert account.account_users.find_by(user: user).owner?
     assert_current_path dashboard_path(account_id: account)
   end

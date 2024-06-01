@@ -16,14 +16,6 @@ require "rails/test_help"
 # Load migrations
 ActiveRecord::Schema.verbose = false
 
-# Shared helper for filling in account fields.
-# This helper is used in onboarding and accounts tests.
-# You can add more fields as needed.
-def fill_in_account_fields
-  fill_in "account[name]", with: "New name"
-  # fill_in "account[custom_field]", with: "Custom data"
-end
-
 module ActiveSupport
   class TestCase
     include Devise::Test::IntegrationHelpers

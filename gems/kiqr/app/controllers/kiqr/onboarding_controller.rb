@@ -18,25 +18,38 @@ module Kiqr
     end
 
     def new
-      @account = current_user.build_personal_account(personal: true)
+      @user = current_user
+      @user.build_personal_account
     end
 
     def create
-      @account = Account.new(account_params)
+      @user = current_user
+      @user.assign_attributes(user_params)
+      @user.personal_account&.personal = true
 
-      if @account.valid?
-        Kiqr::Services::Accounts::Create.call!(account: @account, user: current_user, personal: true)
-        kiqr_flash_message(:notice, :account_created)
-        redirect_to after_onboarding_path
+      if @user.valid?
+        Kiqr::Services::Users::Update.call!(user: @user)
+        kiqr_flash_message(:notice, :settings_updated)
+        redirect_to after_sign_in_path_for(@user)
       else
         render :new, status: :unprocessable_entity
       end
+      # @account = Account.new(account_params)
+
+      # if @account.valid?
+      #   Kiqr::Services::Accounts::Create.call!(account: @account, user: current_user, personal: true)
+      #   kiqr_flash_message(:notice, :account_created)
+      #   redirect_to after_onboarding_path
+      # else
+      #   render :new, status: :unprocessable_entity
+      # end
     end
 
     private
 
-    def account_params
-      params.require(:account).permit(Kiqr.config.account_attributes)
+    def user_params
+      personal_account_attributes = Kiqr.config.account_attributes.prepend(:id)
+      params.require(:user).permit(:time_zone, :locale, personal_account_attributes: personal_account_attributes)
     end
 
     # This is the path to redirect to after the onboarding process

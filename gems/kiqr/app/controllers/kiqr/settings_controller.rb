@@ -3,7 +3,10 @@ module Kiqr
     before_action :setup_user, only: %i[edit update]
 
     def update
-      if @user.update(preferences_params)
+      @user.assign_attributes(user_params)
+
+      if @user.valid?
+        Kiqr::Services::Users::Update.call!(user: @user)
         kiqr_flash_message(:notice, :settings_updated)
         redirect_to edit_settings_path
       else
@@ -11,20 +14,23 @@ module Kiqr
       end
     end
 
+    def form_submit_path
+      settings_path
+    end
+    helper_method :form_submit_path
+
+    def form_method
+      :patch
+    end
+    helper_method :form_method
+
     private
 
     def setup_user
       @user = current_user
     end
 
-    def options_for_locale
-      I18n.available_locales.map do |locale|
-        [I18n.t("languages.#{locale}"), locale]
-      end
-    end
-    helper_method :options_for_locale
-
-    def preferences_params
+    def user_params
       personal_account_attributes = Kiqr.config.account_attributes.prepend(:id)
       params.require(:user).permit(:time_zone, :locale, personal_account_attributes: personal_account_attributes)
     end

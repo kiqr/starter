@@ -13,9 +13,9 @@ module Kiqr
   autoload :Config, "kiqr/config"
 
   module Services
-    module Accounts
-      autoload :Create, "kiqr/services/accounts/create"
-      autoload :Update, "kiqr/services/accounts/update"
+    module Teams
+      autoload :Create, "kiqr/services/teams/create"
+      autoload :Update, "kiqr/services/teams/update"
     end
 
     module Invitations
@@ -23,6 +23,10 @@ module Kiqr
       autoload :Create, "kiqr/services/invitations/create"
       autoload :Destroy, "kiqr/services/invitations/destroy"
       autoload :Reject, "kiqr/services/invitations/reject"
+    end
+
+    module Users
+      autoload :Update, "kiqr/services/users/update"
     end
   end
 

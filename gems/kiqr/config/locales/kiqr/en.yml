@@ -98,6 +98,10 @@ en:
         title: "Settings"
         description: "Personal profile & settings"
       form:
+        personal_account:
+          name:
+            label: "Full name"
+            placeholder: "Enter your full name"
         time_zone:
           label: "Time zone"
           placeholder: "Select a time zone"

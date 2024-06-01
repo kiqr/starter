@@ -1,7 +1,7 @@
-<%= simple_form_for(user, url: settings_path, method: :patch) do |f| %>
+<%= simple_form_for(user, url: form_submit_path, method: form_method) do |f| %>
 
   <%= f.simple_fields_for :personal_account, user.personal_account do |pa| %>
-    <%= pa.input :name %>
+    <%= pa.input :name, label: t(".personal_account.name.label"), placeholder: t(".personal_account.name.placeholder") %>
   <% end %>
 
   <%= f.input :locale, label: t(".locale.label"), placeholder: t(".locale.placeholder"), required: true, autofocus: true, prompt: t(".locale.prompt"), as: :select, collection: options_for_locale %>

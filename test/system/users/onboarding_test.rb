@@ -27,12 +27,12 @@ class OnboardingTest < ApplicationSystemTestCase
     assert_current_path onboarding_path
 
     # Fill the personal account setup form
-    fill_in_account_fields
+    fill_in "user[personal_account_attributes][name]", with: "Sven Bertilsson"
 
     click_on "commit"
 
     # Should be redirected to dashboard after successfully signing up.
     assert_current_path dashboard_path
-    assert_equal "New name", user.reload.personal_account.name
+    assert_equal "Sven Bertilsson", user.reload.personal_account.name
   end
 end

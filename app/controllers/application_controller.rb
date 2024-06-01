@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
     redirect_to onboarding_path if user_signed_in? && !current_user.onboarded?
   end
 
+  # Get the options for the locale form select field
+  def options_for_locale
+    I18n.available_locales.map do |locale|
+      [I18n.t("languages.#{locale}"), locale]
+    end
+  end
+  helper_method :options_for_locale
+
   # Override the method to change the sign-in redirect path
   def after_sign_in_path_for(resource)
     if session[:after_sign_in_path].present?
