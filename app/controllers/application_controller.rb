@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  include SetCurrentAttributes
-  include CurrentHelper
+  include Kiqr::SetCurrentAttributes
+  include Kiqr::CurrentHelper
 
   before_action :authenticate_user!
   before_action :ensure_onboarded, unless: :devise_controller?

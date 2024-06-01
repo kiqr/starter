@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CurrentHelperTest < ActionView::TestCase
+class Kiqr::CurrentHelperTest < ActionView::TestCase
   attr_reader :current_user
 
   setup do
