@@ -11,6 +11,7 @@ require "omniauth/rails_csrf_protection"
 module Kiqr
   autoload :ApplicationService, "kiqr/application_service"
   autoload :Config, "kiqr/config"
+  autoload :Framework, "kiqr/framework"
 
   module Services
     module Teams
