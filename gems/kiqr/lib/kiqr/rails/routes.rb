@@ -44,7 +44,6 @@ module ActionDispatch
       # => Development routes
       # Routes only available in development environment.
       def development_routes(options)
-        mount LetterOpenerWeb::Engine, at: "/letter_opener"
       end
 
       # => OmniAuth routes

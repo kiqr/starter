@@ -7,8 +7,11 @@ Rails.application.routes.draw do
 
   # => KIQR core routes
   # These routes are required for the KIQR core to function properly.
-  # Do not remove this unless you know what you're doing.
   kiqr_routes
+
+  # => Letter Opener Web
+  # This route is required for the Letter Opener Web to function properly.
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   # => Teamable scope
   # Routes inside this block will be prefixed with /team/<team_id> if
