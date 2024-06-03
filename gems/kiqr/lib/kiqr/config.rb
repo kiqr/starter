@@ -21,7 +21,7 @@ module Kiqr
     # ==> Locales
     # Configure the available locales in the application.
     # This is used to validate the locale of the user.
-    config_accessor :available_locales, default: [:en]
+    config_accessor :available_locales, default: [:en, :sv]
 
     # Default locale
     # This is used to set the default locale for the application.

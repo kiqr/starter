@@ -16,9 +16,30 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install kiqr
+Include the framework in your ApplicationController:
+
+```ruby
+class ApplicationController < ActionController::Base
+  include Kiqr::Framework
+end
+```
+
+Add the default routes to your routes.rb:
+
+```ruby
+# => KIQR core routes
+# These routes are required for the KIQR core to function properly.
+kiqr_routes
+
+# => Teamable scope
+# Routes inside this block will be prefixed with /team/<team_id> if
+# the user is signed in to a team account. Otherwise, they won't be prefixed at all.
+teamable_scope do
+  get "dashboard" => "dashboard#show"
+end
+
+# Defines the root path route ("/")
+root "public#landing_page"
 ```
 
 ## Contributing

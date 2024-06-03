@@ -1,5 +1,8 @@
 en:
   kiqr:
+    languages:
+      en: "English"
+      sv: "Swedish"
     flash_messages:
       account_created: "Your account has been created successfully."
       account_updated: "Your account has been updated successfully."

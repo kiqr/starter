@@ -32,9 +32,6 @@ en:
           delete_user:
             label: "Delete user account"
             description: "Remove all user related data"
-  languages:
-    en: "English"
-    sv: "Swedish"
   account_mailer:
     invitation_email:
       welcome: "Welcome to %{app_name}"
