@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-  <%= fields_for :personal_account, user.personal_account do |pa| %>
+  <%= form.fields_for :personal_account, user.personal_account do |pa| %>
     <div class="field">
       <%= pa.label :name, t(".personal_account.name.label") %>
       <%= pa.text_field :name, placeholder: t(".personal_account.name.placeholder") %>
