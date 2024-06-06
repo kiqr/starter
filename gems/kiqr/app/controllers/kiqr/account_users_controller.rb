@@ -15,6 +15,9 @@ module Kiqr
       @account_user.destroy!
       kiqr_flash_message(:alert, :account_user_destroyed)
       redirect_to account_users_path
+    rescue Kiqr::Errors::DeleteTeamOwnerError
+      kiqr_flash_message(:alert, :account_user_is_owner)
+      redirect_to edit_account_user_path(@account_user)
     end
 
     private

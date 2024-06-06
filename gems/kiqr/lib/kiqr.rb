@@ -34,7 +34,9 @@ module Kiqr
 
   module Errors
     # Raised when an invitation has expired
-    class InvitationExpired < StandardError; end
+    # class InvitationExpired < StandardError; end
+    autoload :InvitationExpiredError, "kiqr/errors/invitation_expired_error"
+    autoload :DeleteTeamOwnerError, "kiqr/errors/delete_team_owner_error"
   end
 
   def self.config

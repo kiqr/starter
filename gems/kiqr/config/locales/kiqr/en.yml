@@ -12,6 +12,7 @@ en:
       invitation_rejected: "You have rejected the invitation to join %{account}."
       invitation_expired: "The invitation has expired."
       account_user_destroyed: "Member has successfully been removed from the team."
+      account_user_is_owner: "Can't remove the owner of the team."
       omniauth_email_taken: "An account with this email already exists. Please sign in to that account first and then link your %{provider} account."
       settings_updated: "Your settings have been updated successfully."
       cant_cancel_while_team_owner: "Can't cancel your user account while owner of a team."

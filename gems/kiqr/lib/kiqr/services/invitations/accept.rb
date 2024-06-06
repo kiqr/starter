@@ -6,7 +6,7 @@ module Kiqr
           @invitation, @user = invitation, user
           @account = @invitation.account
 
-          raise Kiqr::Errors::InvitationExpired, "Invitation has already been used" if invitation.accepted_at?
+          raise Kiqr::Errors::InvitationExpiredError, "Invitation has already been used" if invitation.accepted_at?
 
           account.transaction do
             invitation.transaction do

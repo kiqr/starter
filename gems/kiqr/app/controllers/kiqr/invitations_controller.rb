@@ -21,7 +21,7 @@ class Kiqr::InvitationsController < KiqrController
     Kiqr::Services::Invitations::Accept.call!(invitation: @invite, user: current_user)
     kiqr_flash_message(:notice, :invitation_accepted, account: @invite.account.name)
     redirect_to dashboard_or_root_path(account_id: @invite.account)
-  rescue Kiqr::Errors::InvitationExpired
+  rescue Kiqr::Errors::InvitationExpiredError
     kiqr_flash_message(:alert, :invitation_expired)
     redirect_back(fallback_location: dashboard_or_root_path)
   end

@@ -13,7 +13,7 @@ class AccountUser < ApplicationRecord # This will generate a public_uid for the 
 
   # Prevent the deletion of account owners.
   def destroy
-    return if owner?
+    raise Kiqr::Errors::DeleteTeamOwnerError if owner?
     super
   end
 end
