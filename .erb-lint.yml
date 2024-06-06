@@ -16,3 +16,4 @@ linters:
     exclude:
       - "app/views/dashboard/show.html.erb"
       - "app/views/public/landing_page.html.erb"
+      - "**dummy**"

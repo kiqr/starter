@@ -2,13 +2,8 @@
   <li><%= link_to "Dashboard", root_path %></li>
   <% if user_signed_in? %>
     <% if onboarded? && current_account.team? %>
-      <li>
-        Team:
-        <ul>
-          <li><%= link_to "Edit team profile", edit_account_path %></li>
-          <li><%= link_to "Edit team members", account_users_path %></li>
-        </ul>
-      </li>
+      <li><%= link_to "Team profile", edit_account_path %></li>
+      <li><%= link_to "Team members", account_users_path %></li>
     <% end %>
     <li><%= link_to "Settings", edit_settings_path %>
     <li><%= link_to "Credentials", edit_user_registration_path %></li>
