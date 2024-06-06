@@ -6,7 +6,8 @@ gemspec
 
 gem "puma"
 
-gem "sqlite3"
+# Use sqlite3 as the database for Active Record
+gem "sqlite3", "~> 1.4"
 
 gem "sprockets-rails"
 
