@@ -4,7 +4,7 @@ Short description and motivation.
 ## Usage
 How to use my plugin.
 
-## Installation
+## Custom Installation
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -14,6 +14,18 @@ gem "kiqr"
 And then execute:
 ```bash
 $ bundle
+```
+
+Copy the migrations and default configration files from the gem to your application:
+
+```console
+bin/rails g kiqr:install
+```
+
+Run the migrations
+
+```console
+bin/rails db:migrate
 ```
 
 Include the framework in your ApplicationController:
