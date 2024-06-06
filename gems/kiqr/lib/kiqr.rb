@@ -4,6 +4,7 @@ require "kiqr/version"
 require "devise"
 require "devise-two-factor"
 require "public_uid"
+require "rqrcode"
 
 require "omniauth"
 require "omniauth/rails_csrf_protection"

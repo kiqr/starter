@@ -6,10 +6,10 @@ class Kiqr::InvitationsController < KiqrController
 
     if @invitation.accepted_at?
       flash[:alert] = "Invitation has already been accepted by you or someone else."
-      return redirect_to dashboard_path
+      return redirect_to dashboard_or_root_path
     elsif @invitation.account.has_member?(current_user)
       flash[:notice] = "You are already a member of this team."
-      return redirect_to dashboard_path(account_id: @invitation.account)
+      return redirect_to dashboard_or_root_path(account_id: @invitation.account)
     end
 
     @team = @invitation.account
@@ -20,16 +20,16 @@ class Kiqr::InvitationsController < KiqrController
     @invite = AccountInvitation.find_puid!(params[:id])
     Kiqr::Services::Invitations::Accept.call!(invitation: @invite, user: current_user)
     kiqr_flash_message(:notice, :invitation_accepted, account: @invite.account.name)
-    redirect_to dashboard_path(account_id: @invite.account)
+    redirect_to dashboard_or_root_path(account_id: @invite.account)
   rescue Kiqr::Errors::InvitationExpired
     kiqr_flash_message(:alert, :invitation_expired)
-    redirect_back(fallback_location: dashboard_path)
+    redirect_back(fallback_location: dashboard_or_root_path)
   end
 
   def reject
     @invitation = AccountInvitation.find_puid!(params[:id])
     Kiqr::Services::Invitations::Reject.call!(invitation: @invitation, user: current_user)
     kiqr_flash_message(:alert, :invitation_rejected, account: @invitation.account.name)
-    redirect_to dashboard_path
+    redirect_to dashboard_or_root_path
   end
 end

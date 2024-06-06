@@ -13,13 +13,7 @@ class Kiqr::TwoFactorController < ApplicationController
   end
 
   def setup
-    # Generate the QR code for scanning the OTP secret.
-    # We'll use the RQRCode gem to generate the QR code.
-    @qr_png = RQRCode::QRCode.new(current_user.otp_uri).as_svg(
-      module_size: 4
-    )
-
-    @qr_code_image = @qr_png.html_safe
+    setup_qr_code
   end
 
   def verify
@@ -28,7 +22,9 @@ class Kiqr::TwoFactorController < ApplicationController
       redirect_to edit_two_factor_path, notice: I18n.t("kiqr.two_factor.setup.success")
     else
       @user.errors.add(:otp_attempt, I18n.t("kiqr.two_factor.setup.invalid_code"))
-      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "kiqr/two_factor/form", locals: {user: @user}), status: :unprocessable_entity
+      setup_qr_code
+      render :setup, status: :unprocessable_entity
+      # render turbo_stream: turbo_stream.replace("two_factor_form", partial: "kiqr/two_factor/form", locals: {user: @user}), status: :unprocessable_entity
     end
   end
 
@@ -49,6 +45,16 @@ class Kiqr::TwoFactorController < ApplicationController
   end
 
   private
+
+  def setup_qr_code
+    # Generate the QR code for scanning the OTP secret.
+    # We'll use the RQRCode gem to generate the QR code.
+    @qr_png = RQRCode::QRCode.new(current_user.otp_uri).as_svg(
+      module_size: 4
+    )
+
+    @qr_code_image = @qr_png.html_safe
+  end
 
   # Don't refresh the OTP secret if it's already enabled. This may lock the user
   # out of their account if they've already setup 2FA.

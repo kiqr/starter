@@ -1,10 +1,6 @@
 class KiqrController < ApplicationController
   private
 
-  def kiqr_flash_message(type, message, **)
-    flash[type] = I18n.t("kiqr.flash_messages.#{message}", **)
-  end
-
   # Get the options for the locale form select field
   def options_for_locale
     I18n.available_locales.map do |locale|

@@ -9,9 +9,16 @@ module Kiqr
 
       include Kiqr::SetCurrentAttributes
       include Kiqr::CurrentHelper
+
+      helper_method :after_select_account_path
     end
 
     private
+
+    # Set a flash message with a translation key
+    def kiqr_flash_message(type, message, **)
+      flash[type] = I18n.t("kiqr.flash_messages.#{message}", **)
+    end
 
     # Automatically include account_id in all URL options if it is already present in the params.
     # This is used to ensure that all routes are scoped to the current team. Personal account
@@ -32,7 +39,17 @@ module Kiqr
       elsif current_user.accounts.any?
         select_account_path
       else
-        dashboard_path
+        dashboard_or_root_path
+      end
+    end
+
+    # Method for redirecting to root_path or dashboard_path if it exists
+    # This method is used in the after_sign_in_path_for method
+    def dashboard_or_root_path(args = {})
+      if defined?(dashboard_path)
+        dashboard_path(args)
+      else
+        root_path(args)
       end
     end
 
@@ -42,6 +59,15 @@ module Kiqr
       uri = URI.parse(root_url)
       uri.query = nil # Remove any query parameters
       uri.to_s
+    end
+
+    # Override this method to change the path
+    def after_select_account_path(params)
+      if defined?(dashboard_path)
+        dashboard_path(params)
+      else
+        root_path(params)
+      end
     end
 
     # The locale is set to the user's locale if present, otherwise it is set to the default locale

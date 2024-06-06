@@ -1,0 +1,18 @@
+<h1><%= t(".title") %></h1>
+<h2><%= t(".description") %></h2>
+
+<p><%= t(".content") %></p>
+
+<%= form_with(model: @user, url: destroy_two_factor_path, method: :delete) do |form| %>
+  <div class="field">
+    <%= form.label :otp_attempt, t(".label") %>
+    <%= form.text_field :otp_attempt, placeholder: t(".placeholder") %>
+    <% if @user.errors[:otp_attempt].any? %>
+      <div class="error"><%= @user.errors[:otp_attempt].join(", ") %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit t(".button") %>
+  </div>
+<% end %>

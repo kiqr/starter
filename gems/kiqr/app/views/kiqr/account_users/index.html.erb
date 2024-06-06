@@ -1,0 +1,28 @@
+<h1><%= t(".title", app_name: Kiqr::Config.app_name) %></h1>
+<h2><%= t(".description") %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t(".table.name") %></th>
+      <th><%= t(".table.email") %></th>
+      <th><%= t(".table.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.user.name %></td>
+        <td><%= member.user.email %></td>
+        <td>
+          <%= link_to t(".table.edit"), edit_account_user_path(id: member) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to t(".buttons.invite"), new_account_invitation_path %>
+  <%= link_to t(".buttons.view_pending"), account_invitations_path %>
+</div>

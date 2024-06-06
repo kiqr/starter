@@ -49,7 +49,6 @@ gem "bootsnap", require: false
 
 gem "dry-initializer", "~> 3.1"
 gem "meta-tags", "~> 2.20"
-gem "rqrcode", "~> 2.0"
 gem "simple_form", "~> 5.3.0"
 gem "view_component", "~> 3.11"
 gem "view_component-contrib", "~> 0.2.2"

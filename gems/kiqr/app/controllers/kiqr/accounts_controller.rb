@@ -12,10 +12,13 @@ module Kiqr
       if @account.valid?
         Kiqr::Services::Teams::Create.call!(account: @account, user: current_user)
         kiqr_flash_message(:notice, :account_created)
-        redirect_to dashboard_path(account_id: @account)
+        redirect_to after_select_account_path(account_id: @account)
       else
         render :new, status: :unprocessable_entity
       end
+    end
+
+    def edit
     end
 
     def update

@@ -1,0 +1,13 @@
+<h1><%= t(".title") %></h1>
+<h2><%= t(".description") %></h2>
+
+<p><%= t(".content") %></p>
+<ol>
+  <% t(".steps").each do |step| %>
+    <li><%= step %></li>
+  <% end %>
+</ol>
+
+<%= @qr_code_image %>
+
+<%= render "form", user: @user %>

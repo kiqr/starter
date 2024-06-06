@@ -1,0 +1,5 @@
+<h1><%= t(".title", app_name: Kiqr::Config.app_name) %></h1>
+<h2><%= t(".description") %></h2>
+
+<p><%= t(".delete.description", name: @account_user.name) %></p>
+<%= button_to t(".delete.button"), account_user_path(@account_user), method: :delete, data: { confirm: t(".confirmation_message", name: @account_user.name), turbo_confirm: t(".confirmation_message", name: @account_user.name) } %>

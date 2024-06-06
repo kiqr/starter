@@ -3,6 +3,9 @@ module Kiqr
     before_action :ensure_team_account
     before_action :setup_account
 
+    def index
+    end
+
     def edit
       @account_user = @account.account_users.find_puid!(params[:id])
     end
@@ -11,7 +14,6 @@ module Kiqr
       @account_user = @account.account_users.find_puid!(params[:id])
       @account_user.destroy!
       kiqr_flash_message(:alert, :account_user_destroyed)
-      flash[:notice] = I18n.t("kiqr.flash_messages")
       redirect_to account_users_path
     end
 
