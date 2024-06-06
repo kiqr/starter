@@ -17,7 +17,6 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 7.1.3.2"
   spec.add_dependency "devise", "~> 4.9", ">= 4.9.3"
   spec.add_dependency "devise-two-factor", "~> 5.0.0"
   spec.add_dependency "omniauth", "~> 2.1.1"
