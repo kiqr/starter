@@ -1,0 +1,3 @@
+[submodule "kiqr-themes-base"]
+	path = kiqr-themes-base
+	url = git@github.com:kiqr/kiqr-themes-base.git
