@@ -1,0 +1,16 @@
+<h1><%= t(".title", app_name: Kiqr::Config.app_name) %></h1>
+<h2><%= t(".description") %></h2>
+
+<%= form_with(model: resource, as: resource_name, url: new_user_session_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :otp_attempt, t(".form.otp.label") %>
+    <%= form.text_field :otp_attempt, placeholder: t(".form.otp.placeholder") %>
+    <% if resource.errors[:otp_attempt].any? %>
+      <div class="error"><%= resource.errors[:otp_attempt].join(", ") %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit t(".form.submit_button") %>
+  </div>
+<% end %>

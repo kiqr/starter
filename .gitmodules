@@ -1,6 +1,0 @@
-[submodule "kiqr-themes-base"]
-	path = kiqr-themes-base
-	url = git@github.com:kiqr/kiqr-themes-base.git
-[submodule "kiqr-translations"]
-	path = kiqr-translations
-	url = git@github.com:kiqr/kiqr-translations.git

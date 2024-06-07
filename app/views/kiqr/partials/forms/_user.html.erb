@@ -1,0 +1,31 @@
+<%= form_with(model: user, url: form_submit_path, method: form_method) do |form| %>
+  <%= form.fields_for :personal_account, user.personal_account do |pa| %>
+    <div class="field">
+      <%= pa.label :name, t(".personal_account.name.label") %>
+      <%= pa.text_field :name, placeholder: t(".personal_account.name.placeholder") %>
+      <% if user.personal_account.errors[:name].any? %>
+        <div class="error"><%= user.personal_account.errors[:name].join(", ") %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :locale, t(".locale.label") %>
+    <%= form.select :locale, options_for_locale, { prompt: t(".locale.prompt") }, { placeholder: t(".locale.placeholder"), required: true, autofocus: true } %>
+    <% if user.errors[:locale].any? %>
+      <div class="error"><%= user.errors[:locale].join(", ") %></div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_zone, t(".time_zone.label") %>
+    <%= form.select :time_zone, options_for_time_zone, placeholder: t(".time_zone.placeholder"), required: true, autofocus: true %>
+    <% if user.errors[:time_zone].any? %>
+      <div class="error"><%= user.errors[:time_zone].join(", ") %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit t(".submit_button") %>
+  </div>
+<% end %>

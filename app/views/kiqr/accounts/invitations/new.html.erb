@@ -1,0 +1,18 @@
+<h1><%= t(".title") %></h1>
+<h2><%= t(".description") %></h2>
+
+<p><%= t(".content") %></p>
+
+<%= form_with(model: @invitation, url: account_invitations_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, placeholder: t(".form.email.placeholder"), required: true, autofocus: true %>
+    <% if @invitation.errors[:email].any? %>
+      <div class="error"><%= @invitation.errors[:email].join(", ") %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit t(".form.submit") %>
+  </div>
+<% end %>

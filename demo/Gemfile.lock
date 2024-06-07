@@ -1,10 +1,5 @@
 PATH
-  remote: ../kiqr-translations
-  specs:
-    kiqr-translations (0.1.0)
-
-PATH
-  remote: ../kiqr
+  remote: ..
   specs:
     kiqr (0.1.0)
       devise (~> 4.9, >= 4.9.3)
@@ -447,7 +442,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kiqr!
-  kiqr-translations!
   letter_opener_web (~> 2.0)
   meta-tags (~> 2.20)
   puma (>= 5.0)
