@@ -1,9 +1,0 @@
-<h1><%= t(".title") %></h1>
-<h2><%= t(".description") %></h2>
-<p><%= t(".content") %></p>
-
-<% if enabled? %>
-  <%= link_to t(".disable.button"), disable_two_factor_path %>
-<% else %>
-  <%= link_to t(".enable.button"), new_two_factor_path %>
-<% end %>
