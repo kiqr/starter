@@ -1,4 +1,14 @@
 PATH
+  remote: ../kiqr-themes-base
+  specs:
+    kiqr-themes-base (0.1.0)
+
+PATH
+  remote: ../kiqr-translations
+  specs:
+    kiqr-translations (0.1.0)
+
+PATH
   remote: .
   specs:
     kiqr (0.1.0)
@@ -245,6 +255,8 @@ DEPENDENCIES
   factory_bot (~> 6.4.3)
   faker
   kiqr!
+  kiqr-themes-base!
+  kiqr-translations!
   puma
   rails (~> 7.1)
   simplecov
