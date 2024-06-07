@@ -11,7 +11,7 @@ class Kiqr::SessionsController < Devise::SessionsController
   # Override the default Devise create method and check if the user has enabled 2FA
   # If 2FA is enabled, render the OTP form page. Otherwise, proceed with the default login flow.
   def otp_authentication
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:otp_attempt])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [ :otp_attempt ])
 
     if sign_in_params[:email]
       show_otp_code_form

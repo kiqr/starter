@@ -16,14 +16,14 @@ class Kiqr::OnboardingControllerTest < ActionDispatch::IntegrationTest
   test "can onboard user" do
     user = create(:user, personal_account: nil)
     sign_in user
-    post onboarding_path, params: {user: {personal_account_attributes: {name: "Foobar zoo"}}}
+    post onboarding_path, params: { user: { personal_account_attributes: { name: "Foobar zoo" } } }
     assert_redirected_to dashboard_path
     assert user.reload.personal_account.personal?
   end
 
   test "validates user onboarding" do
     sign_in create(:user, personal_account: nil)
-    post onboarding_path, params: {user: {personal_account_attributes: {name: "no"}}}
+    post onboarding_path, params: { user: { personal_account_attributes: { name: "no" } } }
     assert_response :unprocessable_entity
     assert_template :new
   end

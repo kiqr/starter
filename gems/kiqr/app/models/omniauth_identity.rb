@@ -15,7 +15,7 @@ class OmniauthIdentity < ApplicationRecord
 
   # Find an omniauth_identity by its provider and a uid.
   def self.from_payload(payload)
-    args = {provider: payload.provider, provider_uid: payload.uid}
+    args = { provider: payload.provider, provider_uid: payload.uid }
     where(args).first || new(args)
   end
 end

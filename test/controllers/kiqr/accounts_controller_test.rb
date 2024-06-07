@@ -17,7 +17,7 @@ class Kiqr::AccountsControllerTest < ActionDispatch::IntegrationTest
     user = create(:user)
     sign_in user
 
-    post accounts_path, params: {account: {name: "Foobar team"}}
+    post accounts_path, params: { account: { name: "Foobar team" } }
     new_team = Account.find_by(name: "Foobar team")
 
     assert_redirected_to dashboard_path(account_id: Account.last)
@@ -28,7 +28,7 @@ class Kiqr::AccountsControllerTest < ActionDispatch::IntegrationTest
     user = create(:user)
     sign_in user
 
-    post accounts_path, params: {account: {name: "no"}}
+    post accounts_path, params: { account: { name: "no" } }
     assert_response :unprocessable_entity
     # assert_template :new
   end
@@ -39,7 +39,7 @@ class Kiqr::AccountsControllerTest < ActionDispatch::IntegrationTest
     account.account_users << AccountUser.create(user:, owner: true)
 
     sign_in user
-    patch account_path(account_id: account), params: {account: {name: "New company name"}}
+    patch account_path(account_id: account), params: { account: { name: "New company name" } }
     account.reload
 
     assert_redirected_to edit_account_path
@@ -53,7 +53,7 @@ class Kiqr::AccountsControllerTest < ActionDispatch::IntegrationTest
 
     sign_in user
 
-    patch account_path(account_id: account), params: {account: {name: "no"}}
+    patch account_path(account_id: account), params: { account: { name: "no" } }
     assert_response :unprocessable_entity
   end
 end

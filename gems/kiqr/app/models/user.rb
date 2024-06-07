@@ -17,10 +17,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   # Validate time zone format.
-  validates :time_zone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}
+  validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name) }
 
   # Validate locale is a valid locale.
-  validates :locale, inclusion: {in: Kiqr::Config.available_locales.map(&:to_s)}
+  validates :locale, inclusion: { in: Kiqr::Config.available_locales.map(&:to_s) }
 
   # Get the user's full name from their personal account.
   delegate :name, to: :personal_account

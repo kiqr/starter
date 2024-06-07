@@ -1,7 +1,7 @@
 class CreateOmniauthIdentities < ActiveRecord::Migration[7.1]
   def change
     create_table :omniauth_identities do |t|
-      t.string :public_uid, index: {unique: true}
+      t.string :public_uid, index: { unique: true }
 
       t.references :user, foreign_key: true, null: false
 

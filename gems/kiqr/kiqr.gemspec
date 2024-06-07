@@ -3,8 +3,8 @@ require_relative "lib/kiqr/version"
 Gem::Specification.new do |spec|
   spec.name = "kiqr"
   spec.version = Kiqr::VERSION
-  spec.authors = ["Rasmus Kjellberg"]
-  spec.email = ["2277443+kjellberg@users.noreply.github.com"]
+  spec.authors = [ "Rasmus Kjellberg" ]
+  spec.email = [ "2277443+kjellberg@users.noreply.github.com" ]
   spec.homepage = "https://kiqr.dev"
   spec.summary = "SaaS framework for Rails"
   spec.description = "KIQR is a complete solution to kickstart your SaaS development."

@@ -38,14 +38,14 @@ class Kiqr::TwoFactorControllerTest < ActionDispatch::IntegrationTest
   test "does not activate 2fa with invalid verification code" do
     user = create(:user, otp_secret: User.generate_otp_secret)
     sign_in user
-    post verify_two_factor_path, params: {user: {otp_attempt: "123456"}}
+    post verify_two_factor_path, params: { user: { otp_attempt: "123456" } }
     assert_response :unprocessable_entity
   end
 
   test "activates 2fa with valid verification code" do
     user = create(:user, otp_secret: User.generate_otp_secret)
     sign_in user
-    post verify_two_factor_path, params: {user: {otp_attempt: user.current_otp}}
+    post verify_two_factor_path, params: { user: { otp_attempt: user.current_otp } }
     assert_redirected_to edit_two_factor_path
   end
 
@@ -53,12 +53,12 @@ class Kiqr::TwoFactorControllerTest < ActionDispatch::IntegrationTest
     user = create(:user, :otp_enabled)
     sign_in user
 
-    delete destroy_two_factor_path, params: {user: {otp_attempt: "123456"}}
+    delete destroy_two_factor_path, params: { user: { otp_attempt: "123456" } }
     assert_response :unprocessable_entity
     assert_template "two_factor/disable"
     assert user.reload.otp_required_for_login?
 
-    delete destroy_two_factor_path, params: {user: {otp_attempt: user.current_otp}}
+    delete destroy_two_factor_path, params: { user: { otp_attempt: user.current_otp } }
     assert_redirected_to edit_two_factor_path
     assert_not user.reload.otp_required_for_login?
   end

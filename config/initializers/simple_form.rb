@@ -18,12 +18,12 @@ SimpleForm.setup do |config|
       b.optional :min_max
       b.optional :readonly
 
-      b.use :hint, wrap_with: {tag: "span", class: "text-xs absolute mx-left absolute right-0 mr-4 text-neutral-400 italic"}
+      b.use :hint, wrap_with: { tag: "span", class: "text-xs absolute mx-left absolute right-0 mr-4 text-neutral-400 italic" }
       b.use :label, class: "text-left text-text font-bold text-sm uppercase whitespace-nowrap"
       b.use :input, class: "text-left appearance-none p-0 m-0 w-full border-0 focus:ring-0 focus:outline-none bg-transparent text-text placeholder-light", error_class: "is-invalid"
     end
 
-    w.use :error, wrap_with: {tag: "div", class: "text-xs text-rose-500 italic pt-1.5 text-left"}
+    w.use :error, wrap_with: { tag: "div", class: "text-xs text-rose-500 italic pt-1.5 text-left" }
   end
 
   config.wrappers :inline_checkbox, tag: "div", class: "flex items-center gap-x-4 w-full", error_class: "error" do |b|

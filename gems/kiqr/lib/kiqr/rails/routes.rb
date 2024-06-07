@@ -64,18 +64,18 @@ module ActionDispatch
 
       # => Account routes
       def account_routes(options)
-        resources :accounts, controller: options[:controllers][:accounts], only: [:new, :create]
+        resources :accounts, controller: options[:controllers][:accounts], only: [ :new, :create ]
         get "select-account", controller: options[:controllers][:accounts], action: :select, as: :select_account
 
         scope "(/team/:account_id)", account_id: %r{[^/]+} do
-          resource :account, only: [:edit, :update], controller: options[:controllers][:accounts]
-          resources :account_users, controller: options[:controllers][:account_users], only: [:index, :edit, :update, :destroy], path: "members"
+          resource :account, only: [ :edit, :update ], controller: options[:controllers][:accounts]
+          resources :account_users, controller: options[:controllers][:account_users], only: [ :index, :edit, :update, :destroy ], path: "members"
         end
       end
 
       # => Authentication routes
       def devise_routes(options)
-        devise_for :users, path_names: {sign_in: "login", sign_up: "create-account"}, controllers: {
+        devise_for :users, path_names: { sign_in: "login", sign_up: "create-account" }, controllers: {
           registrations: options[:controllers][:registrations],
           sessions: options[:controllers][:sessions]
         }
@@ -105,7 +105,7 @@ module ActionDispatch
 
         # Inviter
         teamable_scope do
-          resources :account_invitations, controller: "kiqr/accounts/invitations", only: [:index, :new, :create, :destroy]
+          resources :account_invitations, controller: "kiqr/accounts/invitations", only: [ :index, :new, :create, :destroy ]
         end
       end
 

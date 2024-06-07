@@ -9,7 +9,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_difference -> { account.account_invitations.count } do
-      post account_invitations_path(account_id: account), params: {account_invitation: {email: "foobar@agag.com"}}
+      post account_invitations_path(account_id: account), params: { account_invitation: { email: "foobar@agag.com" } }
     end
 
     assert_redirected_to account_invitations_path(account_id: account)
@@ -25,7 +25,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_raises(PublicUid::RecordNotFound) do
-      post account_invitations_path(account_id: foreign_account), params: {account_invitation: {email: "foobar@agag.com"}}
+      post account_invitations_path(account_id: foreign_account), params: { account_invitation: { email: "foobar@agag.com" } }
     end
   end
 
@@ -36,11 +36,11 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
 
     sign_in user
 
-    post account_invitations_path(account_id: account), params: {account_invitation: {email: "foobar@foobar.com"}}
+    post account_invitations_path(account_id: account), params: { account_invitation: { email: "foobar@foobar.com" } }
     assert_redirected_to account_invitations_path(account_id: account)
 
     assert_no_difference -> { account.account_invitations.count } do
-      post account_invitations_path(account_id: account), params: {account_invitation: {email: "foobar@foobar.com"}}
+      post account_invitations_path(account_id: account), params: { account_invitation: { email: "foobar@foobar.com" } }
     end
   end
 
@@ -52,7 +52,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_no_difference -> { account.account_invitations.count } do
-      post account_invitations_path(account_id: account), params: {account_invitation: {email: "foo"}}
+      post account_invitations_path(account_id: account), params: { account_invitation: { email: "foo" } }
     end
 
     assert_response :unprocessable_entity

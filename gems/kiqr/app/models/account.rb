@@ -7,7 +7,7 @@ class Account < ApplicationRecord
   include PublicUid::ModelConcern
 
   # Name is required with a minimum length of 3 and a maximum length of 255.
-  validates :name, presence: true, length: {minimum: 3, maximum: 255}
+  validates :name, presence: true, length: { minimum: 3, maximum: 255 }
 
   has_many :account_users, dependent: :destroy
   has_many :account_invitations, dependent: :destroy

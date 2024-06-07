@@ -24,7 +24,7 @@ module Kiqr
     # This is used to ensure that all routes are scoped to the current team. Personal account
     # routes are not affected.
     def default_url_options
-      {account_id: params[:account_id]}
+      { account_id: params[:account_id] }
     end
 
     # Redirect to onboarding if user is not onboarded
