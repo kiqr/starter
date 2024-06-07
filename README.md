@@ -26,10 +26,10 @@ Documentation for **KIQR** can be found on the [KIQR website](https://kiqr.dev).
 
 To get started with **KIQR**, follow these simple steps:
 
-#### 1. Clone the repository
+#### 1. Clone the starter kit repository
 
 ```console
-git clone git@github.com:kiqr/kiqr.git my-app
+git clone git@github.com:kiqr/starter-kit.git my-app
 ```
 
 #### 2. Run the setup script

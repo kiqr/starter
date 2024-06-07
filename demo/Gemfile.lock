@@ -1,10 +1,10 @@
 PATH
-  remote: gems/kiqr-translations
+  remote: ../kiqr-translations
   specs:
     kiqr-translations (0.1.0)
 
 PATH
-  remote: gems/kiqr
+  remote: ../kiqr
   specs:
     kiqr (0.1.0)
       devise (~> 4.9, >= 4.9.3)
