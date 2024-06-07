@@ -4,6 +4,7 @@ PATH
     kiqr (0.1.0)
       devise (~> 4.9, >= 4.9.3)
       devise-two-factor (~> 5.0.0)
+      meta-tags (~> 2.20)
       omniauth (~> 2.1.1)
       omniauth-rails_csrf_protection (~> 1.0.1)
       public_uid (~> 2.2)
@@ -125,6 +126,8 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    meta-tags (2.21.0)
+      actionpack (>= 6.0.0, < 7.2)
     mini_mime (1.1.5)
     minitest (5.23.1)
     net-imap (0.4.12)

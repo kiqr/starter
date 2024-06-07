@@ -16,6 +16,10 @@ en:
       omniauth_email_taken: "An account with this email already exists. Please sign in to that account first and then link your %{provider} account."
       settings_updated: "Your settings have been updated successfully."
       cant_cancel_while_team_owner: "Can't cancel your user account while owner of a team."
+    dashboard:
+      show:
+        title: "Dashboard"
+        content: "Welcome back, %{name}!"
     accounts:
       new:
         title: "Create a new team account"

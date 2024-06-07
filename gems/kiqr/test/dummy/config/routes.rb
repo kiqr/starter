@@ -13,9 +13,8 @@ Rails.application.routes.draw do
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
   teamable_scope do
-    # Defines the root path route ("/")
-    root "dashboard#show"
+    # Define custom application routes here
   end
 
-  get "about", to: "public#about"
+  root to: "public#landing_page"
 end
