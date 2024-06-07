@@ -15,8 +15,8 @@ gem "sprockets-rails"
 # gem "debug", ">= 1.0.0"
 
 # Base theme for testing
-gem "kiqr-themes-base", path: "../kiqr-themes-base"
-gem "kiqr-translations", path: "../kiqr-translations"
+gem "kiqr-themes-base", path: "kiqr-themes-base"
+gem "kiqr-translations", path: "kiqr-translations"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

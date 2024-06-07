@@ -1,7 +1,7 @@
 {
   "Minitest": {
     "coverage": {
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/config/initializers/devise.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/config/initializers/devise.rb": {
         "lines": [
           null,
           null,
@@ -318,7 +318,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/config.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/config.rb": {
         "lines": [
           1,
           1,
@@ -352,7 +352,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/config/initializers/omniauth.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/config/initializers/omniauth.rb": {
         "lines": [
           null,
           null,
@@ -361,7 +361,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/models/user.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -410,7 +410,224 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/services/teams/update.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/kiqr-themes-base/config/routes.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/app/controllers/kiqr/accounts_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/app/controllers/kiqr_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/app/helpers/kiqr/current_helper.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/framework.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/app/controllers/concerns/kiqr/set_current_attributes.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/services/teams/update.rb": {
         "lines": [
           1,
           1,
@@ -445,7 +662,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/application_service.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/application_service.rb": {
         "lines": [
           1,
           null,
@@ -488,7 +705,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/models/account.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/app/models/account.rb": {
         "lines": [
           1,
           null,
@@ -515,7 +732,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/models/account_user.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/app/models/account_user.rb": {
         "lines": [
           1,
           null,
@@ -538,7 +755,54 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/services/invitations/create.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/services/invitations/destroy.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/app/models/account_invitation.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/services/invitations/create.rb": {
         "lines": [
           1,
           1,
@@ -564,29 +828,7 @@
           null
         ]
       },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/models/account_invitation.rb": {
-        "lines": [
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/services/teams/create.rb": {
+      "/Users/rasmus/Code/kiqr/kiqr/lib/kiqr/services/teams/create.rb": {
         "lines": [
           1,
           1,
@@ -609,248 +851,12 @@
           null,
           1,
           null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/services/invitations/destroy.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/controllers/kiqr/accounts_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/controllers/kiqr_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/helpers/kiqr/current_helper.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/lib/kiqr/framework.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/rasmus/Code/kiqr/kiqr/kiqr/app/controllers/concerns/kiqr/set_current_attributes.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
           null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1717758099
+    "timestamp": 1717759755
   }
 }

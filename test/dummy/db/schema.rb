@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_103325) do
     t.datetime "accepted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "account_id", "email" ], name: "index_account_invitations_on_account_id_and_email", unique: true
-    t.index [ "account_id" ], name: "index_account_invitations_on_account_id"
-    t.index [ "email" ], name: "index_account_invitations_on_email"
-    t.index [ "public_uid" ], name: "index_account_invitations_on_public_uid", unique: true
+    t.index ["account_id", "email"], name: "index_account_invitations_on_account_id_and_email", unique: true
+    t.index ["account_id"], name: "index_account_invitations_on_account_id"
+    t.index ["email"], name: "index_account_invitations_on_email"
+    t.index ["public_uid"], name: "index_account_invitations_on_public_uid", unique: true
   end
 
   create_table "account_users", force: :cascade do |t|
@@ -31,10 +31,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_103325) do
     t.datetime "updated_at", null: false
     t.string "public_uid"
     t.boolean "owner", default: false, null: false
-    t.index [ "account_id", "user_id" ], name: "index_account_users_on_account_id_and_user_id", unique: true
-    t.index [ "account_id" ], name: "index_account_users_on_account_id"
-    t.index [ "public_uid" ], name: "index_account_users_on_public_uid", unique: true
-    t.index [ "user_id" ], name: "index_account_users_on_user_id"
+    t.index ["account_id", "user_id"], name: "index_account_users_on_account_id_and_user_id", unique: true
+    t.index ["account_id"], name: "index_account_users_on_account_id"
+    t.index ["public_uid"], name: "index_account_users_on_public_uid", unique: true
+    t.index ["user_id"], name: "index_account_users_on_user_id"
   end
 
   create_table "accounts", force: :cascade do |t|
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_103325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "account_invitations_count", default: 0
-    t.index [ "public_uid" ], name: "index_accounts_on_public_uid", unique: true
+    t.index ["public_uid"], name: "index_accounts_on_public_uid", unique: true
   end
 
   create_table "omniauth_identities", force: :cascade do |t|
@@ -58,8 +58,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_103325) do
     t.datetime "expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "public_uid" ], name: "index_omniauth_identities_on_public_uid", unique: true
-    t.index [ "user_id" ], name: "index_omniauth_identities_on_user_id"
+    t.index ["public_uid"], name: "index_omniauth_identities_on_public_uid", unique: true
+    t.index ["user_id"], name: "index_omniauth_identities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,11 +89,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_103325) do
     t.text "otp_backup_codes"
     t.string "locale", default: "en"
     t.string "time_zone", default: "UTC"
-    t.index [ "confirmation_token" ], name: "index_users_on_confirmation_token", unique: true
-    t.index [ "email" ], name: "index_users_on_email", unique: true
-    t.index [ "personal_account_id" ], name: "index_users_on_personal_account_id"
-    t.index [ "reset_password_token" ], name: "index_users_on_reset_password_token", unique: true
-    t.index [ "unlock_token" ], name: "index_users_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["personal_account_id"], name: "index_users_on_personal_account_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
   add_foreign_key "account_invitations", "accounts"
