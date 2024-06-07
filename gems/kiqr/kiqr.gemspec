@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "omniauth-rails_csrf_protection", "~> 1.0.1"
   spec.add_dependency "public_uid", "~> 2.2"
   spec.add_dependency "rqrcode", "~> 2.0"
+  spec.add_dependency "meta-tags", "~> 2.20"
 end

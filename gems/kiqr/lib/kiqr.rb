@@ -5,6 +5,7 @@ require "devise"
 require "devise-two-factor"
 require "public_uid"
 require "rqrcode"
+require "meta-tags"
 
 require "omniauth"
 require "omniauth/rails_csrf_protection"
