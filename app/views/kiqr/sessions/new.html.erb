@@ -3,8 +3,7 @@
 <h1><%= t(".title", app_name: Kiqr.config.app_name) %></h1>
 <h2><%= t(".description") %></h2>
 
-
-<%#= render "partials/social_accounts_login" %>
+<%= render partial: "social_buttons" %>
 
 <%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
   <div class="field">

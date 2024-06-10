@@ -46,6 +46,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
+          CI: true
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails test
 
