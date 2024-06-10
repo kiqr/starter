@@ -1,7 +1,0 @@
-<%= simple_form_for(account, url: form_submit_path, method: form_method) do |f| %>
-  <%= f.input :name, placeholder: (account.personal? ? t(".name.personal") : t(".name.team")), required: true, autofocus: true %>
-  <%#= f.input :custom_field %>
-  <div class="mt-4 flex justify-between items-center">
-    <%= f.button :submit, account.persisted? ? t(".button.save") : t(".button.create") %>
-  </div>
-<% end %>

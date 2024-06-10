@@ -1,7 +1,0 @@
-<% title t(".title") %>
-<%= render(PageLayouts::Settings::Component.new(
-  title: t(".title"),
-  description: t(".description")
-)) do %>
-  <%= render "kiqr/partials/forms/user", user: @user %>
-<% end %>

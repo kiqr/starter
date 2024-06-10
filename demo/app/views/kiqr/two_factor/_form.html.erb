@@ -1,9 +1,0 @@
-<div id="two_factor_form">
-  <p><%= t(".instructions") %></p>
-  <%= simple_form_for(user, url: verify_two_factor_path, method: :post) do |f| %>
-    <%= f.input :otp_attempt, label: t(".label"), placeholder: t(".placeholder") %>
-    <div>
-      <%= f.submit t(".verify_button"), class: "button" %>
-    </div>
-  <% end %>
-</div>

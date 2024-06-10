@@ -1,7 +1,0 @@
-<%= navbar do |navbar| %>
-  <%= link_to (user_signed_in? ? dashboard_path : root_path), class: 'flex justify-between font-bold text-primary' do %>
-    <i class="fa fa-star text-xl"></i>
-  <% end %>
-  <%= navbar.separator %>
-  <%= user_signed_in? ? render("partials/navigations/protected", navbar:) : render("partials/navigations/public", navbar:) %>
-<% end %>

@@ -1,9 +1,0 @@
-<section id="social-auth-buttons">
-  <div class="flex justify-between gap-x-4">
-    <% if Rails.env.development? || Rails.env.test? %>
-      <%= button_to '/auth/developer', data: { turbo: false }, class: 'button lg primary text-white' do %>
-        <%= t(".buttons.developer") %>
-      <% end %>
-    <% end %>
-  </div>
-</section>
