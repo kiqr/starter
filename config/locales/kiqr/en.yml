@@ -157,17 +157,15 @@ en:
         confirmation_message: "Are you sure? This will DELETE all of your data."
     sessions:
       new:
-        heading:
-          title: "Sign in to your %{app_name} account"
-          description: "Enter with your email address and password or select any of the other available options below."
-        form:
-          email:
-            placeholder: "Enter your email"
-          password:
-            placeholder: "Enter your password"
-          remember_me:
-            label: "Remember me"
-          submit_button: "Sign in"
+        title: "Sign in to your %{app_name} account"
+        description: "Enter with your email address and password or select any of the other available options below."
+        email:
+          placeholder: "Enter your email"
+        password:
+          placeholder: "Enter your password"
+        remember_me:
+          label: "Remember me"
+        submit_button: "Sign in"
         no_account: "Don't have an account?"
         sign_up: "Sign up!"
       otp:

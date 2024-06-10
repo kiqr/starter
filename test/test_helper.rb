@@ -18,7 +18,7 @@ FactoryBot.find_definitions
 
 module ActiveSupport
   class TestCase
-    # include Devise::Test::IntegrationHelpers
+    include Devise::Test::IntegrationHelpers
     include FactoryBot::Syntax::Methods
 
     # Run tests in parallel with specified workers

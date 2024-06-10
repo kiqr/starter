@@ -16,13 +16,14 @@ FactoryBot.define do
         user.account_users.create(account: evaluator.with_account, owner: true)
       end
     end
-    # trait :unconfirmed do
-    #   confirmed_at { nil }
-    # end
 
-    # trait :otp_enabled do
-    #   otp_required_for_login { true }
-    #   otp_secret { User.generate_otp_secret }
-    # end
+    trait :unconfirmed do
+      confirmed_at { nil }
+    end
+
+    trait :otp_enabled do
+      otp_required_for_login { true }
+      otp_secret { User.generate_otp_secret }
+    end
   end
 end
