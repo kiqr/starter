@@ -14,7 +14,7 @@ module Kiqr
           invitation = create(:account_invitation, account: account)
           @service.call(invitation: invitation, user: user)
 
-          refute AccountInvitation.find_by_id(invitation.id)
+          assert_not AccountInvitation.find_by_id(invitation.id)
         end
       end
     end
