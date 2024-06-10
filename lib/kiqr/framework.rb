@@ -16,8 +16,8 @@ module Kiqr
     private
 
     # Set a flash message with a translation key
-    def kiqr_flash_message(type, message, **)
-      flash[type] = I18n.t("kiqr.flash_messages.#{message}", **)
+    def kiqr_flash_message(type, message, args)
+      flash[type] = I18n.t("kiqr.flash_messages.#{message}", args)
     end
 
     # Automatically include account_id in all URL options if it is already present in the params.
