@@ -30,7 +30,7 @@ module ActionDispatch
       # Set default options for controllers if not set.
       def default_controllers(options)
         options[:controllers] ||= {}
-        options[:controllers][:dashboard] ||= "kiqr/dashboard"
+        options[:controllers][:dashboard] ||= "dashboard"
         options[:controllers][:accounts] ||= "kiqr/accounts"
         options[:controllers][:account_users] ||= "kiqr/account_users"
         options[:controllers][:invitations] ||= "kiqr/invitations"
