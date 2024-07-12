@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "public_uid", "~> 2.2"
   spec.add_dependency "rqrcode", "~> 2.0"
   spec.add_dependency "meta-tags", "~> 2.20"
+  spec.add_dependency "loaf", "~> 0.10.0"
 end
