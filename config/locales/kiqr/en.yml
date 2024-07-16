@@ -25,8 +25,8 @@ en:
         title: "Create a new team account"
         description: "Complete the form below to create a new team account"
       edit:
-        title: "Profile settings"
-        description: "Edit your account profile."
+        title: "Team settings"
+        description: "Edit your team's profile."
       select:
         title: "Select account"
         description: "Select a team account to manage."

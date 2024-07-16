@@ -1,6 +1,7 @@
 module Kiqr
   class AccountsController < KiqrController
     before_action :ensure_team_and_setup_account, only: %i[edit update]
+    before_action :setup_breadcrumbs, only: %i[edit update]
 
     def new
       @account = Account.new
@@ -19,6 +20,7 @@ module Kiqr
     end
 
     def edit
+      add_breadcrumb "Team settings", edit_account_path(current_account)
     end
 
     def update
@@ -53,5 +55,11 @@ module Kiqr
       @account.persisted? ? :patch : :post
     end
     helper_method :form_method
+
+    def setup_breadcrumbs
+      return unless current_account.present?
+
+      add_breadcrumb current_account.name, edit_account_path(current_account)
+    end
   end
 end

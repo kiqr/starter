@@ -1,5 +1,12 @@
 class KiqrController < ApplicationController
+  before_action :setup_dashboard_breadcrumb
+
   private
+
+  # Add the dashboard breadcrumb
+  def setup_dashboard_breadcrumb
+    add_breadcrumb helpers.irelia_icon { "fa fa-home" }, dashboard_path
+  end
 
   # Get the options for the locale form select field
   def options_for_locale
