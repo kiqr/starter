@@ -19,10 +19,6 @@ module Kiqr
       end
     end
 
-    def edit
-      add_breadcrumb "Team settings", edit_account_path(current_account)
-    end
-
     def update
       @account.assign_attributes(account_params)
 
@@ -57,9 +53,7 @@ module Kiqr
     helper_method :form_method
 
     def setup_breadcrumbs
-      return unless current_account.present?
-
-      add_breadcrumb current_account.name, edit_account_path(current_account)
+      add_breadcrumb "Team settings", edit_account_path(current_account)
     end
   end
 end
