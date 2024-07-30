@@ -38,3 +38,11 @@ en:
         title: "Setup your personal account"
         description: "Finish the registration by setting up your user profile."
         submit: "Finish onboarding"
+    shared:
+      user_fields:
+        locale:
+          label: "Language"
+          prompt: "Select your language"
+        time_zone:
+          label: "Time zone"
+          prompt: "Select your time zone"

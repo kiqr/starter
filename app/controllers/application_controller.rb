@@ -19,6 +19,5 @@ class ApplicationController < ActionController::Base
     return unless user_signed_in?
 
     add_breadcrumb helpers.irelia_icon { "fa fa-home" }, dashboard_path
-    add_breadcrumb current_account.name, dashboard_path if current_account.present?
   end
 end

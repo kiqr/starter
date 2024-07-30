@@ -1,2 +1,4 @@
-<%= form.select :locale, options_for_locale, { prompt: t(".locale.prompt") }, { placeholder: t(".locale.placeholder"), required: true, autofocus: true } %>
-<%= form.select :time_zone, options_for_time_zone, placeholder: t(".time_zone.placeholder"), required: true, autofocus: true %>
+<%= irelia_stack do %>
+  <%= form.select :locale, options_for_locale, { prompt: t(".locale.prompt") }, { label: t(".locale.label"), required: true } %>
+  <%= form.select :time_zone, options_for_time_zone, { prompt: t(".time_zone.prompt") }, { label: t(".time_zone.label"), required: true } %>
+<% end %>
