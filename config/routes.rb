@@ -13,15 +13,16 @@ Rails.application.routes.draw do
   # These routes are required for the KIQR core to function properly.
   kiqr_routes
 
-  # => Letter Opener Web
-  # This route is required for the Letter Opener Web to function properly.
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
-
-  # => Teamable scope
+  # => App routes
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
   teamable_scope do
   end
+
+  # => Development routes
+  # These routes are only available in development environment.
+  # Loads file: config/routes/development.rb
+  draw "development" if Rails.env.development?
 
   # Defines the root path route ("/")
   root "public#landing_page"
