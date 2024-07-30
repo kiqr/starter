@@ -1,6 +1,7 @@
 class PublicController < ApplicationController
-  # Don't redirect to sign in page if user is not logged in
+  # Don't require authentication for the landing page.
   skip_before_action :authenticate_user!
+  skip_before_action :ensure_onboarded
 
   # => Landing page
   # This method is used to render the landing page of the application
