@@ -7,8 +7,8 @@ module Kiqr
       before_action :ensure_onboarded, unless: :devise_controller?
       before_action :setup_locale
 
-      include Kiqr::SetCurrentAttributes
-      include Kiqr::CurrentHelper
+      include SetCurrentAttributes
+      include CurrentHelper
 
       helper_method :after_select_account_path
     end
