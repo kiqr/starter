@@ -56,7 +56,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # A web interface for browsing Ruby on Rails sent emails. [https://github.com/fgrehm/letter_opener_web]
-  gem "letter_opener_web", "~> 2.0"
+  gem "letter_opener_web", "~> 3.0"
 
   # Lint your ERB or HTML files.
   gem "erb_lint", require: false
