@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render partial: "partials/head" %>
+  </head>
+  <body>
+    <%= render partial: "partials/flash_message" %>
+    <%= irelia_app_shell do |app_shell| %>
+      <%= render partial: "partials/sidebar", locals: { app_shell: app_shell } %>
+      <% app_shell.with_breadcrumbs(breadcrumbs: breadcrumb_trail) %>
+      <%= yield %>
+    <% end %>
+  </body>
+</html>

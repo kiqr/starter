@@ -1,0 +1,30 @@
+<% app_shell.with_sidebar do |sidebar| %>
+  <% sidebar.with_brand(url: dashboard_path) { "KIQR" } %>
+
+  <% sidebar.with_navigation(grow: true) do |navbar| %>
+    <% navbar.with_link(url: dashboard_path, icon: "fa fa-home", active: current_base_path?(dashboard_path)) { "Dashboard" } %>
+  <% end %>
+
+  <% sidebar.with_navigation do |navbar| %>
+    <% navbar.with_link(url: "#", icon: "fa fa-question-circle") { "Support" } %>
+    <% navbar.with_link(url: edit_settings_path, icon: "fa fa-gear", active: current_base_path?(edit_settings_path)) { "Settings" } %>
+    <% navbar.with_link(url: edit_account_path, icon: "fa fa-users", active: current_base_path?(edit_settings_path)) { "Team settings" } if current_account&.team? %>
+    <% navbar.with_link(url: "#", icon: "fa fa-right-from-bracket") { "Sign out" } %>
+  <% end %>
+
+  <% sidebar.with_section do %>
+    <%=
+      irelia_account_switcher(
+        team_name: current_account&.name,
+        name: current_user.name,
+        avatar: "https://picsum.photos/50",
+        direction: :up,
+      ) do |switcher|
+        switcher.with_account(account_name: current_user.name, url: dashboard_path(account_id: nil), personal: true)
+        current_user.accounts.each do |account|
+          switcher.with_account(account_name: account.name, url: dashboard_path(account), personal: account.personal)
+        end
+      end
+    %>
+  <% end if current_user.onboarded? %>
+<% end %>
