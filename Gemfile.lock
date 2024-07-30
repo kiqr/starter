@@ -10,7 +10,7 @@ GIT
       view_component-contrib (~> 0.2.2)
 
 PATH
-  remote: gems/kiqr
+  remote: lib/kiqr
   specs:
     kiqr (0.1.0)
       devise (~> 4.9, >= 4.9.3)

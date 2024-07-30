@@ -49,7 +49,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Core gem for KIQR. It provides the basic functionality for the application [https://github.com/kiqr/kiqr]
-gem "kiqr", path: "gems/kiqr"
+gem "kiqr", path: "lib/kiqr"
 
 # Frontend gem for KIQR. It provides the view components and design system for the application [https://github.com/kiqr/irelia]
 gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
