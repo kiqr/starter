@@ -154,6 +154,10 @@ GEM
       rubocop
       smart_properties
     erubi (1.13.0)
+    factory_bot (6.4.6)
+      activesupport (>= 5.0.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -282,6 +286,10 @@ GEM
       activesupport (= 7.2.0.beta3)
       bundler (>= 1.15.0)
       railties (= 7.2.0.beta3)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -444,6 +452,8 @@ DEPENDENCIES
   capybara
   debug
   erb_lint
+  factory_bot (~> 6.4.3)
+  faker
   importmap-rails
   irelia!
   jbuilder
@@ -452,6 +462,7 @@ DEPENDENCIES
   meta-tags (~> 2.21)
   puma (>= 5.0)
   rails (~> 7.2.0.beta2)
+  rails-controller-testing
   rubocop-rails-omakase
   selenium-webdriver
   sprockets-rails
