@@ -13,16 +13,26 @@ Rails.application.routes.draw do
   # These routes are required for the KIQR core to function properly.
   kiqr_routes
 
-  # => App routes
-  # Routes inside this block will be prefixed with /team/<team_id> if
-  # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
-  teamable_scope do
-  end
-
-  # => Development routes
+  # => Development
   # These routes are only available in development environment.
   # Loads file: config/routes/development.rb
   draw "development" if Rails.env.development?
+
+  # => Users
+  # Routes accessed under the /users route scope.
+  draw "users"
+
+  # => App routes
+  # Routes inside this block will be prefixed with /team/<team_id> if
+  # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
+  #
+  # Example:
+  # /team/:team_id/dashboard <- if user is signed in to a team account
+  # /dashboard <- if user is browsing the app without a team account
+  #
+  teamable_scope do
+    # Define your application routes inside this block!
+  end
 
   # Defines the root path route ("/")
   root "public#landing_page"

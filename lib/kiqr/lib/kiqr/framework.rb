@@ -51,9 +51,14 @@ module Kiqr
       uri.to_s
     end
 
-    # Override this method to change the path
+    # Where to redirect after selecting an account.
     def after_select_account_path(params)
       dashboard_path(params)
+    end
+
+    # Where to redirect after the onboarding process is completed.
+    def after_onboarding_path(user)
+      after_sign_in_path_for(user)
     end
 
     # The locale is set to the user's locale if present, otherwise it is set to the default locale

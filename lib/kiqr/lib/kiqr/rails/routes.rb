@@ -7,9 +7,7 @@ module ActionDispatch
 
         dashboard_route(options)
         account_routes(options)
-        devise_routes(options)
         invitation_routes(options)
-        onboarding_routes(options)
         omniauth_routes(options)
         development_routes(options) if Rails.env.development?
 
@@ -73,18 +71,6 @@ module ActionDispatch
         end
       end
 
-      # => Authentication routes
-      def devise_routes(options)
-        devise_for :users, path_names: { sign_in: "login", sign_up: "create-account" }, controllers: {
-          registrations: options[:controllers][:registrations],
-          sessions: options[:controllers][:sessions]
-        }
-
-        devise_scope :user do
-          get "users/cancel-account", controller: options[:controllers][:registrations], action: :cancel, as: :delete_user_registration
-        end
-      end
-
       # => Teamable routes
       # Routes inside this block will be prefixed with /team/<team_id> if
       # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
@@ -106,15 +92,6 @@ module ActionDispatch
         # Inviter
         teamable_scope do
           resources :account_invitations, controller: "kiqr/accounts/invitations", only: [ :index, :new, :create, :destroy ]
-        end
-      end
-
-      # => Onboarding routes
-      # Routes for onboarding steps.
-      def onboarding_routes(options)
-        scope path: :users do
-          get "onboarding", controller: options[:controllers][:onboarding], action: :new
-          post "onboarding", controller: options[:controllers][:onboarding], action: :create
         end
       end
     end
