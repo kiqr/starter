@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kiqr/irelia.git
-  revision: bdf0971c352c6988ce9f26a92cbd199a7d84599b
+  revision: 838ce2821778c7bf636e6babc8a9ffdea4ca6f86
   branch: main
   specs:
     irelia (0.1.0)
@@ -366,7 +366,7 @@ GEM
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.1)
+    sprockets-rails (3.5.2)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)

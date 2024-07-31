@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SetCurrentAttributes
   include CurrentHelper
+  include RendersSubmenu
 
   # => Controller hooks
   before_action :authenticate_user!

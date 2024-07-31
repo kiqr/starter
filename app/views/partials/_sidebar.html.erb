@@ -1,17 +1,17 @@
-<% app_shell.with_sidebar do |sidebar| %>
-  <% sidebar.with_brand(url: dashboard_path) { "KIQR" } %>
+<% sidebar.with_brand(url: dashboard_path) { "KIQR" } %>
 
-  <% sidebar.with_navigation(grow: true) do |navbar| %>
-    <% navbar.with_link(url: dashboard_path, icon: "fa fa-home", active: current_base_path?(dashboard_path)) { "Dashboard" } %>
-  <% end %>
+<% sidebar.with_navigation(grow: true) do |navbar| %>
+  <% navbar.with_link(url: dashboard_path, icon: "fa fa-home", active: current_base_path?(dashboard_path)) { "Dashboard" } %>
+<% end %>
 
-  <% sidebar.with_navigation do |navbar| %>
-    <% navbar.with_link(url: "#", icon: "fa fa-question-circle") { "Support" } %>
-    <% navbar.with_link(url: user_settings_profile_path, icon: "fa fa-gear", active: current_base_path?("/settings/")) { "Settings" } %>
-    <% navbar.with_link(url: edit_account_path, icon: "fa fa-users", active: current_base_path?(edit_settings_path)) { "Team settings" } if current_account&.team? %>
-    <% navbar.with_link(url: "#", icon: "fa fa-right-from-bracket") { "Sign out" } %>
-  <% end %>
+<% sidebar.with_navigation do |navbar| %>
+  <% navbar.with_link(url: "#", icon: "fa fa-question-circle") { "Support" } %>
+  <% navbar.with_link(url: user_settings_profile_path, icon: "fa fa-gear", active: current_base_path?("/settings/")) { "Settings" } %>
+  <% navbar.with_link(url: edit_account_path, icon: "fa fa-users", active: current_base_path?(edit_settings_path)) { "Team settings" } if current_account&.team? %>
+  <% navbar.with_link(url: "#", icon: "fa fa-right-from-bracket") { "Sign out" } %>
+<% end %>
 
+<% if current_user.onboarded? %>
   <% sidebar.with_section do %>
     <%=
       irelia_account_switcher(
@@ -26,5 +26,5 @@
         end
       end
     %>
-  <% end if current_user.onboarded? %>
+  <% end %>
 <% end %>

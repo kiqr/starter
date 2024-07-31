@@ -5,10 +5,14 @@
   </head>
   <body>
     <%= render partial: "partials/flash_message" %>
-    <%= irelia_app_shell do |app_shell| %>
-      <%= render partial: "partials/sidebar", locals: { app_shell: app_shell } %>
-      <% app_shell.with_breadcrumbs(breadcrumbs: breadcrumb_trail) %>
-      <%= yield %>
-    <% end %>
+    <%=
+      # => Render the Irelia app shell with breadcrumbs and sidebar
+      irelia_app_shell do |app|
+        app.with_breadcrumbs(breadcrumbs: breadcrumb_trail)
+        app.with_sidebar { |sidebar| render(partial: "partials/sidebar", locals: { sidebar: sidebar }) }
+        app.with_submenu { |submenu| render(partial: submenu_partial, locals: { menu: submenu }) } if has_submenu?
+        yield
+      end
+    %>
   </body>
 </html>
