@@ -1,0 +1,4 @@
+<%= irelia_navigation(html_options: { class: "mb-10" }) do |nav|  %>
+  <%= nav.with_link(icon: "fa fa-user", active: current_base_path?(user_settings_profile_path), url: user_settings_profile_path) { "Profile" } %>
+  <%= nav.with_link(icon: "fa fa-lock",active: current_base_path?(edit_user_registration_path), url: edit_user_registration_path) { "Login credentials" } %>
+<% end %>
