@@ -1,4 +1,4 @@
-module RendersSubmenu
+module Kiqr::RendersSubmenu
   extend ActiveSupport::Concern
 
   included do

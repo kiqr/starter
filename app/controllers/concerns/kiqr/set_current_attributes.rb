@@ -1,4 +1,4 @@
-module SetCurrentAttributes
+module Kiqr::SetCurrentAttributes
   extend ActiveSupport::Concern
 
   included do

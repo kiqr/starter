@@ -4,7 +4,7 @@
     <%= render partial: "partials/head" %>
   </head>
   <body>
-    <%= render partial: "partials/flash_message" %>
+    <%= render_flash_messages %>
     <%=
       # => Render the Irelia app shell with breadcrumbs and sidebar
       irelia_app_shell do |app|
