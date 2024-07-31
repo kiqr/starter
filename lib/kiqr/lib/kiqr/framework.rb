@@ -15,11 +15,6 @@ module Kiqr
 
     private
 
-    # Set a flash message with a translation key
-    def kiqr_flash_message(type, message, **kwargs)
-      flash[type] = I18n.t("kiqr.flash_messages.#{message}", **kwargs)
-    end
-
     # Automatically include account_id in all URL options if it is already present in the params.
     # This is used to ensure that all routes are scoped to the current team. Personal account
     # routes are not affected.

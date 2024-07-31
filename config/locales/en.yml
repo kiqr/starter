@@ -28,6 +28,8 @@
 #       enabled: "ON"
 
 en:
+  flash_messages:
+    profile_updated: "Profile updated successfully."
   dashboard:
     show:
       title: "Dashboard"
@@ -38,6 +40,12 @@ en:
         title: "Setup your personal account"
         description: "Finish the registration by setting up your user profile."
         submit: "Finish onboarding"
+    settings:
+      profiles:
+        show:
+          title: "Profile settings"
+          description: "Update your personal information and settings."
+          submit: "Update profile"
     shared:
       user_fields:
         locale:

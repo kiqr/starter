@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   draw "development" if Rails.env.development?
 
   # => Users
-  # Routes accessed under the /users route scope.
+  # Routes related to the user model.
   draw "users"
 
   # => App routes

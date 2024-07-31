@@ -7,7 +7,7 @@
 
   <% sidebar.with_navigation do |navbar| %>
     <% navbar.with_link(url: "#", icon: "fa fa-question-circle") { "Support" } %>
-    <% navbar.with_link(url: edit_settings_path, icon: "fa fa-gear", active: current_base_path?(edit_settings_path)) { "Settings" } %>
+    <% navbar.with_link(url: user_settings_profile_path, icon: "fa fa-gear", active: current_base_path?("/settings/")) { "Settings" } %>
     <% navbar.with_link(url: edit_account_path, icon: "fa fa-users", active: current_base_path?(edit_settings_path)) { "Team settings" } if current_account&.team? %>
     <% navbar.with_link(url: "#", icon: "fa fa-right-from-bracket") { "Sign out" } %>
   <% end %>

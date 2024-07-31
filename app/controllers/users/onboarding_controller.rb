@@ -12,7 +12,7 @@ class Users::OnboardingController < ApplicationController
     # if they have already completed it. A user can only have one
     # personal account. If they have one, they have completed the
     # onboarding process.
-    redirect_to after_onboarding_path if current_user.onboarded?
+    redirect_to dashboard_path if current_user.onboarded?
 
     # This is to set the breadcrumbs for the onboarding process.
     add_breadcrumb I18n.t("kiqr.breadcrumbs.onboarding"), onboarding_path

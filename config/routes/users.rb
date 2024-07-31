@@ -12,3 +12,9 @@ scope :users do
   get "onboarding", controller: "users/onboarding", action: :new
   patch "onboarding", controller: "users/onboarding", action: :update
 end
+
+namespace :user, path: nil, module: :users do
+  namespace :settings do
+    resource "profile", only: [ :show, :update ]
+  end
+end

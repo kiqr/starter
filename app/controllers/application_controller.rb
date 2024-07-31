@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
 
     add_breadcrumb helpers.irelia_icon { "fa fa-home" }, dashboard_path
   end
+
+  # Set a flash message with a translation key
+  def kiqr_flash_message(type, message, **kwargs)
+    flash[type] = I18n.t("flash_messages.#{message}", **kwargs)
+  end
 end

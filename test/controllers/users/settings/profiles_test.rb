@@ -1,10 +1,10 @@
 require "test_helper"
 
-class Kiqr::PreferencesControllerTest < ActionDispatch::IntegrationTest
+class Users::Settings::ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit page" do
     user = create(:user)
     sign_in(user)
-    get edit_settings_path
+    get user_settings_profile_path
     assert_response :success
   end
 
@@ -12,8 +12,8 @@ class Kiqr::PreferencesControllerTest < ActionDispatch::IntegrationTest
     user = create(:user, time_zone: "UTC", locale: "en")
     sign_in(user)
 
-    patch settings_path, params: { user: { time_zone: "Stockholm", locale: "sv" } }
-    assert_redirected_to edit_settings_path
+    patch user_settings_profile_path, params: { user: { time_zone: "Stockholm", locale: "sv" } }
+    assert_redirected_to user_settings_profile_path
     assert_equal "Stockholm", user.reload.time_zone
     assert_equal "sv", user.reload.locale
   end
@@ -22,10 +22,10 @@ class Kiqr::PreferencesControllerTest < ActionDispatch::IntegrationTest
     user = create(:user)
     sign_in user
 
-    patch settings_path, params: { user: { personal_account_attributes: { name: "Personal account name" } } }
+    patch user_settings_profile_path, params: { user: { personal_account_attributes: { name: "Personal account name" } } }
     user.reload
 
-    assert_redirected_to edit_settings_path
+    assert_redirected_to user_settings_profile_path
     assert_equal "Personal account name", user.personal_account.name
   end
 end
