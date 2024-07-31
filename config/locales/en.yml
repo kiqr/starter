@@ -28,6 +28,10 @@
 #       enabled: "ON"
 
 en:
+  breadcrumbs:
+    onboarding: "Onboarding"
+    settings: "Settings"
+    user_profile: "User profile"
   flash_messages:
     profile_updated: "Profile updated successfully."
   dashboard:
@@ -43,7 +47,7 @@ en:
     settings:
       profiles:
         show:
-          title: "Profile settings"
+          title: "User profile"
           description: "Update your personal information and settings."
           submit: "Update profile"
     shared:

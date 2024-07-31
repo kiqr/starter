@@ -13,8 +13,6 @@ en:
     settings_updated: "Your settings have been updated successfully."
     cant_cancel_while_team_owner: "Can't cancel your user account while owner of a team."
   kiqr:
-    breadcrumbs:
-      onboarding: "Onboarding"
     languages:
       en: "English"
       sv: "Swedish"

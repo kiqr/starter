@@ -1,4 +1,9 @@
-class Users::Settings::ProfilesController < ApplicationController
+class Users::Settings::ProfilesController < Users::Settings::ApplicationController
+  before_action do
+    # This is to set the breadcrumbs for the onboarding process.
+    add_breadcrumb I18n.t("breadcrumbs.user_profile"), user_settings_profile_path
+  end
+
   # GET /settings/profile
   def show
     @user = find_user
