@@ -53,6 +53,9 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
+      - name: Lint views for consistent style
+        run: bin/erblint
+
   test:
     runs-on: ubuntu-latest
 

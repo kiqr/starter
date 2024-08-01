@@ -2,6 +2,7 @@
 EnableDefaultLinters: true
 exclude:
   - "vendor/bundle/**/*"
+  - "lib/kiqr/test/dummy/**/*"
 linters:
   ErbSafety:
     enabled: true

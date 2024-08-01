@@ -8,11 +8,11 @@ Rake::Task["default"].clear
 
 namespace :lint do
   task :rubocop do
-    sh "bundle exec rubocop"
+    sh "bin/rubocop"
   end
 
   task :erb do
-    sh "bundle exec erblint --lint-all"
+    sh "bin/erblint"
   end
 end
 
