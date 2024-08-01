@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kiqr/irelia.git
-  revision: a814ebf92f91ae40873636aa8278da868759a50f
+  revision: 41b043292187a4c7ca3a384b23f1dc69aa2351d4
   branch: main
   specs:
     irelia (0.1.0)
@@ -146,12 +146,12 @@ GEM
       rotp (~> 6.0)
     drb (2.2.1)
     dry-initializer (3.1.1)
-    erb_lint (0.5.0)
+    erb_lint (0.6.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
       rainbow
-      rubocop
+      rubocop (>= 1)
       smart_properties
     erubi (1.13.0)
     factory_bot (6.4.6)
@@ -316,7 +316,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.2)
+    rexml (3.3.4)
       strscan
     rotp (6.3.0)
     rouge (4.3.0)
@@ -324,7 +324,7 @@ GEM
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
-    rubocop (1.65.0)
+    rubocop (1.65.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
