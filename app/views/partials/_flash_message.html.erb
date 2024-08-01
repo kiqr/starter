@@ -1,7 +1,9 @@
-<% if flash.any? %>
-  <div class="fixed bottom-0 right-0 p-10 w-[500px] flex flex-col gap-y-5">
-    <% flash.each do |type, message| %>
-      <%= irelia_notification(text: message, variant: type.to_sym) %>
-    <% end %>
-  </div>
-<% end %>
+<div id="flash_messages">
+  <% if flash.any? %>
+    <div class="fixed bottom-0 right-0 p-10 w-[500px] flex flex-col gap-y-5">
+      <% flash.each do |type, message| %>
+        <%= irelia_notification(variant: type.to_sym) { message } %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

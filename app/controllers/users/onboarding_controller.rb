@@ -15,7 +15,7 @@ class Users::OnboardingController < ApplicationController
     redirect_to dashboard_path if current_user.onboarded?
 
     # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.onboarding"), onboarding_path
+    add_breadcrumb I18n.t("breadcrumbs.onboarding"), onboarding_path
   end
 
   def new

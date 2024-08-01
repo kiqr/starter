@@ -43,11 +43,20 @@ class ApplicationController < ActionController::Base
     flash[type] = I18n.t("flash_messages.#{message}", **kwargs)
   end
 
+  def kiqr_flash_message_now(type, message, **kwargs)
+    flash.now[type] = I18n.t("flash_messages.#{message}", **kwargs)
+  end
+
   # The locale is set to the user's locale if present, otherwise it is set to the default locale
   # Get available locales and default_locale from Kiqr::Config
   def setup_locales
     I18n.default_locale = Kiqr::Config.default_locale
     I18n.available_locales = Kiqr::Config.available_locales
     I18n.locale = current_user&.locale&.to_sym || I18n.default_locale
+  end
+
+  # Render the flash messages stream
+  def render_flash_messages_stream
+    turbo_stream.replace('flash_messages', partial: 'partials/flash_message')
   end
 end

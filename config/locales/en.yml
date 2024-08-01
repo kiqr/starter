@@ -34,6 +34,7 @@ en:
     user_profile: "User profile"
   flash_messages:
     profile_updated: "Profile updated successfully."
+    email_change_pending_cancelled: "Email change request cancelled."
   dashboard:
     show:
       title: "Dashboard"
@@ -50,6 +51,11 @@ en:
           title: "User profile"
           description: "Update your personal information and settings."
           submit: "Update profile"
+          notifications:
+            pending_email_change:
+              title: "Pending email change"
+              text: "Please confirm your new email address (<strong>%{email}</strong>) by clicking the confirmation link in the email we sent you"
+              cancel: "or <u>cancel</u> the change."
     shared:
       user_fields:
         email:

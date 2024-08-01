@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kiqr/irelia.git
-  revision: 41b043292187a4c7ca3a384b23f1dc69aa2351d4
+  revision: 9ede6f5ca7503bc3c744b182021cbb1f0c0285a4
   branch: main
   specs:
     irelia (0.1.0)

@@ -8,7 +8,6 @@ devise_scope :user do
 end
 
 scope :users do
-  # => Onboarding routes
   get "onboarding", controller: "users/onboarding", action: :new
   patch "onboarding", controller: "users/onboarding", action: :update
 end
@@ -16,5 +15,6 @@ end
 namespace :user, path: nil, module: :users do
   namespace :settings do
     resource "profile", only: [ :show, :update ]
+    delete "profile/cancel-pending-email", controller: "profiles", action: :cancel_pending_email, as: :cancel_pending_email
   end
 end

@@ -23,6 +23,18 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
     end
   end
 
+
+  def cancel_pending_email
+    @user = find_user
+    @user.cancel_pending_email_change!
+    kiqr_flash_message_now(:notice, :email_change_pending_cancelled)
+
+    render turbo_stream: [
+      turbo_stream.remove('pending_email_notification'),
+      render_flash_messages_stream
+    ]
+  end
+
   private
 
   def find_user

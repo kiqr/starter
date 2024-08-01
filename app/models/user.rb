@@ -41,4 +41,8 @@ class User < ApplicationRecord
       otp_backup_codes: nil
     )
   end
+
+  def cancel_pending_email_change!
+    update!(unconfirmed_email: nil, confirmation_sent_at: nil)
+  end
 end
