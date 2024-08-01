@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "erb_lint/cli"
+require "rubygems"
+require "bundler/setup"
 
 ARGV.unshift("--lint-all")
 
-cli = ERBLint::CLI.new
-exit(cli.run)
+load Gem.bin_path("erb_lint", "erblint")
