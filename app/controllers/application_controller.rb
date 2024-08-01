@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Kiqr::SetCurrentAttributes
   include Kiqr::RendersSubmenu
+  include Kiqr::CurrentAccountHelper
+  include Kiqr::UrlHelper
 
   # => Controller hooks
   before_action :authenticate_user!
