@@ -31,6 +31,6 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
 
   def user_profile_params
     personal_account_attributes = Kiqr.config.account_attributes.prepend(:id)
-    params.require(:user).permit(:time_zone, :locale, personal_account_attributes: personal_account_attributes)
+    params.require(:user).permit(:email, :time_zone, :locale, personal_account_attributes: personal_account_attributes)
   end
 end

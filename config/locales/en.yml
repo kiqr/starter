@@ -52,6 +52,10 @@ en:
           submit: "Update profile"
     shared:
       user_fields:
+        email:
+          label: "Email"
+          placeholder: "Enter a valid email address"
+          hint: "Your email address will be used for login and notifications."
         locale:
           label: "Language"
           prompt: "Select your language"

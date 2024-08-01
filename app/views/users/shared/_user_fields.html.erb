@@ -1,3 +1,8 @@
+<%= form.text_field :email, label: t(".email.label"), placeholder: t(".email.placeholder"), hint: t(".email.hint"), required: true %>
+<% if form.object.unconfirmed_email? %>
+  <%= irelia_notification { form.object.unconfirmed_email } %>
+<% end %>
+
 <%= irelia_stack do %>
   <%= form.select :locale, options_for_locale, { prompt: t(".locale.prompt") }, { label: t(".locale.label"), required: true } %>
   <%= form.select :time_zone, options_for_time_zone, { prompt: t(".time_zone.prompt") }, { label: t(".time_zone.label"), required: true } %>
