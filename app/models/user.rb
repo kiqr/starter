@@ -18,6 +18,9 @@ class User < ApplicationRecord
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name) }
   validates :locale, inclusion: { in: Kiqr::Config.available_locales.map(&:to_s) }
 
+  # OmniAuth identities for logins using external providers
+  has_many :omniauth_identities, dependent: :destroy
+
   # Get the user's full name from their personal account.
   delegate :name, to: :personal_account
 
