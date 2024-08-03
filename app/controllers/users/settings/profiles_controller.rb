@@ -30,7 +30,7 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
     kiqr_flash_message_now(:notice, :email_change_pending_cancelled)
 
     render turbo_stream: [
-      turbo_stream.remove('pending_email_notification'),
+      turbo_stream.remove("pending_email_notification"),
       render_flash_messages_stream
     ]
   end
