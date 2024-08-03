@@ -29,7 +29,7 @@ class OnboardingTest < ApplicationSystemTestCase
     # Fill the personal account setup form
     fill_in "user[personal_account_attributes][name]", with: "Sven Bertilsson"
 
-    click_on "commit"
+    click_on I18n.t("users.onboarding.new.submit")
 
     # Should be redirected to dashboard after successfully signing up.
     assert_current_path dashboard_path
