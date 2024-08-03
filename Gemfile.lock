@@ -183,10 +183,10 @@ GEM
       childprocess (~> 5.0)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
-    letter_opener_web (2.0.0)
-      actionmailer (>= 5.2)
-      letter_opener (~> 1.7)
-      railties (>= 5.2)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
       rexml
     loaf (0.10.0)
       railties (>= 3.2)
@@ -458,7 +458,7 @@ DEPENDENCIES
   irelia!
   jbuilder
   kiqr!
-  letter_opener_web (~> 2.0)
+  letter_opener_web (~> 3.0)
   meta-tags (~> 2.21)
   puma (>= 5.0)
   rails (~> 7.2.0.beta2)
