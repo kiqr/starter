@@ -1,0 +1,7 @@
+<%= irelia_stack do %>
+  <% if Rails.env.development? || Rails.env.test? %>
+    <%= irelia_button_to '/auth/developer', data: { turbo: false } do %>
+      Sign in as developer
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,6 +1,6 @@
 devise_for :users, path_names: { sign_in: "login", sign_up: "create-account" }, controllers: {
   registrations: "users/registrations",
-  sessions: "kiqr/sessions"
+  sessions: "users/sessions"
 }
 
 devise_scope :user do

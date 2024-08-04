@@ -1,4 +1,4 @@
-class Kiqr::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   # prepend_before_action :configure_permitted_parameters, if: :devise_controller?
   prepend_before_action :otp_authentication, only: :create
 

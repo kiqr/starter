@@ -7,7 +7,7 @@ class SigninTest < ApplicationSystemTestCase
     visit new_user_session_path
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: user.password
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     assert_current_path dashboard_path
   end
@@ -20,7 +20,7 @@ class SigninTest < ApplicationSystemTestCase
     visit new_user_session_path
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: user.password
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     assert_current_path select_account_path
   end
@@ -31,10 +31,10 @@ class SigninTest < ApplicationSystemTestCase
     visit new_user_session_path
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: user.password
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     fill_in "user[otp_attempt]", with: user.current_otp
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     assert_current_path dashboard_path
   end
@@ -45,7 +45,7 @@ class SigninTest < ApplicationSystemTestCase
     visit new_user_session_path
     fill_in "user[email]", with: unconfirmed_user.email
     fill_in "user[password]", with: unconfirmed_user.password
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     assert_text I18n.t("devise.failure.unconfirmed")
   end
@@ -56,7 +56,7 @@ class SigninTest < ApplicationSystemTestCase
     visit new_user_session_path
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: "invalid"
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     assert_text I18n.t("devise.failure.invalid", authentication_keys: "Email")
   end

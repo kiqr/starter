@@ -1,0 +1,7 @@
+<h1><%= t(".title") %></h1>
+<h2><%= t(".description") %></h2>
+
+<%= irelia_form(model: resource, as: resource_name, url: new_user_session_path, method: :post) do |form| %>
+  <%= form.text_field :otp_attempt, label: t(".form.otp_attempt.label"), placeholder: t(".form.otp_attempt.placeholder") %>
+  <%= form.submit t(".submit") %>
+<% end %>
