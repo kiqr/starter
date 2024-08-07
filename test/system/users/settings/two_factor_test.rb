@@ -58,4 +58,26 @@ class TwoFactorTest < ApplicationSystemTestCase
     visit user_settings_two_factor_path
     assert_selector ".irelia-button", text: I18n.t("users.settings.two_factor.show.buttons.disable")
   end
+
+  test "can disable two factor authentication" do
+    user = create(:user, :otp_enabled)
+    sign_in user
+    visit user_settings_two_factor_path
+    fill_in "user[otp_attempt]", with: user.current_otp
+    find(".irelia-form button[type='submit']").click
+
+    assert_text I18n.t("flash_messages.two_factor_disabled")
+    assert_not user.reload.otp_required_for_login?
+  end
+
+  test "can't disable two factor authentication with wrong otp code" do
+    user = create(:user, :otp_enabled)
+    sign_in user
+    visit user_settings_two_factor_path
+    fill_in "user[otp_attempt]", with: "12345"
+    find(".irelia-form button[type='submit']").click
+
+    assert_text I18n.t("users.settings.two_factor.form.invalid_otp")
+    assert user.reload.otp_required_for_login?
+  end
 end

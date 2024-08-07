@@ -31,17 +31,16 @@ class Users::Settings::TwoFactorController < Users::Settings::ApplicationControl
   end
 
   def destroy
-    flash[:notice] = "Just temporary to enable protection check."
-    redirect_to user_settings_two_factor_path
-    # return redirect_to edit_user_settings_two_factor_path unless two_factor_enabled?
+    return redirect_to user_settings_two_factor_path unless two_factor_enabled?
 
-    # if @user.validate_and_consume_otp!(params.dig(:user, :otp_attempt))
-    #   @user.update(otp_required_for_login: false, otp_backup_codes: [])
-    #   redirect_to user_settings_two_factor_path, notice: I18n.t("kiqr.two_factor.disable.disabled")
-    # else
-    #   @user.errors.add(:otp_attempt, :invalid)
-    #   render :disable, status: :unprocessable_entity
-    # end
+    if @user.validate_and_consume_otp!(params.dig(:user, :otp_attempt))
+      @user.update(otp_required_for_login: false, otp_backup_codes: [])
+      kiqr_flash_message :success, :two_factor_disabled
+      redirect_to user_settings_two_factor_path
+    else
+      @user.errors.add(:otp_attempt, I18n.t("users.settings.two_factor.form.invalid_otp"))
+      render :show, status: :unprocessable_content
+    end
   end
 
   private

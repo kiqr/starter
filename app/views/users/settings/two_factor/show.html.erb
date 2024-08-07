@@ -1,13 +1,14 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
 
-<div class="max-w-3xl flex flex-col gap-y-10">
+<div class="max-w-3xl flex flex-col gap-y-5">
   <p><%= t(".content") %></p>
 
   <% if two_factor_enabled? %>
-    <%= irelia_button_to "#", method: :delete do %>
-      <%= t(".buttons.disable") %>
+    <%= irelia_form(model: @user, url: user_settings_two_factor_path, method: :delete) do |form| %>
+      <%= t(".disable_instructions") %>
+      <%= form.text_field :otp_attempt, label: t("users.settings.two_factor.form.label"), placeholder: t("users.settings.two_factor.form.placeholder") %>
+      <%= form.submit t(".buttons.disable") %>
     <% end %>
-    <%= controller_path %>
   <% else %>
     <%= irelia_button(url: new_user_settings_two_factor_path) { t(".buttons.enable") } %>
   <% end %>
