@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include Kiqr::UrlHelper
   include Kiqr::FlashMessages
   include Kiqr::Locales
+  include Kiqr::TwoFactorAuthentication
 
   # => Controller hooks
   before_action :authenticate_user!

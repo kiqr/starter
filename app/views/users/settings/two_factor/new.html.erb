@@ -1,0 +1,21 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+
+<div class="max-w-3xl flex flex-col gap-y-10">
+  <div class="prose -mb-5">
+    <p><%= t(".content") %></p>
+    <ol>
+      <% t(".steps").each do |step| %>
+        <li><%= step %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <%= irelia_notification(variant: :warning) { "Please note that if you refresh this page, the QR code will reset and must be scanned again by your authentication app." } %>
+
+  <div class="flex gap-10">
+    <div id="qr-code-wrapper"><%= @qr_code_image %></div>
+    <div class="flex-1 flex flex-col gap-y-5">
+      <%= render "form", user: @user %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<%= irelia_form(model: user, url: user_settings_two_factor_path, method: :post, id: "two_factor_form") do |form| %>
+  <%= form.text_field :otp_attempt, label: t(".label"), placeholder: t(".placeholder") %>
+  <%= form.submit t(".verify_button") %>
+<% end %>
