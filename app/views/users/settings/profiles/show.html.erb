@@ -4,7 +4,7 @@
 
   <% if @user.unconfirmed_email? %>
     <%= irelia_notification(variant: :warning, html_options: { id: "pending_email_notification", class: "mb-5" }, title: t(".notifications.pending_email_change.title")) do %>
-      <%== t(".notifications.pending_email_change.text", email: @user.unconfirmed_email ) %>
+      <%== t(".notifications.pending_email_change.text", email: h(@user.unconfirmed_email)) %>
       <div class="inline-block">
         <%= button_to user_settings_cancel_pending_email_path, method: :delete do %>
           <%== t(".notifications.pending_email_change.cancel") %>

@@ -16,9 +16,14 @@ namespace :lint do
   end
 end
 
+task :brakeman do
+  sh "bin/brakeman"
+end
+
 task :default do
   Rake::Task["test"].invoke
   Rake::Task["test:system"].invoke
   Rake::Task["lint:rubocop"].invoke
   Rake::Task["lint:erb"].invoke
+  Rake::Task["brakeman"].invoke
 end
