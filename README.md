@@ -46,4 +46,11 @@ bin/dev
 ```
 
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+### Free License
+
+This project is licensed under the MIT License for personal, educational, and non-commercial use. See the [LICENSE](LICENSE) file for details.
+
+### Commercial License
+
+For commercial use, you must purchase a commercial license. See the [COMMERCIAL_LICENSE](COMMERCIAL_LICENSE) file for details.
