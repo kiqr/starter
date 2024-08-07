@@ -1,17 +1,12 @@
 class Users::Settings::ProfilesController < Users::Settings::ApplicationController
+  before_action :setup_user, only: [ :show, :update, :cancel_pending_email ]
   before_action do
     # This is to set the breadcrumbs for the onboarding process.
     add_breadcrumb I18n.t("breadcrumbs.user_profile"), user_settings_profile_path
   end
 
-  # GET /settings/profile
-  def show
-    @user = find_user
-  end
-
   # PATCH /settings/profile
   def update
-    @user = find_user
     @user.assign_attributes(user_profile_params)
 
     if @user.valid?
@@ -25,7 +20,6 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
 
 
   def cancel_pending_email
-    @user = find_user
     @user.cancel_pending_email_change!
     kiqr_flash_message_now(:notice, :email_change_pending_cancelled)
 
@@ -36,10 +30,6 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
   end
 
   private
-
-  def find_user
-    User.find(current_user.id)
-  end
 
   def user_profile_params
     personal_account_attributes = Kiqr.config.account_attributes.prepend(:id)

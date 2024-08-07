@@ -45,4 +45,11 @@ class User < ApplicationRecord
   def cancel_pending_email_change!
     update!(unconfirmed_email: nil, confirmation_sent_at: nil)
   end
+
+  def create_password(params)
+    params.delete(:current_password)
+    result = update(params)
+    clean_up_passwords
+    result
+  end
 end

@@ -1,0 +1,9 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+
+<div class="max-w-3xl">
+  <%= irelia_form(model: @user, url: user_settings_password_path, method: :post) do |form| %>
+    <%= form.password_field :password, label: t("users.settings.passwords.form.password.label"), placeholder: t("users.settings.passwords.form.password.placeholder") %>
+    <%= form.password_field :password_confirmation, label: t("users.settings.passwords.form.password_confirmation.label"), placeholder: t("users.settings.passwords.form.password_confirmation.placeholder") %>
+    <%= form.submit t(".submit") %>
+  <% end %>
+</div>

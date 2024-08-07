@@ -32,9 +32,12 @@ en:
     onboarding: "Onboarding"
     settings: "Settings"
     user_profile: "User profile"
+    user_password: "Change password"
   flash_messages:
     profile_updated: "Profile updated successfully."
     email_change_pending_cancelled: "Email change request cancelled."
+    password_created: "Password created successfully."
+    password_updated: "Password updated successfully."
   dashboard:
     show:
       title: "Dashboard"
@@ -67,6 +70,9 @@ en:
           placeholder: "Enter your password"
         remember_me: "Remember me"
         forgot_password: "Forgot your password?"
+      social_buttons:
+        sign_in_with: "Sign in with %{provider}"
+        sign_in_as: "Sign in as %{provider}"
     settings:
       profiles:
         show:
@@ -78,6 +84,25 @@ en:
               title: "Pending email change"
               text: "Please confirm your new email address (<strong>%{email}</strong>) by clicking the confirmation link in the email we sent you"
               cancel: "or <u>cancel</u> the change."
+      passwords:
+        new:
+          title: "Enable password access"
+          description: "Add a password to your account to enable sign in without a third-party provider."
+          submit: "Save password"
+        edit:
+          title: "Change password"
+          description: "Update your password to keep your account secure."
+          submit: "Change password"
+        form:
+          current_password:
+            label: "Current password"
+            placeholder: "Enter your current password"
+          password:
+            label: "Password"
+            placeholder: "Enter a secure password"
+          password_confirmation:
+            label: "Confirm password"
+            placeholder: "Re-enter the password"
     shared:
       user_fields:
         email:

@@ -21,7 +21,7 @@ class OnboardingTest < ApplicationSystemTestCase
 
     fill_in "user[email]", with: "firstname.lastname@example.com"
     fill_in "user[password]", with: "th1s1sp@ssw0rd"
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     # Should be on the onboarding_path after first sign in
     assert_current_path onboarding_path

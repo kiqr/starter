@@ -1,4 +1,4 @@
 <%= menu.with_link(icon: "fa fa-user", active: current_base_path?(user_settings_profile_path), url: user_settings_profile_path) { "Profile" } %>
-<%= menu.with_link(icon: "fa fa-key", active: current_base_path?(edit_user_registration_path), url: edit_user_registration_path) { "Login credentials" } %>
+<%= menu.with_link(icon: "fa fa-key", active: current_base_path?(user_settings_password_path), url: user_settings_password_path) { "Change password" } %>
 <%= menu.with_link(icon: "fa fa-qrcode", active: current_base_path?(edit_user_registration_path), url: edit_user_registration_path) { "Two-factor authentication" } %>
 <%= menu.with_link(icon: "fa fa-ban", active: current_base_path?(edit_user_registration_path), url: edit_user_registration_path) { "Cancel account" } %>
