@@ -24,7 +24,7 @@ class OnboardingTest < ApplicationSystemTestCase
     find(".irelia-form button[type='submit']").click
 
     # Should be on the onboarding_path after first sign in
-    assert_current_path onboarding_path
+    assert_current_path user_onboarding_path
 
     # Fill the personal account setup form
     fill_in "user[personal_account_attributes][name]", with: "Sven Bertilsson"

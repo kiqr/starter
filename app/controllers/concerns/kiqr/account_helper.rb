@@ -11,7 +11,7 @@ module Kiqr
       return if devise_controller? # Skip onboarding check for devise controllers
       return unless user_signed_in? && !current_user.onboarded? # Check if user is not onboarded
 
-      redirect_to onboarding_path
+      redirect_to user_onboarding_path
     end
 
     # Get the current account
