@@ -1,9 +1,12 @@
 class User < ApplicationRecord
-  include Kiqr::Authenticatable
-  include Kiqr::TwoFactorAuthenticatable
-  include Kiqr::Omniauthable
-  include Kiqr::HasPersonalAccount
-  include Kiqr::Teamable
+  include Kiqr::Users::Authenticatable
+  include Kiqr::Users::TwoFactorAuthenticatable
+  include Kiqr::Users::Omniauthable
+  include Kiqr::Users::HasPersonalAccount
+  include Kiqr::Users::Teamable
+
+  # Get the user's full name from their personal account.
+  delegate :name, to: :personal_account
 
   # => Model validations
   validates :email, presence: true, uniqueness: true
