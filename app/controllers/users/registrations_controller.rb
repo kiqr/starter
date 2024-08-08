@@ -13,6 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       return redirect_to cancel_user_registration_path
     end
 
+    # TODO: Verify otp before deleting account
+
     super # Inherits from Devise::RegistrationsController
   end
 end

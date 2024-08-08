@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -22,7 +20,7 @@ Rails.application.routes.draw do
   # Routes related to the user model.
   draw "users"
 
-  # => App routes
+  # => Application routes
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
   #
@@ -31,7 +29,8 @@ Rails.application.routes.draw do
   # /dashboard <- if user is browsing the app without a team account
   #
   teamable_scope do
-    # Define your application routes inside this block!
+    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+    get "dashboard", to: "dashboard#show"
   end
 
   # Defines the root path route ("/")

@@ -5,11 +5,9 @@ module ActionDispatch
         # Set default options for controllers if not set.
         options = default_controllers(options)
 
-        dashboard_route(options)
         account_routes(options)
         invitation_routes(options)
         omniauth_routes(options)
-        development_routes(options) if Rails.env.development?
 
         scope path: :users do
           get "two-factor/disable", controller: "kiqr/two_factor", action: "disable", as: :disable_two_factor
@@ -23,7 +21,6 @@ module ActionDispatch
       # Set default options for controllers if not set.
       def default_controllers(options)
         options[:controllers] ||= {}
-        options[:controllers][:dashboard] ||= "dashboard"
         options[:controllers][:accounts] ||= "kiqr/accounts"
         options[:controllers][:account_users] ||= "kiqr/account_users"
         options[:controllers][:invitations] ||= "kiqr/invitations"
@@ -33,19 +30,6 @@ module ActionDispatch
         options[:controllers][:settings] ||= "kiqr/settings"
         options[:controllers][:omniauth] ||= "kiqr/omniauth"
         options
-      end
-
-      # => Dashboard route
-      # Routes for the dashboard.
-      def dashboard_route(options)
-        scope "(/team/:account_id)", account_id: %r{[^/]+} do
-          get "dashboard", controller: options[:controllers][:dashboard], action: :show
-        end
-      end
-
-      # => Development routes
-      # Routes only available in development environment.
-      def development_routes(options)
       end
 
       # => OmniAuth routes
