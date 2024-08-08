@@ -5,25 +5,23 @@ module Kiqr::RendersSubmenu
     helper_method :submenu_partial, :has_submenu?
   end
 
-  def submenu_partial
-    self.class.submenu_partial
+  module ClassMethods
+    def renders_submenu(partial:, **options)
+      before_action -> { set_submenu_partial(partial: partial) }, **options
+    end
   end
+
+  private
 
   def has_submenu?
-    !submenu_partial.nil?
+    !@_submenu_partial.nil?
   end
 
-  class_methods do
-    def submenu_partial
-      if instance_variable_defined?(:@_submenu_partial)
-        @_submenu_partial
-      elsif superclass.respond_to?(:submenu_partial)
-        superclass.submenu_partial
-      end
-    end
+  def submenu_partial
+    @_submenu_partial
+  end
 
-    def renders_submenu(partial:)
-      @_submenu_partial = partial
-    end
+  def set_submenu_partial(partial:)
+    @_submenu_partial = partial
   end
 end
