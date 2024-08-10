@@ -22,7 +22,9 @@ module Kiqr
       omniauth_identity.user = if user_signed_in?
         current_user
       else
-        User.create!(email: omniauth_payload.info.email, password: Devise.friendly_token[0, 20])
+        user = User.new(email: omniauth_payload.info.email)
+        user.save(validate: false)
+        user
       end
     end
 
