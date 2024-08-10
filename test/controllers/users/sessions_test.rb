@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::SessionsControllerTest < ActionDispatch::IntegrationTest
+class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
   test "can sign in if two factor is disabled" do
     user = create(:user)
     post user_session_path, params: { user: { email: user.email, password: user.password } }
@@ -11,8 +11,8 @@ class Kiqr::SessionsControllerTest < ActionDispatch::IntegrationTest
   test "can sign in with otp if two factor is enabled" do
     user = create(:user, :otp_enabled)
     post user_session_path, params: { user: { email: user.email, password: user.password } }
-    assert_response :unprocessable_entity
-    assert_template "kiqr/sessions/otp"
+    assert_response :unprocessable_content
+    assert_template "users/sessions/otp"
 
     post user_session_path, params: { user: { otp_attempt: user.current_otp } }
     assert_redirected_to dashboard_path
@@ -22,20 +22,20 @@ class Kiqr::SessionsControllerTest < ActionDispatch::IntegrationTest
     user = create(:user, :otp_enabled)
     post user_session_path, params: { user: { email: user.email, password: user.password } }
     post user_session_path, params: { user: { otp_attempt: "123456" } }
-    assert_response :unprocessable_entity
-    assert_template "kiqr/sessions/otp"
+    assert_response :unprocessable_content
+    assert_template "users/sessions/otp"
   end
 
   test "renders form again if invalid email" do
     post user_session_path, params: { user: { email: "unknown.email", password: "randompassword" } }
-    assert_response :unprocessable_entity
-    assert_template "kiqr/sessions/new"
+    assert_response :unprocessable_content
+    assert_template "users/sessions/new"
   end
 
   test "renders form again if invalid password" do
     user = create(:user)
     post user_session_path, params: { user: { email: user.email, password: "randompassword" } }
-    assert_response :unprocessable_entity
-    assert_template "kiqr/sessions/new"
+    assert_response :unprocessable_content
+    assert_template "users/sessions/new"
   end
 end
