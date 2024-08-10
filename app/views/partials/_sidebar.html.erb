@@ -13,18 +13,6 @@
 
 <% if current_user.onboarded? %>
   <% sidebar.with_section do %>
-    <%=
-      irelia_account_switcher(
-        team_name: current_account&.name,
-        name: current_user.name,
-        avatar: "https://picsum.photos/50",
-        direction: :up,
-      ) do |switcher|
-        switcher.with_account(account_name: current_user.name, url: dashboard_path(account_id: nil), personal: true)
-        current_user.accounts.each do |account|
-          switcher.with_account(account_name: account.name, url: dashboard_path(account), personal: account.personal)
-        end
-      end
-    %>
+    <%= render "partials/account_switcher" %>
   <% end %>
 <% end %>
