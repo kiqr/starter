@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # /team/:team_id/dashboard <- if user is signed in to a team account
   # /dashboard <- if user is browsing the app without a team account
   #
-  teamable_scope do
+  scope "(/team/:account_id)", account_id: %r{[^/]+} do
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
     get "dashboard", to: "dashboard#show"
   end

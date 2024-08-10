@@ -30,11 +30,13 @@
 en:
   breadcrumbs:
     onboarding: "Onboarding"
-    settings: "Settings"
-    user_profile: "User profile"
-    user_password: "Change password"
-    two_factor_setup: "Two-factor authentication"
-    cancel_user: "Cancel your account"
+    settings:
+      root: "Settings"
+      accounts: "Teams"
+      user_profile: "User profile"
+      user_password: "Change password"
+      two_factor_setup: "Two-factor authentication"
+      cancel_user: "Cancel your account"
   flash_messages:
     profile_updated: "Profile updated successfully."
     email_change_pending_cancelled: "Email change request cancelled."
@@ -98,6 +100,10 @@ en:
               title: "Pending email change"
               text: "Please confirm your new email address (<strong>%{email}</strong>) by clicking the confirmation link in the email we sent you"
               cancel: "or <u>cancel</u> the change."
+      accounts:
+        index:
+          title: "Team accounts"
+          description: "List of all the team accounts you have access to."
       passwords:
         new:
           title: "Enable password access"
