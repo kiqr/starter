@@ -1,17 +1,25 @@
 <%= irelia_split_screen(variant: :reverse, center: true) do %>
-  <header>
-    <h1 class="text-2xl font-bold mb-2"><%= t(".title", app_name: Kiqr.config.app_name) %></h1>
-    <h2><%= t(".description") %></h2>
-  </header>
+  <div class="flex flex-col gap-y-5">
+    <header class="mb-5">
+      <h1 class="text-2xl font-bold mb-2"><%= t(".title", app_name: Kiqr.config.app_name) %></h1>
+      <h2><%= t(".description") %></h2>
+    </header>
 
-  <%= render partial: "social_buttons" %>
+    <%= render partial: "social_buttons" %>
 
-  <%= irelia_form(model: resource, as: resource_name, url: session_path(resource_name)) do |form| %>
-    <%= render "form_fields", form: form %>
-    <%= form.submit t(".submit") %>
-  <% end %>
+    <div class="flex items-center">
+      <hr class="flex-grow border-t border-neutral-200">
+      <span class="px-5 text-sm">or</span>
+      <hr class="flex-grow border-t border-neutral-200">
+    </div>
 
-  <div>
-    <%= render "devise/shared/links" %>
+    <%= irelia_form(model: resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+      <%= render "form_fields", form: form %>
+      <%= form.submit t(".submit") %>
+    <% end %>
+
+    <div class="mt-5">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 <% end %>
