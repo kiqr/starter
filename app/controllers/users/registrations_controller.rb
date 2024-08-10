@@ -1,9 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  renders_submenu partial: "users/settings/navigation", only: [ :cancel ]
+
   skip_before_action :require_no_authentication, only: [ :cancel ]
   before_action :authenticate_user!, only: [ :cancel ]
 
   # GET /settings/cancel
   def cancel
+    add_breadcrumb t("breadcrumbs.settings"), user_settings_profile_path
+    add_breadcrumb t("breadcrumbs.cancel_user"), cancel_user_registration_path
     @conflicting_account_users = current_user.account_users.where(owner: true)
   end
 
@@ -15,7 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       return redirect_to cancel_user_registration_path
     end
 
+    # TODO: Don't let user delete account if they have active subscriptions.
     # TODO: Verify otp before deleting account
+    # TODO: Don't delete account immediately, but mark it as deleted and delete it after 30 days.
+    # TODO: Send email to user with confirmation link to delete account.'
 
     super # Inherits from Devise::RegistrationsController
   end
