@@ -3,8 +3,6 @@ module Kiqr::UrlHelper
   def after_sign_in_path_for(resource)
     if session[:after_sign_in_path].present?
       session.delete(:after_sign_in_path)
-    elsif current_user.accounts.any?
-      select_account_path
     else
       dashboard_path
     end
@@ -34,6 +32,8 @@ module Kiqr::UrlHelper
   # Example:
   #   current_base_path?(edit_two_factor_path) will return true if the current path is '/users/two-factor/setup'
   def current_base_path?(path)
+    path = path.split("?").first # Strip query parameters from path.
+
     request.path.include?(path)
   end
 end

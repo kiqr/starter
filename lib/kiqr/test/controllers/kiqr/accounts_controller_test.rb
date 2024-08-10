@@ -1,36 +1,10 @@
 require "test_helper"
 
 class Kiqr::AccountsControllerTest < ActionDispatch::IntegrationTest
-  test "can render new account page" do
-    sign_in create(:user)
-    get new_account_path
-    assert_response :success
-  end
-
   test "redirect to profile edit if personal account" do
     sign_in create(:user)
     get edit_account_path
     assert_redirected_to edit_settings_path
-  end
-
-  test "can create new team account" do
-    user = create(:user)
-    sign_in user
-
-    post accounts_path, params: { account: { name: "Foobar team" } }
-    new_team = Account.find_by(name: "Foobar team")
-
-    assert_redirected_to dashboard_path(account_id: Account.last)
-    assert user.reload.accounts.include?(new_team)
-  end
-
-  test "shows error on invalid team account creation" do
-    user = create(:user)
-    sign_in user
-
-    post accounts_path, params: { account: { name: "no" } }
-    assert_response :unprocessable_entity
-    # assert_template :new
   end
 
   test "can update team accounts" do

@@ -16,8 +16,8 @@
 <%=
   irelia_dropdown(direction: :up) do |dropdown|
     dropdown.with_custom_trigger(html_options: { class: "w-full" }) { yield :user_card }
-    dropdown.with_item(url: dashboard_path(account: nil), icon: "fa fa-user") { current_user.name }
-    current_user.accounts.each { |account| dropdown.with_item(url: dashboard_path(account: account), icon: "fa fa-users") { account.name } }
-    dropdown.with_item(url: new_account_path, icon: "fa fa-plus-circle") { t(".create_new") }
+    dropdown.with_item(url: dashboard_path(account_id: nil), icon: "fa fa-user") { current_user.name }
+    current_user.accounts.each { |account| dropdown.with_item(url: dashboard_path(account_id: account), icon: "fa fa-users") { account.name } }
+    dropdown.with_item(url: new_user_settings_account_path, icon: "fa fa-plus-circle") { t(".create_new") }
   end
 %>

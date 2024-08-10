@@ -12,19 +12,6 @@ class SigninTest < ApplicationSystemTestCase
     assert_current_path dashboard_path
   end
 
-  test "select account after sign in if user has teams" do
-    user = create(:user)
-    account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, owner: true)
-
-    visit new_user_session_path
-    fill_in "user[email]", with: user.email
-    fill_in "user[password]", with: user.password
-    find(".irelia-form button[type='submit']").click
-
-    assert_current_path select_account_path
-  end
-
   test "signs in with otp code" do
     user = create(:user, :otp_enabled)
 

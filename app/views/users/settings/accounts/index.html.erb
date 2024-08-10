@@ -1,1 +1,23 @@
-<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) do |header| %>
+  <% header.with_button(url: new_user_settings_account_path, icon: "fa fa-circle-plus") { t("users.settings.accounts.action_buttons.new") } %>
+<% end %>
+
+<%=
+irelia_table do |table|
+  table.with_column { "Name" }
+  table.with_column { "Age" }
+  table.with_column { "Address" }
+  table.with_column(html_options: { class: "text-right" }) { "Action" }
+
+  @memberships.each do |membership|
+    table.with_row do |row|
+      row.with_cell { link_to membership.account.name, "#" }
+      row.with_cell { membership.owner? ? t(".roles.owner") : t(".roles.member") }
+      row.with_cell { 1.hour.ago }
+      row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
+        irelia_button(size: :xs) { "Edit" }
+      end
+    end
+  end
+end
+%>

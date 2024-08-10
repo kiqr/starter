@@ -1,0 +1,10 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) do |header| %>
+  <% header.with_button(url: user_settings_accounts_path, icon: "fa fa-arrow-left", color: :secondary) { t("users.settings.accounts.action_buttons.back") } %>
+<% end %>
+
+<div class="max-w-3xl">
+  <%= irelia_form(model: @account, url: user_settings_accounts_path, method: :post) do |form| %>
+    <%= render "accounts/form_fields", form: form %>
+    <%= form.submit "Create team" %>
+  <% end %>
+</div>

@@ -5,6 +5,30 @@ class Users::Settings::AccountsController < Users::Settings::ApplicationControll
   end
 
   def index
-    @accounts = current_user.accounts
+    @memberships = current_user.account_users.includes(:account).references(:account)
+  end
+
+  def new
+    @account = Account.new
+  end
+
+  def create
+    @account = Account.new(account_params)
+
+    # Link the current user to the account as the owner
+    @account.account_users.new(user: current_user, owner: true)
+
+    if @account.save
+      kiqr_flash_message :success, :account_created
+      redirect_to dashboard_path(account_id: @account)
+    else
+      render :new, status: :unprocessable_content
+    end
+  end
+
+  private
+
+  def account_params
+    params.require(:account).permit(Kiqr.config.account_attributes)
   end
 end

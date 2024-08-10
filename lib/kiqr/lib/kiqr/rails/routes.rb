@@ -5,7 +5,6 @@ module ActionDispatch
         # Set default options for controllers if not set.
         options = default_controllers(options)
 
-        account_routes(options)
         invitation_routes(options)
         omniauth_routes(options)
 
@@ -21,7 +20,6 @@ module ActionDispatch
       # Set default options for controllers if not set.
       def default_controllers(options)
         options[:controllers] ||= {}
-        options[:controllers][:accounts] ||= "kiqr/accounts"
         options[:controllers][:account_users] ||= "kiqr/account_users"
         options[:controllers][:invitations] ||= "kiqr/invitations"
         options[:controllers][:onboarding] ||= "kiqr/onboarding"
@@ -38,16 +36,16 @@ module ActionDispatch
         match "auth/:provider/callback", controller: options[:controllers][:omniauth], action: :callback, via: %i[get post]
       end
 
-      # => Account routes
-      def account_routes(options)
-        resources :accounts, controller: options[:controllers][:accounts], only: [ :new, :create ]
-        get "select-account", controller: options[:controllers][:accounts], action: :select, as: :select_account
+      # # => Account routes
+      # def account_routes(options)
+      #   resources :accounts, controller: options[:controllers][:accounts], only: [ :new, :create ]
+      #   get "select-account", controller: options[:controllers][:accounts], action: :select, as: :select_account
 
-        scope "(/team/:account_id)", account_id: %r{[^/]+} do
-          resource :account, only: [ :edit, :update ], controller: options[:controllers][:accounts]
-          resources :account_users, controller: options[:controllers][:account_users], only: [ :index, :edit, :update, :destroy ], path: "members"
-        end
-      end
+      #   scope "(/team/:account_id)", account_id: %r{[^/]+} do
+      #     resource :account, only: [ :edit, :update ], controller: options[:controllers][:accounts]
+      #     resources :account_users, controller: options[:controllers][:account_users], only: [ :index, :edit, :update, :destroy ], path: "members"
+      #   end
+      # end
 
       # => Teamable routes
       # Routes inside this block will be prefixed with /team/<team_id> if
