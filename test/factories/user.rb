@@ -26,6 +26,13 @@ FactoryBot.define do
       otp_secret { User.generate_otp_secret }
     end
 
+    after(:create) do |user, evaluator|
+      if evaluator.with_account
+        # Build the association with 'owner: true'
+        user.account_users.create(account: evaluator.with_account, owner: true)
+      end
+    end
+
     trait :with_accounts do
       after(:create) do |user, evaluator|
         if evaluator.accounts_count > 0

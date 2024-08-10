@@ -34,6 +34,6 @@ module Kiqr::UrlHelper
   def current_base_path?(path)
     path = path.split("?").first # Strip query parameters from path.
 
-    request.path.include?(path)
+    request.path.starts_with?(path)
   end
 end

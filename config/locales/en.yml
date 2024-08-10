@@ -37,9 +37,11 @@ en:
       user_password: "Change password"
       two_factor_setup: "Two-factor authentication"
       cancel_user: "Cancel your account"
+      account_profile: "Team profile"
   flash_messages:
     account_created: "Team created successfully."
     profile_updated: "User profile updated successfully."
+    account_profile_updated: "Team profile updated successfully."
     email_change_pending_cancelled: "Email change request cancelled."
     password_created: "Password created successfully."
     password_updated: "Password updated successfully."
@@ -167,7 +169,13 @@ en:
         time_zone:
           label: "Time zone"
           prompt: "Select your time zone"
-
+  accounts:
+    settings:
+      profiles:
+        show:
+          title: "Team settings"
+          description: "Update your team information and settings."
+          submit: "Update team"
   partials:
     account_switcher:
       personal: "Personal account"

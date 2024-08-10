@@ -1,0 +1,10 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+
+<div class="max-w-3xl">
+  <%= irelia_form(model: @account, url: account_settings_profile_path) do |form| %>
+    <!-- Form fields for the account object -->
+    <%= render "accounts/form_fields", form: form %>
+
+    <%= form.submit t(".submit") %>
+  <% end %>
+</div>

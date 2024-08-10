@@ -35,4 +35,28 @@ class Users::Settings::AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_content
     assert_template :new
   end
+
+  test "can update team accounts" do
+    account = create(:account, name: "Team account")
+    user = create(:user, with_account: account)
+
+    sign_in user
+    patch account_settings_profile_path(account_id: account), params: { account: { name: "New company name" } }
+    account.reload
+
+    assert_redirected_to account_settings_profile_path(account_id: account)
+    assert_equal "New company name", account.name
+  end
+
+  test "shows error on invalid team account attributes" do
+    account = create(:account, name: "Team account")
+    user = create(:user, with_account: account)
+
+    sign_in user
+    patch account_settings_profile_path(account_id: account), params: { account: { name: "no" } }
+    account.reload
+
+    assert_response :unprocessable_content
+    assert_template :show
+  end
 end

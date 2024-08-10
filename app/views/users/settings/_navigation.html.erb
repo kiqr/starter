@@ -1,4 +1,4 @@
-<%= menu.with_link(icon: "fa fa-user", active: current_base_path?(user_settings_profile_path), url: user_settings_profile_path) { "Profile" } %>
+<%= menu.with_link(icon: "fa fa-id-card", active: current_base_path?(user_settings_profile_path), url: user_settings_profile_path) { "Profile" } %>
 <%= menu.with_link(icon: "fa fa-users", active: current_base_path?(user_settings_accounts_path), url: user_settings_accounts_path) { "Teams" } %>
 <%= menu.with_link(icon: "fa fa-key", active: current_base_path?(user_settings_password_path), url: user_settings_password_path) { "Change password" } %>
 <%= menu.with_link(icon: "fa fa-qrcode", active: current_base_path?(user_settings_two_factor_path), url: user_settings_two_factor_path) { "Two-factor authentication" } %>

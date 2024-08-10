@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   draw "development" if Rails.env.development?
 
   # => Users
-  # Routes related to the user model.
+  # Routes related to the User model.
   draw "users"
 
   # => Application routes
@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   # /dashboard <- if user is browsing the app without a team account
   #
   scope "(/team/:account_id)", account_id: %r{[^/]+} do
+    # => Accounts
+    # Routes related to the Account model.
+    draw "accounts"
+
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
     get "dashboard", to: "dashboard#show"
   end
