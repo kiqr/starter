@@ -1,7 +1,7 @@
 class Users::Settings::PasswordsController < Users::Settings::ApplicationController
   before_action :setup_user, only: [ :show, :edit, :update, :create ]
   before_action do
-    add_breadcrumb I18n.t("breadcrumbs.user_password"), user_settings_password_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.user_password"), user_settings_password_path
   end
 
   # GET /settings/profile

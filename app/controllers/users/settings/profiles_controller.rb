@@ -2,7 +2,7 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
   before_action :setup_user, only: [ :show, :update, :cancel_pending_email ]
   before_action do
     # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("breadcrumbs.user_profile"), user_settings_profile_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.user_profile"), user_settings_profile_path
   end
 
   # PATCH /settings/profile

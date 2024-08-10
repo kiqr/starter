@@ -4,7 +4,7 @@ class Users::Settings::TwoFactorController < Users::Settings::ApplicationControl
 
   before_action do
     # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("breadcrumbs.two_factor_setup"), user_settings_two_factor_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.two_factor_setup"), user_settings_two_factor_path
   end
 
   def new
