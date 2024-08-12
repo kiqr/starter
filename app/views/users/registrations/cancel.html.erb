@@ -3,11 +3,11 @@
 <div class="max-w-3xl flex flex-col gap-y-5">
   <p><%= t(".content") %></p>
 
-  <% if @conflicting_account_users.any? %>
+  <% if @conflicting_members.any? %>
     <p><%= t(".remove_team_accounts_first") %></p>
     <strong><%= t(".owned_team_accounts") %></strong>
     <ul>
-      <% @conflicting_account_users.each do |account_user| %>
+      <% @conflicting_members.each do |account_user| %>
         <li><%= account_user.account.name %></li>
       <% end %>
     </ul>

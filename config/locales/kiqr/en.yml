@@ -58,7 +58,7 @@ en:
           buttons:
             invite: "Invite a new user"
             back: "Back to team members"
-    account_users:
+    members:
       index:
         title: "Team members"
         description: "Manage team members."

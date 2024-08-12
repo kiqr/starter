@@ -7,14 +7,14 @@ module Kiqr
     end
 
     def edit
-      @account_user = @account.account_users.find_puid!(params[:id])
+      @account_user = @account.members.find_puid!(params[:id])
     end
 
     def destroy
-      @account_user = @account.account_users.find_puid!(params[:id])
+      @account_user = @account.members.find_puid!(params[:id])
       @account_user.destroy!
       kiqr_flash_message(:alert, :account_user_destroyed)
-      redirect_to account_users_path
+      redirect_to members_path
     rescue Kiqr::Errors::DeleteTeamOwnerError
       kiqr_flash_message(:alert, :account_user_is_owner)
       redirect_to edit_account_user_path(@account_user)
@@ -28,7 +28,7 @@ module Kiqr
 
     def setup_account
       @account = current_account
-      @members = current_account.account_users
+      @members = current_account.members
     end
   end
 end

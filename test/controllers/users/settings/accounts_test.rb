@@ -23,7 +23,7 @@ class Users::Settings::AccountsControllerTest < ActionDispatch::IntegrationTest
     new_team = Account.find_by(name: "Foobar team")
 
     assert_redirected_to dashboard_path(account_id: new_team)
-    assert new_team.account_users.find_by(user: user).owner?
+    assert new_team.members.find_by(user: user).owner?
   end
 
   test "shows error on invalid team account creation" do

@@ -4,7 +4,7 @@ class Kiqr::AccountUsersControllerTest < ActionDispatch::IntegrationTest
   test "can't show members as personal account" do
     user = create(:user)
     sign_in user
-    get account_users_path
+    get members_path
 
     assert_redirected_to edit_account_path(account_id: nil)
   end
@@ -14,11 +14,11 @@ class Kiqr::AccountUsersControllerTest < ActionDispatch::IntegrationTest
     some_user = create(:user)
 
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user: user, owner: true)
-    account.account_users << AccountUser.create(user: some_user)
+    account.members << Member.create(user: user, owner: true)
+    account.members << Member.create(user: some_user)
 
     sign_in user
-    get edit_account_user_path(account_id: account, id: some_user.account_users.first)
+    get edit_account_user_path(account_id: account, id: some_user.members.first)
 
     assert_response :success
   end
@@ -26,10 +26,10 @@ class Kiqr::AccountUsersControllerTest < ActionDispatch::IntegrationTest
   test "can show members as team account" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, owner: true)
+    account.members << AccountUser.create(user:, owner: true)
 
     sign_in user
-    get account_users_path(account_id: account)
+    get members_path(account_id: account)
 
     assert_response :success
   end
@@ -39,15 +39,15 @@ class Kiqr::AccountUsersControllerTest < ActionDispatch::IntegrationTest
     some_user = create(:user)
 
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user: user, owner: true)
-    account.account_users << AccountUser.create(user: some_user)
+    account.members << AccountUser.create(user: user, owner: true)
+    account.members << AccountUser.create(user: some_user)
 
     assert_includes account.reload.users, some_user
 
     sign_in user
-    delete account_user_path(account_id: account, id: some_user.account_users.first)
+    delete account_user_path(account_id: account, id: some_user.members.first)
 
-    assert_redirected_to account_users_path(account_id: account)
+    assert_redirected_to members_path(account_id: account)
     assert_not_includes account.reload.users, some_user
   end
 

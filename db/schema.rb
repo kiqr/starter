@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_12_170610) do
   create_table "account_invitations", force: :cascade do |t|
     t.string "public_uid"
     t.integer "account_id", null: false
@@ -24,19 +24,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
     t.index ["public_uid"], name: "index_account_invitations_on_public_uid", unique: true
   end
 
-  create_table "account_users", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "account_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "public_uid"
-    t.boolean "owner", default: false, null: false
-    t.index ["account_id", "user_id"], name: "index_account_users_on_account_id_and_user_id", unique: true
-    t.index ["account_id"], name: "index_account_users_on_account_id"
-    t.index ["public_uid"], name: "index_account_users_on_public_uid", unique: true
-    t.index ["user_id"], name: "index_account_users_on_user_id"
-  end
-
   create_table "accounts", force: :cascade do |t|
     t.string "public_uid"
     t.string "name", null: false
@@ -45,6 +32,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
     t.datetime "updated_at", null: false
     t.integer "account_invitations_count", default: 0
     t.index ["public_uid"], name: "index_accounts_on_public_uid", unique: true
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "public_uid"
+    t.boolean "owner", default: false, null: false
+    t.index ["account_id", "user_id"], name: "index_members_on_account_id_and_user_id", unique: true
+    t.index ["account_id"], name: "index_members_on_account_id"
+    t.index ["public_uid"], name: "index_members_on_public_uid", unique: true
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "omniauth_identities", force: :cascade do |t|
@@ -97,8 +97,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
   end
 
   add_foreign_key "account_invitations", "accounts"
-  add_foreign_key "account_users", "accounts"
-  add_foreign_key "account_users", "users"
+  add_foreign_key "members", "accounts"
+  add_foreign_key "members", "users"
   add_foreign_key "omniauth_identities", "users"
   add_foreign_key "users", "accounts", column: "personal_account_id"
 end

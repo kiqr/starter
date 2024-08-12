@@ -20,7 +20,7 @@ module Kiqr
         # Check if user has permission to edit the account
         # User can edit their personal account or if they are part of the team.
         def permission_check
-          return if account.account_users.find_by(user: user)
+          return if account.members.find_by(user: user)
           raise StandardError, "User does not have permission to edit this account"
         end
 

@@ -5,7 +5,7 @@ class Users::Settings::AccountsController < Users::Settings::ApplicationControll
   end
 
   def index
-    @memberships = current_user.account_users.includes(:account).references(:account)
+    @memberships = current_user.members.includes(:account).references(:account)
   end
 
   def new
@@ -16,7 +16,7 @@ class Users::Settings::AccountsController < Users::Settings::ApplicationControll
     @account = Account.new(account_params)
 
     # Link the current user to the account as the owner
-    @account.account_users.new(user: current_user, owner: true)
+    @account.members.new(user: current_user, owner: true)
 
     if @account.save
       kiqr_flash_message :success, :account_created

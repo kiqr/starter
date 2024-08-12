@@ -14,7 +14,7 @@ class EditAccountsTest < ApplicationSystemTestCase
   test "don't show delete button if user is an owner of a team" do
     user = create(:user)
     team_account = create(:account, name: "Team account")
-    team_account.account_users << AccountUser.create(user: user, owner: true)
+    team_account.members << AccountUser.create(user: user, owner: true)
 
     sign_in(user)
     visit cancel_user_registration_path

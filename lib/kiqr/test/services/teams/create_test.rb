@@ -13,8 +13,8 @@ module Kiqr
           team = build(:account)
           @service.call(account: team, user:)
 
-          assert_not_empty team.account_users, "Expected account_users not to be empty"
-          assert team.account_users.find_by(user: user).owner, "Expected account_users to have owner set to true"
+          assert_not_empty team.members, "Expected members not to be empty"
+          assert team.members.find_by(user: user).owner, "Expected members to have owner set to true"
           assert_not team.personal, "Expected personal to be false"
           assert team.persisted?, "Expected account to be saved"
         end

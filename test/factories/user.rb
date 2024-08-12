@@ -29,7 +29,7 @@ FactoryBot.define do
     after(:create) do |user, evaluator|
       if evaluator.with_account
         # Build the association with 'owner: true'
-        user.account_users.create(account: evaluator.with_account, owner: true)
+        user.members.create(account: evaluator.with_account, owner: true)
       end
     end
 
@@ -38,7 +38,7 @@ FactoryBot.define do
         if evaluator.accounts_count > 0
           evaluator.accounts_count.times do
             account = create(:account)
-            create(:account_user, user: user, account: account)
+            create(:member, user: user, account: account)
           end
         end
       end

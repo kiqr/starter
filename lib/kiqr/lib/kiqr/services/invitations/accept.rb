@@ -10,7 +10,7 @@ module Kiqr
 
           account.transaction do
             invitation.transaction do
-              account.account_users.create!(user:)
+              account.members.create!(user:)
               invitation.update!(accepted_at: Time.now)
             end
           end

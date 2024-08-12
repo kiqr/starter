@@ -8,13 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def cancel
     add_breadcrumb t("breadcrumbs.settings.root"), user_settings_profile_path
     add_breadcrumb t("breadcrumbs.settings.cancel_user"), cancel_user_registration_path
-    @conflicting_account_users = current_user.account_users.where(owner: true)
+    @conflicting_members = current_user.members.where(owner: true)
   end
 
   # DELETE /users
   def destroy
     # Don't let user cancel their accounts if they are an owner of a team.
-    if current_user.account_users.find_by(owner: true)
+    if current_user.members.find_by(owner: true)
       kiqr_flash_message(:alert, :cant_cancel_while_team_owner)
       return redirect_to cancel_user_registration_path
     end

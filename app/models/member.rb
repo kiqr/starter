@@ -1,4 +1,4 @@
-class AccountUser < ApplicationRecord # This will generate a public_uid for the model when it is created.
+class Member < ApplicationRecord
   # Use this public_uidas a unique public identifier for the model.
   # To find a model by its public_uid, use the following method:
   #   Account.find_puid('xxxxxxxx')

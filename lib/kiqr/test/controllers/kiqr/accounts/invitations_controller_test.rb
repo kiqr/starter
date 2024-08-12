@@ -4,7 +4,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
   test "can invite a user" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, owner: true)
+    account.members << Member.create(user:, owner: true)
 
     sign_in user
 
@@ -18,7 +18,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
   test "can't invite a user to someone else team" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, owner: true)
+    account.members << Member.create(user:, owner: true)
 
     foreign_account = create(:account, name: "Foreign account")
 
@@ -32,7 +32,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
   test "can only invite the same user once" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, owner: true)
+    account.members << Member.create(user:, owner: true)
 
     sign_in user
 
@@ -47,7 +47,7 @@ class InvitationsControllerTest < ActionDispatch::IntegrationTest
   test "invitations validates email" do
     user = create(:user)
     account = create(:account, name: "Team account")
-    account.account_users << AccountUser.create(user:, owner: true)
+    account.members << Member.create(user:, owner: true)
 
     sign_in user
 

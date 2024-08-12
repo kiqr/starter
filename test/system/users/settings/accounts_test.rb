@@ -16,7 +16,7 @@ class AccountsTest < ApplicationSystemTestCase
 
     account = user.reload.accounts.last
     assert_equal "Foobar code warriors", account.name
-    assert account.account_users.find_by(user: user).owner?
+    assert account.members.find_by(user: user).owner?
     assert_current_path dashboard_path(account_id: account)
   end
 end

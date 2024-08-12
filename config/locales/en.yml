@@ -38,7 +38,7 @@ en:
       two_factor_setup: "Two-factor authentication"
       cancel_user: "Cancel your account"
       account_profile: "Profile"
-      account_users: "Members"
+      members: "Members"
   flash_messages:
     account_created: "Team created successfully."
     profile_updated: "User profile updated successfully."
@@ -191,4 +191,4 @@ en:
   partials:
     account_switcher:
       personal: "Personal account"
-      create_new: "Create a new account"
+      create_new: "New team account"

@@ -5,8 +5,8 @@ module Kiqr
 
       included do
         # User can have many team accounts.
-        has_many :account_users, dependent: :destroy
-        has_many :accounts, through: :account_users
+        has_many :members, dependent: :destroy
+        has_many :accounts, through: :members
       end
     end
   end

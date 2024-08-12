@@ -6,6 +6,6 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
   end
 
   def index
-    @memberships = @account.account_users.includes(:user).references(:user)
+    @memberships = @account.members.includes(:user).references(:user)
   end
 end

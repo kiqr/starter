@@ -9,7 +9,7 @@ module Kiqr
         def call(account:, user:)
           @account, @user = account, user
 
-          account.account_users.new(user: user, owner: true)
+          account.members.new(user: user, owner: true)
           account.save!
 
           success account

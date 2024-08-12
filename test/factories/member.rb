@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :account_user do
+  factory :member do
     user
     account
     owner { true }
