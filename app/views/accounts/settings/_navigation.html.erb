@@ -1,1 +1,2 @@
 <%= menu.with_link(icon: "fa fa-id-card", active: current_base_path?(account_settings_profile_path), url: account_settings_profile_path) { "Team profile" } %>
+<%= menu.with_link(icon: "fa fa-users", active: current_base_path?(account_settings_members_path), url: account_settings_members_path) { "Members" } %>

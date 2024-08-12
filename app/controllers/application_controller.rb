@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   before_action do
     # Add the home icon to the breadcrumb
     add_breadcrumb helpers.irelia_icon { "fa fa-home" }, (user_signed_in? ? dashboard_path : root_path)
+    add_breadcrumb current_account.name, dashboard_path if current_account.present?
   end
 
   # Automatically include account_id in all URL options if it is already present in the params.
