@@ -1,4 +1,7 @@
 class Accounts::Settings::ApplicationController < ApplicationController
+  before_action :ensure_team_account
+  before_action :setup_account
+
   renders_submenu partial: "accounts/settings/navigation"
 
   before_action do

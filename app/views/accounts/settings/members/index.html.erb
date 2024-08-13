@@ -1,32 +1,24 @@
-<%= irelia_page_header(title: t(".title"), subline: t(".description", team_name: @account.name)) %>
+<%= irelia_page_header(title: t(".title"), subline: t(".description", team_name: @account.name)) do |header| %>
+  <% header.with_button(url: new_account_settings_member_path, icon: "fa fa-circle-plus") { t("accounts.settings.members.action_buttons.new") } %>
+<% end %>
 
-<div class="grid grid-cols-3 gap-x-5">
-  <div class="col-span-2">
-    <%=
-    irelia_table do |table|
-      table.with_column { "Name" }
-      table.with_column { "Email" }
-      table.with_column { "Role" }
-      table.with_column { "Member since" }
-      table.with_column(html_options: { class: "text-right" }) { "Actions" }
+<%=
+irelia_table do |table|
+  table.with_column { "Name" }
+  table.with_column { "Email" }
+  table.with_column { "Role" }
+  table.with_column { "Member since" }
+  table.with_column(html_options: { class: "text-right" }) { "Actions" }
 
-      @memberships.each do |membership|
-        table.with_row do |row|
-          row.with_cell { membership.user.name }
-          row.with_cell { membership.user.email }
-          row.with_cell { membership.owner? ? tag.strong(t(".roles.owner")) : t(".roles.member") }
-          row.with_cell { time_ago_in_words(membership.created_at) }
-          row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
-          end
-        end
+  @members.each do |member|
+    table.with_row do |row|
+      row.with_cell { member.name }
+      row.with_cell { member.email }
+      row.with_cell { member.owner? ? tag.strong(t(".roles.owner")) : t(".roles.member") }
+      row.with_cell { member.invitation_accepted_at? ? l(member.invitation_accepted_at, format: :long) : tag.em(t(".pending_invitation")) }
+      row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
       end
     end
-    %>
-  </div>
-  <div>
-    <div class="flex flex-col gap-y-5">
-      <h3 class="font-bold"><%= t(".invitations_title") %></h3>
-      <%= simple_format t(".invitations_text") %>
-    </div>
-  </div>
-</div>
+  end
+end
+%>

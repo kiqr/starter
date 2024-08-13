@@ -1,31 +1,34 @@
 require "test_helper"
 
 class Users::Settings::ProfilesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = create(:user)
+    sign_in(@user)
+  end
+
   test "should get edit page" do
-    user = create(:user)
-    sign_in(user)
     get user_settings_profile_path
     assert_response :success
   end
 
   test "can update user fields" do
-    user = create(:user, time_zone: "UTC", locale: "en")
-    sign_in(user)
-
     patch user_settings_profile_path, params: { user: { time_zone: "Stockholm", locale: "sv" } }
     assert_redirected_to user_settings_profile_path
-    assert_equal "Stockholm", user.reload.time_zone
-    assert_equal "sv", user.reload.locale
+    @user.reload
+    assert_equal "Stockholm", @user.time_zone
+    assert_equal "sv", @user.locale
   end
 
   test "can update personal account fields" do
-    user = create(:user)
-    sign_in user
-
     patch user_settings_profile_path, params: { user: { personal_account_attributes: { name: "Personal account name" } } }
-    user.reload
+    @user.reload
 
     assert_redirected_to user_settings_profile_path
-    assert_equal "Personal account name", user.personal_account.name
+    assert_equal "Personal account name", @user.personal_account.name
+  end
+
+  test "can't update personal account with invalid fields" do
+    patch user_settings_profile_path(account_id: @account), params: { user: { personal_account_attributes: { name: "no" } } }
+    assert_response :unprocessable_content
   end
 end

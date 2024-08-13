@@ -1,5 +1,4 @@
 class Accounts::Settings::ProfilesController < Accounts::Settings::ApplicationController
-  before_action :setup_account, only: [ :show, :update ]
   before_action do
     # This is to set the breadcrumbs for the onboarding process.
     add_breadcrumb I18n.t("breadcrumbs.settings.account_profile"), account_settings_profile_path

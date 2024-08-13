@@ -28,5 +28,15 @@ module Kiqr
     def personal_account
       current_user&.personal_account
     end
+
+    private
+
+    # Ensure that the user has selected a team account before proceeding.
+    def ensure_team_account
+      unless current_account.team?
+        kiqr_flash_message :alert, :team_account_required
+        redirect_to dashboard_path
+      end
+    end
   end
 end

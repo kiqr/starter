@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   # Routes related to the User model.
   draw "users"
 
+  # => Accounts
+  # Routes related to the Account model.
+  draw "accounts"
+
   # => Application routes
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
@@ -29,10 +33,6 @@ Rails.application.routes.draw do
   # /dashboard <- if user is browsing the app without a team account
   #
   scope "(/team/:account_id)", account_id: %r{[^/]+} do
-    # => Accounts
-    # Routes related to the Account model.
-    draw "accounts"
-
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
     get "dashboard", to: "dashboard#show"
   end

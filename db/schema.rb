@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_12_170610) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_12_190114) do
   create_table "account_invitations", force: :cascade do |t|
     t.string "public_uid"
     t.integer "account_id", null: false
@@ -35,14 +35,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_170610) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "public_uid"
     t.boolean "owner", default: false, null: false
+    t.string "invitation_email"
+    t.string "invitation_token"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invited_by_id"
+    t.index ["account_id", "invitation_email"], name: "index_members_on_account_id_and_invitation_email", unique: true
+    t.index ["account_id", "invitation_token"], name: "index_members_on_account_id_and_invitation_token", unique: true
     t.index ["account_id", "user_id"], name: "index_members_on_account_id_and_user_id", unique: true
     t.index ["account_id"], name: "index_members_on_account_id"
+    t.index ["invited_by_id"], name: "index_members_on_invited_by_id"
     t.index ["public_uid"], name: "index_members_on_public_uid", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
   end
@@ -98,6 +106,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_170610) do
 
   add_foreign_key "account_invitations", "accounts"
   add_foreign_key "members", "accounts"
+  add_foreign_key "members", "members", column: "invited_by_id"
   add_foreign_key "members", "users"
   add_foreign_key "omniauth_identities", "users"
   add_foreign_key "users", "accounts", column: "personal_account_id"

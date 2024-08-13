@@ -48,6 +48,8 @@ en:
     password_updated: "Password updated successfully."
     two_factor_enabled: "Two-factor authentication enabled successfully."
     two_factor_required: "Two-factor authentication required"
+    invitation_created: "Invitation sent successfully."
+    team_account_required: "Select a team account first to access this page."
   misc:
     time_ago: "%{time_ago_in_words} ago"
   dashboard:
@@ -183,11 +185,24 @@ en:
         index:
           title: "Team members"
           description: "List of all the members in team %{team_name}."
-          invitations_title: "Invite members to your team"
-          invitations_text: |
-            Send the invitation link below to invite new members to your team. They will be able to join your team by clicking the link and signing up for an account
+        new:
+          title: "Invite a member"
+          description: "Invite a new member to join your team."
+          form:
+            invitation_email:
+              label: "Email"
+              placeholder: "Enter the email address"
+              hint: "The email address of the person you want to invite."
+            submit: "Send invitation"
+        instructions:
+          title: "Instructions"
+          content: |
+            Invitations are sent via email. You can invite anyone to join your team, even if they don't have an account yet. Once the person you invited accepts the invitation, they will be added to your team.
 
-            Every member of your team will have access to the same projects and resources.
+            Need to invite more members? No problem. Just fill out the form again and send another invitation.
+        action_buttons:
+          new: "Invite a member"
+          back: "Back to members list"
   partials:
     account_switcher:
       personal: "Personal account"

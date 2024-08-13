@@ -1,14 +1,16 @@
 require "application_system_test_case"
 
 class EditAccountProfileTest < ApplicationSystemTestCase
-  test "can account profile" do
+  test "can edit team profile" do
     account = create(:account, name: "Team account")
     user = create(:user, with_account: account)
 
     sign_in(user)
     visit account_settings_profile_path(account_id: account)
 
+
     # Fill the personal account form
+    assert_selector "input[name='account[name]']", visible: :all
     fill_in "account[name]", with: "New team name"
 
     click_on I18n.t("accounts.settings.profiles.show.submit")
