@@ -44,6 +44,7 @@ en:
     profile_updated: "User profile updated successfully."
     account_profile_updated: "Team profile updated successfully."
     email_change_pending_cancelled: "Email change request cancelled."
+    omniauth_email_taken: "An account with this email already exists. Please sign in to that account first and then link your %{provider} account."
     password_created: "Password created successfully."
     password_updated: "Password updated successfully."
     two_factor_enabled: "Two-factor authentication enabled successfully."
@@ -203,6 +204,12 @@ en:
         action_buttons:
           new: "Invite a member"
           back: "Back to members list"
+        invitation_link_modal:
+          title: "Invitation link"
+          content: |
+            The link below is linked to <strong>%{email}</strong> and allows them to join your team.
+
+            Copy and share the link via your preferred messaging platform or let us re-send the invitation email for you.
   partials:
     account_switcher:
       personal: "Personal account"

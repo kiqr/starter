@@ -6,12 +6,6 @@ module ActionDispatch
         options = default_controllers(options)
 
         invitation_routes(options)
-        omniauth_routes(options)
-
-        scope path: :users do
-          get "two-factor/disable", controller: "kiqr/two_factor", action: "disable", as: :disable_two_factor
-          delete "two-factor/destroy", controller: "kiqr/two_factor", action: "destroy", as: :destroy_two_factor
-        end
       end
 
       private
@@ -26,26 +20,8 @@ module ActionDispatch
         options[:controllers][:registrations] ||= "kiqr/registrations"
         options[:controllers][:sessions] ||= "kiqr/sessions"
         options[:controllers][:settings] ||= "kiqr/settings"
-        options[:controllers][:omniauth] ||= "kiqr/omniauth"
         options
       end
-
-      # => OmniAuth routes
-      # These routes are required for the OmniAuth to function properly.
-      def omniauth_routes(options)
-        match "auth/:provider/callback", controller: options[:controllers][:omniauth], action: :callback, via: %i[get post]
-      end
-
-      # # => Account routes
-      # def account_routes(options)
-      #   resources :accounts, controller: options[:controllers][:accounts], only: [ :new, :create ]
-      #   get "select-account", controller: options[:controllers][:accounts], action: :select, as: :select_account
-
-      #   scope "(/team/:account_id)", account_id: %r{[^/]+} do
-      #     resource :account, only: [ :edit, :update ], controller: options[:controllers][:accounts]
-      #     resources :account_users, controller: options[:controllers][:account_users], only: [ :index, :edit, :update, :destroy ], path: "members"
-      #   end
-      # end
 
       # => Teamable routes
       # Routes inside this block will be prefixed with /team/<team_id> if

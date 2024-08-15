@@ -23,7 +23,7 @@ class OmniauthTest < ApplicationSystemTestCase
     fill_in "email", with: user.email
     click_on "Sign In"
 
-    assert_text I18n.t("kiqr.flash_messages.omniauth_email_taken", provider: "developer")
+    assert_text I18n.t("flash_messages.omniauth_email_taken", provider: "developer")
   end
 
   test "can login with an already existing connection" do
