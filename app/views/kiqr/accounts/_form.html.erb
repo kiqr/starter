@@ -1,4 +1,0 @@
-<%= irelia_form(model: account, url: form_submit_path, method: form_method) do |form| %>
-  <%= form.text_field :name, placeholder: (account.personal? ? t(".name.personal") : t(".name.team")), required: true, autofocus: true %>
-  <%= form.submit (account.persisted? ? t(".button.save") : t(".button.create")) %>
-<% end %>

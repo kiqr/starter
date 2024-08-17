@@ -1,7 +1,0 @@
-<section id="social-auth-buttons">
-  <% if Rails.env.development? || Rails.env.test? %>
-    <%= button_to '/auth/developer', data: { turbo: false } do %>
-      <%= t(".buttons.developer") %>
-    <% end %>
-  <% end %>
-</section>
