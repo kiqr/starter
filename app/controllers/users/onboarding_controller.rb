@@ -6,6 +6,7 @@
 # onboarding process when they have a personal account.
 class Users::OnboardingController < ApplicationController
   skip_before_action :ensure_onboarded
+  before_action :setup_user
 
   before_action do
     # This is to prevent users from accessing the onboarding process
@@ -19,17 +20,14 @@ class Users::OnboardingController < ApplicationController
   end
 
   def new
-    @user = User.find(current_user.id)
     @user.build_personal_account(personal: true)
   end
 
   def update
-    @user = User.find(current_user.id)
     @user.assign_attributes(user_params)
-    @user.personal_account&.personal = true
+    @user.personal_account.personal = true
 
-    if @user.valid?
-      Kiqr::Services::Users::Update.call!(user: @user)
+    if @user.save
       kiqr_flash_message(:notice, :onboarding_completed)
       redirect_to after_onboarding_path(@user)
     else
@@ -38,6 +36,10 @@ class Users::OnboardingController < ApplicationController
   end
 
   private
+
+  def setup_user
+    @user = User.find(current_user.id)
+  end
 
   def user_params
     account_attributes = Kiqr.config.account_attributes.prepend(:id)

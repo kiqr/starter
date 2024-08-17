@@ -7,10 +7,7 @@ class Users::Settings::ProfilesController < Users::Settings::ApplicationControll
 
   # PATCH /settings/profile
   def update
-    @user.assign_attributes(user_profile_params)
-
-    if @user.valid?
-      Kiqr::Services::Users::Update.call!(user: @user)
+    if @user.update(user_profile_params)
       kiqr_flash_message(:success, :profile_updated)
       redirect_to user_settings_profile_path
     else

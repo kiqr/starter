@@ -4,8 +4,6 @@ module ActionDispatch
       def kiqr_routes(options = {})
         # Set default options for controllers if not set.
         options = default_controllers(options)
-
-        invitation_routes(options)
       end
 
       private
@@ -29,21 +27,6 @@ module ActionDispatch
       def teamable_scope(&)
         scope "(/team/:account_id)", account_id: %r{[^/]+} do
           yield
-        end
-      end
-
-      # => Invitation routes
-      # Routes for team admins to create or decline and users to accept or decline team invitations.
-      def invitation_routes(options)
-        # Invitee
-        resources :invitations, controller: options[:controllers][:invitations], only: %i[show] do
-          post :accept, on: :member
-          post :reject, on: :member
-        end
-
-        # Inviter
-        teamable_scope do
-          resources :account_invitations, controller: "kiqr/accounts/invitations", only: [ :index, :new, :create, :destroy ]
         end
       end
     end
