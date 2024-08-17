@@ -14,6 +14,12 @@ class Accounts::Settings::MembersControllerTest < ActionDispatch::IntegrationTes
     assert_equal @user, assigns(:members).first.user
   end
 
+  test "can't render members index as personal account" do
+    assert_raises(ActionController::UrlGenerationError) do
+      get account_settings_members_path
+    end
+  end
+
   test "can create a new member / invitation" do
     # Expect account.members.count to increase with one.
     assert_difference "@account.members.count", 1 do
@@ -27,11 +33,36 @@ class Accounts::Settings::MembersControllerTest < ActionDispatch::IntegrationTes
     assert_equal 1, @account.members.pending.count
   end
 
-  test "can't create a invitation with invalid email" do
+  test "validates invitation email" do
     assert_no_difference "@account.members.count" do
       post account_settings_members_path(account_id: @account), params: { member: { invitation_email: "foo" } }
     end
 
     assert_response :unprocessable_content
+  end
+
+  test "can't invite a user to someone else team" do
+    foreign_account = create(:account, name: "Foreign account")
+
+    assert_raises(PublicUid::RecordNotFound) do
+      post account_settings_members_path(account_id: foreign_account), params: { member: { invitation_email: "foobar@agag.com" } }
+    end
+  end
+
+  test "can only invite the same user once" do
+    post account_settings_members_path(account_id: @account), params: { member: { invitation_email: "foobar@foobar.com" } }
+    assert_redirected_to account_settings_members_path(account_id: @account)
+
+    assert_no_difference -> { @account.members.count } do
+      post account_settings_members_path(account_id: @account), params: { member: { invitation_email: "foobar@foobar.com" } }
+    end
+  end
+
+  test "can't remove the team owner" do
+    skip "not implemented yet"
+  end
+
+  test "can remove a member from team" do
+    skip "not implemented yet"
   end
 end
