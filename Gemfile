@@ -72,6 +72,9 @@ group :development, :test do
 
   # Lint your ERB or HTML files.
   gem "erb_lint", require: false
+
+  # Manage translation and localization with static analysis, for Ruby i18n
+  gem "i18n-tasks", "~> 1.0.14"
 end
 
 group :development do

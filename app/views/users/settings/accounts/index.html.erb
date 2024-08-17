@@ -11,7 +11,7 @@ irelia_table do |table|
   @memberships.each do |membership|
     table.with_row do |row|
       row.with_cell { link_to membership.account.name, "#" }
-      row.with_cell { membership.owner? ? t(".roles.owner") : t(".roles.member") }
+      row.with_cell { membership.owner? ? t("roles.owner") : t("roles.member") }
       row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
         irelia_button(url: account_settings_profile_path(account_id: membership.account), size: :xs) { "Edit" }
       end

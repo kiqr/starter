@@ -30,7 +30,7 @@ class Users::OnboardingController < ApplicationController
 
     if @user.valid?
       Kiqr::Services::Users::Update.call!(user: @user)
-      kiqr_flash_message(:notice, :settings_updated)
+      kiqr_flash_message(:notice, :onboarding_completed)
       redirect_to after_onboarding_path(@user)
     else
       render :new, status: :unprocessable_entity

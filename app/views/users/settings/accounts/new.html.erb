@@ -5,6 +5,6 @@
 <div class="max-w-3xl">
   <%= irelia_form(model: @account, url: user_settings_accounts_path, method: :post) do |form| %>
     <%= render "accounts/form_fields", form: form %>
-    <%= form.submit "Create team" %>
+    <%= form.submit t(".submit") %>
   <% end %>
 </div>
