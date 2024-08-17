@@ -20,6 +20,5 @@ class EditProfileTest < ApplicationSystemTestCase
     assert_equal "New name", user.personal_account.name
     assert_equal "sv", user.locale
   rescue I18n::MissingTranslationData
-
   end
 end
