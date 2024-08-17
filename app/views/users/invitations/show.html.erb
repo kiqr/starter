@@ -1,0 +1,11 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description", account_name: @account.name)) %>
+<div class="max-w-3xl flex flex-col gap-y-10">
+  <div class="prose">
+    <%= simple_format t(".content", account_name: @account.name, inviter_name: @member.invited_by.name) %>
+  </div>
+
+  <%= irelia_stack do %>
+    <%= irelia_button { "Accept invitation"} %>
+    <%= irelia_button(color: :danger) { "Decline invitation"} %>
+  <% end %>
+</div>

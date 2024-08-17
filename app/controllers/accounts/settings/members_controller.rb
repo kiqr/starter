@@ -14,15 +14,19 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
 
   def create
     @member = @account.members.new(member_params)
-    @member.invited_by = find_current_member
 
     if @member.save
-      @member.send_invitation_email
       kiqr_flash_message :success, :invitation_created
       redirect_to account_settings_members_path
     else
       render :new, status: :unprocessable_content
     end
+  end
+
+  # Show the invitation link modal.
+  def invitation_link_modal
+    member = @account.members.find_puid(params[:id])
+    render turbo_stream: turbo_stream.update("invitation_link", partial: "accounts/settings/members/invitation_link_modal", locals: { member: member })
   end
 
   private
@@ -32,6 +36,6 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
   end
 
   def member_params
-    params.require(:member).permit(:invitation_email)
+    params.require(:member).permit(:invitation_email).merge(invited_by: find_current_member)
   end
 end

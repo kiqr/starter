@@ -2,6 +2,8 @@
   <% header.with_button(url: new_account_settings_member_path, icon: "fa fa-circle-plus") { t("accounts.settings.members.action_buttons.new") } %>
 <% end %>
 
+<%= irelia_modal(name: "invitation_link", title: t("accounts.settings.members.invitation_link_modal.title")) %>
+
 <%=
 irelia_table do |table|
   table.with_column { "Name" }
@@ -17,6 +19,7 @@ irelia_table do |table|
       row.with_cell { member.owner? ? tag.strong(t(".roles.owner")) : t(".roles.member") }
       row.with_cell { member.invitation_accepted_at? ? l(member.invitation_accepted_at, format: :long) : tag.em(t(".pending_invitation")) }
       row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
+        irelia_button(url: invitation_link_modal_account_settings_member_path(member), size: :xs, color: :secondary, modal: :invitation_link) { "Invitation link" } if member.pending_invitation?
       end
     end
   end
