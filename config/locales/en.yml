@@ -18,12 +18,6 @@ en:
           description: List of all the members in team %{team_name}.
           pending_invitation: Pending invitation
           title: Team members
-        instructions:
-          content: |
-            Invitations are sent via email. You can invite anyone to join your team, even if they don't have an account yet. Once the person you invited accepts the invitation, they will be added to your team.
-
-            Need to invite more members? No problem. Just fill out the form again and send another invitation.
-          title: Instructions
         invitation_link_modal:
           content: |
             The link below is linked to <strong>%{email}</strong> and allows them to join your team.
@@ -38,6 +32,12 @@ en:
               label: Email
               placeholder: Enter the email address
             submit: Send invitation
+          instructions:
+            content: |
+              Invitations are sent via email. You can invite anyone to join your team, even if they don't have an account yet. Once the person you invited accepts the invitation, they will be added to your team.
+
+              Need to invite more members? No problem. Just fill out the form again and send another invitation.
+            title: Instructions
           title: Invite a member
       profiles:
         show:

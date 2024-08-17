@@ -10,6 +10,9 @@
     <% end %>
   </div>
   <div class="col-span-2">
-    <%= render "instructions" %>
+    <div class="prose">
+      <h4><%= t(".instructions.title") %></h4>
+      <%= simple_format t(".instructions.content") %>
+    </div>
   </div>
 </div>
