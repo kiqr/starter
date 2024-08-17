@@ -51,6 +51,11 @@ en:
     two_factor_required: "Two-factor authentication required"
     invitation_created: "Invitation sent successfully."
     team_account_required: "Select a team account first to access this page."
+    register_to_accept_invitation: "You need to register or sign in to accept the invitation."
+    onboard_to_accept_invitation: "You need to complete the onboarding process to accept the invitation."
+    already_member_of_team: "You are already a member of this team."
+    accepted_invitation: "Invitation accepted successfully."
+    declined_invitation: "You declined the invitation to join team %{account_name}."
   misc:
     time_ago: "%{time_ago_in_words} ago"
   dashboard:

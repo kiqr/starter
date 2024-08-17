@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def invitation_token_to_url(token)
-      user_invitation_url(token: token, account_id: nil)
+    user_invitation_url(token: token, account_id: nil)
   end
 end

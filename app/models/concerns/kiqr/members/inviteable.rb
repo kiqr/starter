@@ -9,11 +9,13 @@ module Kiqr
         has_secure_token :invitation_token # Invitation token to generate a unique invitation link.
       end
 
-      def accept_invitation
+      def accept_invitation_for_user(user_id)
+        update(invitation_accepted_at: Time.current, user_id: user_id)
         # @todo: Send welcome email to the user.
       end
 
       def decline_invitation
+        destroy
         # @todo: Send email to the inviter that the user has declined the invitation.
       end
 

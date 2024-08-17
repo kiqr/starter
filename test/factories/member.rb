@@ -3,8 +3,15 @@ FactoryBot.define do
     user
     account
     owner { true }
-    trait :accepted do
-      invitation_accepted_at { Time.zone.now }
+    invitation_email { user.email }
+    invitation_accepted_at { Time.zone.now }
+
+    trait :invitation do
+      user { nil }
+      account { nil }
+      owner { false }
+      invitation_email { Faker::Internet.email }
+      invitation_accepted_at { nil }
     end
   end
 end

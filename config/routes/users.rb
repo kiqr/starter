@@ -16,7 +16,10 @@ namespace :user, path: nil, module: :users do
   get "onboarding",   to: "onboarding#new"
   patch "onboarding", to: "onboarding#update"
 
-  resource :invitation, only: [ :show, :update ], controller: "invitations", path: "invitation/:token"
+  resource :invitation, only: [ :show, :update ], controller: "invitations", path: "invitation/:token" do
+    patch "accept", action: :accept_invitation
+    delete "decline", action: :decline_invitation
+  end
 
   namespace :settings do
     resource "profile", only: [ :show, :update ]

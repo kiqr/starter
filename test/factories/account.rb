@@ -12,7 +12,7 @@ FactoryBot.define do
         if evaluator.users_count > 0
           evaluator.users_count.times do
             user = create(:user)
-            create(:member, :accepted, user: user, account: account, owner: false)
+            create(:member, user: user, account: account, owner: false)
           end
         end
       end

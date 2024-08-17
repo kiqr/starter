@@ -5,7 +5,7 @@
   </div>
 
   <%= irelia_stack do %>
-    <%= irelia_button { "Accept invitation"} %>
-    <%= irelia_button(color: :danger) { "Decline invitation"} %>
+    <%= irelia_button_to t(".buttons.accept_invitation"), accept_user_invitation_path(invitation_token: @invitation_token), method: :patch %>
+    <%= irelia_button_to t(".buttons.decline_invitation"), decline_user_invitation_path(invitation_token: @invitation_token), color: :danger, method: :delete %>
   <% end %>
 </div>
