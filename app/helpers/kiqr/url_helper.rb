@@ -1,6 +1,8 @@
 module Kiqr::UrlHelper
   # Override the method to change the sign-in redirect path
   def after_sign_in_path_for(resource)
+    return user_onboarding_path unless resource.onboarded?
+
     if session[:after_sign_in_path].present?
       session.delete(:after_sign_in_path)
     else

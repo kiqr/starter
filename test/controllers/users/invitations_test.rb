@@ -13,7 +13,7 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
   test "redirects to registrations path with invitation token stored in session if not signed in" do
     get user_invitation_path(token: @invitation.invitation_token)
     assert_equal I18n.t("flash_messages.register_to_accept_invitation"), flash[:notice]
-    assert_equal @invitation.invitation_token, session[:invitation_token]
+    assert_equal user_invitation_path(token: @invitation.invitation_token, account_id: nil), session[:after_sign_in_path]
     assert_redirected_to new_user_registration_path
   end
 
@@ -21,7 +21,7 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
     sign_in(@fresh_user)
     get user_invitation_path(token: @invitation.invitation_token)
     assert_equal I18n.t("flash_messages.onboard_to_accept_invitation"), flash[:notice]
-    assert_equal @invitation.invitation_token, session[:invitation_token]
+    assert_equal user_invitation_path(token: @invitation.invitation_token, account_id: nil), session[:after_sign_in_path]
     assert_redirected_to user_onboarding_path
   end
 
@@ -44,7 +44,6 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
     patch accept_user_invitation_path(token: @invitation.invitation_token)
     assert_redirected_to dashboard_path(account_id: @account)
     assert_equal I18n.t("flash_messages.accepted_invitation"), flash[:success]
-    assert_not session[:invitation_token]
     assert @onboarded_user.reload.accounts.include?(@account)
   end
 
@@ -53,7 +52,6 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
     delete decline_user_invitation_path(token: @invitation.invitation_token)
     assert_equal I18n.t("flash_messages.declined_invitation", account_name: @account.name), flash[:notice]
     assert_redirected_to dashboard_path
-    assert_not session[:invitation_token]
     assert_not Member.exists?(@invitation.id)
   end
 end

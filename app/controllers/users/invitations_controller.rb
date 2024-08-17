@@ -1,7 +1,6 @@
 class Users::InvitationsController < ApplicationController
   before_action :setup_member_and_account
   before_action :ensure_no_duplicate_users
-  skip_before_action :redirect_to_pending_invitation
 
   def show
     @invitation_token = @member.invitation_token
@@ -9,14 +8,12 @@ class Users::InvitationsController < ApplicationController
 
   def accept_invitation
     @member.accept_invitation_for_user(current_user.id)
-    reset_invitation_session
     kiqr_flash_message(:success, :accepted_invitation)
     redirect_to dashboard_path(account_id: @account)
   end
 
   def decline_invitation
     @member.decline_invitation
-    reset_invitation_session
     kiqr_flash_message(:notice, :declined_invitation, account_name: @account.name)
     redirect_to dashboard_path
   end
@@ -40,7 +37,7 @@ class Users::InvitationsController < ApplicationController
     def authenticate_user!
       return if user_signed_in?
 
-      session[:invitation_token] = params[:token]
+      session[:after_sign_in_path] = user_invitation_path(token: params[:token], account_id: nil)
       kiqr_flash_message(:notice, :register_to_accept_invitation)
       redirect_to new_user_registration_path
     end
@@ -49,7 +46,7 @@ class Users::InvitationsController < ApplicationController
     def ensure_onboarded
       return if current_user.onboarded? # Check if user is not onboarded
 
-      session[:invitation_token] = params[:token]
+      session[:after_sign_in_path] = user_invitation_path(token: params[:token], account_id: nil)
       kiqr_flash_message(:notice, :onboard_to_accept_invitation)
       redirect_to user_onboarding_path
     end
