@@ -1,30 +1,31 @@
 require "test_helper"
 
 class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
-  test "can view cancellation page" do
-    sign_in create(:user)
+  setup do
+    @user = create(:user)
+    @user_with_team = create(:user, with_account: create(:account))
+  end
+
+  test "displays account cancellation page for signed-in user" do
+    sign_in @user
     get cancel_user_registration_path
+
     assert_response :success
   end
 
-  test "can delete a user without teams" do
-    user = create(:user)
-    sign_in user
+  test "deletes user account if user has no teams and redirects to home page" do
+    sign_in @user
     delete user_registration_path
 
     assert_redirected_to root_path
-    assert_nil User.find_by(id: user.id)
+    assert_nil User.find_by(id: @user.id)
   end
 
-  test "can't delete a user with owned teams" do
-    user = create(:user)
-    team_account = create(:account, name: "Team account")
-    team_account.members << Member.create(user: user, owner: true)
-
-    sign_in user
+  test "prevents user account deletion if user owns teams and redirects to cancellation page" do
+    sign_in @user_with_team
     delete user_registration_path
 
     assert_redirected_to cancel_user_registration_path
-    assert User.find_by(id: user.id)
+    assert User.find_by(id: @user_with_team.id)
   end
 end

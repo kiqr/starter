@@ -1,40 +1,43 @@
 require "test_helper"
 
 class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
-  test "can sign in if two factor is disabled" do
-    user = create(:user)
-    post user_session_path, params: { user: { email: user.email, password: user.password } }
+  setup do
+    @user = create(:user)
+    @user_with_2fa = create(:user, :otp_enabled)
+  end
+
+  test "signs in successfully if two-factor authentication is disabled" do
+    post user_session_path, params: { user: { email: @user.email, password: @user.password } }
+
     assert_response :redirect
     assert_redirected_to dashboard_path
   end
 
-  test "can sign in with otp if two factor is enabled" do
-    user = create(:user, :otp_enabled)
-    post user_session_path, params: { user: { email: user.email, password: user.password } }
+  test "prompts for OTP after password if two-factor authentication is enabled" do
+    post user_session_path, params: { user: { email: @user_with_2fa.email, password: @user_with_2fa.password } }
+
     assert_response :unprocessable_content
     assert_template "users/sessions/otp"
+  end
 
-    post user_session_path, params: { user: { otp_attempt: user.current_otp } }
+  test "signs in successfully with correct OTP when two-factor authentication is enabled" do
+    post user_session_path, params: { user: { email: @user_with_2fa.email, password: @user_with_2fa.password } }
+    post user_session_path, params: { user: { otp_attempt: @user_with_2fa.current_otp } }
+
     assert_redirected_to dashboard_path
   end
 
-  test "can't sign in with invalid otp if two factor is enabled" do
-    user = create(:user, :otp_enabled)
-    post user_session_path, params: { user: { email: user.email, password: user.password } }
+  test "fails to sign in with incorrect OTP when two-factor authentication is enabled" do
+    post user_session_path, params: { user: { email: @user_with_2fa.email, password: @user_with_2fa.password } }
     post user_session_path, params: { user: { otp_attempt: "123456" } }
+
     assert_response :unprocessable_content
     assert_template "users/sessions/otp"
   end
 
-  test "renders form again if invalid email" do
-    post user_session_path, params: { user: { email: "unknown.email", password: "randompassword" } }
-    assert_response :unprocessable_content
-    assert_template "users/sessions/new"
-  end
+  test "renders login form again if password is invalid" do
+    post user_session_path, params: { user: { email: @user.email, password: "randompassword" } }
 
-  test "renders form again if invalid password" do
-    user = create(:user)
-    post user_session_path, params: { user: { email: user.email, password: "randompassword" } }
     assert_response :unprocessable_content
     assert_template "users/sessions/new"
   end

@@ -10,46 +10,52 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
     @invitation = create(:member, :invitation, account: @account, invited_by: @member)
   end
 
-  test "redirects to registrations path with invitation token stored in session if not signed in" do
+  test "redirects unauthenticated users to registration page and stores the invitation url in after_sign_in_path" do
     get user_invitation_path(token: @invitation.invitation_token)
+
     assert_equal I18n.t("flash_messages.register_to_accept_invitation"), flash[:notice]
     assert_equal user_invitation_path(token: @invitation.invitation_token, account_id: nil), session[:after_sign_in_path]
     assert_redirected_to new_user_registration_path
   end
 
-  test "redirects to onboarding path with invitation token stored in session if not onboarded" do
+  test "redirects non-onboarded users to onboarding page and stores the invitation url in after_sign_in_path" do
     sign_in(@fresh_user)
     get user_invitation_path(token: @invitation.invitation_token)
+
     assert_equal I18n.t("flash_messages.onboard_to_accept_invitation"), flash[:notice]
     assert_equal user_invitation_path(token: @invitation.invitation_token, account_id: nil), session[:after_sign_in_path]
     assert_redirected_to user_onboarding_path
   end
 
-  test "can't view an invitation if already member of team" do
+  test "prevents access to invitation if user is already a member of the team" do
     sign_in(@user)
     get user_invitation_path(token: @invitation.invitation_token)
+
     assert_equal I18n.t("flash_messages.already_member_of_team"), flash[:danger]
     assert_redirected_to dashboard_path
   end
 
-  test "can view invitation if signed in and not a member of team" do
+  test "allows viewing the invitation if signed in and not yet a member of the team" do
     sign_in(@onboarded_user)
     get user_invitation_path(token: @invitation.invitation_token)
+
     assert_response :success
     assert_template "users/invitations/show"
   end
 
-  test "can accept an invitation" do
+  test "allows accepting an invitation and redirects to the team dashboard" do
     sign_in(@onboarded_user)
     patch accept_user_invitation_path(token: @invitation.invitation_token)
+
     assert_redirected_to dashboard_path(account_id: @account)
     assert_equal I18n.t("flash_messages.accepted_invitation"), flash[:success]
     assert @onboarded_user.reload.accounts.include?(@account)
   end
 
-  test "can decline an invitation" do
+  test "allows declining an invitation and removes the invitation from the database" do
     sign_in(@onboarded_user)
     delete decline_user_invitation_path(token: @invitation.invitation_token)
+
     assert_equal I18n.t("flash_messages.declined_invitation", account_name: @account.name), flash[:notice]
     assert_redirected_to dashboard_path
     assert_not Member.exists?(@invitation.id)

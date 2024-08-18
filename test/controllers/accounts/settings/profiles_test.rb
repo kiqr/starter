@@ -2,25 +2,23 @@ require "test_helper"
 
 class Accounts::Settings::ProfilesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @account = create(:account, :with_users, users_count: 2)
+    @account = create(:account)
     @user = create(:user, with_account: @account)
     sign_in @user
   end
 
-  test "should get edit page" do
+  test "renders the account profile edit page successfully" do
     get account_settings_profile_path(account_id: @account)
     assert_response :success
   end
 
-  test "can update team account fields" do
+  test "updates the team account name and redirects to profile page" do
     patch account_settings_profile_path(account_id: @account), params: { account: { name: "New cool name" } }
-    @account.reload
-
     assert_redirected_to account_settings_profile_path(account_id: @account)
-    assert_equal "New cool name", @account.name
+    assert_equal "New cool name", @account.reload.name
   end
 
-  test "can't update team account with invalid fields" do
+  test "does not update team account with invalid fields and returns error" do
     patch account_settings_profile_path(account_id: @account), params: { account: { name: "no" } }
     assert_response :unprocessable_content
   end

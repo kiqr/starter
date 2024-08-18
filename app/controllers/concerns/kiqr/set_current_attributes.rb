@@ -10,11 +10,13 @@ module Kiqr::SetCurrentAttributes
   # Set the current user and account based on the request
   def set_current_attributes
     Current.user = current_user
-    Current.account = (fetch_account_from_params || current_user&.personal_account)
+    Current.account ||= fetch_account_from_params || current_user&.personal_account
   end
 
   def fetch_account_from_params
     return nil unless params[:account_id].present?
     current_user.accounts.find_puid!(params[:account_id])
+  rescue PublicUid::RecordNotFound
+    head :forbidden
   end
 end
