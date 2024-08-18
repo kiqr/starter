@@ -6,7 +6,7 @@ module Kiqr
       included do
         has_many :members, dependent: :destroy
         has_many :users, through: :members
-        has_many :account_invitations, dependent: :destroy
+        has_many :pending_invitations, -> { pending }, class_name: "Member"
       end
 
       def has_member?(user)

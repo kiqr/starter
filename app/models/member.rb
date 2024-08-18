@@ -4,7 +4,7 @@ class Member < ApplicationRecord
   include Kiqr::Members::Inviteable
 
   # => Scopes
-  scope :pending, -> { where(user_id: nil) }
+  scope :pending, -> { where(user_id: nil, invitation_accepted_at: nil) }
   scope :accepted, -> { where.not(user_id: nil).where.not(invitation_accepted_at: nil) }
 
   # => Validations
@@ -12,19 +12,27 @@ class Member < ApplicationRecord
   validates :invitation_email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, if: -> { user_id.nil? }
   validates :invitation_token, presence: true, uniqueness: { scope: :account_id }
 
-  # Name of the user or invitation email if user hasn't accepted the invitation yet.
+  # => Callbacks
+  before_destroy :prevent_owner_deletion
+
+  # => User attributes
   def name
-    user.present? ? user.name : invitation_email
+    user_attribute(:name)
   end
 
-  # Email of the user or invitation email if user hasn't accepted the invitation yet.
   def email
-    user.present? ? user.email : invitation_email
+    user_attribute(:email)
+  end
+
+  private
+
+  # Return the user's attribute or the invitation attribute if the user hasn't accepted the invitation yet.
+  def user_attribute(attribute)
+    user.present? ? user.send(attribute) : invitation_email
   end
 
   # Prevent the deletion of account owners.
-  def destroy
-    raise Kiqr::Errors::DeleteTeamOwnerError if owner?
-    super
+  def prevent_owner_deletion
+    raise "Can't delete team owner" if owner?
   end
 end
