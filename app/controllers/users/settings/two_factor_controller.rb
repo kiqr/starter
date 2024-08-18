@@ -45,6 +45,11 @@ class Users::Settings::TwoFactorController < Users::Settings::ApplicationControl
 
   private
 
+  def two_factor_enabled?
+    current_user.otp_required_for_login?
+  end
+  helper_method :two_factor_enabled?
+
   def setup_qr_code
     # Generate the QR code for scanning the OTP secret.
     # We'll use the RQRCode gem to generate the QR code.

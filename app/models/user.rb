@@ -21,6 +21,4 @@ class User < ApplicationRecord
     return false if skip_password_validation
     super
   end
-
-  # Include any custom methods here
 end

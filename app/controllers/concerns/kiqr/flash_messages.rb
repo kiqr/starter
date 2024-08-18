@@ -2,11 +2,6 @@ module Kiqr
   module FlashMessages
     extend ActiveSupport::Concern
 
-    included do
-      # Add more types of flash message to match the available variants of Irelia::Notification::Component.
-      add_flash_types :success, :warning
-    end
-
     # Render the flash messages stream
     def render_flash_messages_stream
       turbo_stream.replace("flash_messages", partial: "partials/flash_message")
