@@ -10,20 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_12_190114) do
-  create_table "account_invitations", force: :cascade do |t|
-    t.string "public_uid"
-    t.integer "account_id", null: false
-    t.string "email", null: false
-    t.datetime "accepted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id", "email"], name: "index_account_invitations_on_account_id_and_email", unique: true
-    t.index ["account_id"], name: "index_account_invitations_on_account_id"
-    t.index ["email"], name: "index_account_invitations_on_email"
-    t.index ["public_uid"], name: "index_account_invitations_on_public_uid", unique: true
-  end
-
+ActiveRecord::Schema[7.2].define(version: 2024_08_19_110715) do
   create_table "accounts", force: :cascade do |t|
     t.string "public_uid"
     t.string "name", null: false
@@ -104,7 +91,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_190114) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "account_invitations", "accounts"
   add_foreign_key "members", "accounts"
   add_foreign_key "members", "members", column: "invited_by_id"
   add_foreign_key "members", "users"
