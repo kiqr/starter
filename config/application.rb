@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require_relative "../lib/kiqr"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -11,16 +12,15 @@ module App
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
-    # => Kiqr defaults
-    # Load default_url_options automatically from KIQR. To set a custom URL in
+    # Load default_url_options automatically with KIQR. To set a custom URL in
     # production, set the `BASE_URL` environment variable to your apps domain.
-    # It defaults to `http://localhost:3000` in development.
+    # It defaults to `http://localhost:3000` in the development and test environments.
     config.action_mailer.default_url_options = Kiqr.default_url_options
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets kiqr tasks])
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # => Devise layouts
     # Set the layout for Devise controllers

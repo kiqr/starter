@@ -1,25 +1,14 @@
-require "kiqr/engine"
-require "kiqr/version"
-
-require "devise"
-require "devise-two-factor"
-require "public_uid"
-require "rqrcode"
-require "loaf"
-require "meta-tags"
-
-require "omniauth"
-require "omniauth/rails_csrf_protection"
+require_relative "kiqr/config"
 
 module Kiqr
-  autoload :Config, "kiqr/config"
-
   def self.config
     @config ||= Kiqr::Config
   end
 
   # ==> Base URL
-  # This is used to generate absolute URLs.
+  # Load default_url_options automatically with KIQR. To set a custom URL in
+  # production, set the `BASE_URL` environment variable to your apps domain.
+  # It defaults to `http://localhost:3000` in the development and test environments.
   def self.default_url_options
     ENV["BASE_URL"] ||= (Rails.env.development? || Rails.env.test?) ? "http://localhost:3000" : (return {})
 

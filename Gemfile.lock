@@ -9,19 +9,6 @@ GIT
       view_component (~> 3.12)
       view_component-contrib (~> 0.2.2)
 
-PATH
-  remote: lib/kiqr
-  specs:
-    kiqr (0.1.0)
-      devise (~> 4.9, >= 4.9.3)
-      devise-two-factor (>= 5.0, < 5.2)
-      loaf (~> 0.10.0)
-      meta-tags (~> 2.20)
-      omniauth (~> 2.1.1)
-      omniauth-rails_csrf_protection (~> 1.0.1)
-      public_uid (~> 2.2)
-      rqrcode (~> 2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -471,6 +458,8 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  devise (~> 4.9, >= 4.9.3)
+  devise-two-factor (>= 5.0, < 5.2)
   erb_lint
   factory_bot (~> 6.4.3)
   faker
@@ -478,12 +467,16 @@ DEPENDENCIES
   importmap-rails
   irelia!
   jbuilder
-  kiqr!
   letter_opener_web (~> 3.0)
+  loaf (~> 0.10.0)
   meta-tags (~> 2.21)
+  omniauth (~> 2.1.1)
+  omniauth-rails_csrf_protection (~> 1.0.1)
+  public_uid (~> 2.2)
   puma (>= 5.0)
   rails (~> 7.2.0.rc1)
   rails-controller-testing
+  rqrcode (~> 2.0)
   rubocop-rails-omakase
   selenium-webdriver
   sprockets-rails

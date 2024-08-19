@@ -48,14 +48,20 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Core gem for KIQR. It provides the basic functionality for the application [https://github.com/kiqr/kiqr]
-gem "kiqr", path: "lib/kiqr"
-
 # Frontend gem for KIQR. It provides the view components and design system for the application [https://github.com/kiqr/irelia]
 gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
 
 # Search Engine Optimization (SEO) for Ruby on Rails applications. [https://github.com/kpumuk/meta-tags]
 gem "meta-tags", "~> 2.21"
+
+# => KIQR gems
+gem "devise", "~> 4.9", ">= 4.9.3"
+gem "devise-two-factor", ">= 5.0", "< 5.2"
+gem "omniauth", "~> 2.1.1"
+gem "omniauth-rails_csrf_protection", "~> 1.0.1"
+gem "public_uid", "~> 2.2"
+gem "rqrcode", "~> 2.0"
+gem "loaf", "~> 0.10.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

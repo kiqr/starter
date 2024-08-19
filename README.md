@@ -7,13 +7,6 @@ Turbocharge your SaaS journey with KIQR, your go-to Rails 7.1-based saas starter
 
 <img src="https://kiqr.dev/screenshots/edit-profile.png">
 
-> [!CAUTION]  
-> This project is currently under active development and may undergo frequent refactoring, which could introduce breaking changes. It is not suitable for production use at this stage.
->
-> When complete, this repository will serve as a monorepo containing multiple modules. The starter kit will be accessible from a separate repository. Please keep this in mind if you choose to explore or contribute to the codebase at this time.
->
-> But please feel free to test it out and create pull requests if you want to be a part of the core team.
-
 ## Key features
 
  ⭐ User registration with email confirmations (using Devise).<br>
