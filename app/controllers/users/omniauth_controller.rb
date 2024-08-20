@@ -1,7 +1,7 @@
 class Users::OmniauthController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[callback]
   skip_before_action :ensure_onboarded, only: %i[callback]
-  skip_before_action :verify_authenticity_token, only: %i[callback]
+  # skip_before_action :verify_authenticity_token, only: %i[callback]
 
   # GET /auth/:provider/callback
   def callback

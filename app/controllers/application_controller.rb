@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   include Kiqr::Submenu
   include Kiqr::UrlHelper
 
+  # Turn on request forgery protection. Bear in mind that GET and HEAD requests are not checked.
+  protect_from_forgery with: :exception, prepend: true
+
   # Ensure that a user is signed in and has completed the onboarding process before accessing any other page.
   # This is done in the ApplicationController to ensure that all controllers inherit this behavior.
   # To skip this behavior in a controller, use:
