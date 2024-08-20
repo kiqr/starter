@@ -13,7 +13,7 @@ Turbocharge your SaaS journey with KIQR, your go-to Rails 7.1-based saas starter
  ⭐ Two-factor authentication.<br>
  ⭐ Team & personal accounts with profiles.<br>
  ⭐ Settings page for users and accounts.<br>
- ⭐ Prepared for localization.
+ ⭐ Prepared for localization.<br>
  ⭐ Fully translated for multi-language support.<br>
  ⭐ TailwindCSS template built with [Irelia](https://github.com/kiqr/irelia) Components.<br>
 
