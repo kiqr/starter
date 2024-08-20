@@ -1,7 +1,13 @@
-<h1><%= t(".title") %></h1>
-<h2><%= t(".description") %></h2>
+<%= irelia_split_screen(variant: :reverse, center: true) do %>
+  <div class="flex flex-col gap-y-5">
+    <header class="mb-5">
+      <h1 class="text-2xl font-bold mb-2"><%= t(".title", app_name: Kiqr.config.app_name) %></h1>
+      <h2><%= t(".description") %></h2>
+    </header>
 
-<%= irelia_form(model: @user, url: new_user_session_path, method: :post) do |form| %>
-  <%= form.text_field :otp_attempt, label: t(".form.otp_attempt.label"), placeholder: t(".form.otp_attempt.placeholder") %>
-  <%= form.submit t(".submit") %>
+    <%= irelia_form(model: @user, url: new_user_session_path, method: :post) do |form| %>
+      <%= form.text_field :otp_attempt, label: t(".form.otp_attempt.label"), placeholder: t(".form.otp_attempt.placeholder") %>
+      <%= form.submit t(".submit") %>
+    <% end %>
+  </div>
 <% end %>
