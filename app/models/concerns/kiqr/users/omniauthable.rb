@@ -4,7 +4,7 @@ module Kiqr
       extend ActiveSupport::Concern
 
       included do
-        # OmniAuth identities for logins using external providers
+        devise :omniauthable
         has_many :omniauth_identities, dependent: :destroy
       end
     end

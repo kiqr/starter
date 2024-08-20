@@ -1,7 +1,5 @@
 <%= irelia_stack do %>
-  <% if Rails.env.development? || Rails.env.test? %>
-    <%= irelia_button_to '/auth/developer', data: { turbo: false } do %>
-      <%= t(".sign_in_as", provider: "Developer") %>
-    <% end %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= irelia_button_to t(".developer", provider: "developer"), omniauth_authorize_path(:user, "developer"), data: { turbo: false } %>
   <% end %>
 <% end %>

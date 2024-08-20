@@ -9,7 +9,6 @@ class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
   test "signs in successfully if two-factor authentication is disabled" do
     post user_session_path, params: { user: { email: @user.email, password: @user.password } }
 
-    assert_response :redirect
     assert_redirected_to dashboard_path
   end
 
