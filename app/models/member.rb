@@ -33,6 +33,6 @@ class Member < ApplicationRecord
 
   # Prevent the deletion of account owners.
   def prevent_owner_deletion
-    raise "Can't delete team owner" if owner?
+    raise Kiqr::Errors::AccountOwnerDeletionError if owner?
   end
 end

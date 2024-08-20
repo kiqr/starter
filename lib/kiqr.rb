@@ -1,4 +1,5 @@
 require_relative "kiqr/config"
+require_relative "kiqr/errors"
 
 module Kiqr
   def self.config
