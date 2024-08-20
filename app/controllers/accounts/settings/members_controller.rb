@@ -1,8 +1,8 @@
 class Accounts::Settings::MembersController < Accounts::Settings::ApplicationController
-  before_action do
-    # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("breadcrumbs.settings.members"), account_settings_members_path
-  end
+  rescue_from Kiqr::Errors::AccountOwnerDeletionError, with: :account_owner_deletion_error
+
+  before_action :setup_member, only: %i[edit update destroy invitation_link_modal]
+  before_action :setup_breadcrumbs
 
   def index
     @members = @account.members.includes(:user).references(:user).order(owner: :desc, invitation_accepted_at: :desc)
@@ -10,6 +10,19 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
 
   def new
     @member = @account.members.new
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @member.destroy!
+
+    kiqr_flash_message :success, :member_deleted
+    redirect_to account_settings_members_path
   end
 
   def create
@@ -25,11 +38,23 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
 
   # Show the invitation link modal.
   def invitation_link_modal
-    member = @account.members.find_puid(params[:id])
-    render turbo_stream: turbo_stream.update("invitation_link", partial: "accounts/settings/members/invitation_link_modal", locals: { member: member })
+    render turbo_stream: turbo_stream.update("invitation_link", partial: "accounts/settings/members/invitation_link_modal", locals: { member: @member })
   end
 
   private
+
+  def setup_breadcrumbs
+    # This is to set the breadcrumbs for the onboarding process.
+    add_breadcrumb I18n.t("breadcrumbs.settings.members"), account_settings_members_path
+
+    if action_name == "edit" || action_name == "update" || action_name == "destroy"
+      add_breadcrumb @member.name, edit_account_settings_member_path(@member)
+    end
+  end
+
+  def setup_member
+    @member = @account.members.includes(:user).references(:user).find_puid(params[:id])
+  end
 
   def find_current_member
     @current_member ||= @account.members.find_by(user: current_user)
@@ -37,5 +62,10 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
 
   def member_params
     params.require(:member).permit(:invitation_email).merge(invited_by: find_current_member)
+  end
+
+  def account_owner_deletion_error
+    kiqr_flash_message :alert, :account_owner_deletion_error
+    redirect_back fallback_location: account_settings_members_path
   end
 end
