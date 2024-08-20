@@ -15,6 +15,12 @@ class User < ApplicationRecord
 
   attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
 
+  # Helper method to allow for other two-factor methods
+  # to be added in the future.
+  def two_factor_enabled?
+    otp_required_for_login?
+  end
+
   protected
 
   def password_required?

@@ -1,15 +1,16 @@
 # => Authentication with Devise
 devise_for :users, path_names: { sign_in: "login", sign_up: "create-account" }, controllers: {
   registrations: "users/registrations",
-  sessions: "users/sessions"
+  sessions: "users/sessions",
+  omniauth_callbacks: "users/omniauth_callbacks"
 }
 
 devise_scope :user do
   get "users/cancel-account", controller: "users/registrations", action: :cancel, as: :delete_user_registration
 end
 
-# => Authentication with OmniAuth (social accounts)
-match "auth/:provider/callback", controller: "users/omniauth", action: :callback, via: %i[get post]
+# # => Authentication with OmniAuth (social accounts)
+# match "auth/:provider/callback", controller: "users/omniauth", action: :callback, via: %i[get post]
 
 # => User settings
 namespace :user, path: nil, module: :users do
