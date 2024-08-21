@@ -4,6 +4,13 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
+# => KIQR START
+# Files that shouldn't be commited to the kiqr/kiqr template repo, but are
+# necessary for the app to run. These rows will be removed when configuring
+# the kiqr/kiqr template using `bin/configure`.
+config/credentials.yml.enc
+# KIQR END
+
 # Ignore bundler config.
 /.bundle
 
