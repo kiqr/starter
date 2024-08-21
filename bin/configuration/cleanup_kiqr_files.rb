@@ -23,4 +23,8 @@ say "✅  Cleaned up .gitignore"
 
 # => Replace README.md with README.md.example
 run_command("mv README.md.example README.md")
-say "✅  Replaced README.md with README.md.example"
+if File.exist?("README.md.example")
+  say "✅  Replaced README.md with README.md.example"
+else
+  say "✅  README.md file has already been replaced"
+end
