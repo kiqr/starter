@@ -13,6 +13,7 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
   end
 
   def edit
+    add_breadcrumb t("breadcrumbs.settings.edit_member"), edit_account_settings_member_path(@member)
   end
 
   def update
