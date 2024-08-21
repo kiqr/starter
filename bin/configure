@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "bundler/setup"
+
+require_relative "configuration/utils"
+require_relative "configuration/check_origin_and_setup_kiqr_remote" # This must always be first since it checks the origin remote.
+require_relative "configuration/cleanup_kiqr_files"
