@@ -119,6 +119,7 @@ GEM
       nap
       open4 (~> 1.3)
     colored2 (3.1.2)
+    colorize (1.1.0)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     cork (0.3.0)
@@ -503,6 +504,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
+  colorize
   danger
   debug
   devise (~> 4.9, >= 4.9.3)
@@ -510,6 +512,7 @@ DEPENDENCIES
   erb_lint
   factory_bot (~> 6.4.3)
   faker
+  highline
   i18n-tasks (~> 1.0.14)
   importmap-rails
   irelia!
