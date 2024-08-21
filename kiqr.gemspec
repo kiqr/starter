@@ -19,14 +19,14 @@ Gem::Specification.new do |s|
   s.email    = "kjellberg@hey.com"
   s.homepage = "https://kiqr.dev"
 
-  s.files = ["README.md", "MIT-LICENSE"]
+  s.files = [ "README.md", "MIT-LICENSE" ]
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/kiqr/kiqr/issues",
     "changelog_uri"     => "https://github.com/kiqr/kiqr/releases/tag/v#{version}",
     "documentation_uri" => "https://docs.kiqr.dev",
     "source_code_uri"   => "https://github.com/kiqr/kiqr/tree/v#{version}",
-    "rubygems_mfa_required" => "true",
+    "rubygems_mfa_required" => "true"
   }
 
   s.add_dependency "kiqr_core", version

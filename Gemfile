@@ -3,4 +3,9 @@
 source "https://rubygems.org"
 gemspec
 
-# gem "rails"
+group :rubocop do
+  gem "rubocop", ">= 1.25.1", require: false
+
+  # This gem is used in Railties tests so it must be a development dependency.
+  gem "rubocop-rails-omakase", require: false
+end

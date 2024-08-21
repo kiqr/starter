@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     "changelog_uri"     => "https://github.com/kiqr/kiqr/releases/tag/v#{version}",
     "documentation_uri" => "https://docs.kiqr.dev",
     "source_code_uri"   => "https://github.com/kiqr/kiqr/tree/v#{version}",
-    "rubygems_mfa_required" => "true",
+    "rubygems_mfa_required" => "true"
   }
 
   s.add_dependency "rails", ">= 7.2.0"
