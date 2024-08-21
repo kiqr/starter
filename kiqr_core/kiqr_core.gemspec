@@ -1,11 +1,8 @@
-
-# frozen_string_literal: true
-
-version = File.read(File.expand_path("KIQR_VERSION", __dir__)).strip
+version = File.read(File.expand_path("../KIQR_VERSION", __dir__)).strip
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = "kiqr"
+  s.name        = "kiqr_core"
   s.version     = version
   s.summary     = "Kickstart your SaaS development with Kiqr"
   s.description = "KIQR is a Rails engine that provides a solid foundation for building SaaS applications."
@@ -19,7 +16,8 @@ Gem::Specification.new do |s|
   s.email    = "kjellberg@hey.com"
   s.homepage = "https://kiqr.dev"
 
-  s.files = ["README.md", "MIT-LICENSE"]
+  s.files        = Dir["MIT-LICENSE", "README.md", "lib/**/*", "app/**/*", "config/**/*", "db/**/*"]
+  s.require_path = "lib"
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/kiqr/kiqr/issues",
@@ -29,5 +27,5 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true",
   }
 
-  s.add_dependency "kiqr_core", version
+  s.add_dependency "rails", ">= 7.2.0"
 end

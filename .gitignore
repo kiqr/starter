@@ -1,0 +1,6 @@
+.DS_Store
+/.bundle
+.ruby-version
+/*/test/tmp/
+node_modules/
+package-lock.json

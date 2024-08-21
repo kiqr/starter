@@ -9,6 +9,14 @@ GIT
       view_component (~> 3.12)
       view_component-contrib (~> 0.2.2)
 
+PATH
+  remote: ..
+  specs:
+    kiqr (0.1.0.alpha)
+      kiqr_core (= 0.1.0.alpha)
+    kiqr_core (0.1.0.alpha)
+      rails (>= 7.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -517,6 +525,7 @@ DEPENDENCIES
   importmap-rails
   irelia!
   jbuilder
+  kiqr!
   letter_opener_web (~> 3.0)
   loaf (~> 0.10.0)
   meta-tags (~> 2.21)
