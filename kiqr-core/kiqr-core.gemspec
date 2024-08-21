@@ -2,7 +2,7 @@ version = File.read(File.expand_path("../KIQR_VERSION", __dir__)).strip
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = "kiqr_core"
+  s.name        = "kiqr-core"
   s.version     = version
   s.summary     = "Kickstart your SaaS development with Kiqr"
   s.description = "KIQR is a Rails engine that provides a solid foundation for building SaaS applications."

@@ -29,5 +29,5 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.add_dependency "kiqr_core", version
+  s.add_dependency "kiqr-core", version
 end

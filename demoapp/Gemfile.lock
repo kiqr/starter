@@ -13,8 +13,8 @@ PATH
   remote: ..
   specs:
     kiqr (0.1.0.alpha)
-      kiqr_core (= 0.1.0.alpha)
-    kiqr_core (0.1.0.alpha)
+      kiqr-core (= 0.1.0.alpha)
+    kiqr-core (0.1.0.alpha)
       rails (>= 7.2.0)
 
 GEM
