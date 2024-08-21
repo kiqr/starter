@@ -2,6 +2,7 @@
 
 require "rubygems"
 require "bundler/setup"
+require 'active_support/core_ext/string/inflections' # For inflections like pluralize, singularize
 
 require_relative "kiqr/utils"
 
@@ -25,7 +26,7 @@ if origin_exists && origin_url.include?("kiqr/kiqr")
   WARNING
 end
 
-check_for_uncommited_changes()
+# check_for_uncommited_changes()
 
 # => Setup the 'kiqr' remote
 say "🔍  Checking for the 'kiqr' remote..."
@@ -37,15 +38,37 @@ else
   say "✅  The 'kiqr' remote has been added."
 end
 
+# Check for incomplete merges
+if File.exist?(".git/MERGE_HEAD")
+  say "🚨  An incomplete merge is detected. You need to resolve it before proceeding."
+  say "👉  Run 'git merge --abort' to abort the merge."
+  exit 1
+end
+
 # => Fetch the 'kiqr' remote
 say "🔍  Fetching the 'kiqr' remote..."
-run_command("git fetch kiqr")
+run_command("git fetch kiqr main --quiet")
 
 # => Check for updates from the 'kiqr' remote
 current_branch = `git branch --show-current`.strip
 remote_branch = "kiqr/main"
 
 say "🔍  Checking for updates from the 'kiqr' remote on branch #{current_branch}..."
-behind_commits = `git rev-list --count #{current_branch}..#{remote_branch}`.strip.to_i
 
-puts "behind_commits: #{behind_commits}"
+behind_commits_count = `git rev-list --count #{current_branch}..#{remote_branch}`.strip.to_i
+if behind_commits_count.zero?
+  say "✅  Your branch is up to date with '#{remote_branch}'."
+  exit 0
+end
+
+pluralized_text = "#{behind_commits_count} commit".pluralize(behind_commits_count).bold.blue
+changelog = `git log --oneline #{current_branch}..#{remote_branch}`
+
+say "\nYour branch is behind '#{remote_branch}' by #{pluralized_text}."
+
+say "\nChangelog:".bold
+say changelog
+say "\n"
+
+say "🔍  To update, merge the latest changes from '#{remote_branch}' into '#{current_branch}'..."
+say "👉  Run 'git merge #{remote_branch}' to merge the changes."
