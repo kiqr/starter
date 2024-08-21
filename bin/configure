@@ -15,13 +15,15 @@ changes_to_origin = false
 
 say "🔍  Checking the 'origin' remote..."
 if origin_is_kiqr
+  say " "
   say "🚨  The 'origin' remote is set to 'github.com/kiqr/kiqr' but should be your own repository."
   say "👉  Please update the 'origin' remote to your own repository URL."
-
+  say " "
   say "📝  To create a new empty repository, visit: https://github.com/new"
   say "   - Enter a repository name (e.g. 'my-kiqr-app')"
   say "   - Make sure NOT to initialize the repository with a README, .gitignore, or license."
   say "   - After creating your repository, copy the repository URL (either HTTPS or SSH).".bold
+  say " "
 
   loop do
     git_remote_url = ask("🔗  What is the URL of your new repository?")
@@ -73,24 +75,31 @@ end
 has_uncommited_changes = !`git status --porcelain`.strip.empty?
 
 if has_uncommited_changes || changes_to_origin
+  say " "
   say "🔍  Your repository has been updated. Here are the changes:"
-  say ""
+  say " "
   run_command("git status --short")
-  say ""
+  say " "
 
   # => Ask the user if they want to push changes to the new repository
-  choose do |menu|
-    menu.prompt = "🔍  Do you want to push these changes to your new repository?"
-    menu.choice(:yes) do
+  say "🔍 Do you want to push these changes to your new repository?"
+  loop do
+    push_response = ask("👉  Type 'yes' to push, or 'no' to skip: ").strip.downcase
+    if push_response == 'yes' || push_response == 'y'
       run_command("git add .")
       run_command("git commit -m 'Initial commit after setup'")
       run_command("git push origin main")
       say "✅  Changes have been pushed to your new repository."
-    end
-    menu.choices(:no) do
-      say "🔍  Skipping push to the repository."
+      break
+    elsif push_response == 'no' || push_response == 'n'
+      say "Skipping push to the repository."
+      break
+    else
+      say "🚨  Invalid response. Please type 'yes' or 'no'."
     end
   end
 else
-  say "✅  Nothing changed. Everything looks okay (: You're all set up! 🚀"
+  say "✅  Nothing changed."
 end
+
+say "🎉  Setup complete! You can now start developing your KIQR application."
