@@ -64,23 +64,13 @@ gem "rqrcode", "~> 2.0"
 gem "loaf", "~> 0.10.0"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
-
-  # A web interface for browsing Ruby on Rails sent emails. [https://github.com/fgrehm/letter_opener_web]
-  gem "letter_opener_web", "~> 3.0"
-
-  # Lint your ERB or HTML files.
-  gem "erb_lint", require: false
-
-  # Manage translation and localization with static analysis, for Ruby i18n
-  gem "i18n-tasks", "~> 1.0.14"
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "danger" # Formalize your Pull Request etiquette. [https://github.com/danger/danger]
+  gem "rubocop-rails-omakase", require: false   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "letter_opener_web", "~> 3.0" # A web interface for browsing Ruby on Rails sent emails. [https://github.com/fgrehm/letter_opener_web]
+  gem "erb_lint", require: false # Lint your ERB or HTML files.
+  gem "i18n-tasks", "~> 1.0.14" # Manage translation and localization with static analysis, for Ruby i18n
 end
 
 group :development do
