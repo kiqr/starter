@@ -3,6 +3,94 @@
 require "rubygems"
 require "bundler/setup"
 
-require_relative "configuration/utils"
-require_relative "configuration/check_origin_and_setup_kiqr_remote" # This must always be first since it checks the origin remote.
-require_relative "configuration/cleanup_kiqr_files"
+require_relative "kiqr/utils"
+
+origin_url = `git remote get-url origin`.strip
+origin_exists = system('git remote get-url origin > /dev/null 2>&1')
+origin_is_kiqr = origin_exists && origin_url.include?("kiqr/kiqr")
+
+check_for_uncommited_changes
+
+changes_to_origin = false
+
+say "🔍  Checking the 'origin' remote..."
+if origin_is_kiqr
+  say "🚨  The 'origin' remote is set to 'github.com/kiqr/kiqr' but should be your own repository."
+  say "👉  Please update the 'origin' remote to your own repository URL."
+
+  say "📝  To create a new empty repository, visit: https://github.com/new"
+  say "   - Enter a repository name (e.g. 'my-kiqr-app')"
+  say "   - Make sure NOT to initialize the repository with a README, .gitignore, or license."
+  say "   - After creating your repository, copy the repository URL (either HTTPS or SSH).".bold
+
+  loop do
+    git_remote_url = ask("🔗  What is the URL of your new repository?")
+
+    # Validate the git_remote_url is a valid git repository URL
+    if git_remote_url =~ /\Ahttps?:\/\/.+\/.+\.git\z/ || git_remote_url =~ /\Agit@.+:.+\/.+\.git\z/
+      run_command("git remote set-url origin #{git_remote_url}")
+      say "✅  The 'origin' remote has been updated to #{git_remote_url}."
+      changes_to_origin = true
+      break
+    else
+      say "🚨  The provided URL does not appear to be a valid Git repository URL. Please try again."
+    end
+  end
+end
+
+# List of files to delete from your new repository
+files_or_folders_to_delete = [
+  "Dangerfile",
+  ".github/workflows/dangerfile.yml"
+]
+
+# => Remove KIQR development files
+files_or_folders_to_delete.each do |file_or_folder|
+  run_command("rm -rf #{file_or_folder}")
+  say "✅  Removed #{file_or_folder}"
+end
+
+# => Update .gitignore file
+# Read the contents of the .gitignore file
+gitignore_content = File.read(".gitignore")
+
+# Use a regular expression to remove everything between "# => KIQR START" and "# => KIQR END"
+cleaned_content = gitignore_content.gsub(/# => KIQR START[\s\S]*?# KIQR END\n?/, '')
+
+# Write the cleaned content back to the .gitignore file
+File.open(".gitignore", 'w') { |file| file.write(cleaned_content) }
+say "✅  Cleaned up .gitignore"
+
+# => Replace README.md with README.md.example
+if File.exist?("README.md.example")
+  run_command("mv README.md.example README.md")
+  say "✅  Replaced README.md with README.md.example"
+else
+  say "✅  Already replaced README.md"
+end
+
+
+has_uncommited_changes = !`git status --porcelain`.strip.empty?
+
+if has_uncommited_changes || changes_to_origin
+  say "🔍  Your repository has been updated. Here are the changes:"
+  say ""
+  run_command("git status --short")
+  say ""
+
+  # => Ask the user if they want to push changes to the new repository
+  choose do |menu|
+    menu.prompt = "🔍  Do you want to push these changes to your new repository?"
+    menu.choice(:yes) do
+      run_command("git add .")
+      run_command("git commit -m 'Initial commit after setup'")
+      run_command("git push origin main")
+      say "✅  Changes have been pushed to your new repository."
+    end
+    menu.choices(:no) do
+      say "🔍  Skipping push to the repository."
+    end
+  end
+else
+  say "✅  Nothing changed. Everything looks okay (: You're all set up! 🚀"
+end
