@@ -3,7 +3,13 @@ KIQR
 [![CI](https://github.com/kiqr/kiqr/actions/workflows/ci.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/ci.yml)
 ![License](https://img.shields.io/github/license/kiqr/kiqr)
 
-Turbocharge your SaaS journey with KIQR, your go-to Rails 7.1-based saas starter kit. It's designed to let you dive right into the SaaS domain with minimal setup and maximum efficiency. Outfitted with Tailwind CSS, it brings a modern, responsive design to the table, including a dark mode that's easy on the eyes.
+> [!CAUTION]  
+> This project is **currently under active development** and may undergo frequent refactoring, which could introduce breaking changes. It is not suitable for production use at this stage.
+> 
+> When complete, this repository will serve as a monorepo containing multiple modules. The **starter kit will be accessible from a separate repository**. Please keep this in mind if you choose to explore or contribute to the codebase at this time.
+
+
+Turbocharge your SaaS journey with KIQR, your go-to Rails 7.2-based saas starter kit. It's designed to let you dive right into the SaaS domain with minimal setup and maximum efficiency. Outfitted with Tailwind CSS, it brings a modern, responsive design to the table, including a dark mode that's easy on the eyes.
 
 <img src="https://kiqr.dev/screenshots/edit-profile.png">
 
