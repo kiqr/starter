@@ -16,7 +16,7 @@ class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
     post user_session_path, params: { user: { email: @user_with_2fa.email, password: @user_with_2fa.password } }
 
     assert_response :unprocessable_content
-    assert_template "users/sessions/otp"
+    assert_template "kiqr/sessions/otp"
   end
 
   test "signs in successfully with correct OTP when two-factor authentication is enabled" do
@@ -31,13 +31,13 @@ class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
     post user_session_path, params: { user: { otp_attempt: "123456" } }
 
     assert_response :unprocessable_content
-    assert_template "users/sessions/otp"
+    assert_template "kiqr/sessions/otp"
   end
 
   test "renders login form again if password is invalid" do
     post user_session_path, params: { user: { email: @user.email, password: "randompassword" } }
 
     assert_response :unprocessable_content
-    assert_template "users/sessions/new"
+    assert_template "kiqr/sessions/new"
   end
 end

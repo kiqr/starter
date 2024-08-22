@@ -22,7 +22,7 @@ module Kiqr
     def prompt_for_two_factor(user)
       @user = user # For the Devise view
       session[:otp_user_id] = user.id
-      render "users/sessions/otp", status: :unprocessable_content
+      render "kiqr/sessions/otp", status: :unprocessable_content
     end
 
     def authenticate_via_otp(user)

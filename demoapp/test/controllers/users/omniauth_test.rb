@@ -29,7 +29,7 @@ class Users::OmniauthTest < ActionDispatch::IntegrationTest
     post user_developer_omniauth_callback_path, params: { email: omniauth_identity.provider_uid }
 
     assert_response :unprocessable_content
-    assert_template "users/sessions/otp"
+    assert_template "kiqr/sessions/otp"
   end
 
   test "signs in with otp if two-factor authentication is enabled" do
@@ -38,7 +38,7 @@ class Users::OmniauthTest < ActionDispatch::IntegrationTest
     post user_developer_omniauth_callback_path, params: { email: omniauth_identity.provider_uid }
 
     assert_response :unprocessable_content
-    assert_template "users/sessions/otp"
+    assert_template "kiqr/sessions/otp"
 
     post user_session_path, params: { user: { otp_attempt: user.current_otp } }
 
@@ -52,7 +52,7 @@ class Users::OmniauthTest < ActionDispatch::IntegrationTest
     post user_session_path, params: { user: { otp_attempt: "123456" } }
 
     assert_response :unprocessable_content
-    assert_template "users/sessions/otp"
+    assert_template "kiqr/sessions/otp"
   end
 
   test "allows linking multiple omniauth accounts" do

@@ -6,7 +6,11 @@ module ActionDispatch::Routing
       options[:controllers][:account_settings_profiles] ||= "kiqr/accounts/settings/profiles"
       options[:controllers][:account_settings_members] ||= "kiqr/accounts/settings/members"
       options[:controllers][:onboarding] ||= "kiqr/onboarding"
+      options[:controllers][:registrations] ||= "kiqr/registrations"
+      options[:controllers][:sessions] ||= "kiqr/sessions"
+      options[:controllers][:omniauth_callbacks] ||= "kiqr/omniauth_callbacks"
 
+      devise_routes(options)
       kiqr_account_routes(options)
       resource :onboarding, only: [ :show, :update ], controller: options[:controllers][:onboarding]
     end
@@ -16,12 +20,27 @@ module ActionDispatch::Routing
     # => Account scope
     # Routes inside this scope will be prefixed with /team/<team_id> if
     # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
-    #
     # Account scope can be forced to be present by passing force: true.
     def account_scope(force: false, &block)
       pattern = force ? "/team/:account_id" : "(/team/:account_id)"
       scope pattern, account_id: %r{[^/]+} do
         yield
+      end
+    end
+
+    # => Devise routes
+    # Custom wrapper for Devise routes.
+    def devise_routes(options = {})
+      devise_for :users,
+        path_names: { sign_in: "login", sign_up: "create-account" },
+        controllers: {
+          registrations: options[:controllers][:registrations],
+          sessions: options[:controllers][:sessions],
+          omniauth_callbacks: options[:controllers][:omniauth_callbacks]
+        }
+
+      devise_scope :user do
+        get "settings/delete-user", controller: options[:controllers][:registrations], action: :delete, as: :delete_user_registration
       end
     end
 

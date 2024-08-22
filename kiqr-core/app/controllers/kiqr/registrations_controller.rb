@@ -1,13 +1,13 @@
-class Users::RegistrationsController < Devise::RegistrationsController
-  renders_submenu partial: "users/settings/navigation", only: [ :cancel ]
+class Kiqr::RegistrationsController < Devise::RegistrationsController
+  renders_submenu partial: "kiqr/users/settings/navigation", only: [ :delete ]
 
   skip_before_action :require_no_authentication, only: [ :cancel ]
   before_action :authenticate_user!, only: [ :cancel ]
 
   # GET /settings/cancel
-  def cancel
-    add_breadcrumb t("breadcrumbs.settings.root"), user_settings_profile_path
-    add_breadcrumb t("breadcrumbs.settings.cancel_user"), cancel_user_registration_path
+  def delete
+    add_breadcrumb t("kiqr.breadcrumbs.settings.root"), user_settings_profile_path
+    add_breadcrumb t("kiqr.breadcrumbs.settings.users.delete_user"), delete_user_registration_path
     @conflicting_members = current_user.members.where(owner: true)
   end
 
@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Don't let user cancel their accounts if they are an owner of a team.
     if current_user.members.find_by(owner: true)
       kiqr_flash_message(:alert, :cant_cancel_while_team_owner)
-      return redirect_to cancel_user_registration_path
+      return redirect_to delete_user_registration_path
     end
 
     # TODO: Don't let user delete account if they have active subscriptions.

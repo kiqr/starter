@@ -1,4 +1,4 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Kiqr::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   layout "public" # required for the two-factor authentication prompt
 
   include Devise::Controllers::SignInOut

@@ -8,7 +8,7 @@ class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
 
   test "displays account cancellation page for signed-in user" do
     sign_in @user
-    get cancel_user_registration_path
+    get delete_user_registration_path
 
     assert_response :success
   end
@@ -25,7 +25,7 @@ class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
     sign_in @user_with_team
     delete user_registration_path
 
-    assert_redirected_to cancel_user_registration_path
+    assert_redirected_to delete_user_registration_path
     assert User.find_by(id: @user_with_team.id)
   end
 end
