@@ -1,7 +1,8 @@
-require "kiqr/version"
-require "kiqr/engine"
 require "kiqr/config"
+require "kiqr/engine"
 require "kiqr/errors"
+require "kiqr/rails/routes"
+require "kiqr/version"
 
 module Kiqr
   # Load Kiqr configuration
