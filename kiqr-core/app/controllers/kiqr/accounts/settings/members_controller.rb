@@ -1,4 +1,4 @@
-class Accounts::Settings::MembersController < Accounts::Settings::ApplicationController
+class Kiqr::Accounts::Settings::MembersController < Kiqr::Accounts::Settings::BaseController
   rescue_from Kiqr::Errors::AccountOwnerDeletionError, with: :account_owner_deletion_error
 
   before_action :setup_member, only: %i[edit update destroy invitation_link_modal]
@@ -13,7 +13,7 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
   end
 
   def edit
-    add_breadcrumb t("breadcrumbs.settings.edit_member"), edit_account_settings_member_path(@member)
+    add_breadcrumb t("kiqr.breadcrumbs.settings.accounts.members.edit"), edit_account_settings_member_path(@member)
   end
 
   def update
@@ -46,7 +46,7 @@ class Accounts::Settings::MembersController < Accounts::Settings::ApplicationCon
 
   def setup_breadcrumbs
     # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("breadcrumbs.settings.members"), account_settings_members_path
+    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.accounts.members.index"), account_settings_members_path
 
     if action_name == "edit" || action_name == "update" || action_name == "destroy"
       add_breadcrumb @member.name, edit_account_settings_member_path(@member)

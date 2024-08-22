@@ -13,7 +13,7 @@ class EditAccountProfileTest < ApplicationSystemTestCase
     assert_selector "input[name='account[name]']", visible: :all
     fill_in "account[name]", with: "New team name"
 
-    click_on I18n.t("accounts.settings.profiles.show.submit")
+    click_on I18n.t("kiqr.accounts.settings.profiles.show.submit")
     assert_text I18n.t("flash_messages.account_profile_updated")
 
     account.reload

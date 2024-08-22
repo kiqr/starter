@@ -16,10 +16,6 @@ Rails.application.routes.draw do
   # Routes related to the User model.
   draw "users"
 
-  # => Accounts
-  # Routes related to the Account model.
-  draw "accounts"
-
   # => Application routes
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.

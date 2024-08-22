@@ -1,0 +1,61 @@
+en:
+  kiqr:
+    breadcrumbs:
+      settings:
+        root: Settings
+        accounts:
+          profile:
+            index: Team profile
+          members:
+            index: Members
+            edit: Edit member
+    accounts:
+      form_fields:
+        name:
+          personal:
+            label: Name
+            placeholder: Enter your full name
+          team:
+            label: Team name
+            placeholder: Enter a team name
+      settings:
+        members:
+          action_buttons:
+            back: Back to members list
+            new: Invite a member
+          edit:
+            delete_member:
+              button: Remove member
+              confirmation_message: Are you sure you want to remove this member from your team?
+            description: Manage the team member's roles and settings.
+            title: Settings for %{member_name}
+          index:
+            description: List of all the members in team %{team_name}.
+            pending_invitation: Pending invitation
+            title: Team members
+          invitation_link_modal:
+            content: |
+              The link below is linked to <strong>%{email}</strong> and allows them to join your team.
+
+              Copy and share the link via your preferred messaging platform or let us re-send the invitation email for you.
+            title: Invitation link
+          new:
+            description: Invite a new member to join your team.
+            form:
+              invitation_email:
+                hint: The email address of the person you want to invite.
+                label: Email
+                placeholder: Enter the email address
+              submit: Send invitation
+            instructions:
+              content: |
+                Invitations are sent via email. You can invite anyone to join your team, even if they don't have an account yet. Once the person you invited accepts the invitation, they will be added to your team.
+
+                Need to invite more members? No problem. Just fill out the form again and send another invitation.
+              title: Instructions
+            title: Invite a member
+        profiles:
+          show:
+            description: Update your team information and settings.
+            submit: Update team
+            title: Team settings
