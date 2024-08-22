@@ -21,10 +21,8 @@ jobs:
       - name: Lint code for consistent style
         run: bundle exec rubocop -f github
 
-  test:
+  test_demoapp:
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_GEMFILE: demoapp/Gemfile
     services:
       redis:
         image: redis
@@ -43,19 +41,23 @@ jobs:
         with:
           ruby-version: 3.3.4
           bundler-cache: true
+        env:
+          BUNDLE_GEMFILE: demoapp/Gemfile
 
       - name: Run tests
+        working-directory: demoapp
         env:
           RAILS_ENV: test
           REDIS_URL: redis://localhost:6379/0
         run: |
-          - cd demoapp
-          - bin/rails db:test:prepare test test:system
+          bin/rails db:test:prepare
+          bin/rails test
+          bin/rails test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
+          path: demoapp/tmp/screenshots
           if-no-files-found: ignore
