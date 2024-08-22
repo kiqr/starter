@@ -1,10 +1,4 @@
-# The onboarding process is the process of creating a personal
-# account for the user. The user must have a personal account
-# before they can create any other type of account.
-#
-# A user is considered to have completed the
-# onboarding process when they have a personal account.
-class Users::OnboardingController < ApplicationController
+class Kiqr::OnboardingController < KiqrController
   skip_before_action :ensure_onboarded
   before_action :setup_user
 
@@ -16,10 +10,10 @@ class Users::OnboardingController < ApplicationController
     redirect_to dashboard_path if current_user.onboarded?
 
     # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("breadcrumbs.onboarding"), user_onboarding_path
+    add_breadcrumb I18n.t("kiqr.breadcrumbs.onboarding"), onboarding_path
   end
 
-  def new
+  def show
     @user.build_personal_account(personal: true)
   end
 
@@ -31,7 +25,7 @@ class Users::OnboardingController < ApplicationController
       kiqr_flash_message(:notice, :onboarding_completed)
       redirect_to after_onboarding_path(@user)
     else
-      render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 

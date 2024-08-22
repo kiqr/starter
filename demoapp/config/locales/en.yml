@@ -1,7 +1,6 @@
 ---
 en:
   breadcrumbs:
-    onboarding: Onboarding
     settings:
       accounts: Teams
       cancel_user: Cancel your account
@@ -60,11 +59,6 @@ en:
           You can choose to accept the invitation by clicking the button below. If you don't want to join the team, you can simply ignore this invitation by pressing the decline button.
         description: Join the team %{account_name} by accepting the invitation.
         title: Team invitation
-    onboarding:
-      new:
-        description: Finish the registration by setting up your user profile.
-        submit: Finish onboarding
-        title: Setup your personal account
     registrations:
       cancel:
         confirmation_message: Are you sure? This will DELETE all of your data.

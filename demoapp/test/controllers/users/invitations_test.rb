@@ -24,7 +24,7 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
 
     assert_equal I18n.t("flash_messages.onboard_to_accept_invitation"), flash[:notice]
     assert_equal user_invitation_path(token: @invitation.invitation_token, account_id: nil), session[:after_sign_in_path]
-    assert_redirected_to user_onboarding_path
+    assert_redirected_to onboarding_path
   end
 
   test "prevents access to invitation if user is already a member of the team" do

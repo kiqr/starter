@@ -1,6 +1,7 @@
 en:
   kiqr:
     breadcrumbs:
+      onboarding: Setup your user account
       settings:
         root: Settings
         accounts:
@@ -59,3 +60,8 @@ en:
             description: Update your team information and settings.
             submit: Update team
             title: Team settings
+    onboarding:
+      show:
+        description: Finish the registration by setting up your user profile.
+        submit: Finish onboarding
+        title: Setup your personal account

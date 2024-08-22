@@ -1,7 +1,7 @@
 module Kiqr::UrlHelper
   # Redirect path after sign-in. If the user hasn't completed onboarding, redirect to onboarding.
   def after_sign_in_path_for(resource)
-    return user_onboarding_path unless resource.onboarded?
+    return onboarding_path unless resource.onboarded?
 
     session.delete(:after_sign_in_path) || dashboard_path
   end

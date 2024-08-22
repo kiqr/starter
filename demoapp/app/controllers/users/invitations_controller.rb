@@ -48,6 +48,6 @@ class Users::InvitationsController < ApplicationController
 
       session[:after_sign_in_path] = user_invitation_path(token: params[:token], account_id: nil)
       kiqr_flash_message(:notice, :onboard_to_accept_invitation)
-      redirect_to user_onboarding_path
+      redirect_to onboarding_path
     end
 end

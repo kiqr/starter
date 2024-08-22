@@ -1,7 +1,7 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
 
 <div class="max-w-3xl">
-  <%= irelia_form(model: @user, url: user_onboarding_path) do |form| %>
+  <%= irelia_form(model: @user, url: onboarding_path) do |form| %>
     <!-- Form fields for the account object -->
     <%= form.fields_for :personal_account, @user.personal_account do |personal_account_form| %>
       <%= render "kiqr/accounts/form_fields", form: personal_account_form %>

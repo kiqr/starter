@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class EditMembersTest < ApplicationSystemTestCase
+class AccountMembersTest < ApplicationSystemTestCase
   setup do
     @account = create(:account, :with_users, users_count: 2)
     @user = create(:user, with_account: @account)

@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class EditAccountProfileTest < ApplicationSystemTestCase
+class AccountProfileTest < ApplicationSystemTestCase
   test "can edit team profile" do
     account = create(:account, name: "Team account")
     user = create(:user, with_account: account)
