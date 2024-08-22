@@ -4,3 +4,4 @@
 /*/test/tmp/
 node_modules/
 package-lock.json
+.ruby-lsp

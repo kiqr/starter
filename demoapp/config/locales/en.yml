@@ -47,17 +47,6 @@ en:
     member: Member
     owner: Owner
   users:
-    invitations:
-      show:
-        buttons:
-          accept_invitation: Accept invitation
-          decline_invitation: Decline invitation
-        content: |
-          You've been invited by %{inviter_name} to join the team <strong>%{account_name}</strong>.
-
-          You can choose to accept the invitation by clicking the button below. If you don't want to join the team, you can simply ignore this invitation by pressing the decline button.
-        description: Join the team %{account_name} by accepting the invitation.
-        title: Team invitation
     settings:
       accounts:
         action_buttons:

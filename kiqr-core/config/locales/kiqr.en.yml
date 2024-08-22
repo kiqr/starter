@@ -99,3 +99,15 @@ en:
         title: Two-factor authentication
       social_buttons:
         developer: Sign in as Developer
+    users:
+      invitations:
+        show:
+          buttons:
+            accept_invitation: Accept invitation
+            decline_invitation: Decline invitation
+          content: |
+            You've been invited by %{inviter_name} to join the %{account_name} team.
+
+            To accept, just click the button below. If you'd rather not join, you can decline the invitation.
+          description: Join the team %{account_name} by accepting the invitation.
+          title: Team invitation

@@ -6,12 +6,14 @@ module ActionDispatch::Routing
       options[:controllers][:account_settings_profiles] ||= "kiqr/accounts/settings/profiles"
       options[:controllers][:account_settings_members] ||= "kiqr/accounts/settings/members"
       options[:controllers][:onboarding] ||= "kiqr/onboarding"
+      options[:controllers][:invitations] ||= "kiqr/users/invitations"
       options[:controllers][:registrations] ||= "kiqr/registrations"
       options[:controllers][:sessions] ||= "kiqr/sessions"
       options[:controllers][:omniauth_callbacks] ||= "kiqr/omniauth_callbacks"
 
       devise_routes(options)
       kiqr_account_routes(options)
+      kiqr_invitation_routes(options)
       resource :onboarding, only: [ :show, :update ], controller: options[:controllers][:onboarding]
     end
 
@@ -41,6 +43,14 @@ module ActionDispatch::Routing
 
       devise_scope :user do
         get "settings/delete-user", controller: options[:controllers][:registrations], action: :delete, as: :delete_user_registration
+      end
+    end
+
+    # => User invitations
+    def kiqr_invitation_routes(options = {})
+      resource :invitation, only: [ :show, :update ], controller: options[:controllers][:invitations], path: "invitation/:token", as: :user_invitation do
+        patch "accept", action: :accept_invitation
+        delete "decline", action: :decline_invitation
       end
     end
 

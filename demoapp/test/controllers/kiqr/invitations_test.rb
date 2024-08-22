@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::InvitationsTest < ActionDispatch::IntegrationTest
+class Kiqr::Users::InvitationsTest < ActionDispatch::IntegrationTest
   setup do
     @account = create(:account, :with_users, users_count: 2)
     @user = create(:user)
@@ -40,7 +40,7 @@ class Users::InvitationsTest < ActionDispatch::IntegrationTest
     get user_invitation_path(token: @invitation.invitation_token)
 
     assert_response :success
-    assert_template "users/invitations/show"
+    assert_template "kiqr/users/invitations/show"
   end
 
   test "allows accepting an invitation and redirects to the team dashboard" do
