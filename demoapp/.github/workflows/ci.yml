@@ -6,6 +6,38 @@ on:
     branches: [main]
 
 jobs:
+  scan_ruby:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Scan for security vulnerabilities in Ruby dependencies
+        run: bin/brakeman --no-pager
+
+  scan_js:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Scan for security vulnerabilities in JavaScript dependencies
+        run: bin/importmap audit
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -15,16 +47,18 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: .ruby-version
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bundle exec rubocop -f github
+        run: bin/rubocop -f github
+
+      - name: Lint views for consistent style
+        run: bin/erblint
 
   test:
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_GEMFILE: demoapp/Gemfile
+
     services:
       redis:
         image: redis
@@ -41,16 +75,14 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.4
+          ruby-version: .ruby-version
           bundler-cache: true
 
       - name: Run tests
         env:
           RAILS_ENV: test
           REDIS_URL: redis://localhost:6379/0
-        run: |
-          - cd demoapp
-          - bin/rails db:test:prepare test test:system
+        run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

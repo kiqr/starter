@@ -34,12 +34,12 @@ To get started with **KIQR**, follow these simple steps:
 #### 1. Clone the starter kit repository
 
 ```console
-git clone git@github.com:kiqr/kiqr.git my-app
+git clone git@github.com:kiqr/starter.git project-name
 ```
 
 #### 2. Run the setup script
 
-Navigate into the new directory (```cd my-app```) and run:
+Navigate into the new directory (```cd project-name```) and run:
 
 ```console
 bin/setup
@@ -49,13 +49,3 @@ bin/setup
 ```console
 bin/dev
 ```
-
-## License
-
-### Free License
-
-This project is licensed under the MIT License for personal, educational, and non-commercial use. See the [LICENSE](LICENSE) file for details.
-
-### Commercial License
-
-For commercial use, you must purchase a commercial license. See the [COMMERCIAL_LICENSE](COMMERCIAL_LICENSE) file for details.

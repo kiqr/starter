@@ -1,7 +1,10 @@
-require_relative "kiqr/config"
-require_relative "kiqr/errors"
+require "kiqr/version"
+require "kiqr/engine"
+require "kiqr/config"
+require "kiqr/errors"
 
 module Kiqr
+  # Load Kiqr configuration
   def self.config
     @config ||= Kiqr::Config
   end
