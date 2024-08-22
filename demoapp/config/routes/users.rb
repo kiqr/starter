@@ -12,8 +12,6 @@ end
 # # => Authentication with OmniAuth (social accounts)
 # match "auth/:provider/callback", controller: "users/omniauth", action: :callback, via: %i[get post]
 
-resource :onboarding, only: [ :show, :update ], controller: "kiqr/onboarding"
-
 # => User settings
 namespace :user, path: nil, module: :users do
   resource :invitation, only: [ :show, :update ], controller: "invitations", path: "invitation/:token" do

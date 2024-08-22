@@ -5,8 +5,10 @@ module ActionDispatch::Routing
       options[:controllers] ||= {}
       options[:controllers][:account_settings_profiles] ||= "kiqr/accounts/settings/profiles"
       options[:controllers][:account_settings_members] ||= "kiqr/accounts/settings/members"
+      options[:controllers][:onboarding] ||= "kiqr/onboarding"
 
       kiqr_account_routes(options)
+      resource :onboarding, only: [ :show, :update ], controller: options[:controllers][:onboarding]
     end
 
     private
