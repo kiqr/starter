@@ -11,7 +11,7 @@ class EditProfileTest < ApplicationSystemTestCase
     select "Swedish", from: "user[locale]"
     fill_in "user[personal_account_attributes][name]", with: "New name"
 
-    click_on I18n.t("users.settings.profiles.show.submit")
+    click_on I18n.t("kiqr.users.settings.profiles.show.submit")
     assert_text I18n.t("flash_messages.profile_updated")
 
     user.reload

@@ -6,7 +6,7 @@
     <%= irelia_notification(variant: :warning, html_options: { id: "pending_email_notification", class: "mb-5" }, title: t(".notifications.pending_email_change.title")) do %>
       <%== t(".notifications.pending_email_change.text", email: h(@user.unconfirmed_email)) %>
       <div class="inline-block">
-        <%= button_to user_settings_cancel_pending_email_path, method: :delete do %>
+        <%= button_to cancel_pending_email_user_settings_profile_path, method: :delete do %>
           <%== t(".notifications.pending_email_change.cancel") %>
         <% end %>
       </div>
@@ -20,7 +20,7 @@
     <% end %>
 
     <!-- Form fields for the user object -->
-    <%= render "users/shared/user_fields", form: form %>
+    <%= render "kiqr/users/shared/user_fields", form: form %>
 
     <%= form.submit t(".submit") %>
   <% end %>

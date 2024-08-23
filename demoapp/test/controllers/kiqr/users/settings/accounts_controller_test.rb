@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::Settings::AccountsControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::Users::Settings::AccountsControllerTest < ActionDispatch::IntegrationTest
   test "can render accounts index" do
     sign_in create(:user, :with_accounts, accounts_count: 3)
     get user_settings_accounts_path

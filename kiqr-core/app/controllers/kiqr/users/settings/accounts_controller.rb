@@ -1,8 +1,6 @@
-class Users::Settings::AccountsController < Users::Settings::ApplicationController
+class Kiqr::Users::Settings::AccountsController < Kiqr::Users::Settings::BaseController
   before_action :setup_user, only: [ :index ]
-  before_action do
-    add_breadcrumb I18n.t("breadcrumbs.settings.accounts"), user_settings_profile_path
-  end
+  before_action :setup_breadcrumbs
 
   def index
     @memberships = current_user.members.includes(:account).references(:account)
@@ -27,6 +25,11 @@ class Users::Settings::AccountsController < Users::Settings::ApplicationControll
   end
 
   private
+
+  def setup_breadcrumbs
+    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.accounts.root"), user_settings_profile_path
+    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.accounts.new"), user_settings_profile_path if %w[new create].include?(action_name)
+  end
 
   def account_params
     params.require(:account).permit(Kiqr.config.account_attributes)

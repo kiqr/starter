@@ -1,10 +1,9 @@
-class Users::Settings::TwoFactorController < Users::Settings::ApplicationController
+class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseController
   before_action :setup_user
   before_action :ensure_not_enabled, only: %i[new create]
 
   before_action do
-    # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("breadcrumbs.settings.two_factor_setup"), user_settings_two_factor_path
+    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.two_factor.root"), user_settings_two_factor_path
   end
 
   def new
@@ -24,9 +23,9 @@ class Users::Settings::TwoFactorController < Users::Settings::ApplicationControl
       kiqr_flash_message :success, :two_factor_enabled
       redirect_to user_settings_two_factor_path
     else
-      @user.errors.add(:otp_attempt, I18n.t("users.settings.two_factor.form.invalid_otp"))
+      @user.errors.add(:otp_attempt, I18n.t("kiqr.users.settings.two_factor.form.invalid_otp"))
       setup_qr_code
-      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "users/settings/two_factor/form", locals: { user: @user }), status: :unprocessable_content
+      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "kiqr/users/settings/two_factor/form", locals: { user: @user }), status: :unprocessable_content
     end
   end
 
@@ -38,7 +37,7 @@ class Users::Settings::TwoFactorController < Users::Settings::ApplicationControl
       kiqr_flash_message :success, :two_factor_disabled
       redirect_to user_settings_two_factor_path
     else
-      @user.errors.add(:otp_attempt, I18n.t("users.settings.two_factor.form.invalid_otp"))
+      @user.errors.add(:otp_attempt, I18n.t("kiqr.users.settings.two_factor.form.invalid_otp"))
       render :show, status: :unprocessable_content
     end
   end

@@ -4,11 +4,11 @@ class TwoFactorTest < ApplicationSystemTestCase
   def prepare_otp_setup(user)
     sign_in user
     visit user_settings_two_factor_path
-    assert_selector "a.irelia-button", text: I18n.t("users.settings.two_factor.show.buttons.enable")
+    assert_selector "a.irelia-button", text: I18n.t("kiqr.users.settings.two_factor.show.buttons.enable")
 
     pre_otp_secret = user.otp_secret
 
-    click_link I18n.t("users.settings.two_factor.show.buttons.enable")
+    click_link I18n.t("kiqr.users.settings.two_factor.show.buttons.enable")
     assert_current_path new_user_settings_two_factor_path
     assert_not user.otp_required_for_login?
 
@@ -22,7 +22,7 @@ class TwoFactorTest < ApplicationSystemTestCase
 
     # Fill in code field with the correct code
     fill_in "user[otp_attempt]", with: user.current_otp
-    click_button I18n.t("users.settings.two_factor.form.verify_button")
+    click_button I18n.t("kiqr.users.settings.two_factor.form.verify_button")
 
     assert_current_path user_settings_two_factor_path
     assert user.reload.otp_required_for_login?
@@ -35,11 +35,11 @@ class TwoFactorTest < ApplicationSystemTestCase
 
     # Fill in code field with an invalid code
     fill_in "user[otp_attempt]", with: "123456"
-    click_button I18n.t("users.settings.two_factor.form.verify_button")
+    click_button I18n.t("kiqr.users.settings.two_factor.form.verify_button")
 
     assert_current_path new_user_settings_two_factor_path
     assert_not user.reload.otp_required_for_login?
-    assert_text I18n.t("users.settings.two_factor.form.invalid_otp")
+    assert_text I18n.t("kiqr.users.settings.two_factor.form.invalid_otp")
   end
 
   test "refreshes qr code image on new setup" do
@@ -56,7 +56,7 @@ class TwoFactorTest < ApplicationSystemTestCase
     user = create(:user, :otp_enabled)
     sign_in user
     visit user_settings_two_factor_path
-    assert_selector ".irelia-button", text: I18n.t("users.settings.two_factor.show.buttons.disable")
+    assert_selector ".irelia-button", text: I18n.t("kiqr.users.settings.two_factor.show.buttons.disable")
   end
 
   test "can disable two factor authentication" do
@@ -77,7 +77,7 @@ class TwoFactorTest < ApplicationSystemTestCase
     fill_in "user[otp_attempt]", with: "12345"
     find(".irelia-form button[type='submit']").click
 
-    assert_text I18n.t("users.settings.two_factor.form.invalid_otp")
+    assert_text I18n.t("kiqr.users.settings.two_factor.form.invalid_otp")
     assert user.reload.otp_required_for_login?
   end
 end

@@ -6,7 +6,7 @@
   <% if two_factor_enabled? %>
     <%= irelia_form(model: @user, url: user_settings_two_factor_path, method: :delete) do |form| %>
       <%= t(".disable_instructions") %>
-      <%= form.text_field :otp_attempt, label: t("users.settings.two_factor.form.label"), placeholder: t("users.settings.two_factor.form.placeholder") %>
+      <%= form.text_field :otp_attempt, label: t("kiqr.users.settings.two_factor.form.label"), placeholder: t("kiqr.users.settings.two_factor.form.placeholder") %>
       <%= form.submit t(".buttons.disable") %>
     <% end %>
   <% else %>

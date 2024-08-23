@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Users::Settings::ProfilesControllerTest < ActionDispatch::IntegrationTest
+class Kiqr::Users::Settings::PasswordsControllerTest < ActionDispatch::IntegrationTest
   test "displays :new if password is empty" do
     user = create(:user, :without_password)
     sign_in(user)
