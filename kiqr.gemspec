@@ -30,4 +30,5 @@ Gem::Specification.new do |s|
   }
 
   s.add_dependency "kiqr-core", version
+  s.add_dependency "kiqr-translations", version
 end

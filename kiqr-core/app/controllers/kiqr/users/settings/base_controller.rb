@@ -1,4 +1,4 @@
-class Kiqr::Users::Settings::BaseController < ApplicationController
+class Kiqr::Users::Settings::BaseController < KiqrController
   renders_submenu partial: "kiqr/users/settings/navigation"
 
   before_action do

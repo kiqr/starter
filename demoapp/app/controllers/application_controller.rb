@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Kiqr::Authentication
-  include Kiqr::FlashMessages
-  include Kiqr::Locales
   include Kiqr::Submenu
-  include Kiqr::UrlHelper
 
   # Turn on request forgery protection. Bear in mind that GET and HEAD requests are not checked.
   protect_from_forgery with: :exception, prepend: true

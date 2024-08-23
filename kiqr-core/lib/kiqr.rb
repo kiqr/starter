@@ -1,13 +1,33 @@
 require "kiqr/config"
+require "kiqr/current_attributes"
 require "kiqr/engine"
 require "kiqr/errors"
 require "kiqr/rails/routes"
 require "kiqr/version"
 
+require "kiqr/translations"
+
+require "kiqr/controllers/helpers"
+require "kiqr/controllers/set_current_request_details"
+require "kiqr/controllers/two_factor_authentication"
+require "kiqr/controllers/url_helpers"
+
 module Kiqr
   # Load Kiqr configuration
   def self.config
     @config ||= Kiqr::Config
+  end
+
+  # Include helpers to the applications controllers and views.
+  def self.include_helpers(scope)
+    ActiveSupport.on_load(:action_controller) do
+      include scope::Helpers if defined?(scope::Helpers)
+      include scope::UrlHelpers if defined?(scope::UrlHelpers)
+    end
+
+    ActiveSupport.on_load(:action_view) do
+      include scope::UrlHelpers if defined?(scope::UrlHelpers)
+    end
   end
 
   # ==> Base URL

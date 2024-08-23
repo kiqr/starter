@@ -1,4 +1,4 @@
-class Kiqr::Users::InvitationsController < ApplicationController
+class Kiqr::Users::InvitationsController < KiqrController
   before_action :setup_member_and_account
   before_action :ensure_no_duplicate_users
 

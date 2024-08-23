@@ -25,7 +25,7 @@ data:
   # External locale data (e.g. gems).
   # This data is not considered unused and is never written to.
   external:
-    - "<%= %x[bundle info kiqr-core --path].chomp %>/config/locales/kiqr.%{locale}.yml"
+    - "<%= %x[bundle info kiqr-translations --path].chomp %>/config/locales/kiqr.%{locale}.yml"
 
   ## Specify the router (see Readme for details). Valid values: conservative_router, pattern_router, or a custom class.
   # router: conservative_router

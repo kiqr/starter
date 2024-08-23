@@ -1,8 +1,6 @@
 require "test_helper"
 
 class Kiqr::Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
-  include Kiqr::UrlHelper
-
   test "creates account if an account with the email does not exist" do
     post user_developer_omniauth_callback_path, params: { email: "john.doe@example.com" }
 
@@ -21,7 +19,7 @@ class Kiqr::Users::OmniauthCallbacksControllerTest < ActionDispatch::Integration
     omniauth_identity = create(:omniauth_identity)
     post user_developer_omniauth_callback_path, params: { email: omniauth_identity.provider_uid }
 
-    assert_redirected_to after_sign_in_path_for(omniauth_identity.user)
+    assert_redirected_to dashboard_path
   end
 
   test "prompts for OTP if two-factor authentication is enabled" do

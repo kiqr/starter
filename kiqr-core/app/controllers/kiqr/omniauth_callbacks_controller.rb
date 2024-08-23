@@ -1,8 +1,8 @@
 class Kiqr::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  layout "public" # required for the two-factor authentication prompt
-
   include Devise::Controllers::SignInOut
-  include Kiqr::TwoFactorAuthentication
+  include Kiqr::Controllers::TwoFactorAuthentication
+
+  layout "public" # required for the two-factor authentication prompt
 
   # Define a callback method for each provider configured in the Devise initializer.
   Devise.omniauth_configs.each_key do |provider|
