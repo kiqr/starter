@@ -26,4 +26,8 @@ Gem::Specification.new do |s|
     "source_code_uri"   => "https://github.com/kiqr/kiqr/tree/v#{version}",
     "rubygems_mfa_required" => "true"
   }
+
+  s.add_dependency "meta-tags", "~> 2.21"
+  s.add_dependency "loaf", "~> 0.10.0"
+  s.add_dependency "rqrcode", "~> 2.0"
 end

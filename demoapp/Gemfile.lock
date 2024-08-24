@@ -15,11 +15,19 @@ PATH
     kiqr (0.1.0.alpha)
       kiqr-core (= 0.1.0.alpha)
       kiqr-translations (= 0.1.0.alpha)
+      rails (>= 7.2.0)
     kiqr-core (0.1.0.alpha)
+      devise (~> 4.9, >= 4.9.3)
+      devise-two-factor (>= 5.0, < 5.2)
       kiqr-frontend (= 0.1.0.alpha)
       kiqr-translations (= 0.1.0.alpha)
-      rails (>= 7.2.0)
+      omniauth (~> 2.1.1)
+      omniauth-rails_csrf_protection (~> 1.0.1)
+      public_uid (~> 2.2)
     kiqr-frontend (0.1.0.alpha)
+      loaf (~> 0.10.0)
+      meta-tags (~> 2.21)
+      rqrcode (~> 2.0)
     kiqr-translations (0.1.0.alpha)
 
 GEM
@@ -525,8 +533,6 @@ DEPENDENCIES
   colorize
   danger
   debug
-  devise (~> 4.9, >= 4.9.3)
-  devise-two-factor (>= 5.0, < 5.2)
   erb_lint
   factory_bot (~> 6.4.3)
   faker
@@ -539,15 +545,9 @@ DEPENDENCIES
   jbuilder
   kiqr!
   letter_opener_web (~> 3.0)
-  loaf (~> 0.10.0)
-  meta-tags (~> 2.21)
-  omniauth (~> 2.1.1)
-  omniauth-rails_csrf_protection (~> 1.0.1)
-  public_uid (~> 2.2)
   puma (>= 5.0)
   rails (~> 7.2.0.rc1)
   rails-controller-testing
-  rqrcode (~> 2.0)
   rubocop-rails-omakase
   selenium-webdriver
   sprockets-rails

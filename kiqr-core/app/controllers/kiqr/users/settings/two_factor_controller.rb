@@ -11,8 +11,6 @@ class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseCo
     # This will also reset the otp_required_for_login flag to make sure the user
     # doesn't get locked out of their account.
     @user.reset_otp_secret!
-
-    setup_qr_code
   end
 
   def show; end
@@ -24,7 +22,6 @@ class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseCo
       redirect_to user_settings_two_factor_path
     else
       @user.errors.add(:otp_attempt, I18n.t("kiqr.users.settings.two_factor.form.invalid_otp"))
-      setup_qr_code
       render turbo_stream: turbo_stream.replace("two_factor_form", partial: "kiqr/users/settings/two_factor/form", locals: { user: @user }), status: :unprocessable_content
     end
   end
@@ -48,16 +45,6 @@ class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseCo
     current_user.otp_required_for_login?
   end
   helper_method :two_factor_enabled?
-
-  def setup_qr_code
-    # Generate the QR code for scanning the OTP secret.
-    # We'll use the RQRCode gem to generate the QR code.
-    @qr_png = RQRCode::QRCode.new(@user.otp_uri).as_svg(
-      module_size: 4
-    )
-
-    @qr_code_image = @qr_png.html_safe
-  end
 
   # Don't refresh the OTP secret if it's already enabled. This may lock the user
   # out of their account if they've already setup 2FA.

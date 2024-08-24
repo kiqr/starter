@@ -13,7 +13,7 @@
   <%= irelia_notification(variant: :warning) { "Please note that if you refresh this page, the QR code will reset and must be scanned again by your authentication app." } %>
 
   <div class="flex gap-10">
-    <div id="qr-code-wrapper"><%= @qr_code_image %></div>
+    <div id="qr-code-wrapper"><%= render_qr_code(@user.otp_uri) %></div>
     <div class="flex-1 flex flex-col gap-y-5">
       <%= render "form", user: @user %>
     </div>

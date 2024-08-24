@@ -27,7 +27,13 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.add_dependency "rails", ">= 7.2.0"
+  s.add_dependency "devise", "~> 4.9", ">= 4.9.3"
+  s.add_dependency "devise-two-factor", ">= 5.0", "< 5.2"
+  s.add_dependency "omniauth", "~> 2.1.1"
+  s.add_dependency "omniauth-rails_csrf_protection", "~> 1.0.1"
+  s.add_dependency "public_uid", "~> 2.2"
+
+  # KIQR dependencies
   s.add_dependency "kiqr-frontend", version
   s.add_dependency "kiqr-translations", version
 end

@@ -1,3 +1,9 @@
+require "devise"
+require "devise-two-factor"
+require "omniauth"
+require "omniauth/rails_csrf_protection"
+require "public_uid"
+
 require "kiqr/version"
 require "kiqr/engine"
 require "kiqr/errors"
@@ -39,6 +45,7 @@ module Kiqr
     ActiveSupport.on_load(:action_view) do
       include scope::UrlHelpers if defined?(scope::UrlHelpers)
       include scope::FormHelpers if defined?(scope::FormHelpers)
+      include scope::ViewHelpers if defined?(scope::ViewHelpers)
     end
   end
 
