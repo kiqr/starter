@@ -32,6 +32,11 @@ class Kiqr::Users::Settings::ProfilesControllerTest < ActionDispatch::Integratio
     assert_response :unprocessable_content
   end
 
+  test "can't update user with invalid data" do
+    patch user_settings_profile_path(account_id: @account), params: { user: { locale: "fi" } }
+    assert_response :unprocessable_content
+  end
+
   test "lists all available locales in locale dropdown" do
     get user_settings_profile_path
     assert_select "select[name='user[locale]']" do
