@@ -1,5 +1,5 @@
 module Kiqr
-  class Config
+  module Config
     include ActiveSupport::Configurable
 
     # ==> Application name
@@ -17,14 +17,5 @@ module Kiqr
     # Strong parameters for account. Used for account creation and update.
     # Affects both personal and team accounts.
     config_accessor :account_attributes, default: [ :name ]
-
-    # ==> Locales
-    # Configure the available locales in the application.
-    # This is used to validate the locale of the user.
-    config_accessor :available_locales, default: [ :en, :sv ]
-
-    # Default locale
-    # This is used to set the default locale for the application.
-    config_accessor :default_locale, default: :en
   end
 end

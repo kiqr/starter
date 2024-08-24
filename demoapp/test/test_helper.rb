@@ -1,8 +1,10 @@
 ENV["RAILS_ENV"] ||= "test"
+
 require_relative "../config/environment"
 require "rails/test_help"
 
 FactoryBot.find_definitions
+I18n.available_locales = %w[en sv]
 
 module ActiveSupport
   class TestCase

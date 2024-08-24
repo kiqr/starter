@@ -10,8 +10,8 @@ class User < ApplicationRecord
 
   # => Model validations
   validates :email, presence: true, uniqueness: true
-  validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name) }
-  validates :locale, inclusion: { in: Kiqr::Config.available_locales.map(&:to_s) }
+  validates :time_zone, inclusion: { in: -> { ActiveSupport::TimeZone.all.map(&:name) } }
+  validates :locale, inclusion: { in: -> { I18n.available_locales.map(&:to_s) } }
 
   attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
 
