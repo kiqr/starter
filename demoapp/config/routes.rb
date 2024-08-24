@@ -14,10 +14,6 @@ Rails.application.routes.draw do
   # Loads file: config/routes/development.rb
   draw "development" if Rails.env.development?
 
-  # => Users
-  # Routes related to the User model.
-  draw "users"
-
   # => KIQR core routes
   # These routes are required for the KIQR core to function properly.
   # Refer to the KIQR documentation for more information on how
