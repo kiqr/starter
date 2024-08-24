@@ -5,8 +5,10 @@ PATH
       kiqr-core (= 0.1.0.alpha)
       kiqr-translations (= 0.1.0.alpha)
     kiqr-core (0.1.0.alpha)
+      kiqr-frontend (= 0.1.0.alpha)
       kiqr-translations (= 0.1.0.alpha)
       rails (>= 7.2.0)
+    kiqr-frontend (0.1.0.alpha)
     kiqr-translations (0.1.0.alpha)
 
 GEM

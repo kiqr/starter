@@ -31,9 +31,8 @@ module Kiqr
       # @return [Redirect, nil]
       def ensure_onboarded
         return if devise_controller? # Skip onboarding check for devise controllers
-        return unless user_signed_in? && !current_user.onboarded? # Check if user is not onboarded
 
-        redirect_to onboarding_path
+        redirect_to onboarding_path if user_signed_in? && !current_user.onboarded?
       end
 
       # Ensure that the user has selected a team account before proceeding.

@@ -3,7 +3,6 @@ module Kiqr
     # Include helpers to the applications controllers and views.
     initializer "kiqr.controller_and_view_helpers" do
       Kiqr.include_helpers(Kiqr::Controllers)
-      Kiqr.include_helpers(Kiqr::Views)
     end
 
     initializer "kiqr.set_current_request_details" do

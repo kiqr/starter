@@ -1,5 +1,5 @@
 module Kiqr
-  module Views
+  module Frontend
     module FormHelpers
       # Get the options for the locale form select field
       def options_for_locale

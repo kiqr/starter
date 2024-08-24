@@ -1,19 +1,21 @@
-require "kiqr/config"
-require "kiqr/current_attributes"
+require "kiqr/version"
 require "kiqr/engine"
 require "kiqr/errors"
 require "kiqr/rails/routes"
-require "kiqr/version"
 
+require "kiqr/frontend"
 require "kiqr/translations"
 
-require "kiqr/controllers/helpers"
-require "kiqr/controllers/set_current_request_details"
-require "kiqr/controllers/two_factor_authentication"
-require "kiqr/controllers/url_helpers"
-require "kiqr/views/form_helpers"
-
 module Kiqr
+  autoload :Config, "kiqr/config"
+  autoload :CurrentAttributes, "kiqr/current_attributes"
+
+  module Controllers
+    autoload :Helpers, "kiqr/controllers/helpers"
+    autoload :SetCurrentRequestDetails, "kiqr/controllers/set_current_request_details"
+    autoload :TwoFactorAuthentication, "kiqr/controllers/two_factor_authentication"
+    autoload :UrlHelpers, "kiqr/controllers/url_helpers"
+  end
   # Load Kiqr configuration
   def self.config
     @config ||= Kiqr::Config

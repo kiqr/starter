@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  include Kiqr::Submenu
-
   # Turn on request forgery protection. Bear in mind that GET and HEAD requests are not checked.
   protect_from_forgery with: :exception, prepend: true
 
