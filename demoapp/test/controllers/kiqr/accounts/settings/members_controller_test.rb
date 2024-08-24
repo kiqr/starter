@@ -64,6 +64,13 @@ class Kiqr::Accounts::Settings::MembersControllerTest < ActionDispatch::Integrat
     end
   end
 
+  test "renders the invitation token url" do
+    @invitation = create(:member, :invitation, account: @account)
+    get invitation_link_modal_account_settings_member_path(account_id: @account, id: @invitation)
+
+    assert_response :success
+  end
+
   test "prevents removal of the team owner (not yet implemented)" do
     skip "Test for preventing the removal of the team owner is not implemented yet"
   end

@@ -11,6 +11,7 @@ require "kiqr/controllers/helpers"
 require "kiqr/controllers/set_current_request_details"
 require "kiqr/controllers/two_factor_authentication"
 require "kiqr/controllers/url_helpers"
+require "kiqr/views/form_helpers"
 
 module Kiqr
   # Load Kiqr configuration
@@ -27,6 +28,7 @@ module Kiqr
 
     ActiveSupport.on_load(:action_view) do
       include scope::UrlHelpers if defined?(scope::UrlHelpers)
+      include scope::FormHelpers if defined?(scope::FormHelpers)
     end
   end
 

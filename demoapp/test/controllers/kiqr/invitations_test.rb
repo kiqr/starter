@@ -31,7 +31,7 @@ class Kiqr::Users::InvitationsTest < ActionDispatch::IntegrationTest
     sign_in(@user)
     get user_invitation_path(token: @invitation.invitation_token)
 
-    assert_equal I18n.t("flash_messages.already_member_of_team"), flash[:danger]
+    assert_equal I18n.t("flash_messages.already_member_of_team"), flash[:alert]
     assert_redirected_to dashboard_path
   end
 

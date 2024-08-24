@@ -27,6 +27,10 @@ en:
     two_factor_failed: Two-factor authentication failed. Please try again.
     two_factor_required: Two-factor authentication required.
   kiqr:
+    translations:
+      locales:
+        en: English
+        sv: Swedish
     breadcrumbs:
       onboarding: Setup your user account
       settings:

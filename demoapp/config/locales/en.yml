@@ -1,10 +1,5 @@
 ---
 en:
-  languages:
-    en: English
-    sv: Swedish
-  misc:
-    time_ago: "%{time_ago_in_words} ago"
   partials:
     account_switcher:
       create_new: New team account

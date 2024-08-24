@@ -29,7 +29,7 @@ class Kiqr::Users::InvitationsController < KiqrController
     def ensure_no_duplicate_users
       return unless @account.users.include?(current_user)
 
-      kiqr_flash_message(:danger, :already_member_of_team)
+      kiqr_flash_message(:alert, :already_member_of_team)
       redirect_to dashboard_path
     end
 
