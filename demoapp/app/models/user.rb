@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  include Kiqr::Models::User
+  kiqr model: :user
 end
