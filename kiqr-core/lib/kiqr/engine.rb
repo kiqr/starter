@@ -16,5 +16,12 @@ module Kiqr
         include Kiqr::Controllers::SetCurrentRequestDetails
       end
     end
+
+    initializer "kiqr.add_flash_types" do
+      # Add more types of flash message to match the available variants in Irelia::Notification::Component.
+      ActiveSupport.on_load(:action_controller) do
+        add_flash_types :success, :warning
+      end
+    end
   end
 end

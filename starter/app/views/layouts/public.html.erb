@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render partial: "partials/head" %>
+  </head>
+  <body>
+    <%= render partial: "partials/flash_messages" %>
+    <%= irelia_navbar do |navbar| %>
+      <%= navbar.with_brand(url: root_path) { "KIQR" } %>
+      <%= navbar.with_separator %>
+      <%= navbar.with_navigation do |nav| %>
+        <%= nav.with_link(url: root_path, active: true) { "Home" } %>
+        <%= nav.with_link(url: "#") { "Features" } %>
+        <%= nav.with_link(url: "#") { "Pricing" } %>
+        <%= nav.with_link(url: "#") { "Documentation" } %>
+      <% end %>
+      <%= navbar.with_separator %>
+      <%= navbar.with_section do %>
+        <% if user_signed_in? %>
+          <%= irelia_button(url: dashboard_path, size: :sm, color: :secondary, icon: "fa fa-dashboard") { "Dashboard" } %>
+          <%= irelia_button_to(destroy_user_session_path, size: :sm, method: :delete) { "Sign out" } %>
+        <% else %>
+          <%= irelia_button(url: new_user_registration_path, size: :sm, color: :secondary) { "Create account" } %>
+          <%= irelia_button(url: new_user_session_path, size: :sm) { "Sign in" } %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

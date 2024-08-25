@@ -1,15 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Turn on request forgery protection. Bear in mind that GET and HEAD requests are not checked.
-  protect_from_forgery with: :exception, prepend: true
-
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  # Ensure that a user is signed in and has completed the onboarding process before accessing any other page.
+  # Ensure that a user is signed in and has completed the onboarding process.
   before_action :authenticate_user!
   before_action :ensure_onboarded
-
-  # Configure the base breadcrumbs for all pages to "Dashboard > (Account Name)"
   before_action :setup_base_breadcrumbs
 
   # Automatically include account_id in all URL options if it is already present in the params.

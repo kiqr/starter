@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.add_dependency "rails", ">= 7.2.0"
   s.add_dependency "kiqr-core", version
   s.add_dependency "kiqr-translations", version
 end
