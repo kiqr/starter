@@ -25,5 +25,14 @@ module Kiqr
         add_flash_types :success, :warning
       end
     end
+
+    # => Devise layouts
+    # Set the layout for Devise controllers
+    initializer "kiqr.devise_layout" do
+      config.to_prepare do
+        DeviseController.layout "public"
+        Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "public" }
+      end
+    end
   end
 end
