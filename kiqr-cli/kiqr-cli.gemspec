@@ -19,6 +19,9 @@ Gem::Specification.new do |s|
   s.files        = Dir["MIT-LICENSE", "lib/**/*", "config/**/*"]
   s.require_path = "lib"
 
+  s.bindir      = "exe"
+  s.executables = [ "kiqr" ]
+
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/kiqr/kiqr/issues",
     "changelog_uri"     => "https://github.com/kiqr/kiqr/releases/tag/v#{version}",
