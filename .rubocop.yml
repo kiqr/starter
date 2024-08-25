@@ -2,3 +2,4 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 AllCops:
   Exclude:
     - "demoapp/**/*"
+    - "starter/**/*"
