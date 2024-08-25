@@ -10,33 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_19_110715) do
+ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
   create_table "accounts", force: :cascade do |t|
     t.string "public_uid"
     t.string "name", null: false
     t.boolean "personal", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "account_invitations_count", default: 0
     t.index ["public_uid"], name: "index_accounts_on_public_uid", unique: true
   end
 
   create_table "members", force: :cascade do |t|
+    t.string "public_uid"
     t.integer "user_id"
     t.integer "account_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "public_uid"
+    t.integer "invited_by_id"
     t.boolean "owner", default: false, null: false
     t.string "invitation_email"
     t.string "invitation_token"
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
-    t.integer "invited_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id", "invitation_email"], name: "index_members_on_account_id_and_invitation_email", unique: true
-    t.index ["account_id", "invitation_token"], name: "index_members_on_account_id_and_invitation_token", unique: true
     t.index ["account_id", "user_id"], name: "index_members_on_account_id_and_user_id", unique: true
     t.index ["account_id"], name: "index_members_on_account_id"
+    t.index ["invitation_token"], name: "index_members_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_members_on_invited_by_id"
     t.index ["public_uid"], name: "index_members_on_public_uid", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
@@ -75,15 +74,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_19_110715) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "personal_account_id"
     t.string "otp_secret"
     t.integer "consumed_timestep"
     t.boolean "otp_required_for_login", default: false
     t.text "otp_backup_codes"
     t.string "locale", default: "en"
     t.string "time_zone", default: "UTC"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "personal_account_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["personal_account_id"], name: "index_users_on_personal_account_id"
