@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # Set up the base breadcrumbs for the application.
   def setup_base_breadcrumbs
     add_breadcrumb helpers.irelia_icon { "fa fa-home" }, (user_signed_in? ? dashboard_path : root_path)
     add_breadcrumb current_account.name, dashboard_path if current_account.present?

@@ -1,5 +1,7 @@
 module Kiqr
   class Engine < ::Rails::Engine
+    engine_name "kiqr"
+
     # Include helpers to the applications controllers and views.
     initializer "kiqr.controller_and_view_helpers" do
       Kiqr.include_helpers(Kiqr::Controllers)
