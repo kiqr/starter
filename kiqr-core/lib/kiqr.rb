@@ -5,6 +5,7 @@ require "omniauth/rails_csrf_protection"
 require "public_uid"
 
 require "kiqr/version"
+require "kiqr/config"
 require "kiqr/engine"
 require "kiqr/errors"
 require "kiqr/rails/routes"
@@ -13,7 +14,6 @@ require "kiqr/frontend"
 require "kiqr/translations"
 
 module Kiqr
-  autoload :Config, "kiqr/config"
   autoload :CurrentAttributes, "kiqr/current_attributes"
   autoload :Models, "kiqr/models"
 

@@ -30,5 +30,6 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
+  s.add_dependency "awesome_print", "~> 1.9", ">= 1.9.2"
   s.add_dependency "thor", "~> 1.3", ">= 1.3.1"
 end

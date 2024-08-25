@@ -5,6 +5,10 @@ class Kiqr::Users::Settings::ProfilesController < Kiqr::Users::Settings::BaseCon
     add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.profile.root"), user_settings_profile_path
   end
 
+  # GET /settings
+  def show
+  end
+
   # PATCH /settings/profile
   def update
     if @user.update(user_profile_params)

@@ -1,4 +1,5 @@
 require "thor"
+require "awesome_print"
 
 module Kiqr
   module Cli
@@ -8,6 +9,12 @@ module Kiqr
       # This is a Thor class method that will be called when an error occurs.
       def self.exit_on_failure?
         true
+      end
+
+      desc "config", "Inspect KIQR configurations values"
+      def config
+        say "KIQR Configuration:\n\n"
+        ap Kiqr::Config.config.stringify_keys, indent: -2
       end
 
       # KIQR provides the update command. After updating the KIQR version
@@ -21,7 +28,6 @@ module Kiqr
 
       desc "version", "Prints the KIQR version information"
       def version
-        say Kiqr.config.app_name
         say Gem.loaded_specs["kiqr-cli"].version
       end
     end

@@ -16,7 +16,7 @@ irelia_table do |table|
     table.with_row do |row|
       row.with_cell { member.name }
       row.with_cell { member.email }
-      row.with_cell { member.owner? ? tag.strong(t("roles.owner")) : t("roles.member") }
+      row.with_cell { member.owner? ? tag.strong("owner") : nil }
       row.with_cell { member.invitation_accepted_at? ? l(member.invitation_accepted_at, format: :long) : tag.em(t(".pending_invitation")) }
       row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
 %>
@@ -27,4 +27,4 @@ irelia_table do |table|
     end
   end
 end
-      %>
+%>

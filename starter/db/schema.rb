@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_25_104551) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_25_122653) do
   create_table "accounts", force: :cascade do |t|
     t.string "public_uid"
     t.string "name", null: false

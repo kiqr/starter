@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render partial: "partials/head" %>
+    <%= render partial: "kiqr/shared/head" %>
   </head>
   <body>
-    <%= render partial: "partials/flash_message" %>
+    <%= render partial: "kiqr/shared/flash_messages" %>
     <%=
       # => Render the Irelia app shell with breadcrumbs and sidebar
       irelia_app_shell do |app|
         app.with_breadcrumbs(breadcrumbs: breadcrumb_trail)
-        app.with_sidebar { |sidebar| render(partial: "partials/sidebar", locals: { sidebar: sidebar }) }
+        app.with_sidebar { |sidebar| render(partial: "kiqr/shared/sidebar", locals: { sidebar: sidebar }) }
         app.with_submenu { |submenu| render(partial: submenu_partial, locals: { menu: submenu }) } if has_submenu?
         yield
       end

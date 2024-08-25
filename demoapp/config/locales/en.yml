@@ -1,9 +1,0 @@
----
-en:
-  partials:
-    account_switcher:
-      create_new: New team account
-      personal: Personal account
-  roles:
-    member: Member
-    owner: Owner
