@@ -26,4 +26,6 @@ Gem::Specification.new do |s|
     "source_code_uri"   => "https://github.com/kiqr/kiqr/tree/v#{version}",
     "rubygems_mfa_required" => "true"
   }
+
+  s.add_dependency "importmap-rails", ">= 2.0.1"
 end

@@ -1,3 +1,5 @@
+require "importmap-rails"
+
 require "kiqr/themes/irelia/engine"
 require "kiqr/themes/irelia/version"
 
