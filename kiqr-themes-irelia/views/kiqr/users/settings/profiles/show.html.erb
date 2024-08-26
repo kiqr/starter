@@ -2,8 +2,8 @@
 
 <%= irelia_container size: :md do %>
   <% if @user.unconfirmed_email? %>
-    <%= irelia_div padding_bottom: :lg do %>
-      <%= irelia_notification(variant: :warning, html_options: { id: "pending_email_notification", class: "mb-5" }, title: t(".notifications.pending_email_change.title")) do %>
+    <%= irelia_div padding_bottom: :lg, html_options: { id: "pending_email_notification" } do %>
+      <%= irelia_notification(variant: :warning, title: t(".notifications.pending_email_change.title")) do %>
         <%== t(".notifications.pending_email_change.text", email: h(@user.unconfirmed_email)) %>
         <%= button_to cancel_pending_email_user_settings_profile_path, method: :delete do %>
           <%== t(".notifications.pending_email_change.cancel") %>
