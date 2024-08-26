@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kiqr/irelia.git
-  revision: 98c6f85c580758168c0364d0aa734dc8c6acf464
+  revision: e652df98478fead70693fb30cd2e4932e88e2e5f
   branch: main
   specs:
     irelia (0.1.0)
@@ -33,6 +33,7 @@ PATH
       meta-tags (~> 2.21)
       rqrcode (~> 2.0)
     kiqr-themes-irelia (0.1.0.alpha)
+      importmap-rails (>= 2.0.1)
     kiqr-translations (0.1.0.alpha)
 
 GEM

@@ -1,21 +1,19 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
 
-<div class="max-w-3xl flex flex-col gap-y-10">
-  <div class="prose -mb-5">
-    <p><%= t(".content") %></p>
-    <ol>
-      <% t(".steps").each do |step| %>
-        <li><%= step %></li>
-      <% end %>
-    </ol>
-  </div>
+<%= irelia_container size: :md do %>
+  <%= irelia_flex direction: :column, gap: :lg do %>
+    <%= irelia_html do %>
+      <p><%= t(".content") %></p>
+      <ol>
+        <% t(".steps").each do |step| %>
+          <li><%= step %></li>
+        <% end %>
+      </ol>
+    <% end %>
 
-  <%= irelia_notification(variant: :warning) { "Please note that if you refresh this page, the QR code will reset and must be scanned again by your authentication app." } %>
-
-  <div class="flex gap-10">
-    <div id="qr-code-wrapper"><%= render_qr_code(@user.otp_uri) %></div>
-    <div class="flex-1 flex flex-col gap-y-5">
+    <%= irelia_flex gap: :lg do %>
+      <div id="qr-code-wrapper"><%= render_qr_code(@user.otp_uri) %></div>
       <%= render "form", user: @user %>
-    </div>
-  </div>
-</div>
+    <% end %>
+  <% end %>
+<% end %>

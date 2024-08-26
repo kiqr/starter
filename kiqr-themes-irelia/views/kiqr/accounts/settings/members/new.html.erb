@@ -1,18 +1,16 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description", team_name: @account.name)) do |header| %>
   <% header.with_button(url: account_settings_members_path, color: :secondary, icon: "fa fa-arrow-left") { t("kiqr.accounts.settings.members.action_buttons.back") } %>
 <% end %>
-
-<div class="grid grid-cols-5 gap-10">
-  <div class="col-span-3">
+<%= irelia_container size: :md do %>
+  <%= irelia_flex direction: :column do %>
+    <%= irelia_html do %>
+      <%= simple_format t(".content") %>
+    <% end %>
     <%= irelia_form(model: @member, url: account_settings_members_path, method: :post) do |form| %>
       <%= form.email_field :invitation_email, label: t(".form.invitation_email.label"), placeholder: t(".form.invitation_email.placeholder"), hint: t(".form.invitation_email.hint") %>
-      <%= form.submit t(".form.submit") %>
+      <%= irelia_div padding_top: :sm do %>
+        <%= form.submit t(".form.submit") %>
+      <% end %>
     <% end %>
-  </div>
-  <div class="col-span-2">
-    <div class="prose">
-      <h4><%= t(".instructions.title") %></h4>
-      <%= simple_format t(".instructions.content") %>
-    </div>
-  </div>
-</div>
+  <% end %>
+<% end %>

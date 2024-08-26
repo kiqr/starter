@@ -46,7 +46,7 @@ module Kiqr
 
       # Render flash messages as turbo stream
       def render_flash_messages_stream
-        turbo_stream.replace("flash_messages", partial: "partials/flash_message")
+        turbo_stream.replace("flash_messages", partial: "kiqr/shared/flash_messages")
       end
     end
   end

@@ -1,7 +1,9 @@
 <%= turbo_stream.update "invitation_link" do %>
-  <div id="invitation_link_form" class="flex flex-col gap-y-5">
+  <%= irelia_html do %>
     <%= simple_format t(".content", email: member.invitation_email) %>
+  <% end %>
+  <%= irelia_flex direction: :column, padding_top: :lg do %>
     <%= text_field_tag(:invitation_token, invitation_token_url(member.invitation_token), disabled: true, autocomplete: false, class: "w-full border-neutral-200") %>
     <%= irelia_button(type: :submit) { "Re-send invitation email" } %>
-  </div>
+  <% end %>
 <% end %>

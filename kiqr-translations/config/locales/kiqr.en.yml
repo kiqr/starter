@@ -95,12 +95,10 @@ en:
                 label: Email
                 placeholder: Enter the email address
               submit: Send invitation
-            instructions:
-              content: |
-                Invitations are sent via email. You can invite anyone to join your team, even if they don't have an account yet. Once the person you invited accepts the invitation, they will be added to your team.
+            content: |
+              Invitations are sent via email. You can invite anyone to join your team, even if they don't have an account yet. Once the person you invited accepts the invitation, they will be added to your team.
 
-                Need to invite more members? No problem. Just fill out the form again and send another invitation.
-              title: Instructions
+              Need to invite more members? No problem. Just fill out the form again and send another invitation.
             title: Invite a member
         profiles:
           show:

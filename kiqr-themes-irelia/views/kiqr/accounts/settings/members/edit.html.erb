@@ -1,7 +1,4 @@
 <%= irelia_page_header(title: t(".title", member_name: @member.name), subline: t(".description", team_name: @account.name)) do |header| %>
   <% header.with_button(url: account_settings_members_path, color: :secondary, icon: "fa fa-arrow-left") { t("kiqr.accounts.settings.members.action_buttons.back") } %>
 <% end %>
-
-<div class="max-w-3xl">
-  <%= irelia_button_to t(".delete_member.button"), account_settings_member_path(id: @member), method: :delete, color: :danger, name: "commit", data: { confirm: t(".delete_member.confirmation_message"), turbo_confirm: t(".delete_member.confirmation_message") }, method: :delete %>
-</div>
+<%= irelia_button_to t(".delete_member.button"), account_settings_member_path(id: @member), method: :delete, color: :danger, name: "commit", data: { confirm: t(".delete_member.confirmation_message"), turbo_confirm: t(".delete_member.confirmation_message") }, method: :delete %>

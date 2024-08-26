@@ -2,8 +2,8 @@
 <%= form.password_field :password, label: t(".password.label"), placeholder: t(".password.placeholder"), autocomplete: "current-password" %>
 
 <% if devise_mapping.rememberable? %>
-  <div class="flex items-center gap-x-2.5">
+  <%= irelia_flex do %>
     <%= form.check_box :remember_me %>
     <%= form.label :remember_me %>
-  </div>
+  <% end %>
 <% end %>

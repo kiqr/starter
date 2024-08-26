@@ -1,21 +1,17 @@
 <% content_for :user_card do %>
-  <div class="flex items-center gap-x-4 w-full">
-    <div class="w-11 h-11 rounded-lg overflow-hidden bg-neutral-200">
-      <img src="https://picsum.photos/50">
-    </div>
-    <div class="flex flex-col text-left text-sm">
-      <div class="font-semibold"><%= current_account.name == current_user.name ? t(".personal") : current_account.name %></div>
-      <div class="irelia-account-switcher__user_name"><%= current_user.name %></div>
-    </div>
-    <div class="irelia-account-switcher__icon ml-auto">
-      <%= irelia_icon { "fa fa-caret-down" } %>
-    </div>
-  </div>
+  <%= irelia_flex items: :center, width: :full do %>
+    <%= irelia_avatar { "https://picsum.photos/50" } %>
+    <%= irelia_flex direction: :column, gap: :none, text: :sm, grow: true, items: :start do %>
+      <%= irelia_div(bold: :bold) { current_account.name == current_user.name ? t(".personal") : current_account.name } %>
+      <%= current_user.name %>
+    <% end %>
+    <%= irelia_icon { "fa fa-caret-down" } %>
+  <% end %>
 <% end %>
 
 <%=
   irelia_dropdown(direction: :up) do |dropdown|
-    dropdown.with_custom_trigger(html_options: { class: "w-full" }) { yield :user_card }
+    dropdown.with_custom_trigger { yield :user_card }
     dropdown.with_item(url: dashboard_path(account_id: nil), icon: "fa fa-user") { current_user.name }
     current_user.accounts.each { |account| dropdown.with_item(url: dashboard_path(account_id: account), icon: "fa fa-users") { account.name } }
     dropdown.with_item(url: new_user_settings_account_path, icon: "fa fa-plus-circle") { t(".create_new") }
