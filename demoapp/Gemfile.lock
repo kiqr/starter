@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kiqr/irelia.git
-  revision: 7baa36781dda3e7eb1ef51e53df867a08338436d
+  revision: 98c6f85c580758168c0364d0aa734dc8c6acf464
   branch: main
   specs:
     irelia (0.1.0)
@@ -152,7 +152,7 @@ GEM
     cork (0.3.0)
       colored2 (~> 3.1)
     crass (1.0.6)
-    css_parser (1.17.1)
+    css_parser (1.19.0)
       addressable
     danger (9.5.0)
       claide (~> 1.0)
