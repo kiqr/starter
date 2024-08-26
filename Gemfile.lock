@@ -22,6 +22,7 @@ PATH
       meta-tags (~> 2.21)
       rqrcode (~> 2.0)
     kiqr-themes-irelia (0.1.0.alpha)
+      importmap-rails (>= 2.0.1)
     kiqr-translations (0.1.0.alpha)
 
 GEM
@@ -87,6 +88,10 @@ GEM
     hashie (5.0.0)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
+    importmap-rails (2.0.1)
+      actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      railties (>= 6.0.0)
     io-console (0.7.2)
     irb (1.14.0)
       rdoc (>= 4.0.0)
