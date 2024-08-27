@@ -4,7 +4,10 @@ require "thor"
 module Kiqr
   module Cli
     autoload :Application, "kiqr/cli/application"
-    autoload :Extensions, "kiqr/cli/extensions"
+
+    module Extensions
+      autoload :Commands, "kiqr/cli/extensions/commands"
+    end
 
     class << self
       def run

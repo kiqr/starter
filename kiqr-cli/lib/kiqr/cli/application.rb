@@ -1,3 +1,5 @@
+require "kiqr"
+
 module Kiqr
   module Cli
     class Application < Thor
@@ -8,7 +10,7 @@ module Kiqr
       end
 
       desc "extensions", "Create or manage extensions"
-      subcommand "extensions", Kiqr::Cli::Extensions
+      subcommand "extensions", Kiqr::Cli::Extensions::Commands
 
       desc "version", "Show KIQR CLI version"
       def version
