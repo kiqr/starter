@@ -33,6 +33,9 @@ Gem::Specification.new do |s|
   s.add_dependency "omniauth-rails_csrf_protection", "~> 1.0.1"
   s.add_dependency "public_uid", "~> 2.2"
 
+  # Commands
+  s.add_dependency "awesome_print", "~> 1.9", ">= 1.9.2"
+
   # KIQR dependencies
   s.add_dependency "kiqr-frontend", version
   s.add_dependency "kiqr-translations", version

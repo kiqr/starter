@@ -20,6 +20,7 @@ PATH
       awesome_print (~> 1.9, >= 1.9.2)
       thor (~> 1.3, >= 1.3.1)
     kiqr-core (0.1.0.alpha)
+      awesome_print (~> 1.9, >= 1.9.2)
       devise (~> 4.9, >= 4.9.3)
       devise-two-factor (>= 5.0, < 5.2)
       kiqr-frontend (= 0.1.0.alpha)
