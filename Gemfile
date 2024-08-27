@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "rake"
+
 group :rubocop do
   gem "rubocop", ">= 1.25.1", require: false
 

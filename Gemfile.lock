@@ -221,6 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   kiqr!
+  rake
   rubocop (>= 1.25.1)
   rubocop-rails-omakase
 

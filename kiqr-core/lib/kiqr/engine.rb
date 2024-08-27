@@ -19,6 +19,13 @@ module Kiqr
       end
     end
 
+    # Load default_url_options automatically with KIQR. To set a custom URL in
+    # production, set the `BASE_URL` environment variable to your apps domain.
+    # It defaults to `http://localhost:3000` in the development and test environments.
+    initializer "kiqr.setup_default_url_options" do
+      config.action_mailer.default_url_options = Kiqr.default_url_options
+    end
+
     initializer "kiqr.add_flash_types" do
       # Add more types of flash message to match the available variants in Irelia::Notification::Component.
       ActiveSupport.on_load(:action_controller) do

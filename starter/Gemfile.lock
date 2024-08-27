@@ -155,6 +155,19 @@ GEM
     drb (2.2.1)
     dry-initializer (3.1.1)
     erubi (1.13.0)
+    factory_bot (6.4.6)
+      activesupport (>= 5.0.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
+    faraday (2.11.0)
+      faraday-net_http (>= 2.0, < 3.4)
+      logger
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.3.0)
+      net-http
+    faraday-retry (2.2.1)
+      faraday (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -206,6 +219,9 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.1)
     msgpack (1.7.2)
+    multipart-post (2.4.1)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.14)
       date
       net-protocol
@@ -273,6 +289,10 @@ GEM
       activesupport (= 7.2.1)
       bundler (>= 1.15.0)
       railties (= 7.2.1)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -380,6 +400,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    uri (0.13.1)
     useragent (0.16.10)
     view_component (3.13.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -426,12 +447,17 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  factory_bot (~> 6.4.3)
+  faker
+  faraday-multipart
+  faraday-retry
   importmap-rails
   irelia!
   jbuilder
   kiqr!
   puma (>= 5.0)
   rails (~> 7.2.1)
+  rails-controller-testing
   redis (>= 4.0.1)
   rubocop-rails-omakase
   selenium-webdriver

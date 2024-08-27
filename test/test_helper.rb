@@ -1,6 +1,6 @@
 ENV["RAILS_ENV"] ||= "test"
 
-require_relative "../config/environment"
+require_relative "../starter/config/environment"
 require "rails/test_help"
 
 FactoryBot.find_definitions
