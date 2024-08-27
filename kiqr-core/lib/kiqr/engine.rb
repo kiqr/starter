@@ -2,6 +2,13 @@ module Kiqr
   class Engine < ::Rails::Engine
     engine_name "kiqr"
 
+    # Load default_url_options automatically with KIQR. To set a custom URL in
+    # production, set the `BASE_URL` environment variable to your apps domain.
+    # It defaults to `http://localhost:3000` in the development and test environments.
+    initializer "kiqr.setup_default_url_options" do
+      config.action_mailer.default_url_options = Kiqr.default_url_options
+    end
+
     # Include helpers to the applications controllers and views.
     initializer "kiqr.controller_and_view_helpers" do
       Kiqr.include_helpers(Kiqr::Controllers)
