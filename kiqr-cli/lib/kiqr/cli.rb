@@ -1,19 +1,34 @@
-require "kiqr/cli/app_loader"
+require "kiqr/cli/version"
+require "thor"
 
-# If we are inside a KIQR application this method performs an exec and thus
-# the rest of this script is not run.
-Kiqr::Cli::AppLoader.exec_app
+module Kiqr
+  module Cli
+    autoload :Application, "kiqr/cli/application"
+    autoload :Extensions, "kiqr/cli/extensions"
 
-# If we are not inside a KIQR application, we require the commands and start the CLI.
-# require "kiqr/cli/installer"
+    class << self
+      def run
+        exec_app || Kiqr::Cli::Application.start(ARGV)
+      end
 
-case ARGV.first
-when "version", "-v", "--version"
-  puts Gem.loaded_specs["kiqr-cli"].version
-# when "extension"
-#   ARGV.shift
-#   require "kiqr/cli/extension"
-#   Kiqr::Extension.start
-else
-  require "kiqr/cli/app_generator"
+      def exec_app
+        original_cwd = Dir.pwd
+        ruby_exe = Gem.ruby
+
+        loop do
+          if exe = File.file?("bin/kiqr")
+            exec ruby_exe, "bin/kiqr", *ARGV
+            break # non reachable, hack to be able to stub exec in the test suite
+          end
+
+          # If we exhaust the search there is no executable, this could be a
+          # call to generate a new application, so restore the original cwd.
+          Dir.chdir(original_cwd) && return if Pathname.new(Dir.pwd).root?
+
+          # Otherwise keep moving upwards in search of an executable.
+          Dir.chdir("..")
+        end
+      end
+    end
+  end
 end

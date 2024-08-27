@@ -25,9 +25,9 @@ module Kiqr
       Kiqr::UpdateGenerator.start
     end
 
-    desc "version", "Prints the KIQR version information"
+    desc "version", "Show installed KIQR version"
     def version
-      say Gem.loaded_specs["kiqr-cli"].version
+      say Gem.loaded_specs["kiqr"].version
     end
   end
 end

@@ -1,0 +1,5 @@
+eval_gemfile("../common_test_dependencies.rb")
+
+gem "kiqr", path: ".."
+
+gemspec

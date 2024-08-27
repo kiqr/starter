@@ -1,6 +1,12 @@
 ENV["RAILS_ENV"] ||= "test"
 
-require_relative "../config/environment"
+begin
+  require File.expand_path("../dummy/config/environment", __FILE__)
+rescue LoadError
+  puts "Could not load dummy application. Please ensure you have run `bundle exec kiqr extensions test_app`"
+  exit 1
+end
+
 require "rails/test_help"
 
 FactoryBot.find_definitions
