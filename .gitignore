@@ -1,5 +1,6 @@
 .DS_Store
 *.enc
+!test.yml.enc
 /.bundle
 .ruby-version
 /*/test/tmp/
