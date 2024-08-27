@@ -17,12 +17,15 @@ module Kiqr
             ENV["BUNDLE_GEMFILE"] = File.join(app_path, "Gemfile")
           end
 
-          def generate_dummy_application
+          def generate_rails_application
             say "Generating Rails application..."
             opts = {}.merge(options).slice(*PASSTHROUGH_OPTIONS)
-            # opts[:skip_bundle] = true
-
+            opts[:skip_bundle] = true
             invoke Rails::Generators::AppGenerator, [ app_path ], opts
+          end
+
+          def write_kiqr_to_gemfile
+            append_file File.expand_path("Gemfile", app_path), %(\n# KIQR framework [https://github.com/kiqr/kiqr]\ngem "kiqr", "~> #{Kiqr.version}"), after: /gem "rails", ".*"/
           end
 
           protected
