@@ -4,9 +4,11 @@ require "thor"
 module Kiqr
   module Cli
     autoload :Application, "kiqr/cli/application"
+    autoload :Extensions, "kiqr/cli/extensions"
 
-    module Extensions
-      autoload :Commands, "kiqr/cli/extensions/commands"
+    module Generators
+      autoload :AppGenerator, "kiqr/cli/generators/app/app_generator"
+      autoload :DummyGenerator, "kiqr/cli/generators/dummy/dummy_generator"
     end
 
     class << self
