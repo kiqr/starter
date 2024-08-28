@@ -1,4 +1,7 @@
 class KiqrController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_onboarded
+
   def kiqr_flash_message(type, message, **kwargs)
     flash[type] = I18n.t("flash_messages.#{message}", **kwargs)
   end

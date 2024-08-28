@@ -14,7 +14,6 @@ module Kiqr
           .rubocop.yml
           .ruby-version
           Dockerfile
-          Gemfile
           lib/tasks
           test
         ]

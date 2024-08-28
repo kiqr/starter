@@ -26,20 +26,29 @@ module Kiqr
         end
 
         def add_kiqr_gem
-          append_file File.expand_path("Gemfile", app_path), %(\n# KIQR framework [https://github.com/kiqr/kiqr]\ngem "kiqr", "~> #{Kiqr.version}"), after: /gem "rails", ".*"/
+          if kiqr_core_directory = find_upwards("KIQR_VERSION")
+            version_tag = "path: \"#{kiqr_core_directory}\""
+          else
+            version_tag = "\"~> #{Kiqr.version}\""
+          end
+
+          gemfile_additions = <<~EOS
+          # KIQR Framework [https://github.com/kiqr/kiqr]
+          gem "kiqr", #{version_tag}
+
+          # View components and design system by KIQR [https://github.com/kiqr/irelia]
+          gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
+          EOS
+          append_file File.expand_path("Gemfile", app_path), gemfile_additions, after: /gem "rails", ".*"/
         end
 
-        def copy_development_credentials
-          directory "config/credentials", File.expand_path("config/credentials", app_path)
-        end
-
-        def copy_layout_files
-          directory "views/layouts", File.expand_path("app/views/layouts", app_path)
+        def overried
+          directory "rails", app_path, force: true
         end
 
         def write_kiqr_routes_to_routes_file
-          kiqr_routes = <<~EOS
-          root "public#welcome"
+          routes_addition = <<~EOS
+          root "public#landing_page"
 
             # => KIQR core routes
             # These routes are required for the KIQR core to function properly.
@@ -60,7 +69,7 @@ module Kiqr
           EOS
 
           gsub_file File.expand_path("config/routes.rb", app_path), /\# root "posts#index"/ do
-            kiqr_routes.strip
+            routes_addition.strip
           end
         end
 
@@ -79,6 +88,18 @@ module Kiqr
 
         def app_path
           File.expand_path(app_name, destination_root)
+        end
+
+        # Allows wildcard search for file name.
+        def find_upwards(file)
+          current_path = Dir.pwd
+          while current_path != "/"
+            if Dir.glob(File.join(current_path, file)).any?
+              return current_path
+            else
+              current_path = File.expand_path(File.join(current_path, ".."))
+            end
+          end
         end
       end
     end
