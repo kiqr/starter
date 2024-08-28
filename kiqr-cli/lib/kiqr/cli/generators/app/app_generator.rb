@@ -33,6 +33,10 @@ module Kiqr
           directory "config/credentials", File.expand_path("config/credentials", app_path)
         end
 
+        def copy_layout_files
+          directory "views/layouts", File.expand_path("app/views/layouts", app_path)
+        end
+
         def write_kiqr_routes_to_routes_file
           kiqr_routes = <<~EOS
           root "public#welcome"

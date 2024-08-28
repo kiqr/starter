@@ -5,6 +5,9 @@ group :development, :test do
   gem "sqlite3", ">= 1.4"
   gem "sprockets-rails"
   gem "bootsnap", require: false
+
+  # View components and design system by KIQR [https://github.com/kiqr/irelia]
+  gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
 end
 
 group :test do
