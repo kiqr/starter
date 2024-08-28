@@ -7,13 +7,25 @@ module Kiqr
       class DummyGenerator < Rails::Generators::Base
         source_paths << File.expand_path("templates", __dir__)
 
+        CLEANUP_FILES = %w[
+          .dockerignore
+          .github
+          .gitignore
+          .rubocop.yml
+          .ruby-version
+          Dockerfile
+          Gemfile
+          lib/tasks
+          test
+        ]
+
         def clean_up_dummy_directory
           remove_dir(dummy_path)
         end
 
         def generate_dummy_application
           say "Generating dummy application..."
-          invoke Rails::Generators::AppGenerator, [ dummy_path ], {
+          invoke Kiqr::Cli::Generators::AppGenerator, [ dummy_path ], {
             force: true,
             skip_bundle: true,
             skip_git: true,
@@ -29,27 +41,16 @@ module Kiqr
 
         def cleanup_unnessary_files
           inside dummy_path do
-            remove_dir ".github"
-            remove_file ".gitignore"
-            remove_file ".rubocop"
-            remove_file ".ruby-version"
-            remove_file "Dockerfile"
-            remove_file "doc"
-            # remove_file "Gemfile"
-            remove_file "lib/tasks"
-            remove_file "app/assets/images/rails.png"
-            remove_file "app/assets/javascripts/application.js"
-            remove_file "public/index.html"
-            remove_file "public/robots.txt"
-            remove_file "README"
-            remove_file "test"
-            remove_file "vendor"
-            remove_file "spec"
+            CLEANUP_FILES.each do |file|
+              remove_file file
+            end
           end
         end
 
-        def replace_files
-          template "application.rb", "#{dummy_path}/config/application.rb", force: true
+        def install_kiqr
+          inside dummy_path do
+            run "bundle exec rails generate kiqr:update"
+          end
         end
 
         protected
