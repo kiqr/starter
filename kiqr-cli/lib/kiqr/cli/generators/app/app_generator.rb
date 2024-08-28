@@ -33,6 +33,7 @@ module Kiqr
           end
 
           gemfile_additions = <<~EOS
+          \n
           # KIQR Framework [https://github.com/kiqr/kiqr]
           gem "kiqr", #{version_tag}
 
@@ -40,6 +41,18 @@ module Kiqr
           gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
           EOS
           append_file File.expand_path("Gemfile", app_path), gemfile_additions, after: /gem "rails", ".*"/
+        end
+
+        def add_test_gems
+          gemfile_additions = <<~EOS
+          \n
+            gem "factory_bot", "~> 6.4.3"
+            gem "faraday-retry"
+            gem "faraday-multipart"
+            gem "faker"
+            gem "rails-controller-testing"
+EOS
+          append_file File.expand_path("Gemfile", app_path), gemfile_additions, after: /gem "selenium-webdriver"/
         end
 
         def overried

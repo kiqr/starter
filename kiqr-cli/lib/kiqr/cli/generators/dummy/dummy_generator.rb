@@ -26,7 +26,6 @@ module Kiqr
           say "Generating dummy application..."
           invoke Kiqr::Cli::Generators::AppGenerator, [ dummy_path ], {
             force: true,
-            skip_bundle: true,
             skip_git: true,
             skip_decrypted_diffs: true,
             skip_listen: true,

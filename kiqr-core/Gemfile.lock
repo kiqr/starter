@@ -247,6 +247,8 @@ GEM
     public_suffix (6.0.1)
     public_uid (2.2.0)
       activerecord (> 4.2)
+    puma (6.4.2)
+      nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.8.1)
     rack-protection (3.0.6)
@@ -398,6 +400,7 @@ DEPENDENCIES
   irelia!
   kiqr!
   kiqr-core!
+  puma (>= 5.0)
   rails (~> 7.2.1)
   rails-controller-testing
   rubocop (>= 1.25.1)
