@@ -1,21 +1,29 @@
+# Core dependencies
 require "devise"
 require "devise-two-factor"
 require "omniauth"
 require "omniauth/rails_csrf_protection"
 require "public_uid"
 
+# Frontend dependencies
+require "meta-tags"
+require "loaf"
+require "rqrcode"
+
+# Kiqr dependencies
 require "kiqr/version"
 require "kiqr/config"
 require "kiqr/engine"
 require "kiqr/errors"
 require "kiqr/rails/routes"
-
 require "kiqr/frontend"
 require "kiqr/translations"
 
 module Kiqr
   autoload :CurrentAttributes, "kiqr/current_attributes"
   autoload :Models, "kiqr/models"
+  autoload :Frontend, "kiqr/frontend"
+  autoload :Translations, "kiqr/translations"
 
   module Controllers
     autoload :Helpers, "kiqr/controllers/helpers"
@@ -29,6 +37,10 @@ module Kiqr
     autoload :Member, "kiqr/models/member"
     autoload :OmniauthIdentity, "kiqr/models/omniauth_identity"
     autoload :User, "kiqr/models/user"
+  end
+
+  module Themes
+    autoload :Irelia, "kiqr/themes/irelia"
   end
 
   # Load Kiqr configuration

@@ -11,10 +11,9 @@ module Kiqr
       protected
 
       def setup_view_path_for_themes
-        theme_name = Kiqr.config.theme.to_s.downcase
-        theme_engine = "Kiqr::Themes::#{theme_name.camelize}::Engine".constantize
-
-        append_view_path theme_engine.root.join("views")
+        theme_name = Kiqr.config.theme.to_s.camelize
+        theme_class = "Kiqr::Themes::#{theme_name}".constantize
+        append_view_path theme_class.config.view_path
       end
     end
   end
