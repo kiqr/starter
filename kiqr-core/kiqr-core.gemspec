@@ -38,5 +38,4 @@ Gem::Specification.new do |s|
 
   # KIQR dependencies
   s.add_dependency "kiqr-frontend", version
-  s.add_dependency "kiqr-translations", version
 end
