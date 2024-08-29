@@ -3,3 +3,4 @@ AllCops:
   Exclude:
     - "demoapp/**/*"
     - "starter/**/*"
+    - "*/test/dummy/**/*"

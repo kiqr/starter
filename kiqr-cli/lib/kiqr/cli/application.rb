@@ -11,7 +11,7 @@ module Kiqr
 
       desc "new [app_name]", "Create a new KIQR application"
       def new(app_name)
-        invoke Kiqr::Cli::Generators::AppGenerator, [app_name]
+        invoke Kiqr::Cli::Generators::AppGenerator, [ app_name ]
       end
 
       desc "extensions", "Create or manage extensions"
