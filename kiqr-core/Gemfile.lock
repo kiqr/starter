@@ -13,20 +13,9 @@ PATH
   remote: ..
   specs:
     kiqr (0.1.0.alpha)
-      kiqr-cli (= 0.1.0.alpha)
       kiqr-core (= 0.1.0.alpha)
-      kiqr-translations (= 0.1.0.alpha)
-    kiqr-cli (0.1.0.alpha)
-      awesome_print (~> 1.9, >= 1.9.2)
-      thor (~> 1.3, >= 1.3.1)
-    kiqr-frontend (0.1.0.alpha)
-      kiqr-themes-irelia (= 0.1.0.alpha)
-      loaf (~> 0.10.0)
-      meta-tags (~> 2.21)
-      rqrcode (~> 2.0)
     kiqr-themes-irelia (0.1.0.alpha)
       importmap-rails (>= 2.0.1)
-    kiqr-translations (0.1.0.alpha)
 
 PATH
   remote: .
@@ -35,11 +24,14 @@ PATH
       awesome_print (~> 1.9, >= 1.9.2)
       devise (~> 4.9, >= 4.9.3)
       devise-two-factor (>= 5.0, < 5.2)
-      kiqr-frontend (= 0.1.0.alpha)
-      kiqr-translations (= 0.1.0.alpha)
+      kiqr-themes-irelia (= 0.1.0.alpha)
+      loaf (~> 0.10.0)
+      meta-tags (~> 2.21)
       omniauth (~> 2.1.1)
       omniauth-rails_csrf_protection (~> 1.0.1)
       public_uid (~> 2.2)
+      rqrcode (~> 2.0)
+      thor (~> 1.3, >= 1.3.1)
 
 GEM
   remote: https://rubygems.org/

@@ -19,6 +19,9 @@ Gem::Specification.new do |s|
   s.files        = Dir["MIT-LICENSE", "README.md", "lib/**/*", "app/**/*", "config/**/*", "db/**/*"]
   s.require_path = "lib"
 
+  s.bindir      = "exe"
+  s.executables = [ "kiqr" ]
+
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/kiqr/kiqr/issues",
     "changelog_uri"     => "https://github.com/kiqr/kiqr/releases/tag/v#{version}",
@@ -40,6 +43,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rqrcode", "~> 2.0"
   s.add_dependency "kiqr-themes-irelia", version
 
-  # Commands
+  # CLI and app generator dependencies
   s.add_dependency "awesome_print", "~> 1.9", ">= 1.9.2"
+  s.add_dependency "thor", "~> 1.3", ">= 1.3.1"
 end

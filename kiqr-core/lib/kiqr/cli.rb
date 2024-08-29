@@ -1,4 +1,3 @@
-require "kiqr/cli/version"
 require "thor"
 
 module Kiqr
