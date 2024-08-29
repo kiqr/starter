@@ -27,15 +27,19 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
+  # Core dependencies
   s.add_dependency "devise", "~> 4.9", ">= 4.9.3"
   s.add_dependency "devise-two-factor", ">= 5.0", "< 5.2"
   s.add_dependency "omniauth", "~> 2.1.1"
   s.add_dependency "omniauth-rails_csrf_protection", "~> 1.0.1"
   s.add_dependency "public_uid", "~> 2.2"
 
+  # Frontend dependencies
+  s.add_dependency "meta-tags", "~> 2.21"
+  s.add_dependency "loaf", "~> 0.10.0"
+  s.add_dependency "rqrcode", "~> 2.0"
+  s.add_dependency "kiqr-themes-irelia", version
+
   # Commands
   s.add_dependency "awesome_print", "~> 1.9", ">= 1.9.2"
-
-  # KIQR dependencies
-  s.add_dependency "kiqr-frontend", version
 end
