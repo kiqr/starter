@@ -14,8 +14,6 @@ PATH
   specs:
     kiqr (0.1.0.alpha)
       kiqr-core (= 0.1.0.alpha)
-    kiqr-themes-irelia (0.1.0.alpha)
-      importmap-rails (>= 2.0.1)
 
 PATH
   remote: .
@@ -24,7 +22,6 @@ PATH
       awesome_print (~> 1.9, >= 1.9.2)
       devise (~> 4.9, >= 4.9.3)
       devise-two-factor (>= 5.0, < 5.2)
-      kiqr-themes-irelia (= 0.1.0.alpha)
       loaf (~> 0.10.0)
       meta-tags (~> 2.21)
       omniauth (~> 2.1.1)
@@ -166,10 +163,6 @@ GEM
     htmlentities (4.3.4)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.0.1)
-      actionpack (>= 6.0.0)
-      activesupport (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.7.2)
     irb (1.14.0)
       rdoc (>= 4.0.0)

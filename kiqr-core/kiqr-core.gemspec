@@ -41,7 +41,6 @@ Gem::Specification.new do |s|
   s.add_dependency "meta-tags", "~> 2.21"
   s.add_dependency "loaf", "~> 0.10.0"
   s.add_dependency "rqrcode", "~> 2.0"
-  s.add_dependency "kiqr-themes-irelia", version
 
   # CLI and app generator dependencies
   s.add_dependency "awesome_print", "~> 1.9", ">= 1.9.2"

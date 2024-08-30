@@ -2,8 +2,6 @@
 require "importmap-rails"
 
 # Require local files for the Irelia theme
-require "kiqr/themes/irelia/version"
-require "kiqr/themes/irelia/engine"
 require "kiqr/themes/irelia/config"
 
 module Kiqr

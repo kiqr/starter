@@ -43,5 +43,14 @@ module Kiqr
         Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "public" }
       end
     end
+
+    # => Load theme initializers
+    # initializer "kiqr-themes-irelia.importmap", before: "importmap" do |app|
+    #   theme_name = Kiqr.config.theme.to_s.camelize
+    #   theme_class = "Kiqr::Themes::#{theme_name}".constantize
+    #   theme_class.config.theme_path
+
+    #   app.config.importmap.paths << File.join(theme_class.config.theme_path, "importmap.rb")
+    # end
   end
 end

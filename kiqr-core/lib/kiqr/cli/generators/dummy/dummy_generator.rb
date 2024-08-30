@@ -43,13 +43,7 @@ module Kiqr
               remove_file file
             end
           end
-        end
-
-        def install_kiqr
-          inside dummy_path do
-            run "bundle exec rails generate kiqr:update"
-          end
-        end
+        end 
 
         protected
 
