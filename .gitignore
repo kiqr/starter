@@ -3,8 +3,8 @@
 !test.yml.enc
 /.bundle
 .ruby-version
-/*/test/tmp/
-/*/test/dummy
+/test/tmp/
+/test/dummy
 node_modules/
 package-lock.json
 .ruby-lsp

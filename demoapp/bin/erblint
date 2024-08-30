@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
-
-require "rubygems"
-require "bundler/setup"
-
-ARGV.unshift("--lint-all")
-
-load Gem.bin_path("erb_lint", "erblint")

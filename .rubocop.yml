@@ -1,6 +1,4 @@
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+inherit_gem: { rubocop-rails-omakase: rubocop.yml } # Omakase Ruby styling for Rails
 AllCops:
   Exclude:
-    - "demoapp/**/*"
-    - "starter/**/*"
-    - "*/test/dummy/**/*"
+    - "test/dummy/**/*"
