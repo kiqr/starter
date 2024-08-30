@@ -43,7 +43,7 @@ module Kiqr
               remove_file file
             end
           end
-        end 
+        end
 
         protected
 
