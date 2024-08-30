@@ -87,9 +87,11 @@ EOS
         end
 
         def run_kiqr_update_generator
-          say_status(:skip, "kiqr:update", :yellow) && return if options[:skip_bundle]
+          return if options[:skip_bundle]
+
           inside app_path do
             run "bundle exec rails generate kiqr:update"
+            run "bundle exec rails generate kiqr:themes:irelia:install"
           end
         end
 
