@@ -1,6 +1,3 @@
-
-# frozen_string_literal: true
-
 version = File.read(File.expand_path("KIQR_VERSION", __dir__)).strip
 
 Gem::Specification.new do |s|
@@ -19,7 +16,11 @@ Gem::Specification.new do |s|
   s.email    = "kjellberg@hey.com"
   s.homepage = "https://kiqr.dev"
 
-  s.files = [ "README.md", "MIT-LICENSE" ]
+  s.files        = Dir["MIT-LICENSE", "README.md", "lib/**/*", "app/**/*", "config/**/*", "db/**/*", "exe/**/*"]
+  s.require_path = "lib"
+
+  s.bindir      = "exe"
+  s.executables = [ "kiqr" ]
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/kiqr/kiqr/issues",
@@ -29,7 +30,19 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.add_dependency "kiqr-core", version
-  s.add_dependency "kiqr-cli", version
-  s.add_dependency "kiqr-translations", version
+  # Core dependencies
+  s.add_dependency "devise", "~> 4.9", ">= 4.9.3"
+  s.add_dependency "devise-two-factor", ">= 5.0", "< 5.2"
+  s.add_dependency "omniauth", "~> 2.1.1"
+  s.add_dependency "omniauth-rails_csrf_protection", "~> 1.0.1"
+  s.add_dependency "public_uid", "~> 2.2"
+
+  # Frontend dependencies
+  s.add_dependency "meta-tags", "~> 2.21"
+  s.add_dependency "loaf", "~> 0.10.0"
+  s.add_dependency "rqrcode", "~> 2.0"
+
+  # CLI and app generator dependencies
+  s.add_dependency "awesome_print", "~> 1.9", ">= 1.9.2"
+  s.add_dependency "thor", "~> 1.3", ">= 1.3.1"
 end
