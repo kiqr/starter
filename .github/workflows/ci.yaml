@@ -21,7 +21,7 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
-  test_demoapp:
+  test:
     runs-on: ubuntu-latest
     services:
       redis:
@@ -40,12 +40,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3.4
-          bundler-cache: true
 
       - name: Setup dummy application
         run: |
-          bundle install
-          bin/rails setup
+          bin/setup
 
       - name: Run tests
         env:
