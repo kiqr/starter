@@ -44,6 +44,7 @@ jobs:
 
       - name: Setup dummy application
         run: |
+          bundle install
           bin/rails setup
 
       - name: Run tests
