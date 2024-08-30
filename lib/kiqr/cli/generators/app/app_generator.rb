@@ -90,6 +90,7 @@ EOS
           return if options[:skip_bundle]
 
           inside app_path do
+            run "bundle install"
             run "bundle exec rails generate kiqr:update"
             run "bundle exec rails generate kiqr:themes:irelia:install"
           end
