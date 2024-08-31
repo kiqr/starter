@@ -1,18 +1,18 @@
 #!/usr/bin/env ruby
 
+ENV["RAILS_ENV"] = "test"
+
 require "bundler/setup"
 
-# Print a message indicating the setup script is running
+# Print a message indicating the setup script is running.
 puts "Running setup script..."
 
-# Run the command to set up KIQR extensions in the test app
-system("bundle install")
+# Run the command to set up KIQR extensions in the test app.
+system("bundle install --quiet")
 system("bundle exec kiqr extensions test_app")
 
-# Change directory to test/dummy and run the Rails database migrations
-# Becaus we're running a core app setup, we need to run the migrations
-# in the dummy app to avoid duplicates.
-Dir.chdir("test/dummy") do
-  system("bundle install")
-  system("bundle exec rails db:migrate")
-end
+# Run the migrations.
+system("bin/rails db:migrate")
+
+# Print a message indicating the setup script is done.
+puts "Setup script completed."

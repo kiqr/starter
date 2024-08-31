@@ -21,29 +21,24 @@ module Kiqr
         ]
 
         def clean_up_dummy_directory
-          remove_dir(dummy_path)
+          say "Cleaning up dummy directory: #{dummy_path}"
+          remove_dir dummy_path
         end
 
-        def prepare_gemfile_env
-          @original_gemfile = ENV["BUNDLE_GEMFILE"]
-          ENV["BUNDLE_GEMFILE"] = File.join(dummy_path, "Gemfile")
-        end
-
-        def generate_dummy_application
-          say "Generating dummy application..."
-          say dummy_path
-          invoke Kiqr::Cli::Generators::AppGenerator, [ dummy_path ], {
-            force: true,
+        def create_dummy_app
+          opts = {
+            skip_bundle: true,
             skip_git: true,
             skip_decrypted_diffs: true,
             skip_listen: true,
             skip_rc: true,
             skip_spring: true,
             skip_test: true,
-            skip_bootsnap: true,
-            # skip_bundle: true,
-            minimal: true
+            skip_bootsnap: true
           }
+
+          say "Generating dummy Rails application at #{dummy_path}"
+          invoke Rails::Generators::AppGenerator, [ dummy_path ], opts
         end
 
         def cleanup_unnessary_files
@@ -54,7 +49,34 @@ module Kiqr
           end
         end
 
-        protected
+        def replace_boot_file
+          directory "rails", File.join(dummy_path), force: true
+          inside dummy_path do
+            run "bundle install --quiet"
+          end
+        end
+
+        def install_frontend_dependencies
+          inside dummy_path do
+            run "bin/rails importmap:install"
+
+            # Turbo
+            append_to_file File.join(dummy_path, "app/javascript/application.js"), %(import "@hotwired/turbo-rails"\n)
+            append_to_file File.join(dummy_path, "config/importmap.rb"), %(pin "@hotwired/turbo-rails", to: "turbo.min.js"\n)
+
+            # Stimulus
+            run "bin/rails stimulus:install"
+          end
+        end
+
+        def install_kiqr
+          inside dummy_path do
+            run "bin/rails g kiqr:install"
+            run "bin/rails g kiqr:themes:irelia:install"
+          end
+        end
+
+        private
 
         def dummy_path
           @dummy_path ||= File.join(extension_root_dir, "test/dummy")

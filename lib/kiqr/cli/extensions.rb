@@ -7,7 +7,7 @@ module Kiqr
         true
       end
 
-      desc "test_app", "Generate a dummy application for testing"
+      desc "test_app", "Create a dummy app for testing"
       def test_app
         Kiqr::Cli::Generators::DummyGenerator.start
       end

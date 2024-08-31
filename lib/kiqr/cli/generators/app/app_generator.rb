@@ -14,6 +14,12 @@ module Kiqr
           no_rc force pretend quiet skip help version skip_decrypted_diffs
         ]
 
+        # Temporary set BUNDLE_GEMFILE to the path of the Gemfile in the root of the application
+        def set_bundle_gemfile
+          @original_gemfile = ENV["BUNDLE_GEMFILE"]
+          ENV["BUNDLE_GEMFILE"] = File.join(app_path, "Gemfile")
+        end
+
         def generate_rails_application
           say "Generating Rails application..."
           opts = {}.merge(options).slice(*PASSTHROUGH_OPTIONS)
@@ -50,42 +56,12 @@ EOS
           append_file File.expand_path("Gemfile", app_path), gemfile_additions, after: /gem "selenium-webdriver"/
         end
 
-        def override_app_files
-          directory "rails", app_path, force: true
-        end
-
-        def write_kiqr_routes_to_routes_file
-          routes_addition = <<~EOS
-          root "public#landing_page"
-
-            # => KIQR core routes
-            # These routes are required for the KIQR core to function properly.
-            # Refer to the KIQR documentation for more information on how
-            # to customize these routes or override controllers.
-            kiqr_routes
-
-            # Routes inside this block will be prefixed with /team/<team_id> if
-            # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
-            #
-            # Example:
-            # /team/:team_id/dashboard <- if user is signed in to a team account
-            # /dashboard <- if user is browsing the app without a team account
-            #
-            account_scope do
-              get "dashboard", to: "dashboard#show"
-            end
-          EOS
-
-          gsub_file File.expand_path("config/routes.rb", app_path), /\# root "posts#index"/ do
-            routes_addition.strip
-          end
-        end
-
         def run_kiqr_update_generator
           return if options[:skip_bundle]
 
           inside app_path do
             run "bundle install"
+            run "bundle exec rails generate kiqr:install"
             run "bundle exec rails generate kiqr:update"
             run "bundle exec rails generate kiqr:themes:irelia:install"
           end
