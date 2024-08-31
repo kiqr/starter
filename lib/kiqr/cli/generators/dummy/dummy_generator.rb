@@ -51,19 +51,29 @@ module Kiqr
 
         def replace_boot_file
           directory "rails", File.join(dummy_path), force: true
+          inside dummy_path do
+            run "bundle install --quiet"
+          end
         end
 
         def install_frontend_dependencies
           inside dummy_path do
-            run "bundle install --quiet"
             run "bin/rails importmap:install"
+
+            # Turbo
+            append_to_file File.join(dummy_path, "app/javascript/application.js"), %(import "@hotwired/turbo-rails"\n)
+            append_to_file File.join(dummy_path, "config/importmap.rb"), %(pin "@hotwired/turbo-rails", to: "turbo.min.js"\n)
+
+            # Stimulus
             run "bin/rails stimulus:install"
           end
         end
 
-        def install_turbo
-          append_to_file File.join(dummy_path, "app/javascript/application.js"), %(import "@hotwired/turbo-rails"\n)
-          append_to_file File.join(dummy_path, "config/importmap.rb"), %(pin "@hotwired/turbo-rails", to: "turbo.min.js"\n)
+        def install_kiqr
+          inside dummy_path do
+            run "bin/rails g kiqr:install"
+            run "bin/rails g kiqr:themes:irelia:install"
+          end
         end
 
         private
