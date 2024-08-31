@@ -14,8 +14,3 @@ system("bundle exec kiqr extensions test_app")
 Dir.chdir("test/dummy") do
   system("bundle exec rails db:migrate")
 end
-
-# Run bundle install in the test/dummy app
-Dir.chdir("test/dummy") do
-  system("bundle install")
-end

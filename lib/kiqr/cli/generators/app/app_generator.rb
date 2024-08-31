@@ -55,7 +55,7 @@ EOS
           append_file File.expand_path("Gemfile", app_path), gemfile_additions, after: /gem "selenium-webdriver"/
         end
 
-        def overried
+        def override_app_files
           directory "rails", app_path, force: true
         end
 
