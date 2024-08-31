@@ -55,7 +55,7 @@ jobs:
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
         run: | 
-          bin/rails db:test:prepare
+          bin/rails db:migrate
           # bin/rails test
 
       - name: Keep screenshots from failed system tests
