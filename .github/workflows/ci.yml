@@ -46,16 +46,16 @@ jobs:
       - name: Run setup script
         env:
           RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
+          #REDIS_URL: redis://localhost:6379/0
         run: |
           bin/setup
 
-      # - name: Run tests
-      #   env:
-      #     RAILS_ENV: test
-      #     # REDIS_URL: redis://localhost:6379/0
-      #   run: | 
-      #     bin/rails test
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          # REDIS_URL: redis://localhost:6379/0
+        run: | 
+          bin/rails test
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
