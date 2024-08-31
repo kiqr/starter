@@ -53,6 +53,11 @@ module Kiqr
     @config ||= Kiqr::Config
   end
 
+  # Return the Kiqr version
+  def self.version
+    Kiqr::VERSION
+  end
+
   # Include helpers to the applications controllers and views.
   def self.include_helpers(scope)
     ActiveSupport.on_load(:action_controller) do

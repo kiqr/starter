@@ -1,0 +1,41 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v2
+        id: release
+        with:
+          # The release type
+          release-type: ruby
+          # A name for the artifact releases are being created for
+          # which is the name of our gem
+          package-name: kiqr
+          # Path to our version file to increment
+          version-file: "KIQR_VERSION"
+          # Checkout code if release was created
+      - uses: actions/checkout@v2
+        if: ${{ steps.release.outputs.release_created }}
+      # Setup ruby if a release was created
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4
+        if: ${{ steps.release.outputs.release_created }}
+      # Bundle install
+      - run: bundle install
+        if: ${{ steps.release.outputs.release_created }}
+      - name: publish gem
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${{secrets.RUBYGEMS_AUTH_TOKEN}}\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
+        if: ${{ steps.release.outputs.release_created }}
