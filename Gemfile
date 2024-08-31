@@ -8,6 +8,7 @@ gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
 gem "sqlite3", ">= 1.4"
 gem "puma", ">= 5.0"
 gem "sprockets-rails"
+gem "redis", "~> 4.0"
 
 # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
 gem "capybara"
