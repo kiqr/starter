@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-ENV["RAILS_ENV"] = "test"
-
 require "bundler/setup"
 
 # Print a message indicating the setup script is running.
