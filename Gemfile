@@ -2,15 +2,15 @@ source "https://rubygems.org"
 
 gemspec
 
+# View components and design system by KIQR [https://github.com/kiqr/irelia]
+gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
+
 group :development, :test do
   gem "rails", "~> 7.2.1"
   gem "sqlite3", ">= 1.4"
   gem "sprockets-rails"
   gem "bootsnap", require: false
   gem "puma", ">= 5.0"
-
-  # View components and design system by KIQR [https://github.com/kiqr/irelia]
-  gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
 end
 
 group :test do

@@ -6,6 +6,7 @@ require "bundler/setup"
 puts "Running setup script..."
 
 # Run the command to set up KIQR extensions in the test app
+system("bundle install")
 system("bundle exec kiqr extensions test_app")
 
 # Change directory to test/dummy and run the Rails database migrations

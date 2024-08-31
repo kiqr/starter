@@ -1,3 +1,8 @@
+# Rails dependencies
+require "importmap-rails"
+require "turbo-rails"
+require "stimulus-rails"
+
 # Core dependencies
 require "devise"
 require "devise-two-factor"

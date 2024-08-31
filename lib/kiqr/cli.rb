@@ -1,3 +1,4 @@
+require "rails"
 require "thor"
 require "pathname"
 

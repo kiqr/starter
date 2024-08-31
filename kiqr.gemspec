@@ -30,7 +30,11 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
+  # Rails dependencies
   s.add_dependency "rails", "~> 7.2.1"
+  s.add_dependency "importmap-rails", "~> 2.0", ">= 2.0.1"
+  s.add_dependency "turbo-rails", "~> 2.0", ">= 2.0.6"
+  s.add_dependency "stimulus-rails", "~> 1.3", ">= 1.3.4"
 
   # Core dependencies
   s.add_dependency "devise", "~> 4.9", ">= 4.9.3"

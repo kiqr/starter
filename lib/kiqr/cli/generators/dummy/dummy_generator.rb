@@ -13,6 +13,8 @@ module Kiqr
           .gitignore
           .rubocop.yml
           .ruby-version
+          Gemfile
+          Gemfile.lock
           Dockerfile
           lib/tasks
           test
@@ -39,6 +41,7 @@ module Kiqr
             skip_spring: true,
             skip_test: true,
             skip_bootsnap: true,
+            # skip_bundle: true,
             minimal: true
           }
         end
