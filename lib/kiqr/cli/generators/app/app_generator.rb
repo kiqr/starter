@@ -14,6 +14,12 @@ module Kiqr
           no_rc force pretend quiet skip help version skip_decrypted_diffs
         ]
 
+        # Temporary set BUNDLE_GEMFILE to the path of the Gemfile in the root of the application
+        def set_bundle_gemfile
+          @original_gemfile = ENV["BUNDLE_GEMFILE"]
+          ENV["BUNDLE_GEMFILE"] = File.join(app_path, "Gemfile")
+        end
+
         def generate_rails_application
           say "Generating Rails application..."
           opts = {}.merge(options).slice(*PASSTHROUGH_OPTIONS)

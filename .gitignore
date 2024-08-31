@@ -8,6 +8,7 @@ package-lock.json
 .ruby-lsp
 Gemfile.lock
 /tmp/
+/test/dummy
 /test/dummy/db/*.sqlite3
 /test/dummy/db/*.sqlite3-*
 /test/dummy/log/*.log

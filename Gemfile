@@ -9,6 +9,7 @@ gem "sqlite3", ">= 1.4"
 gem "puma", ">= 5.0"
 gem "sprockets-rails"
 gem "redis", "~> 4.0"
+gem "bootsnap", require: false
 
 # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
 gem "capybara"
