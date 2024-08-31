@@ -50,7 +50,7 @@ module Kiqr
         end
 
         def replace_boot_file
-          directory "rails", File.join(dummy_path)
+          directory "rails", File.join(dummy_path), force: true
         end
 
         private

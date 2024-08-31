@@ -43,13 +43,12 @@ jobs:
           ruby-version: 3.3.0
           bundler-cache: true
 
-      - name: Setup dummy application
+      - name: Run setup script
         env:
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
         run: |
-          bundle exec kiqr extensions test_app
-          bin/rails db:migrate
+          bin/setup
 
       - name: Run tests
         env:
