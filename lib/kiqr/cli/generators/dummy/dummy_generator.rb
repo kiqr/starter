@@ -53,6 +53,19 @@ module Kiqr
           directory "rails", File.join(dummy_path), force: true
         end
 
+        def install_frontend_dependencies
+          inside dummy_path do
+            run "bundle install --quiet"
+            run "bin/rails importmap:install"
+            run "bin/rails stimulus:install"
+          end
+        end
+
+        def install_turbo
+          append_to_file File.join(dummy_path, "app/javascript/application.js"), %(import "@hotwired/turbo-rails"\n)
+          append_to_file File.join(dummy_path, "config/importmap.rb"), %(pin "@hotwired/turbo-rails", to: "turbo.min.js"\n)
+        end
+
         private
 
         def dummy_path
