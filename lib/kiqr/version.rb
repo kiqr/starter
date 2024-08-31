@@ -1,3 +1,3 @@
 module Kiqr
-  VERSION = File.read(File.expand_path("../../KIQR_VERSION", __dir__)).strip
+  VERSION = "0.0.1.alpha"
 end

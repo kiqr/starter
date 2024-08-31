@@ -27,7 +27,7 @@ module Kiqr
         end
 
         def add_kiqr_gem
-          if kiqr_core_directory = find_upwards("KIQR_VERSION")
+          if kiqr_core_directory = find_upwards("kiqr.gemspec")
             version_tag = "path: \"#{kiqr_core_directory}\""
           else
             version_tag = "\"~> #{Kiqr.version}\""

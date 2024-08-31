@@ -18,7 +18,7 @@ jobs:
           # which is the name of our gem
           package-name: kiqr
           # Path to our version file to increment
-          version-file: "KIQR_VERSION"
+          version-file: "lib/kiqr/version.rb"
           # Checkout code if release was created
       - uses: actions/checkout@v2
         if: ${{ steps.release.outputs.release_created }}

@@ -14,3 +14,4 @@ Gemfile.lock
 /test/dummy/log/*.log
 /test/dummy/storage/
 /test/dummy/tmp/
+*.gem
