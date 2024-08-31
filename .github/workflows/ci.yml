@@ -43,13 +43,19 @@ jobs:
           ruby-version: 3.3.0
           bundler-cache: true
 
-      - name: Run tests
+      - name: Setup dummy application
         env:
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
         run: |
           bundle exec kiqr extensions test_app
-          # bin/rails db:test:prepare
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          # REDIS_URL: redis://localhost:6379/0
+        run: | 
+          bin/rails db:test:prepare
           # bin/rails test
 
       - name: Keep screenshots from failed system tests
