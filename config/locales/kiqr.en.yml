@@ -167,6 +167,10 @@ en:
             description: Start a new team account and invite your team members.
             submit: Create team
             title: Create a new team
+          empty_collection:
+            description: You're not currently on a team. You can create your own or ask to be invited to an existing one.
+            title: Welcome! Let's get you started with a team account.
+            create_new_button: Create a new team
         passwords:
           edit:
             description: Update your password to keep your account secure.
