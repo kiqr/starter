@@ -3,8 +3,13 @@
 !test.yml.enc
 /.bundle
 .ruby-version
-/test/tmp/
 node_modules/
 package-lock.json
 .ruby-lsp
 Gemfile.lock
+/tmp/
+/test/dummy/db/*.sqlite3
+/test/dummy/db/*.sqlite3-*
+/test/dummy/log/*.log
+/test/dummy/storage/
+/test/dummy/tmp/
