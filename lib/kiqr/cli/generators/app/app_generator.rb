@@ -9,15 +9,10 @@ module Kiqr
         argument :app_name, type: :string, default: "test_app"
 
         PASSTHROUGH_OPTIONS = %w[
-          ruby template skip_gemfile skip_bundle skip_git skip_keeps skip_active_record skip_sprockets
+          ruby template skip_gemfile skip_bootsnap skip_bundle skip_git skip_keeps skip_active_record skip_sprockets
           skip_spring database javascript skip_javascript dev edge skip_turbolinks skip_test_unit rc
           no_rc force pretend quiet skip help version skip_decrypted_diffs
         ]
-
-        def prepare_gemfile_env
-          @original_gemfile = ENV["BUNDLE_GEMFILE"]
-          ENV["BUNDLE_GEMFILE"] = File.join(app_path, "Gemfile")
-        end
 
         def generate_rails_application
           say "Generating Rails application..."
@@ -90,7 +85,7 @@ EOS
           return if options[:skip_bundle]
 
           inside app_path do
-            run "bundle install"
+            run "bundle install --quiet"
             run "bundle exec rails generate kiqr:update"
             run "bundle exec rails generate kiqr:themes:irelia:install"
           end

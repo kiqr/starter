@@ -30,6 +30,8 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
+  s.add_dependency "rails", "~> 7.2.1"
+
   # Core dependencies
   s.add_dependency "devise", "~> 4.9", ">= 4.9.3"
   s.add_dependency "devise-two-factor", ">= 5.0", "< 5.2"

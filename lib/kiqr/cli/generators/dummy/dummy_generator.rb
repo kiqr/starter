@@ -22,8 +22,14 @@ module Kiqr
           remove_dir(dummy_path)
         end
 
+        def prepare_gemfile_env
+          @original_gemfile = ENV["BUNDLE_GEMFILE"]
+          ENV["BUNDLE_GEMFILE"] = File.join(dummy_path, "Gemfile")
+        end
+
         def generate_dummy_application
           say "Generating dummy application..."
+          say dummy_path
           invoke Kiqr::Cli::Generators::AppGenerator, [ dummy_path ], {
             force: true,
             skip_git: true,

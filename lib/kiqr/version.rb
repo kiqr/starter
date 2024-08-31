@@ -1,5 +1,5 @@
 module Kiqr
   def self.version
-    Gem.loaded_specs["kiqr-core"].version
+    "0.1.0.alpha"
   end
 end
