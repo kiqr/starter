@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 # View components and design system by KIQR [https://github.com/kiqr/irelia]
-# gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main" # Uncomment this line to use the Irelia github repository for development
+gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main" # Uncomment this line to use the Irelia github repository for development
 
 gem "sqlite3", ">= 1.4"
 gem "puma", ">= 5.0"
