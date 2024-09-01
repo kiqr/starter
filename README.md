@@ -4,10 +4,7 @@ KIQR
 ![License](https://img.shields.io/github/license/kiqr/kiqr)
 
 > [!CAUTION]  
-> This project is **currently under active development** and may undergo frequent refactoring, which could introduce breaking changes. It is not suitable for production use at this stage.
-> 
-> When complete, this repository will serve as a monorepo containing multiple modules. The **starter kit will be accessible from a separate repository**. Please keep this in mind if you choose to explore or contribute to the codebase at this time.
-
+> This project is **currently under active development** and may undergo frequent refactoring, which could introduce breaking changes. It is not suitable for production use at this stage. But please feel free to try it out, and contribute if you want to!
 
 Turbocharge your SaaS journey with KIQR, your go-to Rails 7.2-based saas starter kit. It's designed to let you dive right into the SaaS domain with minimal setup and maximum efficiency. Outfitted with Tailwind CSS, it brings a modern, responsive design to the table, including a dark mode that's easy on the eyes.
 
@@ -31,21 +28,26 @@ Documentation for **KIQR** can be found on the [KIQR website](https://kiqr.dev).
 
 To get started with **KIQR**, follow these simple steps:
 
-#### 1. Clone the starter kit repository
+#### 1. Install the KIQR command line tool:
 
 ```console
-git clone git@github.com:kiqr/starter.git project-name
+gem install kiqr -v 0.1.0.alpha1 --pre
 ```
 
-#### 2. Run the setup script
+#### 2. Run the app generator
+```console
+kiqr new example_app
+```
 
-Navigate into the new directory (```cd project-name```) and run:
+#### 3. Run the setup script
+
+Navigate into the new directory (```cd example_app```) and run:
 
 ```console
 bin/setup
 ```
 
-#### 3. Start the development environment
+#### 4. Start the Rails server
 ```console
-bin/dev
+bin/rails server
 ```
