@@ -37,9 +37,6 @@ module Kiqr
           \n
           # KIQR Framework [https://github.com/kiqr/kiqr]
           gem "kiqr", #{version_tag}
-
-          # View components and design system by KIQR [https://github.com/kiqr/irelia]
-          gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
           EOS
           append_file File.expand_path("Gemfile", app_path), gemfile_additions, after: /gem "rails", ".*"/
         end
