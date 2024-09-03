@@ -84,7 +84,7 @@ module Kiqr
 
         # Recursively search for the folder containing the gemspec file.
         def extension_root_dir
-          find_upwards("*.gemspec")
+          find_upwards("*.gemspec") || raise("Couldn't find a gem in the current directory. Missing gemspec file?")
         end
 
         # Allows wildcard search for file name.
