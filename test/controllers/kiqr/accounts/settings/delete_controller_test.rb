@@ -34,4 +34,15 @@ class Kiqr::Accounts::Settings::DeleteControllerTest < ActionDispatch::Integrati
 
     assert_redirected_to dashboard_path(account_id: nil)
   end
+
+  test "only owner can delete account" do
+    skip "waiting for permission checks implementation"
+
+    # other_user = create(:user)
+    # @account.members.create(user: other_user)
+    # sign_in other_user
+
+    # delete account_settings_delete_path(account_id: @account)
+    # assert_response :forbidden
+  end
 end
