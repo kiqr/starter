@@ -20,10 +20,15 @@ class Kiqr::Accounts::Settings::MembersController < Kiqr::Accounts::Settings::Ba
   end
 
   def destroy
-    @member.destroy!
-
-    kiqr_flash_message :success, :member_deleted
-    redirect_to account_settings_members_path
+    if @member.id == find_current_member.id
+      @member.destroy!
+      kiqr_flash_message :success, :account_leaved, account_name: @account.name
+      redirect_to dashboard_path(account_id: nil)
+    else
+      @member.destroy!
+      kiqr_flash_message :success, :member_deleted
+      redirect_to account_settings_members_path
+    end
   end
 
   def create

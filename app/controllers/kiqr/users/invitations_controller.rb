@@ -21,7 +21,7 @@ class Kiqr::Users::InvitationsController < KiqrController
   private
     # Set up the member and account for the invitation.
     def setup_member_and_account
-      @member = Member.find_by_invitation_token(params[:token])
+      @member = Member.find_by_invitation_token!(params[:token])
       @account = @member.account
     end
 

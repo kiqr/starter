@@ -72,10 +72,28 @@ class Kiqr::Accounts::Settings::MembersControllerTest < ActionDispatch::Integrat
   end
 
   test "prevents removal of the team owner (not yet implemented)" do
-    skip "Test for preventing the removal of the team owner is not implemented yet"
+    @member = Member.find_by(account: @account, user: @user)
+    delete account_settings_member_path(account_id: @account, id: @member)
+
+    assert_equal I18n.t("flash_messages.account_owner_deletion_error"), flash[:alert]
+    assert_redirected_to account_settings_members_path
   end
 
-  test "removes a member from the team (not yet implemented)" do
-    skip "Test for removing a member from the team is not implemented yet"
+  test "removes a member from the team" do
+    @member = create(:member, account: @account)
+    delete account_settings_member_path(account_id: @account, id: @member)
+
+    assert I18n.t("flash_messages.member_deleted")
+    assert_redirected_to account_settings_members_path
+  end
+
+  test "user can leave the team" do
+    another_account = create(:account)
+    member = create(:member, user: @user, account: another_account, owner: false)
+
+    delete account_settings_member_path(account_id: another_account, id: member)
+
+    assert I18n.t("flash_messages.account_leaved", account_name: @account.name)
+    assert_redirected_to dashboard_path(account_id: nil)
   end
 end

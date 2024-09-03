@@ -6,6 +6,7 @@ en:
     account_owner_deletion_error: You can't delete the owner of a team account. Please transfer ownership to another team member first.
     account_with_members_deletion_error: You can't delete a team account with other members. Please remove all members or transfer ownership to another team member if you wish for the team to continue.
     account_profile_updated: Team profile updated successfully.
+    account_leaved: You have left the team %{account_name} successfully.
     already_member_of_team: You are already a member of this team.
     cant_cancel_while_team_owner: You can't cancel your account while you are the owner of a team account. Please transfer ownership or dissolve the team account first.
     declined_invitation: You declined the invitation to join team %{account_name}.
