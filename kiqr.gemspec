@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   }
 
   # Rails dependencies
-  s.add_dependency "rails", "~> 7.2.1"
+  s.add_dependency "rails", ">= 7.2.1"
   s.add_dependency "importmap-rails", "~> 2.0", ">= 2.0.1"
   s.add_dependency "turbo-rails", "~> 2.0", ">= 2.0.6"
   s.add_dependency "stimulus-rails", "~> 1.3", ">= 1.3.4"
