@@ -19,7 +19,7 @@ module Kiqr
 
       desc "version", "Show KIQR CLI version"
       def version
-        say Gem.loaded_specs["kiqr-cli"].version
+        say Gem.loaded_specs["kiqr"].version
       end
     end
   end
