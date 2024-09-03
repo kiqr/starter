@@ -5,6 +5,7 @@ module ActionDispatch::Routing
       options[:controllers] ||= {}
       options[:controllers][:account_settings_profile] ||= "kiqr/accounts/settings/profiles"
       options[:controllers][:account_settings_members] ||= "kiqr/accounts/settings/members"
+      options[:controllers][:account_settings_delete] ||= "kiqr/accounts/settings/delete"
       options[:controllers][:onboarding] ||= "kiqr/onboarding"
       options[:controllers][:invitations] ||= "kiqr/users/invitations"
       options[:controllers][:registrations] ||= "kiqr/registrations"
@@ -106,6 +107,11 @@ module ActionDispatch::Routing
             only: [ :index, :new, :create, :edit, :destroy ] do
               get :invitation_link_modal, on: :member
           end
+
+          resource "delete",
+            controller: options[:controllers][:account_settings_delete],
+            as: :account_settings_delete,
+            only: [ :show, :destroy ]
         end
       end
     end

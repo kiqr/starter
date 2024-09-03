@@ -2,7 +2,9 @@ en:
   flash_messages:
     accepted_invitation: Invitation accepted successfully.
     account_created: Team created successfully.
+    account_deleted: Team deleted successfully.
     account_owner_deletion_error: You can't delete the owner of a team account. Please transfer ownership to another team member first.
+    account_with_members_deletion_error: You can't delete a team account with other members. Please remove all members or transfer ownership to another member first.
     account_profile_updated: Team profile updated successfully.
     already_member_of_team: You are already a member of this team.
     cant_cancel_while_team_owner: You can't cancel your account while you are the owner of a team account. Please transfer ownership or dissolve the team account first.
@@ -46,6 +48,8 @@ en:
           members:
             index: Members
             edit: Edit member
+          delete:
+            root: Delete team account
         users:
           accounts:
             root: Team accounts
@@ -105,6 +109,23 @@ en:
             description: Update your team information and settings.
             submit: Update team
             title: Team settings
+        delete:
+          show:
+            title: Delete your team account
+            description: Delete your team account and all of its data.
+            submit: Delete team
+            confirmation_message: Are you sure? This will DELETE all of the team's data.
+            content: |
+              Deleting your team account is irreversible and will remove all of its data. This includes all of your team's data, operations, and any other associated data.
+
+              Before deleting your team account, please ensure you take the following steps:
+
+              1. If you are the sole member of the team, you can proceed with deletion.
+              2. If your team has other members:
+                 - Remove all other members from the team.
+                 - Alternatively, transfer ownership to another team member if you wish for the team to continue.
+
+              These steps ensure that all team data is properly managed before deletion. If you need assistance with removing members, transferring ownership, or have any questions, our support team is here to help. Thank you for your cooperation in maintaining data security and integrity.
     onboarding:
       show:
         description: Finish the registration by setting up your user profile.
