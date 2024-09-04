@@ -48,7 +48,6 @@ en:
             index: Team profile
           members:
             index: Members
-            edit: Edit member
           delete:
             root: Delete team account
         users:
@@ -76,7 +75,7 @@ en:
           action_buttons:
             back: Back to members list
             new: Invite a member
-          edit:
+          show:
             delete_member:
               button: Remove member
               confirmation_message: Are you sure you want to remove this member from your team?
@@ -88,7 +87,7 @@ en:
             title: Team members
           invitation_link_modal:
             content: |
-              The link below is linked to <strong>%{email}</strong> and allows them to join your team.
+              The link below was sent to <strong>%{email}</strong> and allows them to join your team.
 
               Copy and share the link via your preferred messaging platform or let us re-send the invitation email for you.
             title: Invitation link

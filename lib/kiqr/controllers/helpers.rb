@@ -6,7 +6,7 @@ module Kiqr
       extend ActiveSupport::Concern
 
       included do
-        helper_method :current_account, :onboarded?, :personal_account
+        helper_method :current_account, :current_member, :onboarded?, :personal_account
       end
 
       # Get the current account

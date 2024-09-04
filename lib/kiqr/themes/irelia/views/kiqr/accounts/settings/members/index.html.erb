@@ -19,7 +19,7 @@ irelia_table do |table|
       row.with_cell(html_options: { class: "text-right flex justify-end gap-x-2" }) do
 %>
         <%= irelia_button(url: invitation_link_modal_account_settings_member_path(member), size: :xs, color: :secondary, modal: :invitation_link) { "Invitation link" } if member.pending_invitation? %>
-        <%= irelia_button(url: edit_account_settings_member_path(member), size: :xs, color: :secondary) { "Edit" } %>
+        <%= irelia_button(url: account_settings_member_path(member), size: :xs, color: :secondary) { "Edit" } %>
       <%
       end
     end

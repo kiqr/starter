@@ -104,7 +104,7 @@ module ActionDispatch::Routing
           resources "members",
             controller: options[:controllers][:account_settings_members],
             as: :account_settings_members,
-            only: [ :index, :new, :create, :edit, :destroy ] do
+            only: [ :index, :new, :create, :show, :destroy ] do
               get :invitation_link_modal, on: :member
           end
 
