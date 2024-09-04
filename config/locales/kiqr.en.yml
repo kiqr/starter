@@ -79,6 +79,9 @@ en:
             delete_member:
               button: Remove member
               confirmation_message: Are you sure you want to remove this member from your team?
+            leave_account:
+              button: Leave team
+              confirmation_message: Are you sure you want to leave this team?
             description: Manage the team member's roles and settings.
             title: Settings for %{member_name}
           index:

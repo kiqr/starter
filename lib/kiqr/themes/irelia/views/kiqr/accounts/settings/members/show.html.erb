@@ -2,4 +2,11 @@
   <% header.with_button(url: account_settings_members_path, color: :secondary, icon: "fa fa-arrow-left") { t("kiqr.accounts.settings.members.action_buttons.back") } %>
 <% end %>
 
-<%= irelia_button_to t(".delete_member.button"), account_settings_member_path(id: @member), method: :delete, color: :danger, name: "commit", data: { confirm: t(".delete_member.confirmation_message"), turbo_confirm: t(".delete_member.confirmation_message") }, method: :delete %>
+
+<%=
+if current_member == @member
+  irelia_button_to t(".leave_account.button"), account_settings_member_path(id: @member), method: :delete, color: :danger, name: "commit", data: { turbo_confirm: t(".delete_member.confirmation_message") }, method: :delete
+else
+  irelia_button_to t(".delete_member.button"), account_settings_member_path(id: @member), method: :delete, color: :danger, name: "commit", data: { turbo_confirm: t(".delete_member.confirmation_message") }, method: :delete
+end
+%>
