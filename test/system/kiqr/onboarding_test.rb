@@ -7,7 +7,7 @@ class OnboardingTest < ApplicationSystemTestCase
     fill_in "user[email]", with: "firstname.lastname@example.com"
     fill_in "user[password]", with: "th1s1sp@ssw0rd"
     fill_in "user[password_confirmation]", with: "th1s1sp@ssw0rd"
-    click_on "commit"
+    find(".irelia-form button[type='submit']").click
 
     # It should show a message that the user has signed up but is unconfirmed.
     assert_text I18n.t("devise.registrations.signed_up_but_unconfirmed")

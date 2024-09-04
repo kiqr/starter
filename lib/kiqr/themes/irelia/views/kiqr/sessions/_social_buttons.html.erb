@@ -1,5 +1,0 @@
-<%= irelia_stack do %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= irelia_button_to t(".developer", provider: "developer"), omniauth_authorize_path(:user, "developer"), data: { turbo: false } %>
-  <% end %>
-<% end %>

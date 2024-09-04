@@ -1,0 +1,5 @@
+<%= form.email_field :email, label: t(".email.label"), placeholder: t(".email.placeholder"), autofocus: true, autocomplete: "email" %>
+<%= irelia_flex do %>
+  <%= form.password_field :password, label: t(".password.label"), placeholder: t(".password.placeholder"), autocomplete: "password" %>
+  <%= form.password_field :password_confirmation, label: t(".password_confirmation.label"), placeholder: t(".password_confirmation.placeholder"), autocomplete: "password" %>
+<% end %>

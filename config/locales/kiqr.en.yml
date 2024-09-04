@@ -143,6 +143,21 @@ en:
         remove_team_accounts_first: Before you can cancel your account, there's one important step you need to take. If you're currently the owner of any team accounts, you'll need to either transfer ownership to another team member or dissolve the team accounts first. This ensures all your team's data and operations remain uninterrupted and secure. If you need help with transferring ownership or have any questions, our support team is here to assist. Thank you for your understanding and cooperation!
         submit: Delete my account
         title: Delete user account
+      new:
+        or: or
+        submit: Sign up
+        title: Sign up for %{app_name}
+        description: Sign up with your email address and password or select any of the other available options below.
+      form_fields:
+        email:
+          label: Email
+          placeholder: Enter your email address
+        password:
+          label: Password
+          placeholder: Enter a secure password
+        password_confirmation:
+          label: Confirm password
+          placeholder: Re-enter the password
     sessions:
       form_fields:
         email:
@@ -163,9 +178,7 @@ en:
             label: One-time password
             placeholder: Enter the code
         submit: Verify code
-        title: Two-factor authentication
-      social_buttons:
-        developer: Sign in as Developer
+        title: Two-factor authentication 
     users:
       shared:
         user_fields:

@@ -3,7 +3,7 @@ require "application_system_test_case"
 class OmniauthTest < ApplicationSystemTestCase
   test "creates account if an account with the email does not exist" do
     visit new_user_session_path
-    click_on I18n.t("kiqr.sessions.social_buttons.developer", provider: "Developer")
+    click_on "Developer"
 
     assert_current_path user_developer_omniauth_authorize_path
 
@@ -18,7 +18,7 @@ class OmniauthTest < ApplicationSystemTestCase
   test "shows message if account with the current email already exist" do
     user = create(:user)
     visit new_user_session_path
-    click_on I18n.t("kiqr.sessions.social_buttons.developer", provider: "Developer")
+    click_on "Developer"
     fill_in "name", with: "John Doe"
     fill_in "email", with: user.email
     click_on "Sign In"
@@ -29,7 +29,7 @@ class OmniauthTest < ApplicationSystemTestCase
   test "can login with an already existing connection" do
     omniauth_identity = create(:omniauth_identity)
     visit new_user_session_path
-    click_on I18n.t("kiqr.sessions.social_buttons.developer", provider: "Developer")
+    click_on "Developer"
     fill_in "name", with: "John Doe"
     fill_in "email", with: omniauth_identity.provider_uid
     click_on "Sign In"
