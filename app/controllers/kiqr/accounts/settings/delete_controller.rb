@@ -4,6 +4,9 @@ class Kiqr::Accounts::Settings::DeleteController < Kiqr::Accounts::Settings::Bas
   rescue_from Kiqr::Errors::AccountWithMembersDeletionError, with: :account_with_members_error
 
   before_action do
+    # Redirect to the account members page if the current member is not the owner
+    redirect_to account_settings_members_path(account_id: current_account) unless current_member.owner?
+
     # Set the breadcrumbs for the account deletion page in the settings
     add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.accounts.delete.root"), account_settings_delete_path
   end

@@ -15,6 +15,12 @@ module Kiqr
         Kiqr::CurrentAttributes.account
       end
 
+      # Get the current member
+      # @return [Member] the current member
+      def current_member
+        Kiqr::CurrentAttributes.member
+      end
+
       # Check if the user is onboarded
       # @return [Boolean] true if the user is onboarded
       def onboarded?
