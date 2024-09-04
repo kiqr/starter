@@ -1,14 +1,18 @@
-<%= irelia_split_screen(variant: :reverse, center: true) do %>
-  <%= irelia_flex direction: :column do %>
-    <%= irelia_page_header variant: :split_screen, title: t(".title", app_name: Kiqr.config.app_name), subline: t(".description") %>
-    <%= render partial: "kiqr/shared/social_buttons" %>
-    <%= irelia_divider { t(".or") } %>
-    <%= irelia_form(model: resource, as: resource_name, url: session_path(resource_name)) do |form| %>
-      <%= render "form_fields", form: form %>
-      <%= form.submit t(".submit") %>
-    <% end %>
-    <%= irelia_div padding_top: :sm do %>
-      <%= render "devise/shared/links" %>
+<%= irelia_flex fixed: [:left, :right, :bottom, :top], text: :center,justify: :center, items: :center do %>
+  <%= irelia_container size: :sm do %>
+    <%= irelia_flex direction: :column do %>
+      <%= irelia_page_header title: t(".title", app_name: Kiqr.config.app_name), subline: t(".description") %>
+      <%= render partial: "kiqr/shared/social_buttons" %>
+      <%= irelia_divider { t(".or") } %>
+      <%= irelia_form(model: resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+        <%= render "form_fields", form: form %>
+        <%= irelia_div padding_top: :sm, text: :left do %>
+          <%= form.submit t(".submit") %>
+        <% end %>
+      <% end %>
+      <%= irelia_div padding_top: :sm, text: :left do %>
+        <%= render "devise/shared/links" %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

@@ -145,7 +145,7 @@ en:
         title: Delete user account
       new:
         or: or
-        submit: Sign up
+        submit: Create account
         title: Sign up for %{app_name}
         description: Sign up with your email address and password or select any of the other available options below.
       form_fields:
