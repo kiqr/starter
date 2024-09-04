@@ -1,3 +1,3 @@
 <% menu.with_link(icon: "fa fa-id-card", active: current_base_path?(account_settings_profile_path), url: account_settings_profile_path) { "Team profile" } %>
 <% menu.with_link(icon: "fa fa-users", active: current_base_path?(account_settings_members_path), url: account_settings_members_path) { "Members" } %>
-<% menu.with_link(icon: "fa fa-trash", active: current_base_path?(account_settings_delete_path), url: account_settings_delete_path) { "Delete team" } %>
+<% menu.with_link(icon: "fa fa-trash", active: current_base_path?(account_settings_delete_path), url: account_settings_delete_path) { "Delete team" } if current_member.owner? %>

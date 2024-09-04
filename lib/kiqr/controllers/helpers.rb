@@ -15,10 +15,14 @@ module Kiqr
         Kiqr::CurrentAttributes.account
       end
 
-      # Get the current member
-      # @return [Member] the current member
+      # Get the current member associated with the current account and user
+      # @return [Member, nil] the current member or nil if not found
       def current_member
-        Kiqr::CurrentAttributes.member
+        @current_member ||= begin
+          return unless current_account
+
+          current_account.members.includes(:user).find_by(user: current_user)
+        end
       end
 
       # Check if the user is onboarded
