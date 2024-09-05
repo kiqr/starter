@@ -1,4 +1,4 @@
-<%= irelia_split_screen(variant: :reverse, center: true) do %>
+<%= irelia_flex fixed: [:left, :right, :bottom, :top], text: :center, justify: :center, items: :center do %>
   <%= irelia_flex(direction: :column) do %>
     <%= irelia_page_header title: t(".title", app_name: Kiqr.config.app_name), subline: t(".description") %>
     <%= irelia_form(model: @user, url: new_user_session_path, method: :post) do |form| %>
