@@ -1,4 +1,6 @@
 class Kiqr::OnboardingController < KiqrController
+  layout "public"
+
   skip_before_action :ensure_onboarded
   before_action :setup_user
 
@@ -37,6 +39,6 @@ class Kiqr::OnboardingController < KiqrController
 
   def user_params
     account_attributes = Kiqr.config.account_attributes.prepend(:id)
-    params.require(:user).permit(:time_zone, :locale, personal_account_attributes: account_attributes)
+    params.require(:user).permit(:email, :time_zone, :locale, personal_account_attributes: account_attributes)
   end
 end
