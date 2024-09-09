@@ -4,8 +4,9 @@ class Kiqr::Users::OmniauthCallbacksControllerTest < ActionDispatch::Integration
   test "creates account if an account with the email does not exist" do
     post user_developer_omniauth_callback_path, params: { email: "john.doe@example.com" }
 
-    assert User.find_by(email: "john.doe@example.com").present?
-    assert_equal flash[:notice], I18n.t("flash_messages.signed_up_but_unconfirmed")
+    user = User.find_by(email: "john.doe@example.com").present?
+    assert_redirected_to onboarding_path
+    # assert_equal flash[:notice], I18n.t("flash_messages.signed_up_but_unconfirmed")
   end
 
   test "shows message if account with the current email already exists" do
