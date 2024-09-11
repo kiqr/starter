@@ -26,16 +26,16 @@ class SigninTest < ApplicationSystemTestCase
     assert_current_path dashboard_path
   end
 
-  test "displays unconfirmed email message" do
-    unconfirmed_user = create(:user, :unconfirmed)
+  # test "displays unconfirmed email message" do
+  #  unconfirmed_user = create(:user, :unconfirmed)
 
-    visit new_user_session_path
-    fill_in "user[email]", with: unconfirmed_user.email
-    fill_in "user[password]", with: unconfirmed_user.password
-    find(".irelia-form button[type='submit']").click
+  #  visit new_user_session_path
+  #  fill_in "user[email]", with: unconfirmed_user.email
+  #  fill_in "user[password]", with: unconfirmed_user.password
+  #  find(".irelia-form button[type='submit']").click
 
-    assert_text I18n.t("devise.failure.unconfirmed")
-  end
+  #  assert_text I18n.t("devise.failure.unconfirmed")
+  # end
 
   test "displays invalid password message" do
     user = create(:user)

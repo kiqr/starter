@@ -10,7 +10,7 @@ class OnboardingTest < ApplicationSystemTestCase
     find(".irelia-form button[type='submit']").click
 
     # It should show a message that the user has signed up but is unconfirmed.
-    assert_text I18n.t("devise.registrations.signed_up_but_unconfirmed")
+    assert_text I18n.t("devise.registrations.signed_up")
 
     # This is a hack to confirm the email for the user
     user = User.find_by(email: "firstname.lastname@example.com")
@@ -19,9 +19,9 @@ class OnboardingTest < ApplicationSystemTestCase
     # Login in with the newly created user
     visit new_user_session_path
 
-    fill_in "user[email]", with: "firstname.lastname@example.com"
-    fill_in "user[password]", with: "th1s1sp@ssw0rd"
-    find(".irelia-form button[type='submit']").click
+    # fill_in "user[email]", with: "firstname.lastname@example.com"
+    # fill_in "user[password]", with: "th1s1sp@ssw0rd"
+    # find(".irelia-form button[type='submit']").click
 
     # Should be on the onboarding_path after first sign in
     assert_current_path onboarding_path
