@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Kiqr::Translations
+  include Kiqr::Authentication
   include Kiqr::SetCurrentRequestDetails
   include Kiqr::RendersSubmenu
 
