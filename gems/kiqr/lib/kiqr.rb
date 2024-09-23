@@ -22,7 +22,6 @@ require "kiqr/config"
 require "kiqr/engine"
 require "kiqr/errors"
 require "kiqr/rails/routes"
-require "kiqr/frontend"
 require "kiqr/translations"
 
 module Kiqr
@@ -43,10 +42,6 @@ module Kiqr
     autoload :Member, "kiqr/models/member"
     autoload :OmniauthIdentity, "kiqr/models/omniauth_identity"
     autoload :User, "kiqr/models/user"
-  end
-
-  module Themes
-    autoload :Irelia, "kiqr/themes/irelia"
   end
 
   # Load Kiqr configuration

@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
+  include Kiqr::SetCurrentRequestDetails
+  include Kiqr::RendersSubmenu
+
   # Turn on request forgery protection. Bear in mind that GET and HEAD requests are not checked.
   protect_from_forgery with: :exception, prepend: true
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
+
+  # Add more types of flash message to match the available variants in Irelia::Notification::Component.
+  add_flash_types :success, :warning
 
   # Ensure that a user is signed in and has completed the onboarding process.
   before_action :authenticate_user!
