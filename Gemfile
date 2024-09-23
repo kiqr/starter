@@ -36,12 +36,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Core framework for KIQR
-gem "kiqr", path: "gems/kiqr"
-
-# Frontend view compnents for KIQR
-gem "irelia", git: "git@github.com/kiqr/irelia", branch: "main"
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -68,3 +62,6 @@ group :test do
   gem "faker"
   gem "rails-controller-testing"
 end
+
+# Load KIQR dependencies
+eval_gemfile "Gemfile.kiqr"

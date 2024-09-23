@@ -444,6 +444,8 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  devise (~> 4.9, >= 4.9.3)
+  devise-two-factor (>= 5.0, < 5.2)
   factory_bot (~> 6.4.3)
   faker
   faraday-multipart
@@ -452,9 +454,15 @@ DEPENDENCIES
   irelia!
   jbuilder
   kiqr!
+  loaf (~> 0.10.0)
+  meta-tags (~> 2.21)
+  omniauth (~> 2.1.1)
+  omniauth-rails_csrf_protection (~> 1.0.1)
+  public_uid (~> 2.2)
   puma (>= 5.0)
   rails (~> 7.2.1)
   rails-controller-testing
+  rqrcode (~> 2.0)
   rubocop-rails-omakase
   selenium-webdriver
   sprockets-rails
