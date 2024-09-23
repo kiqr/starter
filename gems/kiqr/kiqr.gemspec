@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
   s.add_dependency "importmap-rails", "~> 2.0", ">= 2.0.1"
   s.add_dependency "turbo-rails", "~> 2.0", ">= 2.0.6"
   s.add_dependency "stimulus-rails", "~> 1.3", ">= 1.3.4"
-  s.add_dependency "irelia", "~> 0.2.0"
 
   # Core dependencies
   s.add_dependency "devise", "~> 4.9", ">= 4.9.3"

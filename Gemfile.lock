@@ -1,3 +1,33 @@
+GIT
+  remote: git@github.com/kiqr/irelia
+  revision: 7eec6bd8ffb57de5d92e99ae788fbbc37f7446da
+  branch: main
+  specs:
+    irelia (0.2.0)
+      dry-initializer (~> 3.1)
+      lookbook (~> 2.3.2)
+      view_component (~> 3.12)
+      view_component-contrib (~> 0.2.2)
+
+PATH
+  remote: gems/kiqr
+  specs:
+    kiqr (0.1.0.alpha1)
+      awesome_print (~> 1.9, >= 1.9.2)
+      devise (~> 4.9, >= 4.9.3)
+      devise-two-factor (>= 5.0, < 5.2)
+      importmap-rails (~> 2.0, >= 2.0.1)
+      loaf (~> 0.10.0)
+      meta-tags (~> 2.21)
+      omniauth (~> 2.1.1)
+      omniauth-rails_csrf_protection (~> 1.0.1)
+      public_uid (~> 2.2)
+      rails (>= 7.2.1)
+      rqrcode (~> 2.0)
+      stimulus-rails (~> 1.3, >= 1.3.4)
+      thor (~> 1.3, >= 1.3.1)
+      turbo-rails (~> 2.0, >= 2.0.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,7 +104,9 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
+    awesome_print (1.9.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.18.4)
@@ -91,17 +123,35 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chunky_png (1.4.0)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     crass (1.0.6)
+    css_parser (1.19.0)
+      addressable
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    devise (4.9.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    devise-two-factor (5.1.0)
+      activesupport (~> 7.0)
+      devise (~> 4.0)
+      railties (~> 7.0)
+      rotp (~> 6.0)
     drb (2.2.1)
+    dry-initializer (3.1.1)
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashie (5.0.0)
+    htmlbeautifier (1.4.3)
+    htmlentities (4.3.4)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -117,10 +167,24 @@ GEM
       activesupport (>= 5.0.0)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
+    loaf (0.10.0)
+      railties (>= 3.2)
     logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
+    lookbook (2.3.2)
+      activemodel
+      css_parser
+      htmlbeautifier (~> 1.3)
+      htmlentities (~> 4.3.4)
+      marcel (~> 1.0)
+      railties (>= 5.0)
+      redcarpet (~> 3.5)
+      rouge (>= 3.26, < 5.0)
+      view_component (>= 2.0)
+      yard (~> 0.9)
+      zeitwerk (~> 2.5)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -128,6 +192,9 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
+    method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.25.1)
     msgpack (1.7.2)
@@ -153,6 +220,14 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    omniauth (2.1.2)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-rails_csrf_protection (1.0.2)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
+    orm_adapter (0.5.0)
     parallel (1.26.3)
     parser (3.3.5.0)
       ast (~> 2.4.1)
@@ -160,10 +235,15 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
+    public_uid (2.2.0)
+      activerecord (> 4.2)
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.7)
+    rack-protection (4.0.0)
+      base64 (>= 0.1.0)
+      rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -204,10 +284,20 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
+    redcarpet (3.6.0)
     regexp_parser (2.9.2)
     reline (0.5.10)
       io-console (~> 0.5)
+    responders (3.1.1)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.3.7)
+    rotp (6.3.0)
+    rouge (4.4.0)
+    rqrcode (2.2.0)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 1.0)
+    rqrcode_core (1.2.0)
     rubocop (1.66.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -236,6 +326,7 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    ruby-next-core (1.0.3)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     securerandom (0.3.1)
@@ -286,6 +377,15 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
     useragent (0.16.10)
+    view_component (3.14.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
+    view_component-contrib (0.2.3)
+      ruby-next-core (>= 0.15.0)
+      view_component
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -298,6 +398,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yard (0.9.37)
     zeitwerk (2.6.18)
 
 PLATFORMS
@@ -322,7 +423,9 @@ DEPENDENCIES
   capybara
   debug
   importmap-rails
+  irelia!
   jbuilder
+  kiqr!
   puma (>= 5.0)
   rails (~> 7.2.1)
   rubocop-rails-omakase

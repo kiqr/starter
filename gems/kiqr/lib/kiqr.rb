@@ -12,7 +12,6 @@ require "omniauth/rails_csrf_protection"
 require "public_uid"
 
 # Frontend dependencies
-require "irelia"
 require "meta-tags"
 require "loaf"
 require "rqrcode"
