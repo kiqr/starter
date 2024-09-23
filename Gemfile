@@ -36,7 +36,10 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Core framework for KIQR
 gem "kiqr", path: "gems/kiqr"
+
+# Frontend view compnents for KIQR
 gem "irelia", git: "git@github.com/kiqr/irelia", branch: "main"
 
 group :development, :test do
@@ -59,4 +62,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "factory_bot", "~> 6.4.3"
+  gem "faraday-retry"
+  gem "faraday-multipart"
+  gem "faker"
+  gem "rails-controller-testing"
 end
