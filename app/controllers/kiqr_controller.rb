@@ -1,0 +1,1 @@
+class KiqrController < ApplicationController; end

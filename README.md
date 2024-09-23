@@ -1,24 +1,47 @@
-# README
+KIQR
+----
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CI](https://github.com/kiqr/kiqr/actions/workflows/ci.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/ci.yml)
+![License](https://img.shields.io/github/license/kiqr/kiqr)
 
-Things you may want to cover:
+> [!CAUTION]  
+> This project is **currently under active development** and may undergo frequent refactoring, which could introduce breaking changes. It is not suitable for production use at this stage. But please feel free to try it out, and contribute if you want to!
 
-* Ruby version
+Turbocharge your SaaS journey with KIQR, your go-to Rails 7.2-based saas starter kit. It's designed to let you dive right into the SaaS domain with minimal setup and maximum efficiency. Outfitted with Tailwind CSS, it brings a modern, responsive design to the table, including a dark mode that's easy on the eyes.
 
-* System dependencies
+<img src="https://kiqr.dev/screenshots/edit-profile.png">
 
-* Configuration
+## Key features
 
-* Database creation
+ ⭐ User registration with email confirmations (using Devise).<br>
+ ⭐ Two-factor authentication.<br>
+ ⭐ Team & personal accounts with profiles.<br>
+ ⭐ Settings page for users and accounts.<br>
+ ⭐ Prepared for localization.<br>
+ ⭐ Fully translated for multi-language support.<br>
+ ⭐ TailwindCSS template built with [Irelia](https://github.com/kiqr/irelia) Components.<br>
 
-* Database initialization
+## Official documentation
 
-* How to run the test suite
+Documentation for **KIQR** can be found on the [KIQR website](https://kiqr.dev).
 
-* Services (job queues, cache servers, search engines, etc.)
+## Quickstart
 
-* Deployment instructions
+#### 1. Clone the repository
+```console
+git clone git@github.com:kiqr/kiqr.git myapp
+```
 
-* ...
+#### 2. Run the setup script
+
+Navigate into the new directory (```cd myapp```) and run:
+
+```console
+bin/setup
+```
+
+#### 3. Start the development server
+
+```console
+bin/dev
+```
