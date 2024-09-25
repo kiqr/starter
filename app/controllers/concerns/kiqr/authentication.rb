@@ -8,7 +8,7 @@ module Kiqr
       # Get the current account
       # @return [Account] the current account
       def current_account
-        Kiqr::CurrentAttributes.account
+        Current.account
       end
 
       # Get the current member associated with the current account and user

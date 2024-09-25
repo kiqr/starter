@@ -14,8 +14,8 @@ module Kiqr
     def set_user_and_account_atributes
       return unless user_signed_in?
 
-      Kiqr::CurrentAttributes.user = current_user
-      Kiqr::CurrentAttributes.account ||= fetch_account_from_params || current_user&.personal_account
+      Current.user = current_user
+      Current.account ||= fetch_account_from_params || current_user&.personal_account
     end
 
     # Fetch the account from the request params

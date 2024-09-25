@@ -22,11 +22,8 @@ require "kiqr/config"
 require "kiqr/engine"
 require "kiqr/errors"
 require "kiqr/rails/routes"
-require "kiqr/translations"
 
 module Kiqr
-  autoload :CurrentAttributes, "kiqr/current_attributes"
-
   module Controllers
     autoload :Helpers, "kiqr/controllers/helpers"
     autoload :SetCurrentRequestDetails, "kiqr/controllers/set_current_request_details"
