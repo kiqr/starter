@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # to customize these routes or override controllers.
   kiqr_routes
 
+  draw "users"
+
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.
   #

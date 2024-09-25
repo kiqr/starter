@@ -8,18 +8,9 @@ module ActionDispatch::Routing
       options[:controllers][:account_settings_delete] ||= "kiqr/accounts/settings/delete"
       options[:controllers][:onboarding] ||= "kiqr/onboarding"
       options[:controllers][:invitations] ||= "kiqr/users/invitations"
-      options[:controllers][:registrations] ||= "kiqr/registrations"
-      options[:controllers][:sessions] ||= "kiqr/sessions"
-      options[:controllers][:omniauth_callbacks] ||= "kiqr/omniauth_callbacks"
-      options[:controllers][:user_settings_profile] ||= "kiqr/users/settings/profiles"
-      options[:controllers][:user_settings_password] ||= "kiqr/users/settings/passwords"
-      options[:controllers][:user_settings_two_factor] ||= "kiqr/users/settings/two_factor"
-      options[:controllers][:user_settings_accounts] ||= "kiqr/users/settings/accounts"
 
-      devise_routes(options)
       kiqr_account_routes(options)
       kiqr_invitation_routes(options)
-      kiqr_user_routes(options)
 
       resource :onboarding, only: [ :show, :update ], controller: options[:controllers][:onboarding]
     end
@@ -34,52 +25,6 @@ module ActionDispatch::Routing
       pattern = force ? "/team/:account_id" : "(/team/:account_id)"
       scope pattern, account_id: %r{[^/]+} do
         yield
-      end
-    end
-
-    # => Devise routes
-    # Custom wrapper for Devise routes.
-    def devise_routes(options = {})
-      devise_for :users,
-        path_names: { sign_in: "login", sign_up: "create-account" },
-        controllers: {
-          registrations: options[:controllers][:registrations],
-          sessions: options[:controllers][:sessions],
-          omniauth_callbacks: options[:controllers][:omniauth_callbacks]
-        }
-
-      devise_scope :user do
-        get "settings/delete-user", controller: options[:controllers][:registrations], action: :delete, as: :delete_user_registration
-      end
-    end
-
-    # => Users
-    # Routes related to the User model.
-    def kiqr_user_routes(options = {})
-      scope "settings" do
-        resource "profile",
-          only: [ :show, :update ],
-          controller: options[:controllers][:user_settings_profile],
-          as: :user_settings_profile do
-            delete "cancel-pending-email"
-          end
-
-        resource "password",
-          only: [ :show, :update, :create ],
-          controller: options[:controllers][:user_settings_password],
-          as: :user_settings_password
-
-        resource "two_factor",
-          only: [ :show, :new, :create, :destroy ],
-          controller: options[:controllers][:user_settings_two_factor],
-          as: :user_settings_two_factor,
-          path: "two-factor"
-
-        resources "accounts",
-          only: [ :index, :new, :create ],
-          controller: options[:controllers][:user_settings_accounts],
-          as: :user_settings_accounts,
-          path: "teams"
       end
     end
 
