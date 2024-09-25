@@ -1,3 +1,5 @@
+require "extensions/action_dispatch_routing_mapper_patch"
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,14 +11,11 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-
-  # => KIQR core routes
-  # These routes are required for the KIQR core to function properly.
+  # These routes are required for KIQR to function properly.
   # Refer to the KIQR documentation for more information on how
   # to customize these routes or override controllers.
-  kiqr_routes
-
   draw "users"
+  draw "accounts"
 
   # Routes inside this block will be prefixed with /team/<team_id> if
   # the user is signed in to a team account. Otherwise, they won't be prefixed at all.

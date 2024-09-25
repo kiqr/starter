@@ -1,5 +1,4 @@
 # => Devise routes
-# Custom wrapper for Devise routes.
 devise_for :users,
   path_names: { sign_in: "login", sign_up: "create-account" },
   controllers: {
@@ -12,8 +11,16 @@ devise_scope :user do
   get "settings/delete-user", controller: "kiqr/registrations", action: :delete, as: :delete_user_registration
 end
 
-# => Users
-# Routes related to the User model.
+# => Onboarding
+resource :onboarding, only: [ :show, :update ], controller: "kiqr/onboarding"
+
+# => User invitations
+resource :invitation, only: [ :show, :update ], controller: "kiqr/users/invitations", path: "invitation/:token", as: :user_invitation do
+  patch "accept", action: :accept_invitation
+  delete "decline", action: :decline_invitation
+end
+
+# => User settings
 scope "settings" do
   resource "profile",
     only: [ :show, :update ],

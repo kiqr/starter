@@ -21,23 +21,8 @@ require "kiqr/version"
 require "kiqr/config"
 require "kiqr/engine"
 require "kiqr/errors"
-require "kiqr/rails/routes"
 
 module Kiqr
-  module Controllers
-    autoload :Helpers, "kiqr/controllers/helpers"
-    autoload :SetCurrentRequestDetails, "kiqr/controllers/set_current_request_details"
-    autoload :TwoFactorAuthentication, "kiqr/controllers/two_factor_authentication"
-    autoload :UrlHelpers, "kiqr/controllers/url_helpers"
-  end
-
-  module Models
-    autoload :Account, "kiqr/models/account"
-    autoload :Member, "kiqr/models/member"
-    autoload :OmniauthIdentity, "kiqr/models/omniauth_identity"
-    autoload :User, "kiqr/models/user"
-  end
-
   # Load Kiqr configuration
   def self.config
     @config ||= Kiqr::Config
