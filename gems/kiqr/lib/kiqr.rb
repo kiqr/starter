@@ -26,9 +26,6 @@ require "kiqr/translations"
 
 module Kiqr
   autoload :CurrentAttributes, "kiqr/current_attributes"
-  autoload :Models, "kiqr/models"
-  autoload :Frontend, "kiqr/frontend"
-  autoload :Translations, "kiqr/translations"
 
   module Controllers
     autoload :Helpers, "kiqr/controllers/helpers"
