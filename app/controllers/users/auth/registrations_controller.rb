@@ -1,6 +1,6 @@
 class Users::Auth::RegistrationsController < Devise::RegistrationsController
   layout "application", only: %i[delete destroy]
-  renders_submenu partial: "kiqr/users/settings/navigation", only: [ :delete ]
+  renders_submenu partial: "users/settings/navigation", only: [ :delete ]
 
   skip_before_action :require_no_authentication, only: [ :cancel ]
   before_action :authenticate_user!, only: [ :cancel ]

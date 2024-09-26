@@ -1,5 +1,5 @@
-class Kiqr::Users::Settings::BaseController < KiqrController
-  renders_submenu partial: "kiqr/users/settings/navigation"
+class Users::Settings::BaseController < KiqrController
+  renders_submenu partial: "users/settings/navigation"
 
   before_action do
     # This is to set the breadcrumbs for the onboarding process.

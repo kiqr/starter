@@ -15,7 +15,7 @@ end
 resource :onboarding, only: [ :show, :update ], controller: "kiqr/onboarding"
 
 # => User invitations
-resource :invitation, only: [ :show, :update ], controller: "kiqr/users/invitations", path: "invitation/:token", as: :user_invitation do
+resource :invitation, only: [ :show, :update ], controller: "users/invitations", path: "invitation/:token", as: :user_invitation do
   patch "accept", action: :accept_invitation
   delete "decline", action: :decline_invitation
 end
@@ -24,25 +24,25 @@ end
 scope "settings" do
   resource "profile",
     only: [ :show, :update ],
-    controller: "kiqr/users/settings/profiles",
+    controller: "users/settings/profiles",
     as: :user_settings_profile do
       delete "cancel-pending-email"
     end
 
   resource "password",
     only: [ :show, :update, :create ],
-    controller: "kiqr/users/settings/passwords",
+    controller: "users/settings/passwords",
     as: :user_settings_password
 
   resource "two_factor",
     only: [ :show, :new, :create, :destroy ],
-    controller: "kiqr/users/settings/two_factor",
+    controller: "users/settings/two_factor",
     as: :user_settings_two_factor,
     path: "two-factor"
 
   resources "accounts",
     only: [ :index, :new, :create ],
-    controller: "kiqr/users/settings/accounts",
+    controller: "users/settings/accounts",
     as: :user_settings_accounts,
     path: "teams"
 end

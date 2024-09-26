@@ -11,7 +11,7 @@ class AccountsTest < ApplicationSystemTestCase
     # Fill the team account form
     fill_in "account[name]", with: "Foobar code warriors"
 
-    click_on I18n.t("kiqr.users.settings.accounts.new.submit")
+    click_on I18n.t("users.settings.accounts.new.submit")
     assert_text I18n.t("flash_messages.account_created")
 
     account = user.reload.accounts.last

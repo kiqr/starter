@@ -1,4 +1,4 @@
-class Kiqr::Users::Settings::ProfilesController < Kiqr::Users::Settings::BaseController
+class Users::Settings::ProfilesController < Users::Settings::BaseController
   before_action :setup_user, only: [ :show, :update, :cancel_pending_email ]
   before_action do
     # This is to set the breadcrumbs for the onboarding process.

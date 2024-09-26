@@ -1,4 +1,4 @@
-class Kiqr::Users::Settings::AccountsController < Kiqr::Users::Settings::BaseController
+class Users::Settings::AccountsController < Users::Settings::BaseController
   before_action :setup_user, only: [ :index ]
   before_action :setup_breadcrumbs
 

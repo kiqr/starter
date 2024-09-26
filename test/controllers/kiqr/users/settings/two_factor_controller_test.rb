@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Users::Settings::TwoFactorControllerTest < ActionDispatch::IntegrationTest
+class Users::Settings::TwoFactorControllerTest < ActionDispatch::IntegrationTest
   test "should not be able to setup 2fa if already enabled" do
     sign_in create(:user, :otp_enabled)
     get new_user_settings_two_factor_path

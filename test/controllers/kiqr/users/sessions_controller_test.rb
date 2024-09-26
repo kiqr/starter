@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Users::SessionsControllerTest < ActionDispatch::IntegrationTest
+class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = create(:user)
     @user_with_2fa = create(:user, :otp_enabled)

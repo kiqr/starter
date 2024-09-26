@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
+class Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
   test "creates account if an account with the email does not exist" do
     post user_developer_omniauth_callback_path, params: { email: "john.doe@example.com" }
 

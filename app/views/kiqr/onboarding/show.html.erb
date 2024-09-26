@@ -8,7 +8,7 @@
           <%= render "kiqr/accounts/form_fields", form: personal_account_form %>
         <% end %>
         <!-- Form fields for the user object -->
-        <%= render "kiqr/users/shared/user_fields", form: form %>
+        <%= render "users/shared/user_fields", form: form %>
         <%= irelia_flex padding_top: :sm, justify: :end do %>
           <%= form.submit t(".submit") %>
         <% end %>

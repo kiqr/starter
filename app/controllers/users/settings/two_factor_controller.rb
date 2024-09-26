@@ -1,4 +1,4 @@
-class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseController
+class Users::Settings::TwoFactorController < Users::Settings::BaseController
   before_action :setup_user
   before_action :ensure_not_enabled, only: %i[new create]
 
@@ -21,8 +21,8 @@ class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseCo
       kiqr_flash_message :success, :two_factor_enabled
       redirect_to user_settings_two_factor_path
     else
-      @user.errors.add(:otp_attempt, I18n.t("kiqr.users.settings.two_factor.form.invalid_otp"))
-      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "kiqr/users/settings/two_factor/form", locals: { user: @user }), status: :unprocessable_content
+      @user.errors.add(:otp_attempt, I18n.t("users.settings.two_factor.form.invalid_otp"))
+      render turbo_stream: turbo_stream.replace("two_factor_form", partial: "users/settings/two_factor/form", locals: { user: @user }), status: :unprocessable_content
     end
   end
 
@@ -34,7 +34,7 @@ class Kiqr::Users::Settings::TwoFactorController < Kiqr::Users::Settings::BaseCo
       kiqr_flash_message :success, :two_factor_disabled
       redirect_to user_settings_two_factor_path
     else
-      @user.errors.add(:otp_attempt, I18n.t("kiqr.users.settings.two_factor.form.invalid_otp"))
+      @user.errors.add(:otp_attempt, I18n.t("users.settings.two_factor.form.invalid_otp"))
       render :show, status: :unprocessable_content
     end
   end
