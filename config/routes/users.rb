@@ -12,7 +12,7 @@ devise_scope :user do
 end
 
 # => Onboarding
-resource :onboarding, only: [ :show, :update ], controller: "kiqr/onboarding"
+resource :onboarding, only: [ :show, :update ], controller: "users/auth/onboarding"
 
 # => User invitations
 resource :invitation, only: [ :show, :update ], controller: "users/invitations", path: "invitation/:token", as: :user_invitation do

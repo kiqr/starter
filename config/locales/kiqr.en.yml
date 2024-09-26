@@ -31,6 +31,11 @@ en:
     two_factor_required: Two-factor authentication required.
   users:
     auth:
+      onboarding:
+        show:
+          description: Finish the registration by setting up your user profile.
+          submit: Finish onboarding
+          title: Setup your personal account
       registrations:
         delete:
           confirmation_message: Are you sure? This will DELETE all of your data.
@@ -257,11 +262,6 @@ en:
                  - Alternatively, transfer ownership to another team member if you wish for the team to continue.
 
               These steps ensure that all team data is properly managed before deletion. If you need assistance with removing members, transferring ownership, or have any questions, our support team is here to help. Thank you for your cooperation in maintaining data security and integrity.
-    onboarding:
-      show:
-        description: Finish the registration by setting up your user profile.
-        submit: Finish onboarding
-        title: Setup your personal account
     users:
       invitations:
         show:

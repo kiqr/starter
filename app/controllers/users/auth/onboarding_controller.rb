@@ -1,4 +1,4 @@
-class Kiqr::OnboardingController < ApplicationController
+class Users::Auth::OnboardingController < ApplicationController
   layout "public"
 
   skip_before_action :ensure_onboarded
