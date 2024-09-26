@@ -1,0 +1,96 @@
+#!/bin/bash
+
+set -e
+
+# Ensure we're inside a git repository
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+  echo "This script must be run inside a git repository."
+  exit 1
+fi
+
+# Get origin remote URL
+origin_url=$(git remote get-url origin)
+
+if [[ "$origin_url" == *"kiqr/kiqr"* ]]; then
+  # Origin points to kiqr/kiqr
+  echo "Your 'origin' remote points to 'kiqr/kiqr'."
+  echo "Renaming 'origin' remote to 'kiqr' for updating purposes."
+  git remote rename origin kiqr
+  echo "Please add your own 'origin' remote pointing to your repository, e.g.:"
+  echo "  git remote add origin <your_repo_url>"
+else
+  # Ensure 'kiqr' remote exists and points to kiqr/kiqr
+  kiqr_url=$(git remote get-url kiqr 2>/dev/null || echo "")
+  if [[ -z "$kiqr_url" ]]; then
+    # 'kiqr' remote does not exist
+    echo "Adding 'kiqr' remote pointing to 'kiqr/kiqr'."
+    git remote add kiqr https://github.com/kiqr/kiqr.git
+  elif [[ "$kiqr_url" != *"kiqr/kiqr"* ]]; then
+    echo "Your 'kiqr' remote does not point to 'kiqr/kiqr'."
+    echo "Updating 'kiqr' remote to point to 'kiqr/kiqr'."
+    git remote set-url kiqr https://github.com/kiqr/kiqr.git
+  else
+    echo "'kiqr' remote is correctly set up."
+  fi
+fi
+
+# Check for uncommitted changes
+if [[ -n $(git status --porcelain) ]]; then
+  echo "You have uncommitted changes. Please commit or stash them before updating."
+  exit 1
+fi
+
+# Fetch updates from kiqr
+echo "Fetching updates from 'kiqr' remote..."
+git fetch kiqr
+
+# Get current branch
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Show changelog
+echo
+echo "The following updates are available from 'kiqr/kiqr':"
+# List commits from kiqr/main not in current branch
+if git merge-base --is-ancestor $current_branch kiqr/main; then
+  echo "Your branch is up to date with 'kiqr/main'."
+  exit 0
+else
+  echo
+  git log --pretty=format:"%h: %s" $current_branch..kiqr/main
+  echo
+  read -p "Do you want to proceed with the update? (y/n): " proceed
+  if [[ ! "$proceed" =~ ^[Yy]$ ]]; then
+    echo "Update aborted."
+    exit 0
+  fi
+fi
+
+# Attempt to merge kiqr/main into the current branch
+echo "Attempting to merge 'kiqr/main' into '$current_branch'..."
+if ! git merge kiqr/main; then
+  echo "Merge conflicts detected."
+  read -p "Do you want to resolve them now? (y/n): " answer
+  if [[ "$answer" =~ ^[Yy]$ ]]; then
+    echo "Please resolve the conflicts and then commit the changes."
+    exit 0
+  else
+    echo "Aborting the update and resetting to previous state."
+    git merge --abort
+    exit 1
+  fi
+else
+  echo "Merge completed successfully."
+fi
+
+# Ask if the user wants to commit the changes now
+read -p "Do you want to commit the changes now? (y/n): " commit_now
+if [[ "$commit_now" =~ ^[Yy]$ ]]; then
+  # Get latest commit SHA from kiqr
+  commit_sha=$(git rev-parse --short kiqr/main)
+  git add -A
+  git commit -m "chore(kiqr): update KIQR to the latest version $commit_sha"
+fi
+
+# Success message
+echo "Update successful."
+echo "Hint: You should run your tests now with 'bin/rails test'."
