@@ -1,4 +1,4 @@
-class Kiqr::Accounts::Settings::BaseController < KiqrController
+class Kiqr::Accounts::Settings::BaseController < ApplicationController
   before_action :ensure_team_account
   before_action :setup_account
 
