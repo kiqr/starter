@@ -1,4 +1,4 @@
-class Kiqr::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Users::Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Devise::Controllers::SignInOut
   include Kiqr::TwoFactorAuthentication
 

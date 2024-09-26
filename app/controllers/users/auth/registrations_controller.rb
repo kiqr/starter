@@ -1,4 +1,4 @@
-class Kiqr::RegistrationsController < Devise::RegistrationsController
+class Users::Auth::RegistrationsController < Devise::RegistrationsController
   layout "application", only: %i[delete destroy]
   renders_submenu partial: "kiqr/users/settings/navigation", only: [ :delete ]
 
