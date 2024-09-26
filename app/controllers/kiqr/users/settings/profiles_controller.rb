@@ -32,7 +32,7 @@ class Kiqr::Users::Settings::ProfilesController < Kiqr::Users::Settings::BaseCon
   private
 
   def user_profile_params
-    personal_account_attributes = Kiqr.config.account_attributes.prepend(:id)
+    personal_account_attributes = Rails.configuration.account_params.prepend(:id)
     params.require(:user).permit(:email, :time_zone, :locale, personal_account_attributes: personal_account_attributes)
   end
 end

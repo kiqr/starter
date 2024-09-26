@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com/kiqr/irelia
+  remote: https://github.com/kiqr/irelia.git
   revision: 7eec6bd8ffb57de5d92e99ae788fbbc37f7446da
   branch: main
   specs:

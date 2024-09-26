@@ -38,7 +38,7 @@ class Kiqr::OnboardingController < KiqrController
   end
 
   def user_params
-    account_attributes = Kiqr.config.account_attributes.prepend(:id)
+    account_attributes = Rails.configuration.account_params.prepend(:id)
     params.require(:user).permit(:email, :time_zone, :locale, personal_account_attributes: account_attributes)
   end
 end

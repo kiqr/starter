@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   # Generate the user's OTP provisioning URI.
   def otp_uri
-    issuer = Kiqr::Config.app_name
+    issuer = Rails.configuration.application_name
     otp_provisioning_uri(email, issuer: issuer)
   end
 

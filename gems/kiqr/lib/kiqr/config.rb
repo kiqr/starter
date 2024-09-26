@@ -1,21 +1,5 @@
 module Kiqr
   module Config
     include ActiveSupport::Configurable
-
-    # ==> Application name
-    # The name of the application. This will be displayed in the meta title
-    # and on various places in the application.
-    config_accessor :app_name, default: "KIQR"
-
-    # ==> From email
-    # Configure the e-mail address which will be shown in Devise::Mailer,
-    # note that it will be overwritten if you use your own mailer class
-    # with default "from" parameter.
-    config_accessor :default_from_email, default: "please-change-me-at-config-initializers@example.com"
-
-    # ==> Account attributes
-    # Strong parameters for account. Used for account creation and update.
-    # Affects both personal and team accounts.
-    config_accessor :account_attributes, default: [ :name ]
   end
 end

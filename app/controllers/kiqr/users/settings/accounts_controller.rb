@@ -32,6 +32,6 @@ class Kiqr::Users::Settings::AccountsController < Kiqr::Users::Settings::BaseCon
   end
 
   def account_params
-    params.require(:account).permit(Kiqr.config.account_attributes)
+    params.require(:account).permit(Rails.configuration.account_params)
   end
 end

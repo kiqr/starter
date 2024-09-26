@@ -14,7 +14,7 @@
   # The meta-tags gem provides a simple way to add meta tags to your Rails application.
   # This is useful for setting the title, description, and keywords of your pages.
   # Read more at: https://github.com/kpumuk/meta-tags
-  display_meta_tags site: Kiqr::Config.app_name, reverse: true, separator: "—"
+  display_meta_tags site: Rails.configuration.application_name, reverse: true, separator: "—"
 %>
 
 <%=

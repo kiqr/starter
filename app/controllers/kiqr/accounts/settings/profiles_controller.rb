@@ -19,6 +19,6 @@ class Kiqr::Accounts::Settings::ProfilesController < Kiqr::Accounts::Settings::B
   private
 
   def account_profile_params
-    params.require(:account).permit(Kiqr.config.account_attributes)
+    params.require(:account).permit(Rails.configuration.account_params)
   end
 end
