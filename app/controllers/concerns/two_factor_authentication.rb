@@ -1,6 +1,10 @@
 module TwoFactorAuthentication
   extend ActiveSupport::Concern
 
+  included do
+    before_action :configure_permitted_parameters
+  end
+
   # This method is called before authenticating a user and will prompt the user
   # for their two-factor authentication code if they have it enabled.
   # Used in users/sessions_controller.rb and users/omniauth_controller.rb
@@ -43,5 +47,11 @@ module TwoFactorAuthentication
 
   def clear_otp_attempt!
     session.delete(:otp_user_id)
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: [ :otp_attempt ])
   end
 end

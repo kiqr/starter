@@ -3,7 +3,7 @@ class Users::Auth::SessionsController < Devise::SessionsController
 
   before_action :authenticate_with_two_factor, if: -> { action_name == "create" && two_factor_enabled? }
 
-  private
+  protected
 
   def two_factor_enabled?
     find_user&.two_factor_enabled?
