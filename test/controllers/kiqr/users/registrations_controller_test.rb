@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
+class Users::RegistrationControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = create(:user)
     @user_with_team = create(:user, with_account: create(:account))

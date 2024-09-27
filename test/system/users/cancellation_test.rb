@@ -5,7 +5,7 @@ class CancellationTest < ApplicationSystemTestCase
     user = create(:user)
     sign_in(user)
     visit delete_user_registration_path
-    accept_confirm { click_on I18n.t("kiqr.registrations.delete.submit") }
+    accept_confirm { click_on I18n.t("users.auth.registrations.delete.submit") }
     assert_text I18n.t("devise.registrations.destroyed")
     assert_nil User.find_by_id(user.id)
   end
@@ -16,6 +16,6 @@ class CancellationTest < ApplicationSystemTestCase
 
     sign_in(user)
     visit delete_user_registration_path
-    assert_no_selector("a", text: I18n.t("kiqr.registrations.delete.submit"))
+    assert_no_selector("a", text: I18n.t("users.auth.registrations.delete.submit"))
   end
 end

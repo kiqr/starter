@@ -1,0 +1,32 @@
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/icon.png" type="image/png">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<%=
+  # => Meta Tags
+  # The meta-tags gem provides a simple way to add meta tags to your Rails application.
+  # This is useful for setting the title, description, and keywords of your pages.
+  # Read more at: https://github.com/kpumuk/meta-tags
+  display_meta_tags site: Rails.configuration.application_name, reverse: true, separator: "—"
+%>
+
+<%=
+  # => Irelia theme
+  # This is a helper method that will inject the Irelia stylesheets and javascripts into the head tag.
+  # It includes the Irelia CSS and JS files, as well as Font Awesome for icons and the Poppins Google font.
+  # Read more about how to customize the dependencies in the Irelia documentation at https://github.com/kiqr/irelia
+  irelia_head
+%>
+
+<% # Add custom stylesheets and javascripts after the Irelia theme to override the default styles and scripts. %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= javascript_importmap_tags %>
+
+<%= yield :head %>

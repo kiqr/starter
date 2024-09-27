@@ -14,7 +14,7 @@ class CreatePasswordTest < ApplicationSystemTestCase
     fill_in "user[password]", with: "newpassword123"
     fill_in "user[password_confirmation]", with: "newpassword123"
 
-    click_on I18n.t("kiqr.users.settings.passwords.new.submit")
+    click_on I18n.t("users.settings.passwords.new.submit")
     assert_text I18n.t("flash_messages.password_created")
 
     user.reload

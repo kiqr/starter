@@ -1,7 +1,5 @@
-ENV["RAILS_ENV"] = "test"
-
-require_relative "../test/dummy/config/environment"
-ActiveRecord::Migrator.migrations_paths = [ File.expand_path("../db/migrate", __dir__) ]
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
 require "rails/test_help"
 
 ActiveRecord::Migration.maintain_test_schema!

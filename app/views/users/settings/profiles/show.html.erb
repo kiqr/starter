@@ -1,0 +1,28 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+
+<%= irelia_container size: :md do %>
+  <% if @user.unconfirmed_email? %>
+    <%= irelia_div padding_bottom: :lg, html_options: { id: "pending_email_notification" } do %>
+      <%= irelia_notification(variant: :warning, title: t(".notifications.pending_email_change.title")) do %>
+        <%== t(".notifications.pending_email_change.text", email: h(@user.unconfirmed_email)) %>
+        <%= button_to cancel_pending_email_user_settings_profile_path, method: :delete do %>
+          <%== t(".notifications.pending_email_change.cancel") %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= irelia_form(model: @user, url: user_settings_profile_path) do |form| %>
+    <!-- Form fields for the account object -->
+    <%= form.fields_for :personal_account, @user.personal_account do |personal_account_form| %>
+      <%= render "accounts/form_fields", form: personal_account_form %>
+    <% end %>
+
+    <!-- Form fields for the user object -->
+    <%= render "users/shared/user_fields", form: form %>
+
+    <%= irelia_div padding_top: :sm do %>
+      <%= form.submit t(".submit") %>
+    <% end %>
+  <% end %>
+<% end %>

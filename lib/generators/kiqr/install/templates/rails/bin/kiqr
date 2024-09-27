@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-require_relative "../config/application"
-require_relative "../config/boot"
-
-# This will load the initializers and fully initialize the Rails app.
-Rails.application.initialize!
-
-require "kiqr/commands"

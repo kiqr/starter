@@ -1,5 +1,6 @@
 KIQR
 ----
+
 [![CI](https://github.com/kiqr/kiqr/actions/workflows/ci.yml/badge.svg)](https://github.com/kiqr/kiqr/actions/workflows/ci.yml)
 ![License](https://img.shields.io/github/license/kiqr/kiqr)
 
@@ -24,30 +25,23 @@ Turbocharge your SaaS journey with KIQR, your go-to Rails 7.2-based saas starter
 
 Documentation for **KIQR** can be found on the [KIQR website](https://kiqr.dev).
 
-## Getting started
+## Quickstart
 
-To get started with **KIQR**, follow these simple steps:
-
-#### 1. Install the KIQR command line tool:
-
+#### 1. Clone the repository
 ```console
-gem install kiqr -v 0.1.0.alpha1 --pre
+git clone git@github.com:kiqr/kiqr.git myapp
 ```
 
-#### 2. Run the app generator
-```console
-kiqr new example_app
-```
+#### 2. Run the setup script
 
-#### 3. Run the setup script
-
-Navigate into the new directory (```cd example_app```) and run:
+Navigate into the new directory (```cd myapp```) and run:
 
 ```console
 bin/setup
 ```
 
-#### 4. Start the Rails server
+#### 3. Start the development server
+
 ```console
-bin/rails server
+bin/dev
 ```

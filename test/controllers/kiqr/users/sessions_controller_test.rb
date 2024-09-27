@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Users::SessionsControllerTest < ActionDispatch::IntegrationTest
+class Users::SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = create(:user)
     @user_with_2fa = create(:user, :otp_enabled)
@@ -16,7 +16,7 @@ class Kiqr::Users::SessionsControllerTest < ActionDispatch::IntegrationTest
     post user_session_path, params: { user: { email: @user_with_2fa.email, password: @user_with_2fa.password } }
 
     assert_response :unprocessable_content
-    assert_template "kiqr/sessions/otp"
+    assert_template "users/auth/sessions/otp"
   end
 
   test "signs in successfully with correct OTP when two-factor authentication is enabled" do
@@ -31,13 +31,13 @@ class Kiqr::Users::SessionsControllerTest < ActionDispatch::IntegrationTest
     post user_session_path, params: { user: { otp_attempt: "123456" } }
 
     assert_response :unprocessable_content
-    assert_template "kiqr/sessions/otp"
+    assert_template "users/auth/sessions/otp"
   end
 
   test "renders login form again if password is invalid" do
     post user_session_path, params: { user: { email: @user.email, password: "randompassword" } }
 
     assert_response :unprocessable_content
-    assert_template "kiqr/sessions/new"
+    assert_template "users/auth/sessions/new"
   end
 end

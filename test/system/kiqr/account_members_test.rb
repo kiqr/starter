@@ -17,8 +17,8 @@ class AccountMembersTest < ApplicationSystemTestCase
     accepted_count_before = @account.members.accepted.count
 
     visit new_account_settings_member_path(account_id: @account)
-    fill_in I18n.t("kiqr.accounts.settings.members.new.form.invitation_email.label"), with: "valid@email.com"
-    click_on I18n.t("kiqr.accounts.settings.members.new.form.submit")
+    fill_in I18n.t("accounts.settings.members.new.form.invitation_email.label"), with: "valid@email.com"
+    click_on I18n.t("accounts.settings.members.new.form.submit")
 
     assert_current_path account_settings_members_path(account_id: @account)
     assert_text I18n.t("flash_messages.invitation_created")

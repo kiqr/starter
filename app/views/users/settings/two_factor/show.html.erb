@@ -1,0 +1,20 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+<%= irelia_container size: :md do %>
+  <%= irelia_html do %>
+   <p><%= t(".content") %></p>
+   <%= tag.p t(".disable_instructions") if two_factor_enabled? %>
+  <% end %>
+
+  <%= irelia_div padding_top: :md do %>
+    <% if two_factor_enabled? %>
+      <%= irelia_form(model: @user, url: user_settings_two_factor_path, method: :delete) do |form| %>
+        <%= form.text_field :otp_attempt, label: t("users.settings.two_factor.form.label"), placeholder: t("users.settings.two_factor.form.placeholder") %>
+        <%= irelia_div padding_top: :sm do %>
+          <%= form.submit t(".buttons.disable") %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= irelia_button(url: new_user_settings_two_factor_path) { t(".buttons.enable") } %>
+    <% end %>
+  <% end %>
+<% end %>

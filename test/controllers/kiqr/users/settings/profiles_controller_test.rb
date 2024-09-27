@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Users::Settings::ProfilesControllerTest < ActionDispatch::IntegrationTest
+class Users::Settings::ProfilesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = create(:user)
     sign_in(@user)
