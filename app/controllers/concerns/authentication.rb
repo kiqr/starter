@@ -51,6 +51,6 @@ module Authentication
 
     # Render flash messages as turbo stream
     def render_flash_messages_stream
-      turbo_stream.replace("flash_messages", partial: "kiqr/shared/flash_messages")
+      turbo_stream.replace("flash_messages", partial: "shared/flash_messages")
     end
 end

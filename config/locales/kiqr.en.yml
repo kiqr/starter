@@ -30,6 +30,17 @@ en:
     two_factor_failed: Two-factor authentication failed. Please try again.
     two_factor_required: Two-factor authentication required.
   users:
+    invitations:
+      show:
+        buttons:
+          accept_invitation: Accept invitation
+          decline_invitation: Decline invitation
+        content: |
+          You've been invited by %{inviter_name} to join the %{account_name} team.
+
+          To accept, just click the button below. If you'd rather not join, you can decline the invitation.
+        description: Join the team %{account_name} by accepting the invitation.
+        title: Team invitation
     auth:
       onboarding:
         show:
@@ -230,11 +241,11 @@ en:
 
             These steps ensure that all team data is properly managed before deletion. If you need assistance with removing members, transferring ownership, or have any questions, our support team is here to help. Thank you for your cooperation in maintaining data security and integrity.
 
+  shared:
+    account_switcher:
+      create_new: New team account
+      personal: Personal account
   kiqr:
-    shared:
-      account_switcher:
-        create_new: New team account
-        personal: Personal account
     translations:
       locales:
         en: English
@@ -263,14 +274,3 @@ en:
             root: Two-factor authentication
           delete_user: Delete user account
     users:
-      invitations:
-        show:
-          buttons:
-            accept_invitation: Accept invitation
-            decline_invitation: Decline invitation
-          content: |
-            You've been invited by %{inviter_name} to join the %{account_name} team.
-
-            To accept, just click the button below. If you'd rather not join, you can decline the invitation.
-          description: Join the team %{account_name} by accepting the invitation.
-          title: Team invitation
