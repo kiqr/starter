@@ -3,19 +3,19 @@
 account_scope(force: true) do
   scope "settings" do
     resource "profile",
-      controller: "kiqr/accounts/settings/profiles",
+      controller: "accounts/settings/profiles",
       as: :account_settings_profile,
       only: [ :show, :update ]
 
     resources "members",
-      controller: "kiqr/accounts/settings/members",
+      controller: "accounts/settings/members",
       as: :account_settings_members,
       only: [ :index, :new, :create, :show, :destroy ] do
         get :invitation_link_modal, on: :member
     end
 
     resource "delete",
-      controller: "kiqr/accounts/settings/delete",
+      controller: "accounts/settings/delete",
       as: :account_settings_delete,
       only: [ :show, :destroy ]
   end

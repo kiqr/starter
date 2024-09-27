@@ -5,7 +5,7 @@
       <%= irelia_form(model: @user, url: onboarding_path) do |form| %>
         <!-- Form fields for the account object -->
         <%= form.fields_for :personal_account, @user.personal_account do |personal_account_form| %>
-          <%= render "kiqr/accounts/form_fields", form: personal_account_form %>
+          <%= render "accounts/form_fields", form: personal_account_form %>
         <% end %>
         <!-- Form fields for the user object -->
         <%= render "users/shared/user_fields", form: form %>

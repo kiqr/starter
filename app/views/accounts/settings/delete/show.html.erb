@@ -5,6 +5,6 @@
     <%= simple_format t(".content")%>
   <% end %>
   <%= irelia_div padding_top: :lg do %>
-    <%= irelia_button_to t("kiqr.accounts.settings.delete.show.submit"), account_settings_delete_path, method: :delete, color: :danger, data: { turbo_confirm: t("kiqr.accounts.settings.delete.show.confirmation_message") } %>
+    <%= irelia_button_to t("accounts.settings.delete.show.submit"), account_settings_delete_path, method: :delete, color: :danger, data: { turbo_confirm: t("accounts.settings.delete.show.confirmation_message") } %>
   <% end %>
 <% end %>

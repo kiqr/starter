@@ -1,4 +1,4 @@
-class Kiqr::Accounts::Settings::ProfilesController < Kiqr::Accounts::Settings::BaseController
+class Accounts::Settings::ProfilesController < Accounts::Settings::BaseController
   before_action do
     # This is to set the breadcrumbs for the onboarding process.
     add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.accounts.profile.index"), account_settings_profile_path

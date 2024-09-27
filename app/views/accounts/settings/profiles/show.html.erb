@@ -1,7 +1,7 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
 <%= irelia_container size: :md do %>
   <%= irelia_form(model: @account, url: account_settings_profile_path) do |form| %>
-    <%= render "kiqr/accounts/form_fields", form: form %>
+    <%= render "accounts/form_fields", form: form %>
     <%= irelia_div padding_top: :sm do %>
       <%= form.submit t(".submit") %>
     <% end %>

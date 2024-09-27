@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Kiqr::Accounts::Settings::DeleteControllerTest < ActionDispatch::IntegrationTest
+class Accounts::Settings::DeleteControllerTest < ActionDispatch::IntegrationTest
   setup do
     @account = create(:account)
     @user = create(:user, with_account: @account)

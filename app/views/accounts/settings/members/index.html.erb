@@ -1,7 +1,7 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description", team_name: @account.name)) do |header| %>
-  <% header.with_button(url: new_account_settings_member_path, icon: "fa fa-circle-plus") { t("kiqr.accounts.settings.members.action_buttons.new") } %>
+  <% header.with_button(url: new_account_settings_member_path, icon: "fa fa-circle-plus") { t("accounts.settings.members.action_buttons.new") } %>
 <% end %>
-<%= irelia_modal(name: "invitation_link", title: t("kiqr.accounts.settings.members.invitation_link_modal.title")) %>
+<%= irelia_modal(name: "invitation_link", title: t("accounts.settings.members.invitation_link_modal.title")) %>
 <%=
 irelia_table do |table|
   table.with_column { "Name" }

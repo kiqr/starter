@@ -1,4 +1,4 @@
-class Kiqr::Accounts::Settings::MembersController < Kiqr::Accounts::Settings::BaseController
+class Accounts::Settings::MembersController < Accounts::Settings::BaseController
   rescue_from Kiqr::Errors::AccountOwnerDeletionError, with: :account_owner_deletion_error
 
   before_action :setup_member, only: %i[show update destroy invitation_link_modal]
@@ -44,7 +44,7 @@ class Kiqr::Accounts::Settings::MembersController < Kiqr::Accounts::Settings::Ba
 
   # Show the invitation link modal.
   def invitation_link_modal
-    render turbo_stream: turbo_stream.update("invitation_link", partial: "kiqr/accounts/settings/members/invitation_link_modal", locals: { member: @member })
+    render turbo_stream: turbo_stream.update("invitation_link", partial: "accounts/settings/members/invitation_link_modal", locals: { member: @member })
   end
 
   private

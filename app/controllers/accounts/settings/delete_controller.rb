@@ -1,5 +1,5 @@
 # Controller for handling account deletion in the settings
-class Kiqr::Accounts::Settings::DeleteController < Kiqr::Accounts::Settings::BaseController
+class Accounts::Settings::DeleteController < Accounts::Settings::BaseController
   # Handle the error when trying to delete an account with multiple members
   rescue_from Kiqr::Errors::AccountWithMembersDeletionError, with: :account_with_members_error
 
