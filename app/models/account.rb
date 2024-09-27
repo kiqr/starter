@@ -1,6 +1,9 @@
 class Account < ApplicationRecord
   include PublicUid::ModelConcern
 
+  # Raises an error when trying to delete an account that has members.
+  MembersPresentError = Class.new(StandardError)
+
   # Associations
   has_many :members, dependent: :destroy
   has_many :users, through: :members
@@ -28,16 +31,10 @@ class Account < ApplicationRecord
 
   private
 
-  # Check if the account can be destroyed
-  # @return [Boolean] True if the account has only one member, false otherwise
-  def destroyable?
-    members.size <= 1
-  end
-
   # Prevent deletion of accounts with multiple members
-  # @raise [Kiqr::Errors::AccountWithMembersDeletionError] If the account has more than one member
+  # @raise [Account::MembersPresentError] If the account has more than one member
   def prevent_mistaken_deletion
-    raise Kiqr::Errors::AccountWithMembersDeletionError unless destroyable?
+    raise Account::MembersPresentError unless members.size <= 1
   end
 
   # Allow deletion of the account owner

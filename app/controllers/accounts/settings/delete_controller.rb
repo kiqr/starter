@@ -1,7 +1,7 @@
 # Controller for handling account deletion in the settings
 class Accounts::Settings::DeleteController < Accounts::Settings::BaseController
   # Handle the error when trying to delete an account with multiple members
-  rescue_from Kiqr::Errors::AccountWithMembersDeletionError, with: :account_with_members_error
+  rescue_from Account::MembersPresentError, with: :account_with_members_error
 
   before_action do
     # Redirect to the account members page if the current member is not the owner

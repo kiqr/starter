@@ -1,5 +1,4 @@
 # =>  Core gems
-gem "kiqr", path: "gems/kiqr"
 gem "devise", "~> 4.9", ">= 4.9.3"
 gem "devise-two-factor", ">= 5.0", "< 5.2"
 gem "omniauth", "~> 2.1.1"

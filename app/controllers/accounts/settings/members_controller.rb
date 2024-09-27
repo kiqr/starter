@@ -1,5 +1,5 @@
 class Accounts::Settings::MembersController < Accounts::Settings::BaseController
-  rescue_from Kiqr::Errors::AccountOwnerDeletionError, with: :account_owner_deletion_error
+  rescue_from Member::AccountOwnerDeletionError, with: :account_owner_deletion_error
 
   before_action :setup_member, only: %i[show update destroy invitation_link_modal]
   before_action :setup_breadcrumbs

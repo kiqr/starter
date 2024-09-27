@@ -1,6 +1,9 @@
 class Member < ApplicationRecord
   include PublicUid::ModelConcern
 
+  # Raised when trying to delete an account owner.
+  AccountOwnerDeletionError = Class.new(StandardError)
+
   # Callbacks
   before_save :auto_accept_when_member
   before_destroy :prevent_owner_deletion
@@ -77,8 +80,8 @@ class Member < ApplicationRecord
   end
 
   # Prevents the deletion of account owners
-  # @raise [Kiqr::Errors::AccountOwnerDeletionError] If trying to delete an owner without skipping the validation
+  # @raise [Member::AccountOwnerDeletionError] If trying to delete an owner without skipping the validation
   def prevent_owner_deletion
-    raise Kiqr::Errors::AccountOwnerDeletionError if owner? && !skip_prevent_owner_deletion
+    raise Member::AccountOwnerDeletionError if owner? && !skip_prevent_owner_deletion
   end
 end
