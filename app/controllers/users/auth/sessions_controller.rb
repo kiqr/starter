@@ -1,5 +1,5 @@
 class Users::Auth::SessionsController < Devise::SessionsController
-  include Kiqr::TwoFactorAuthentication
+  include TwoFactorAuthentication
 
   before_action :authenticate_with_two_factor, if: -> { action_name == "create" && two_factor_enabled? }
 

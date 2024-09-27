@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  include Kiqr::Translations
-  include Kiqr::Authentication
-  include Kiqr::SetCurrentRequestDetails
-  include Kiqr::RendersSubmenu
+  include Translations
+  include Authentication
+  include SetCurrentRequestDetails
+  include RendersSubmenu
 
   # Turn on request forgery protection. Bear in mind that GET and HEAD requests are not checked.
   protect_from_forgery with: :exception, prepend: true
