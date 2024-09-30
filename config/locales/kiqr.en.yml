@@ -35,15 +35,15 @@ en:
       personal: Personal account
     user_fields:
       email:
-        hint: your email address will be used for login and notifications.
-        label: email
-        placeholder: enter a valid email address
+        hint: Your email address will be used for login and notifications.
+        label: Email
+        placeholder: Enter a valid email address
       locale:
-        label: language
-        prompt: select your language
+        label: Language
+        prompt: Select your language
       time_zone:
-        label: time zone
-        prompt: select your time zone
+        label: Time zone
+        prompt: Select your time zone
   users:
     invitations:
       show:
@@ -51,17 +51,17 @@ en:
           accept_invitation: accept invitation
           decline_invitation: decline invitation
         content: |
-          you've been invited by %{inviter_name} to join the %{account_name} team.
+          You've been invited by %{inviter_name} to join the %{account_name} team.
 
-          to accept, just click the button below. if you'd rather not join, you can decline the invitation.
+          To accept, just click the button below. if you'd rather not join, you can decline the invitation.
         description: join the team %{account_name} by accepting the invitation.
         title: team invitation
     auth:
       onboarding:
         show:
-          description: finish the registration by setting up your user profile.
-          submit: finish onboarding
-          title: setup your personal account
+          description: Finish the registration by setting up your user profile.
+          submit: Finish onboarding
+          title: Setup your personal account
       registrations:
         delete:
           confirmation_message: are you sure? this will delete all of your data.
