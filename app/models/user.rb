@@ -3,11 +3,8 @@ class User < ApplicationRecord
   include Kiqr::Users::Onboarding
   include Kiqr::Users::TwoFactorAuthentication
   include Kiqr::Users::Validations
-
-  # Omniauth identities for social/external logins
-  has_many :omniauth_identities, dependent: :destroy
-  has_many :members, dependent: :destroy
-  has_many :accounts, through: :members
+  include Kiqr::Users::Omniauth
+  include Kiqr::Users::Accounts
 
   # Personal account
   belongs_to :personal_account, class_name: "Account", optional: true, dependent: :destroy
