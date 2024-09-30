@@ -29,27 +29,42 @@ en:
     two_factor_enabled: Two-factor authentication enabled successfully.
     two_factor_failed: Two-factor authentication failed. Please try again.
     two_factor_required: Two-factor authentication required.
+  shared:
+    account_switcher:
+      create_new: New team account
+      personal: Personal account
+    user_fields:
+      email:
+        hint: your email address will be used for login and notifications.
+        label: email
+        placeholder: enter a valid email address
+      locale:
+        label: language
+        prompt: select your language
+      time_zone:
+        label: time zone
+        prompt: select your time zone
   users:
     invitations:
       show:
         buttons:
-          accept_invitation: Accept invitation
-          decline_invitation: Decline invitation
+          accept_invitation: accept invitation
+          decline_invitation: decline invitation
         content: |
-          You've been invited by %{inviter_name} to join the %{account_name} team.
+          you've been invited by %{inviter_name} to join the %{account_name} team.
 
-          To accept, just click the button below. If you'd rather not join, you can decline the invitation.
-        description: Join the team %{account_name} by accepting the invitation.
-        title: Team invitation
+          to accept, just click the button below. if you'd rather not join, you can decline the invitation.
+        description: join the team %{account_name} by accepting the invitation.
+        title: team invitation
     auth:
       onboarding:
         show:
-          description: Finish the registration by setting up your user profile.
-          submit: Finish onboarding
-          title: Setup your personal account
+          description: finish the registration by setting up your user profile.
+          submit: finish onboarding
+          title: setup your personal account
       registrations:
         delete:
-          confirmation_message: Are you sure? This will DELETE all of your data.
+          confirmation_message: are you sure? this will delete all of your data.
           content: Need to cancel your account? No worries. We're sad to see you go but understand that sometimes things change. If you have any feedback or if there's anything we can do to improve your experience, please let us know. Your input is invaluable to us. Remember, you're always welcome back!
           description: Delete your user account and all its data.
           owned_team_accounts: "Team accounts you are the owner of:"
@@ -92,18 +107,6 @@ en:
               placeholder: Enter the code
           submit: Verify code
           title: Two-factor authentication
-    shared:
-      user_fields:
-        email:
-          hint: Your email address will be used for login and notifications.
-          label: Email
-          placeholder: Enter a valid email address
-        locale:
-          label: Language
-          prompt: Select your language
-        time_zone:
-          label: Time zone
-          prompt: Select your time zone
     settings:
       accounts:
         action_buttons:
@@ -241,10 +244,6 @@ en:
 
             These steps ensure that all team data is properly managed before deletion. If you need assistance with removing members, transferring ownership, or have any questions, our support team is here to help. Thank you for your cooperation in maintaining data security and integrity.
 
-  shared:
-    account_switcher:
-      create_new: New team account
-      personal: Personal account
   kiqr:
     translations:
       locales:
@@ -273,4 +272,3 @@ en:
           two_factor:
             root: Two-factor authentication
           delete_user: Delete user account
-    users:
