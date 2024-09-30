@@ -7,8 +7,8 @@ class Users::Auth::RegistrationsController < Devise::RegistrationsController
 
   # GET /settings/cancel
   def delete
-    add_breadcrumb t("kiqr.breadcrumbs.settings.root"), user_settings_profile_path
-    add_breadcrumb t("kiqr.breadcrumbs.settings.users.delete_user"), delete_user_registration_path
+    add_breadcrumb t("breadcrumbs.settings.root"), user_settings_profile_path
+    add_breadcrumb t("breadcrumbs.settings.users.delete_user"), delete_user_registration_path
     @conflicting_members = current_user.members.where(owner: true)
   end
 

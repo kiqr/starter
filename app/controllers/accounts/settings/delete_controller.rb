@@ -8,7 +8,7 @@ class Accounts::Settings::DeleteController < Accounts::Settings::BaseController
     redirect_to account_settings_members_path(account_id: current_account) unless current_member.owner?
 
     # Set the breadcrumbs for the account deletion page in the settings
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.accounts.delete.root"), account_settings_delete_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.accounts.delete.root"), account_settings_delete_path
   end
 
   # GET /team/:account_id/settings/delete

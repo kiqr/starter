@@ -243,32 +243,29 @@ en:
                 - Alternatively, transfer ownership to another team member if you wish for the team to continue.
 
             These steps ensure that all team data is properly managed before deletion. If you need assistance with removing members, transferring ownership, or have any questions, our support team is here to help. Thank you for your cooperation in maintaining data security and integrity.
-
-  kiqr:
-    translations:
-      locales:
-        en: English
-        sv: Swedish
-    breadcrumbs:
-      onboarding: Setup your user account
-      settings:
-        root: Settings
+  locales:
+    en: English
+    sv: Swedish
+  breadcrumbs:
+    onboarding: Setup your user account
+    settings:
+      root: Settings
+      accounts:
+        root: Accounts
+        profile:
+          index: Team profile
+        members:
+          index: Members
+        delete:
+          root: Delete team account
+      users:
         accounts:
-          root: Accounts
-          profile:
-            index: Team profile
-          members:
-            index: Members
-          delete:
-            root: Delete team account
-        users:
-          accounts:
-            root: Team accounts
-            new: New team account
-          password:
-            root: Password
-          profile:
-            root: User profile
-          two_factor:
-            root: Two-factor authentication
-          delete_user: Delete user account
+          root: Team accounts
+          new: New team account
+        password:
+          root: Password
+        profile:
+          root: User profile
+        two_factor:
+          root: Two-factor authentication
+        delete_user: Delete user account

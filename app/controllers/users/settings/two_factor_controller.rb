@@ -3,7 +3,7 @@ class Users::Settings::TwoFactorController < Users::Settings::BaseController
   before_action :ensure_not_enabled, only: %i[new create]
 
   before_action do
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.two_factor.root"), user_settings_two_factor_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.users.two_factor.root"), user_settings_two_factor_path
   end
 
   def new

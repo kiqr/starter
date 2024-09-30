@@ -10,7 +10,7 @@ module ApplicationHelper
   # Get the options for the locale form select field
   def options_for_locale
     I18n.available_locales.map do |locale|
-      [ I18n.t("kiqr.translations.locales.#{locale}"), locale ]
+      [ I18n.t("locales.#{locale}"), locale ]
     end
   end
 

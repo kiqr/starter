@@ -27,8 +27,8 @@ class Users::Settings::AccountsController < Users::Settings::BaseController
   private
 
   def setup_breadcrumbs
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.accounts.root"), user_settings_profile_path
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.users.accounts.new"), user_settings_profile_path if %w[new create].include?(action_name)
+    add_breadcrumb I18n.t("breadcrumbs.settings.users.accounts.root"), user_settings_profile_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.users.accounts.new"), user_settings_profile_path if %w[new create].include?(action_name)
   end
 
   def account_params

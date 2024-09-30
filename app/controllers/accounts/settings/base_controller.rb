@@ -5,7 +5,7 @@ class Accounts::Settings::BaseController < ApplicationController
   renders_submenu partial: "accounts/settings/navigation"
 
   before_action do
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.root"), account_settings_profile_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.root"), account_settings_profile_path
   end
 
   private

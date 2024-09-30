@@ -51,7 +51,7 @@ class Accounts::Settings::MembersController < Accounts::Settings::BaseController
 
   def setup_breadcrumbs
     # This is to set the breadcrumbs for the onboarding process.
-    add_breadcrumb I18n.t("kiqr.breadcrumbs.settings.accounts.members.index"), account_settings_members_path
+    add_breadcrumb I18n.t("breadcrumbs.settings.accounts.members.index"), account_settings_members_path
 
     if action_name == "edit" || action_name == "update" || action_name == "destroy"
       add_breadcrumb @member.name, account_settings_member_path(@member)
