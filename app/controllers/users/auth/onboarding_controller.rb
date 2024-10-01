@@ -16,29 +16,26 @@ class Users::Auth::OnboardingController < ApplicationController
   end
 
   def show
-    @user.build_personal_account(personal: true)
   end
 
   def update
-    @user.assign_attributes(user_params)
-    @user.personal_account.personal = true
-
-    if @user.save
-      kiqr_flash_message(:notice, :onboarding_completed)
-      redirect_to after_onboarding_path(@user)
-    else
-      render :show, status: :unprocessable_entity
-    end
+    render json: params
+    # if @user.update(user_params)
+    #   kiqr_flash_message(:notice, :onboarding_completed)
+    #   redirect_to after_onboarding_path(@user)
+    # else
+    #   render :show, status: :unprocessable_entity
+    # end
   end
 
   private
 
-  def setup_user
-    @user = User.find(current_user.id)
-  end
+  # def setup_user
+  #   @user = User.find(current_user.id)
+  # end
 
-  def user_params
-    account_attributes = Rails.configuration.account_params.prepend(:id)
-    params.require(:user).permit(:email, :time_zone, :locale, personal_account_attributes: account_attributes)
-  end
+  # def user_params
+  #   profile_attributes = Rails.configuration.profile_params.prepend(:id)
+  #   params.require(:user).permit(:email, :time_zone, :locale, profile_attributes: profile_attributes)
+  # end
 end

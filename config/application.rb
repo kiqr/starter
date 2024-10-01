@@ -31,6 +31,10 @@ module Kiqr
     # Strong parameters for account. Used for account creation and update.
     config.account_params = %i[ name ]
 
+    # ==> User profile attributes
+    # Strong parameters for user profiles. Used for user creation and update.
+    config.profile_params = %i[ name ]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
