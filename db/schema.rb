@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_30_104119) do
   create_table "accounts", force: :cascade do |t|
     t.string "public_uid"
     t.string "name", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
     t.index ["user_id"], name: "index_omniauth_identities_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name"
+    t.string "avatar_type", default: "initials"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -94,5 +103,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_24_103325) do
   add_foreign_key "members", "members", column: "invited_by_id"
   add_foreign_key "members", "users"
   add_foreign_key "omniauth_identities", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "users", "accounts", column: "personal_account_id"
 end
