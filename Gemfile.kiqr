@@ -1,4 +1,8 @@
-# =>  Core gems
+# => KIQR core gems
+gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
+gem "form_wizard", path: "gems/form_wizard"
+
+# =>  Third-party dependencies
 gem "devise", "~> 4.9", ">= 4.9.3"
 gem "devise-two-factor", ">= 6.0", "< 6.1"
 gem "omniauth", "~> 2.1.1"
@@ -6,7 +10,6 @@ gem "omniauth-rails_csrf_protection", "~> 1.0.1"
 gem "public_uid", "~> 2.2"
 
 # => Frontend
-gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
 gem "meta-tags", "~> 2.21"
 gem "loaf", "~> 0.10.0"
 gem "rqrcode", "~> 2.0"

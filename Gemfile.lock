@@ -9,6 +9,11 @@ GIT
       view_component (~> 3.12)
       view_component-contrib (~> 0.2.2)
 
+PATH
+  remote: gems/form_wizard
+  specs:
+    form_wizard (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -430,6 +435,7 @@ DEPENDENCIES
   faker
   faraday-multipart
   faraday-retry
+  form_wizard!
   importmap-rails
   irelia!
   jbuilder
