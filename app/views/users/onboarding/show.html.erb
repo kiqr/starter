@@ -1,0 +1,7 @@
+<%= irelia_flex fixed: [:left, :right, :bottom, :top], text: :center,justify: :center, items: :center do %>
+  <%= irelia_container size: :sm do %> 
+    <%= irelia_flex direction: :column do %>
+      <%= render @form %>
+    <% end %>
+  <% end %>
+<% end %>

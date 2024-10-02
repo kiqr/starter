@@ -1,0 +1,4 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+<%= irelia_form(model: @form, url: onboarding_path(params[:step])) do |form| %>
+  <%= form.submit "Complete registrations" %>
+<% end %>

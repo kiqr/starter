@@ -12,7 +12,8 @@ devise_scope :user do
 end
 
 # => Onboarding
-resource :onboarding, only: [ :show, :update ], controller: "users/auth/onboarding"
+get "onboarding(/:step)", to: "users/onboarding#show", as: :onboarding
+post "onboarding(/:step)", to: "users/onboarding#update"
 
 # => User invitations
 resource :invitation, only: [ :show, :update ], controller: "users/invitations", path: "invitation/:token", as: :user_invitation do

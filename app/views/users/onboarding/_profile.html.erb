@@ -1,0 +1,8 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+<%= irelia_form(model: @form, url: onboarding_path(params[:step])) do |form| %>
+  <%= form.text_field :full_name, label: t(".name.label"), placeholder: t(".name.placeholder") %>
+  <%= irelia_flex justify: :between, items: :end, padding_top: :sm do %>
+    <%= irelia_button(url: onboarding_path(@form.previous_step),  color: :secondary) { t(".previous_step") } %>
+    <%= form.submit t(".submit") %>
+  <% end %>
+<% end %>

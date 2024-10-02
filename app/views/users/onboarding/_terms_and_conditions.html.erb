@@ -1,0 +1,5 @@
+<%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
+<%= irelia_form(model: @form, url: onboarding_path(params[:step])) do |form| %>
+  <%= form.check_box :toc_accepted, label: "Terms & Conditions" %>
+  <%= form.submit "Continue" %>
+<% end %>
