@@ -2,6 +2,13 @@
 
 require "test_helper"
 
+class User
+  include ActiveModel::Model
+  include ActiveModel::Attributes
+
+  attribute :name
+end
+
 class OnboardingForm < FormWizard::Form
   step :terms_and_conditions do
     attribute :toc_accepted
@@ -10,6 +17,7 @@ class OnboardingForm < FormWizard::Form
 
   step :profile do
     attribute :full_name
+    attribute :locale, default: "en"
     validates :full_name, presence: true, length: { minimum: 2 }
   end
 
@@ -19,6 +27,7 @@ end
 class TestFormWizard < Minitest::Test
   def setup
     @session = {}
+    @user = User.new(name: "John Doe")
     @form = OnboardingForm.new(session: @session)
   end
 
@@ -45,7 +54,7 @@ class TestFormWizard < Minitest::Test
   end
 
   def test_attributes_are_configured
-    assert_equal %w[toc_accepted full_name], @form.class.attribute_names
+    assert_equal %w[toc_accepted full_name locale], @form.class.attribute_names
   end
 
   def test_attribute_assignment
@@ -56,7 +65,7 @@ class TestFormWizard < Minitest::Test
 
   def test_attributes_returns_correct_values
     @form.assign_attributes(toc_accepted: "1", full_name: "Alice")
-    assert_equal({ "toc_accepted" => "1", "full_name" => "Alice" }, @form.attributes)
+    assert_equal({ "toc_accepted" => "1", "full_name" => "Alice", "locale" => "en" }, @form.attributes)
   end
 
   def test_navigation_through_steps
@@ -108,6 +117,10 @@ class TestFormWizard < Minitest::Test
 
   def test_persist_method_not_implemented
     assert_raises(NotImplementedError) { @form.persist }
+  end
+
+  def test_default_values
+    assert_equal "en", @form.locale
   end
 
   def test_complete_flow

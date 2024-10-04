@@ -12,6 +12,8 @@ module FormWizard
     def initialize(session: {}, step: nil)
       @session = session
       @current_step = step&.to_sym || first_step
+
+      assign_default_values
       load_from_session
     end
 
@@ -60,6 +62,10 @@ module FormWizard
         @attribute_names ||= []
       end
 
+      def default_values
+        @default_values ||= {}
+      end
+
       # Stores the steps defined in the wizard
       def steps
         @steps ||= []
@@ -102,6 +108,12 @@ module FormWizard
       self.class.steps.first.to_sym
     end
 
+    def assign_default_values
+      self.class.default_values.each do |attr_name, value|
+        send("#{attr_name}=", value)
+      end
+    end
+
     class StepBuilder
       attr_reader :attributes, :validations
 
@@ -112,13 +124,17 @@ module FormWizard
         @validations = []
       end
 
-      def attribute(attr_name)
+      def attribute(attr_name, **options)
+        options = options.symbolize_keys
+        default_value = options[:default]
+
         attr_name = attr_name.to_s
         @attributes << attr_name
 
         unless @wizard_class.attribute_names.include?(attr_name)
           @wizard_class.attribute_names << attr_name
           @wizard_class.attr_accessor attr_name
+          @wizard_class.default_values[attr_name] = default_value
         end
       end
 
