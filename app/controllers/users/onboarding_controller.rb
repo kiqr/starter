@@ -19,8 +19,9 @@ class Users::OnboardingController < ApplicationController
 
   def update
     if @form.update(onboarding_form_params)
+      @form.persist if @form.final_step?
       # kiqr_flash_message(:notice, :onboarding_completed)
-      redirect_to onboarding_path(step: @form.next_step)
+      redirect_to next_redirect_path
     else
       render :show, status: :unprocessable_content
     end
@@ -28,8 +29,16 @@ class Users::OnboardingController < ApplicationController
 
   private
 
+  def after_onboarding_path
+    dashboard_path
+  end
+
+  def next_redirect_path
+    @form.final_step? ? after_onboarding_path : onboarding_path(step: @form.next_step)
+  end
+
   def onboarding_form_params
-    params.require(:onboarding_form).permit(:toc_accepted, :full_name)
+    params.require(:onboarding_form).permit(:toc_accepted, :name, :account_name, :locale, :time_zone)
   end
 
   def setup_onboarding_form

@@ -5,9 +5,17 @@ class OnboardingForm < FormWizard::Form
   end
 
   step :profile do
-    attribute :full_name
-    validates :full_name, presence: true, length: { minimum: 2 }
+    attribute :name
+    validates :name, presence: true, length: { minimum: 2 }
+
+    attribute :account_name
+    validates :account_name, presence: true, length: { minimum: 5 }, allow_blank: true
+
+    attribute :locale
+    attribute :time_zone
   end
 
-  step :subscription
+  def persist
+    "it works"
+  end
 end

@@ -1,6 +1,13 @@
 <%= irelia_page_header(title: t(".title"), subline: t(".description")) %>
 <%= irelia_form(model: @form, url: onboarding_path(params[:step])) do |form| %>
-  <%= form.text_field :full_name, label: t(".name.label"), placeholder: t(".name.placeholder") %>
+  <%= form.text_field :name, label: t(".name.label"), placeholder: t(".name.placeholder") %>
+  <%= form.text_field :account_name, label: t(".account_name.label"), placeholder: t(".account_name.placeholder") %>
+
+  <%= irelia_flex do %>
+    <%= form.select :locale, options_for_locale, { prompt: t("shared.user_fields.locale.prompt") }, { label: t("shared.user_fields.locale.label"), required: true } %>
+    <%= form.select :time_zone, options_for_time_zone, { prompt: t("shared.user_fields.time_zone.prompt") }, { label: t("shared.user_fields.time_zone.label"), required: true } %>
+  <% end %>
+
   <%= irelia_flex justify: :between, items: :end, padding_top: :sm do %>
     <%= irelia_button(url: onboarding_path(@form.previous_step),  color: :secondary) { t(".previous_step") } %>
     <%= form.submit t(".submit") %>

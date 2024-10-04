@@ -15,14 +15,12 @@ module FormWizard
       load_from_session
     end
 
-    def to_partial_path
-      @current_step.to_s
-    end
-
     def update(params)
       assign_attributes(params)
+      return false unless valid?
+
       store_in_session
-      valid?
+      true
     end
 
     def persist
@@ -52,6 +50,10 @@ module FormWizard
       end
       attrs
     end
+    
+    def to_partial_path
+      @current_step.to_s
+    end
 
     class << self
       def attribute_names
@@ -80,7 +82,7 @@ module FormWizard
     # Session Management
     def session_key
       # self.class.name.underscore
-      "form_wizard_data"
+      "form_wizard_#{self.class.name.underscore}_data"
     end
 
     def load_from_session
