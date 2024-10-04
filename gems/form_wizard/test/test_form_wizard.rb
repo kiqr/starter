@@ -96,13 +96,13 @@ class TestFormWizard < Minitest::Test
 
   def test_store_and_load_from_session
     # Simulate filling out the first step
-    @form.update(toc_accepted: "1")
+    @form.update(toc_accepted: "1", full_name: "John Doe")
     assert_equal "1", @form.toc_accepted
-    assert_equal({ "toc_accepted" => "1", "full_name" => nil }, @session["form_wizard_data"])
 
     # Simulate moving to the next step and reloading form
     new_form = OnboardingForm.new(session: @session, step: "profile")
     assert_equal "1", new_form.toc_accepted
+    assert_equal "John Doe", new_form.full_name
     assert_equal :profile, new_form.current_step
   end
 

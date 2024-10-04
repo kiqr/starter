@@ -50,7 +50,7 @@ module FormWizard
       end
       attrs
     end
-    
+
     def to_partial_path
       @current_step.to_s
     end
