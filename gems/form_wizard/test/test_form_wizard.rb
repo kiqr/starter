@@ -132,6 +132,12 @@ class TestFormWizard < Minitest::Test
     assert_equal "John Doe", @form.full_name
   end
 
+  def test_updates_model_attributes
+    assert_equal "John Doe", @user.name
+    @form.update(full_name: "Alice Doe")
+    assert_equal "Alice Doe", @user.name
+  end
+
   def test_complete_flow
     # Step 1: Terms and Conditions
     @form.current_step = :terms_and_conditions

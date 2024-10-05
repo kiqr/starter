@@ -16,10 +16,6 @@ class OnboardingForm < FormWizard::Form
   end
 
   def persist
-    ActiveRecord::Base.transaction do
-      user.save!
-      Member.create!(account: account, user: user, role: :owner)
-    end
   end
 
   private

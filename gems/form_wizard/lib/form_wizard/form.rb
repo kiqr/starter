@@ -88,6 +88,33 @@ module FormWizard
         builder = StepBuilder.new(self, name)
         builder.instance_eval(&block) if block_given?
       end
+
+      def attr_accessor_with_model_sync(attr_name)
+        attr_name = attr_name.to_sym
+
+        define_method("#{attr_name}=") do |value|
+          # Set the form's instance variable
+          instance_variable_set("@#{attr_name}", value)
+
+          # Update the mapped model attribute if mapping exists
+          mapping = self.class.attribute_mappings[attr_name]
+          if mapping
+            model_name = mapping[:model]
+            model_attr = mapping[:attribute]
+
+            model = @models[model_name]
+            if model
+              model.send("#{model_attr}=", value)
+            else
+              raise "Model #{model_name} not provided"
+            end
+          end
+        end
+
+        define_method(attr_name) do
+          instance_variable_get("@#{attr_name}")
+        end
+      end
     end
 
     private
@@ -158,13 +185,17 @@ module FormWizard
         @attributes << attr_name
         unless @wizard_class.attribute_names.include?(attr_name)
           @wizard_class.attribute_names << attr_name
-          @wizard_class.attr_accessor attr_name
+
+          # Use the custom accessor
+          @wizard_class.attr_accessor_with_model_sync attr_name
 
           # Store default value if provided
           @wizard_class.default_values[attr_name] = default_value if default_value
 
           # Store mapping only if :on is specified
-          @wizard_class.attribute_mappings[attr_name] = { model: on_model, attribute: model_attr_name } if on_model
+          if on_model
+            @wizard_class.attribute_mappings[attr_name] = { model: on_model, attribute: model_attr_name }
+          end
         end
       end
 
