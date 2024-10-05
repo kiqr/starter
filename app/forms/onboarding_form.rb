@@ -5,17 +5,30 @@ class OnboardingForm < FormWizard::Form
   end
 
   step :profile do
-    attribute :name
+    attribute :name, on: :profile
     validates :name, presence: true, length: { minimum: 2 }
 
-    attribute :account_name
+    attribute :account_name, on: :account, column: :name
     validates :account_name, presence: true, length: { minimum: 5 }, allow_blank: true
 
-    attribute :locale
-    attribute :time_zone
+    attribute :locale, on: :user
+    attribute :time_zone, on: :user
   end
 
   def persist
-    "it works"
+    ActiveRecord::Base.transaction do
+      user.save!
+      Member.create!(account: account, user: user, role: :owner)
+    end
+  end
+
+  private
+
+  def user
+    @models[:user]
+  end
+
+  def account
+    @models[:account]
   end
 end

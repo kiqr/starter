@@ -16,7 +16,7 @@ class OnboardingForm < FormWizard::Form
   end
 
   step :profile do
-    attribute :full_name
+    attribute :full_name, on: :user, column: :name
     attribute :locale, default: "en"
     validates :full_name, presence: true, length: { minimum: 2 }
   end
@@ -28,7 +28,7 @@ class TestFormWizard < Minitest::Test
   def setup
     @session = {}
     @user = User.new(name: "John Doe")
-    @form = OnboardingForm.new(session: @session)
+    @form = OnboardingForm.new(session: @session, models: { user: @user })
   end
 
   def test_steps_are_configured
@@ -54,7 +54,7 @@ class TestFormWizard < Minitest::Test
   end
 
   def test_attributes_are_configured
-    assert_equal %w[toc_accepted full_name locale], @form.class.attribute_names
+    assert_equal %i[toc_accepted full_name locale], @form.class.attribute_names
   end
 
   def test_attribute_assignment
@@ -65,7 +65,7 @@ class TestFormWizard < Minitest::Test
 
   def test_attributes_returns_correct_values
     @form.assign_attributes(toc_accepted: "1", full_name: "Alice")
-    assert_equal({ "toc_accepted" => "1", "full_name" => "Alice", "locale" => "en" }, @form.attributes)
+    assert_equal({ toc_accepted: "1", full_name: "Alice", locale: "en" }, @form.attributes)
   end
 
   def test_navigation_through_steps
@@ -109,7 +109,7 @@ class TestFormWizard < Minitest::Test
     assert_equal "1", @form.toc_accepted
 
     # Simulate moving to the next step and reloading form
-    new_form = OnboardingForm.new(session: @session, step: "profile")
+    new_form = OnboardingForm.new(session: @session, step: "profile", models: { user: @user })
     assert_equal "1", new_form.toc_accepted
     assert_equal "John Doe", new_form.full_name
     assert_equal :profile, new_form.current_step
@@ -121,6 +121,15 @@ class TestFormWizard < Minitest::Test
 
   def test_default_values
     assert_equal "en", @form.locale
+  end
+
+  def test_configures_model_and_attribute_mappings
+    mappings = { full_name: { model: :user, attribute: :name } }
+    assert_equal mappings, @form.class.attribute_mappings
+  end
+
+  def test_loads_values_from_existing_model
+    assert_equal "John Doe", @form.full_name
   end
 
   def test_complete_flow

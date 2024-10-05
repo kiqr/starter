@@ -42,6 +42,10 @@ class Users::OnboardingController < ApplicationController
   end
 
   def setup_onboarding_form
-    @form = OnboardingForm.new(session: session, step: params[:step])
+    user = current_user&.dup
+    user.build_profile if user.profile.blank?
+    account = Account.new
+
+    @form = OnboardingForm.new(session: session, step: params[:step], models: { user: user, profile: user.profile, account: account })
   end
 end

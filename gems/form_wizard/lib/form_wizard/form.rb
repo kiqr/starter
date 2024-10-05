@@ -9,11 +9,18 @@ module FormWizard
 
     attr_accessor :current_step
 
-    def initialize(session: {}, step: nil)
+    def initialize(session: {}, step: nil, models: {})
       @session = session
       @current_step = step&.to_sym || first_step
+      @models = models
 
+      # Assign default values first
       assign_default_values
+
+      # Load data from models if any
+      load_from_models
+
+      # Load data from session, which overrides defaults and models
       load_from_session
     end
 
@@ -60,6 +67,10 @@ module FormWizard
     class << self
       def attribute_names
         @attribute_names ||= []
+      end
+
+      def attribute_mappings
+        @attribute_mappings ||= {}
       end
 
       def default_values
@@ -114,6 +125,18 @@ module FormWizard
       end
     end
 
+    def load_from_models
+      self.class.attribute_mappings.each do |form_attr, mapping|
+        model_name = mapping[:model]
+        model_attr = mapping[:attribute]
+
+        model = @models[model_name] || (raise "Model #{model_name} not provided")
+
+        value = model.send(model_attr) if model.respond_to?(model_attr)
+        send("#{form_attr}=", value)
+      end
+    end
+
     class StepBuilder
       attr_reader :attributes, :validations
 
@@ -126,15 +149,22 @@ module FormWizard
 
       def attribute(attr_name, **options)
         options = options.symbolize_keys
+
+        attr_name = attr_name.to_sym
         default_value = options[:default]
+        on_model = options[:on]&.to_sym
+        model_attr_name = options.fetch(:column, attr_name)
 
-        attr_name = attr_name.to_s
         @attributes << attr_name
-
         unless @wizard_class.attribute_names.include?(attr_name)
           @wizard_class.attribute_names << attr_name
           @wizard_class.attr_accessor attr_name
-          @wizard_class.default_values[attr_name] = default_value
+
+          # Store default value if provided
+          @wizard_class.default_values[attr_name] = default_value if default_value
+
+          # Store mapping only if :on is specified
+          @wizard_class.attribute_mappings[attr_name] = { model: on_model, attribute: model_attr_name } if on_model
         end
       end
 
