@@ -138,6 +138,14 @@ class TestFormWizard < Minitest::Test
     assert_equal "Alice Doe", @user.name
   end
 
+  def test_for_argument_conflicts_with_models
+    assert_raises(ArgumentError) { OnboardingForm.new(session: @session, models: { locale: {}, user: User.new }) }
+  end
+
+  def test_defines_read_attributes_for_models
+    assert_equal @form.user, @user
+  end
+
   def test_complete_flow
     # Step 1: Terms and Conditions
     @form.current_step = :terms_and_conditions

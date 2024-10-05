@@ -17,14 +17,4 @@ class OnboardingForm < FormWizard::Form
 
   def persist
   end
-
-  private
-
-  def user
-    @models[:user]
-  end
-
-  def account
-    @models[:account]
-  end
 end

@@ -1,4 +1,4 @@
-# # frozen_string_literal: true
+# frozen_string_literal: true
 
 require "active_model"
 
@@ -13,6 +13,12 @@ module FormWizard
       @session = session
       @current_step = step&.to_sym || first_step
       @models = models
+
+      # Check for conflicts between attribute names and model names
+      check_for_attribute_conflicts
+
+      # Define read accessors for each model
+      define_model_accessors
 
       # Assign default values first
       assign_default_values
@@ -161,6 +167,27 @@ module FormWizard
 
         value = model.send(model_attr) if model.respond_to?(model_attr)
         send("#{form_attr}=", value)
+      end
+    end
+
+    def check_for_attribute_conflicts
+      attribute_names = self.class.attribute_names.map(&:to_sym)
+      model_names = @models.keys.map(&:to_sym)
+      conflicting_names = attribute_names & model_names
+
+      unless conflicting_names.empty?
+        raise ArgumentError, "Attribute name conflict with model name: #{conflicting_names.join(', ')}"
+      end
+    end
+
+    def define_model_accessors
+      @models.each_key do |model_name|
+        model_name = model_name.to_sym
+
+        # Define a read accessor for each model
+        define_singleton_method(model_name) do
+          @models[model_name]
+        end
       end
     end
 
