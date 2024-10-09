@@ -9,10 +9,19 @@ FactoryBot.define do
     password { "th1s1sp4ssw0rd" }
     password_confirmation { "th1s1sp4ssw0rd" }
     confirmed_at { Time.zone.now }
-    personal_account { build(:account, personal: true) }
+
+    profile { build(:profile) }
 
     trait :unconfirmed do
       confirmed_at { nil }
+    end
+
+    trait :nonboarded do
+      profile { nil }
+      after(:create) do |user, _evaluator|
+        user.accounts.delete_all
+        user.members.delete_all
+      end
     end
 
     trait :without_password do
@@ -27,10 +36,7 @@ FactoryBot.define do
     end
 
     after(:create) do |user, evaluator|
-      if evaluator.with_account
-        # Build the association with 'owner: true'
-        user.members.create(account: evaluator.with_account, owner: true)
-      end
+      user.members.create(account: create(:account), owner: true)
     end
 
     trait :with_accounts do

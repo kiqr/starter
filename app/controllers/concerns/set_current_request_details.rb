@@ -22,7 +22,9 @@ module SetCurrentRequestDetails
   # Redirect to the current url but with account_id in the url if the account_id is missing
   # @return [Redirect] redirect to the current url with account_id
   def redirect_with_account_parameter
-    redirect_to url_for(account_id: Current.account.public_uid) if Current.account && params[:account_id].blank?
+    if Current.account && params[:account_id].blank?
+      redirect_to url_for(account_id: Current.account.public_uid)
+    end
   end
 
   # Fetch the account from the request params

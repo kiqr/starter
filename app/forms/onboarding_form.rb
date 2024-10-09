@@ -16,6 +16,8 @@ class OnboardingForm < FormWizard::Form
   end
 
   def persist
+    self.account_name = name if account_name.blank?
+
     ActiveRecord::Base.transaction do
       user.save!
       Member.create!(user: user, account: account, owner: true)
