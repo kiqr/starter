@@ -1,7 +1,7 @@
 module Authentication
   extend ActiveSupport::Concern
     included do
-      helper_method :current_account, :current_member, :onboarded?, :personal_account
+      helper_method :current_account, :current_member, :onboarded?
     end
 
     # Get the current account
@@ -24,12 +24,6 @@ module Authentication
     # @return [Boolean] true if the user is onboarded
     def onboarded?
       current_user&.onboarded?
-    end
-
-    # Get the personal account of the user
-    # @return [Account] the personal account of the user
-    def personal_account
-      current_user&.personal_account
     end
 
     # Redirect to onboarding if user is not onboarded

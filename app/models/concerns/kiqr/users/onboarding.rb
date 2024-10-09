@@ -8,7 +8,7 @@ module Kiqr
       # Onboarding is considered complete if all the below conditions are met.
       # @return [Boolean] whether the user is onboarded or not.
       def onboarded?
-        profile.present? && profile.persisted?
+        profile&.persisted? && accounts&.any?
       end
     end
   end

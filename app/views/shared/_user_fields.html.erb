@@ -1,4 +1,9 @@
+<%= form.fields_for :profile do |profile| %>
+  <%= profile.text_field :name, label: t(".name.label"), placeholder: t(".name.placeholder"), required: true %>
+<% end %>
+
 <%= form.text_field :email, label: t(".email.label"), placeholder: t(".email.placeholder"), hint: t(".email.hint"), required: true %>
+
 <%= irelia_flex do %>
   <%= form.select :locale, options_for_locale, { prompt: t(".locale.prompt") }, { label: t(".locale.label"), required: true } %>
   <%= form.select :time_zone, options_for_time_zone, { prompt: t(".time_zone.prompt") }, { label: t(".time_zone.label"), required: true } %>

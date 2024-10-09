@@ -32,7 +32,7 @@ class Users::Settings::ProfilesController < Users::Settings::BaseController
   private
 
   def user_profile_params
-    personal_account_attributes = Rails.configuration.account_params.prepend(:id)
-    params.require(:user).permit(:email, :time_zone, :locale, personal_account_attributes: personal_account_attributes)
+    profile_attributes = Rails.configuration.account_params.prepend(:id)
+    params.require(:user).permit(:email, :time_zone, :locale, profile_attributes: profile_attributes)
   end
 end

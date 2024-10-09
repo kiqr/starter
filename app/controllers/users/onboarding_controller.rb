@@ -42,7 +42,7 @@ class Users::OnboardingController < ApplicationController
   end
 
   def setup_onboarding_form
-    user = current_user&.dup
+    user = User.find(current_user.id)
     user.build_profile if user.profile.blank?
     account = Account.new
 

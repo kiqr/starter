@@ -1,2 +1,2 @@
-<%= form.text_field :name, label: (form.object.personal? ? t(".name.personal.label") : t(".name.team.label")), placeholder: (form.object.personal? ? t(".name.personal.placeholder") : t(".name.team.placeholder")), required: true, autofocus: true %>
+<%= form.text_field :name, label: t(".name.team.label"), placeholder: t(".name.team.placeholder"), required: true, autofocus: true %>
 <%# Add your custom account fields here %>
