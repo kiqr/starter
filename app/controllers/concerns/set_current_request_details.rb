@@ -22,7 +22,7 @@ module SetCurrentRequestDetails
   # Redirect to the current url but with account_id in the url if the account_id is missing
   # @return [Redirect] redirect to the current url with account_id
   def redirect_with_account_parameter
-    if Current.account && params[:account_id].blank?
+    if account_scope? && Current.account && params[:account_id].blank?
       redirect_to url_for(account_id: Current.account.public_uid)
     end
   end
@@ -41,5 +41,12 @@ module SetCurrentRequestDetails
   # @return [Account, nil] the first account of the user
   def fallback_account
     current_user.accounts.first
+  end
+
+  private
+
+  # Check if we are inside an account scope
+  def account_scope?
+    @is_account_scope
   end
 end

@@ -1,6 +1,6 @@
 # => KIQR core gems
 gem "irelia", git: "https://github.com/kiqr/irelia.git", branch: "main"
-gem "form_wizard", path: "gems/form_wizard"
+gem "form_wizard", git: "https://github.com/kiqr/form_wizard.git", branch: "main"
 
 # =>  Third-party dependencies
 gem "devise", "~> 4.9", ">= 4.9.3"

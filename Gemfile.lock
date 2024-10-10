@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/kiqr/form_wizard.git
+  revision: 8fafd6c03a4b04b08cdd86c7fd589bb1e21d70f9
+  branch: main
+  specs:
+    form_wizard (0.1.0)
+
+GIT
   remote: https://github.com/kiqr/irelia.git
   revision: 7eec6bd8ffb57de5d92e99ae788fbbc37f7446da
   branch: main
@@ -8,11 +15,6 @@ GIT
       lookbook (~> 2.3.2)
       view_component (~> 3.12)
       view_component-contrib (~> 0.2.2)
-
-PATH
-  remote: gems/form_wizard
-  specs:
-    form_wizard (0.1.0)
 
 GEM
   remote: https://rubygems.org/

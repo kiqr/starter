@@ -10,6 +10,10 @@ module ActionDispatch
       # Account scope can be forced to be present by passing force: true.
       def account_scope(force: false, &block)
         pattern = force ? "/team/:account_id" : "(/team/:account_id)"
+
+        # Set the account scope flag so we can check if we are inside an account scope
+        @is_account_scope = true
+
         scope pattern, account_id: %r{[^/]+} do
           yield
         end

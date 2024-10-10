@@ -2,7 +2,6 @@ class Users::OnboardingController < ApplicationController
   layout "public"
 
   skip_before_action :ensure_onboarded
-  skip_before_action :redirect_with_account_parameter
   before_action :setup_onboarding_form, only: %i[show update]
 
   before_action do
