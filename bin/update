@@ -11,24 +11,24 @@ fi
 # Get origin remote URL
 origin_url=$(git remote get-url origin)
 
-if [[ "$origin_url" == *"kiqr/kiqr"* ]]; then
-  # Origin points to kiqr/kiqr
-  echo "Your 'origin' remote points to 'kiqr/kiqr'."
+if [[ "$origin_url" == *"kiqr/starter"* ]]; then
+  # Origin points to kiqr/starter
+  echo "Your 'origin' remote points to 'kiqr/starter'."
   echo "Renaming 'origin' remote to 'kiqr' for updating purposes."
   git remote rename origin kiqr
   echo "Please add your own 'origin' remote pointing to your repository, e.g.:"
   echo "  git remote add origin <your_repo_url>"
 else
-  # Ensure 'kiqr' remote exists and points to kiqr/kiqr
+  # Ensure 'kiqr' remote exists and points to kiqr/starter
   kiqr_url=$(git remote get-url kiqr 2>/dev/null || echo "")
   if [[ -z "$kiqr_url" ]]; then
     # 'kiqr' remote does not exist
-    echo "Adding 'kiqr' remote pointing to 'kiqr/kiqr'."
-    git remote add kiqr https://github.com/kiqr/kiqr.git
-  elif [[ "$kiqr_url" != *"kiqr/kiqr"* ]]; then
-    echo "Your 'kiqr' remote does not point to 'kiqr/kiqr'."
-    echo "Updating 'kiqr' remote to point to 'kiqr/kiqr'."
-    git remote set-url kiqr https://github.com/kiqr/kiqr.git
+    echo "Adding 'kiqr' remote pointing to 'kiqr/starter'."
+    git remote add kiqr https://github.com/kiqr/starter.git
+  elif [[ "$kiqr_url" != *"kiqr/starter"* ]]; then
+    echo "Your 'kiqr' remote does not point to 'kiqr/starter'."
+    echo "Updating 'kiqr' remote to point to 'kiqr/starter'."
+    git remote set-url kiqr https://github.com/kiqr/starter.git
   else
     echo "'kiqr' remote is correctly set up."
   fi
@@ -49,7 +49,7 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 # Show changelog
 echo
-echo "The following updates are available from 'kiqr/kiqr':"
+echo "The following updates are available from 'kiqr/starter':"
 # List commits from kiqr/main not in current branch
 if git merge-base --is-ancestor $current_branch kiqr/main; then
   echo "Your branch is up to date with 'kiqr/main'."
@@ -88,7 +88,7 @@ if [[ "$commit_now" =~ ^[Yy]$ ]]; then
   # Get latest commit SHA from kiqr
   commit_sha=$(git rev-parse --short kiqr/main)
   git add -A
-  git commit -m "chore(kiqr): update KIQR to the latest version $commit_sha"
+  git commit -m "chore(kiqr): sync with $commit_sha on upstream"
 fi
 
 # Success message
