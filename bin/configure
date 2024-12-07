@@ -1,0 +1,36 @@
+
+#!/bin/bash
+
+set -e
+
+# Ensure we're inside a git repository
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+  echo "This script must be run inside a git repository."
+  exit 1
+fi
+
+# Get origin remote URL
+origin_url=$(git remote get-url origin)
+
+if [[ "$origin_url" == *"kiqr/starter"* ]]; then
+  # Origin points to kiqr/starter
+  echo "Your 'origin' remote points to 'kiqr/starter'."
+  echo "Renaming 'origin' remote to 'kiqr' for updating purposes."
+  git remote rename origin kiqr
+  echo "Please add your own 'origin' remote pointing to your repository, e.g.:"
+  echo "  git remote add origin <your_repo_url>"
+else
+  # Ensure 'kiqr' remote exists and points to kiqr/starter
+  kiqr_url=$(git remote get-url kiqr 2>/dev/null || echo "")
+  if [[ -z "$kiqr_url" ]]; then
+    # 'kiqr' remote does not exist
+    echo "Adding 'kiqr' remote pointing to 'kiqr/starter'."
+    git remote add kiqr https://github.com/kiqr/starter.git
+  elif [[ "$kiqr_url" != *"kiqr/starter"* ]]; then
+    echo "Your 'kiqr' remote does not point to 'kiqr/starter'."
+    echo "Updating 'kiqr' remote to point to 'kiqr/starter'."
+    git remote set-url kiqr https://github.com/kiqr/starter.git
+  else
+    echo "'kiqr' remote is correctly set up."
+  fi
+fi
